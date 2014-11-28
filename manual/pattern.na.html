@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Display the Accumulative Sample Sizes for the Covariance...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/languages/r.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head><body>
+
+<table width="100%" summary="page for pattern.n {metaSEM}"><tr><td>pattern.n {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Display the Accumulative Sample Sizes for the Covariance Matrix
+</h2>
+
+<h3>Description</h3>
+
+<p>It displays the accumulative sample sizes for the
+covariance matrix.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+pattern.n(x, n)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>A list of square matrices</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>A vector of sample sizes.
+</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A square matrix of the accumulative sample sizes of the
+input matrices.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class="r">## Show the pattern of missing data
+pattern.n(Hunter83$data, Hunter83$n)
+</code></pre>
+
+<pre><code>##             Ability Knowledge Work sample Supervisor
+## Ability        3815      3372        3281       3605
+## Knowledge      3372      3532        2998       3322
+## Work sample    3281      2998        3441       3231
+## Supervisor     3605      3322        3231       3765
+</code></pre>
+
+<pre><code class="r">#             Ability Knowledge Work sample Supervisor
+# Ability        3815      3372        3281       3605
+# Knowledge      3372      3532        2998       3322
+# Work sample    3281      2998        3441       3231
+# Supervisor     3605      3322        3231       3765
+</code></pre>
+
+
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

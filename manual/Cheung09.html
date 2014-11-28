@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: A Data Set from TSSEM User's Guide Version 1.11 by Cheung...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/languages/r.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head><body>
+
+<table width="100%" summary="page for Cheung09 {metaSEM}"><tr><td>Cheung09 {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>A Data Set from TSSEM User's Guide Version 1.11 by Cheung (2009) 
+</h2>
+
+<h3>Description</h3>
+
+<p>Four studies were selected from the data set used by Cheung
+and Chan (2005; 2009). Some variables were randomly deleted to
+illustrate the analysis with missing data.
+
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(Cheung09)</pre>
+
+
+<h3>Details</h3>
+
+<p>A list of data with the following structure:
+</p>
+
+<dl>
+<dt>data</dt><dd><p>A list of 4 studies of correlation matrices </p>
+</dd>
+<dt>n</dt><dd><p>A vector of sample sizes</p>
+</dd>
+</dl>
+
+
+
+<h3>Source</h3>
+
+<p>Cheung, M. W.-L. (2009). TSSEM: A LISREL syntax generator for two-stage structural equation modeling (Version 1.11) [Computer software]. Retrieved from <a href="http://courses.nus.edu.sg/course/psycwlm/internet/tssem.zip">http://courses.nus.edu.sg/course/psycwlm/internet/tssem.zip</a>.
+</p>
+
+
+<h3>References</h3>
+
+<p>Cheung, M. W.-L., &amp; Chan, W. (2005). Meta-analytic structural equation modeling: A two-stage approach. <EM>Psychological Methods</EM>, <B>10</B>, 40-64.
+</p>
+<p>Cheung, M. W.-L., &amp; Chan, W. (2009). A two-stage approach to synthesizing covariance matrices in meta-analytic structural equation modeling. <EM>Structural Equation Modeling</EM>, <B>16</B>, 28-53.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class="r">data(Cheung09)
+
+#### Fixed-effects model: Stage 1 analysis
+fixed1 &lt;- tssem1(Cheung09$data, Cheung09$n, method=&quot;FEM&quot;)
+summary(fixed1)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## tssem1FEM(my.df = my.df, n = n, cor.analysis = cor.analysis, 
+##     model.name = model.name, cluster = cluster, suppressWarnings = suppressWarnings, 
+##     silent = silent, run = run)
+## 
+## Coefficients:
+##        Estimate Std.Error z value  Pr(&gt;|z|)    
+## S[1,2] 0.295204  0.019260 15.3270 &lt; 2.2e-16 ***
+## S[1,3] 0.195315  0.024752  7.8909 3.109e-15 ***
+## S[1,4] 0.218764  0.024122  9.0691 &lt; 2.2e-16 ***
+## S[1,5] 0.219891  0.024410  9.0084 &lt; 2.2e-16 ***
+## S[1,6] 0.188085  0.020243  9.2914 &lt; 2.2e-16 ***
+## S[1,7] 0.192202  0.020245  9.4940 &lt; 2.2e-16 ***
+## S[1,8] 0.098345  0.025657  3.8331 0.0001265 ***
+## S[1,9] 0.098792  0.025907  3.8134 0.0001371 ***
+## S[2,3] 0.369539  0.022700 16.2791 &lt; 2.2e-16 ***
+## S[2,4] 0.254045  0.023528 10.7976 &lt; 2.2e-16 ***
+## S[2,5] 0.228515  0.024101  9.4816 &lt; 2.2e-16 ***
+## S[2,6] 0.114146  0.020522  5.5620 2.666e-08 ***
+## S[2,7] 0.045226  0.020795  2.1748 0.0296415 *  
+## S[2,8] 0.148062  0.025249  5.8641 4.515e-09 ***
+## S[2,9] 0.101849  0.025716  3.9605 7.480e-05 ***
+## S[3,4] 0.307683  0.019827 15.5182 &lt; 2.2e-16 ***
+## S[3,5] 0.190534  0.021198  8.9881 &lt; 2.2e-16 ***
+## S[3,6] 0.168640  0.020894  8.0714 6.661e-16 ***
+## S[3,7] 0.131195  0.021076  6.2249 4.819e-10 ***
+## S[3,8] 0.165582  0.027014  6.1296 8.811e-10 ***
+## S[3,9] 0.125626  0.027582  4.5546 5.248e-06 ***
+## S[4,5] 0.451816  0.017508 25.8059 &lt; 2.2e-16 ***
+## S[4,6] 0.385260  0.018401 20.9369 &lt; 2.2e-16 ***
+## S[4,7] 0.356264  0.018829 18.9207 &lt; 2.2e-16 ***
+## S[4,8] 0.118676  0.026682  4.4478 8.674e-06 ***
+## S[4,9] 0.056840  0.027193  2.0902 0.0365988 *  
+## S[5,6] 0.312550  0.019537 15.9981 &lt; 2.2e-16 ***
+## S[5,7] 0.231882  0.020370 11.3837 &lt; 2.2e-16 ***
+## S[5,8] 0.238513  0.026159  9.1177 &lt; 2.2e-16 ***
+## S[5,9] 0.064725  0.027416  2.3608 0.0182339 *  
+## S[6,7] 0.553722  0.012912 42.8844 &lt; 2.2e-16 ***
+## S[6,8] 0.162009  0.021034  7.7021 1.332e-14 ***
+## S[6,9] 0.053050  0.021658  2.4494 0.0143099 *  
+## S[7,8] 0.135426  0.021211  6.3846 1.719e-10 ***
+## S[7,9] 0.066476  0.021650  3.0705 0.0021370 ** 
+## S[8,9] 0.198064  0.021253  9.3192 &lt; 2.2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Goodness-of-fit indices:
+##                                      Value
+## Sample size                      2902.0000
+## Chi-square of target model        172.7320
+## DF of target model                 57.0000
+## p value of target model             0.0000
+## Chi-square of independence model 3246.6915
+## DF of independence model           93.0000
+## RMSEA                               0.0529
+## SRMR                                0.0492
+## TLI                                 0.9401
+## CFI                                 0.9633
+## AIC                                58.7320
+## BIC                              -281.7379
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+<pre><code class="r">## Prepare a model implied matrix
+## Factor correlation matrix
+Phi &lt;- create.mxMatrix( c(&quot;0.3*corf2f1&quot;,&quot;0.3*corf3f1&quot;,&quot;0.3*corf3f2&quot;),
+                        type=&quot;Stand&quot;, as.mxMatrix=FALSE )
+## Error variances
+Psi &lt;- create.mxMatrix( paste(&quot;0.2*e&quot;, 1:9, sep=&quot;&quot;), type=&quot;Diag&quot;,
+                        as.mxMatrix=FALSE )
+
+## Create Smatrix
+S1 &lt;- bdiagMat(list(Psi, Phi))
+## dimnames(S1)[[1]] &lt;- dimnames(S1)[[2]] &lt;- c(paste(&quot;x&quot;,1:9,sep=&quot;&quot;),
+##                                             paste(&quot;f&quot;,1:3,sep=&quot;&quot;))
+## S1
+S1 &lt;- as.mxMatrix(S1)
+
+## Factor loadings
+Lambda &lt;- create.mxMatrix( c(&quot;.3*f1x1&quot;,&quot;.3*f1x2&quot;,&quot;.3*f1x3&quot;,rep(0,9),
+                             &quot;.3*f2x4&quot;,&quot;.3*f2x5&quot;,&quot;.3*f2x6&quot;,&quot;.3*f2x7&quot;,
+                             rep(0,9),&quot;.3*f3x8&quot;,&quot;.3*f3x9&quot;), type=&quot;Full&quot;,
+                             ncol=3, nrow=9, as.mxMatrix=FALSE )
+Zero1 &lt;- matrix(0, nrow=9, ncol=9)
+Zero2 &lt;- matrix(0, nrow=3, ncol=12)
+
+## Create Amatrix
+A1 &lt;- rbind( cbind(Zero1, Lambda),
+             Zero2 )
+## dimnames(A1)[[1]] &lt;- dimnames(A1)[[2]] &lt;- c(paste(&quot;x&quot;,1:9,sep=&quot;&quot;),
+##                                             paste(&quot;f&quot;,1:3,sep=&quot;&quot;))
+## A1
+A1 &lt;- as.mxMatrix(A1)
+
+## Create Fmatrix
+F1 &lt;- create.Fmatrix(c(rep(1,9), rep(0,3)))
+
+#### Fixed-effects model: Stage 2 analysis
+fixed2 &lt;- tssem2(fixed1, Amatrix=A1, Smatrix=S1, Fmatrix=F1,
+                 intervals.type=&quot;LB&quot;)
+summary(fixed2)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## wls(Cov = pooledS, asyCov = tssem1.obj$acovS, n = sum(tssem1.obj$n), 
+##     Amatrix = Amatrix, Smatrix = Smatrix, Fmatrix = Fmatrix, 
+##     diag.constraints = diag.constraints, cor.analysis = cor.analysis, 
+##     intervals.type = intervals.type, mx.algebras = mx.algebras, 
+##     model.name = model.name, suppressWarnings = suppressWarnings, 
+##     silent = silent, run = run)
+## 
+## 95% confidence intervals: Likelihood-based statistic
+## Coefficients:
+##         Estimate Std.Error  lbound  ubound z value Pr(&gt;|z|)
+## f1x1     0.51573        NA 0.46770 0.56416      NA       NA
+## f1x2     0.56898        NA 0.52174 0.61696      NA       NA
+## f1x3     0.58850        NA 0.53616 0.64173      NA       NA
+## f2x4     0.70586        NA 0.67407 0.73733      NA       NA
+## f2x5     0.57723        NA 0.54104 0.61311      NA       NA
+## f2x6     0.74770        NA 0.72066 0.77500      NA       NA
+## f2x7     0.69392        NA 0.66540 0.72269      NA       NA
+## f3x8     0.62062        NA 0.52528 0.74486      NA       NA
+## f3x9     0.33091        NA 0.26537 0.39721      NA       NA
+## corf2f1  0.54544        NA 0.49390 0.59760      NA       NA
+## corf3f1  0.48553        NA 0.37616 0.60095      NA       NA
+## corf3f2  0.38874        NA 0.31155 0.47262      NA       NA
+## 
+## Goodness-of-fit indices:
+##                                                Value
+## Sample size                                2902.0000
+## Chi-square of target model                  379.3243
+## DF of target model                           24.0000
+## p value of target model                       0.0000
+## Number of constraints imposed on &quot;Smatrix&quot;    0.0000
+## DF manually adjusted                          0.0000
+## Chi-square of independence model           3305.6651
+## DF of independence model                     36.0000
+## RMSEA                                         0.0714
+## SRMR                                          0.0727
+## TLI                                           0.8370
+## CFI                                           0.8913
+## AIC                                         331.3243
+## BIC                                         187.9686
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: First Stage of the Two-Stage Structural Equation Modeling...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body>
+
+<table width="100%" summary="page for tssem1 {metaSEM}"><tr><td>tssem1 {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>First Stage of the Two-Stage Structural Equation Modeling (TSSEM)
+</h2>
+
+<h3>Description</h3>
+
+<p>It conducts the first stage analysis of TSSEM by pooling
+correlation/covariance matrices. <code>tssem1FEM()</code> and
+<code>tssem1REM()</code> use fixed- and random-effects models,
+respectively. <code>tssem1()</code> is a wrapper of these functions. 
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+tssem1(my.df, n, method=c("FEM","REM"), cor.analysis = TRUE, cluster=NULL,
+       RE.type=c("Symm", "Diag", "Zero"), RE.startvalues=0.1, RE.lbound=1e-10, I2="I2q",
+       model.name=NULL, suppressWarnings=TRUE, silent=TRUE, run=TRUE, ...)
+tssem1FEM(my.df, n, cor.analysis=TRUE, model.name=NULL,
+          cluster=NULL, suppressWarnings=TRUE, silent=TRUE, run=TRUE, ...)
+tssem1REM(my.df, n, cor.analysis=TRUE, RE.type=c("Symm", "Diag", "Zero"),
+          RE.startvalues=0.1, RE.lbound=1e-10, I2="I2q", model.name=NULL,
+          suppressWarnings=TRUE, silent=TRUE, run=TRUE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>my.df</code></td>
+<td>
+<p>A list of correlation/covariance matrices
+</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>A vector of sample sizes
+</p>
+</td></tr>
+<tr valign="top"><td><code>method</code></td>
+<td>
+<p>Either <code>"FEM"</code> (default if missing) or <code>"REM"</code>.
+If it is &quot;FEM&quot;, fixed-effects meta-analysis will be applied. If it is &quot;REM&quot;,
+random-effects meta-analysis will be applied.
+</p>
+</td></tr>
+<tr valign="top"><td><code>cor.analysis</code></td>
+<td>
+<p>Logical. The output is either a pooled correlation or a covariance matrix.
+</p>
+</td></tr>
+<tr valign="top"><td><code>cluster</code></td>
+<td>
+<p>A vector of characters or numbers indicating the
+clusters. Analyses will be conducted for each cluster. It will be
+ignored when <code>method="REM"</code>.
+</p>
+</td></tr>
+<tr valign="top"><td><code>RE.type</code></td>
+<td>
+<p>Either <code>"Symm"</code>, <code>"Diag"</code> or
+<code>"Zero"</code>. If it is <code>"Symm"</code> (default if missing), a
+symmetric matrix is used for the random effects on the covariances
+among the correlation (or covariance) vectors. If it is
+<code>"Diag"</code>, a diagonal matrix is used for the random effects
+meaning that the random effects are independent. If it is
+<code>"Zero"</code>, there is no random effects which is similar to the
+conventional Generalized Least Squares (GLS) approach to
+fixed-effects analysis. This argument will be ignored when <code>method="FEM"</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>RE.startvalues</code></td>
+<td>
+<p>Starting values on the
+diagonals of the variance component of the random effects. It will be ignored when <code>method="FEM"</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>RE.lbound</code></td>
+<td>
+<p>Lower bounds on the diagonals of the variance
+component of the random effects. It will be ignored when
+<code>method="FEM"</code>.</p>
+</td></tr>
+<tr valign="top"><td><code>I2</code></td>
+<td>
+<p>Possible options are <code>"I2q"</code>, <code>"I2hm"</code> and
+<code>"I2am"</code>. They represent the <code>I2</code> calculated by using a
+typical within-study sampling variance from the Q statistic, the
+harmonic mean and the arithmatic mean of the within-study sampling
+variances (Xiong, Miller, &amp; Morris, 2010). More than one options are possible. If <code>intervals.type="LB"</code>, 95% confidence intervals on the heterogeneity indices will be constructed. 
+</p>
+</td></tr>  
+<tr valign="top"><td><code>model.name</code></td>
+<td>
+<p>A string for the model name in <code><a href="../../OpenMx/html/mxModel.html">mxModel</a></code>. 
+</p>
+</td></tr>  
+<tr valign="top"><td><code>suppressWarnings</code></td>
+<td>
+<p>Logical. If <code>TRUE</code>, warnings are
+suppressed. Argument to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>silent</code></td>
+<td>
+<p>Logical. Argument to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code></p>
+</td></tr>
+<tr valign="top"><td><code>run</code></td>
+<td>
+<p>Logical. If <code>FALSE</code>, only return the mx model without running the analysis.</p>
+</td></tr>  
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Further arguments to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code>
+</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Either an object of class <code>tssem1FEM</code> for fixed-effects TSSEM,
+an object of class <code>tssem1FEM.cluster</code> for fixed-effects TSSEM
+with <code>cluster</code> argument, or an object of class <code>tssem1REM</code>
+for random-effects TSSEM. 
+</p>
+
+
+<h3>Note</h3>
+
+<p>If the <code>cluster</code> argument is used, it returns a list of
+results based for each cluster.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p>Cheung, M. W.-L. (2014). Fixed- and random-effects meta-analytic structural equation modeling: Examples and analyses in R. <EM>Behavior Research Methods</EM>, <B>46</B>, 29-40.
+</p>
+<p>Cheung, M. W.-L. (2013). Multivariate meta-analysis as structural
+equation models. <EM>Structural Equation Modeling</EM>, <B>20</B>,
+429-454.
+</p>
+<p>Cheung, M. W.-L., &amp; Chan, W. (2005). Meta-analytic structural equation modeling: A two-stage approach. <EM>Psychological Methods</EM>, <B>10</B>, 40-64.
+</p>
+<p>Cheung, M. W.-L., &amp; Chan, W. (2009). A two-stage approach to synthesizing covariance matrices in meta-analytic structural equation modeling. <EM>Structural Equation Modeling</EM>, <B>16</B>, 28-53.
+</p>
+
+
+<h3>See Also</h3>
+
+ <p><code><a href="wls.html">wls</a></code>, <code><a href="Cheung09.html">Cheung09</a></code>,
+<code><a href="Becker92.html">Becker92</a></code>, <code><a href="Digman97.html">Digman97</a></code>, <code><a href="issp89.html">issp89</a></code>, <code><a href="issp05.html">issp05</a></code>
+</p>
+
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

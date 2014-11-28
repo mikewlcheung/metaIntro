@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Estimate Variance Components in Three-Level Univariate...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body>
+
+<table width="100%" summary="page for reml3 {metaSEM}"><tr><td>reml3 {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Estimate Variance Components in Three-Level Univariate
+Meta-Analysis with Restricted (Residual) Maximum
+Likelihood Estimation
+</h2>
+
+<h3>Description</h3>
+
+<p>It estimates the variance components of random-effects in three-level
+univariate meta-analysis with restricted (residual) maximum likelihood (REML) estimation method.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+reml3(y, v, cluster, x, data, RE2.startvalue=0.1, RE2.lbound=1e-10,
+      RE3.startvalue=RE2.startvalue, RE3.lbound=RE2.lbound, RE.equal=FALSE,
+      intervals.type=c("z", "LB"), model.name="Variance component with REML",
+      suppressWarnings=TRUE, silent=TRUE, run=TRUE, ...) 
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>y</code></td>
+<td>
+<p>A vector of <i>k</i> studies of effect size. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>v</code></td>
+<td>
+<p>A vector of <i>k</i> studies of sampling variance.
+</p>
+</td></tr>
+<tr valign="top"><td><code>cluster</code></td>
+<td>
+<p>A vector of <i>k</i> characters or numbers indicating the
+clusters. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>A predictor or a <i>k</i> x <i>m</i> matrix of level-2
+and level-3 predictors where <i>m</i> is the number of predictors. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>An optional data frame containing the variables in the model.
+</p>
+</td></tr>
+<tr valign="top"><td><code>RE2.startvalue</code></td>
+<td>
+<p>Starting value for the level-2 variance.
+</p>
+</td></tr>
+<tr valign="top"><td><code>RE2.lbound</code></td>
+<td>
+<p>Lower bound for the level-2 variance.
+</p>
+</td></tr>
+<tr valign="top"><td><code>RE3.startvalue</code></td>
+<td>
+<p>Starting value for the level-3 variance.
+</p>
+</td></tr>
+<tr valign="top"><td><code>RE3.lbound</code></td>
+<td>
+<p>Lower bound for the level-3 variance.
+</p>
+</td></tr>
+<tr valign="top"><td><code>RE.equal</code></td>
+<td>
+<p>Logical. Whether the variance components at level-2
+and level-3 are constrained equally.
+</p>
+</td></tr>
+<tr valign="top"><td><code>intervals.type</code></td>
+<td>
+<p>Either <code>z</code> (default if missing) or
+<code>LB</code>. If it is <code>z</code>, it calculates the 95% Wald confidence
+intervals (CIs) based on the z statistic. If it is <code>LB</code>, it
+calculates the 95% likelihood-based CIs on the
+parameter estimates. Note that the z values and their
+associated p values are based on the z statistic. They are not
+related to the likelihood-based CIs.
+</p>
+</td></tr>
+<tr valign="top"><td><code>model.name</code></td>
+<td>
+<p>A string for the model name in <code><a href="../../OpenMx/html/mxModel.html">mxModel</a></code>. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>suppressWarnings</code></td>
+<td>
+<p>Logical. If <code>TRUE</code>, warnings are
+suppressed. Argument to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code>.
+</p>
+</td></tr>
+<tr valign="top"><td><code>silent</code></td>
+<td>
+<p>Logical. Argument to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code></p>
+</td></tr>
+<tr valign="top"><td><code>run</code></td>
+<td>
+<p>Logical. If <code>FALSE</code>, only return the mx model without running the analysis.</p>
+</td></tr>  
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Futher arguments to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code></p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Restricted (residual) maximum likelihood obtains the parameter estimates on the transformed data that do not include the fixed-effects parameters. A transformation matrix <i>M=I-X(X'X)^{-1}X'</i> is created based on the design matrix <i>X</i> which is just a column vector when there is no predictor in <code>x</code>. The last <i>N</i> redundant rows of <i>M</i> is removed where <i>N</i> is the rank of <i>X</i>. After pre-multiplying by <i>M</i> on <code>y</code>, the parameters of fixed-effects are removed from the model. Thus, only the parameters of random-effects are estimated.
+</p>
+<p>An alternative but equivalent approach is to minimize the
+-2*log-likelihood function: </p>
+<p align="center"><i>
+	log(det|V+T^2|)+log(det|X'(V+T^2)^{-1}X|)+(y-X&alpha;)'(V+T^2)^{-1}(y-X*&alpha;)</i></p>
+
+<p>where <i>V</i> is the known conditional sampling covariance matrix
+of <i>y</i>, <i>T^2</i> is the variance component combining
+level-2 and level-3 random effects, and <i>\hat{&alpha;}=(t(X)(V+T^2)^{-1}X)^{-1}t(X)(V+T^2)^{-1}y</i>. <code>reml()</code>
+minimizes the above likelihood function to obtain the parameter estimates.
+</p>
+
+
+<h3>Value</h3>
+
+<p>An object of class <code>reml</code> with a list of
+</p>
+<table summary="R valueblock">
+<tr valign="top"><td><code>call</code></td>
+<td>
+<p>Object returned by <code><a href="../../base/html/match.call.html">match.call</a></code></p>
+</td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>A data matrix of y, v and x  </p>
+</td></tr>
+</table>
+
+
+
+<table summary="R valueblock">
+<tr valign="top"><td><code>mx.fit</code></td>
+<td>
+<p>A fitted object returned from	<code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code></p>
+</td></tr>
+</table>
+
+
+<h3>Note</h3>
+
+ <p><code>reml</code> is more computional intensive than <code>meta</code>. Moreover, <code>reml</code> is more
+likely to encounter errors during optimization. Since
+a likelihood function is directly employed to obtain the parameter
+estimates, there is no number of studies and number of observed statistics
+returned by <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code>. Ad-hoc steps are used
+to modify <code>mx.fit@runstate$objectives[[1]]@numObs</code> and <code>mx.fit@runstate$objectives[[1]]@numStats</code>.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+
+</p>
+
+
+<h3>References</h3>
+
+<p>Cheung, M. W.-L. (2013). Implementing restricted maximum likelihood estimation in structural equation models. <EM>Structural Equation Modeling</EM>, <B>20(1)</B>, 157-167.
+</p>
+<p>Cheung, M. W.-L. (2014). Modeling dependent effect sizes with three-level meta-analyses: A structural equation modeling approach. <EM>Psychological Methods</EM>, <B>19</B>, 211-229.
+</p>
+<p>Mehta, P. D., &amp; Neale, M. C. (2005). People Are Variables Too: Multilevel Structural Equations Modeling. <EM>Psychological
+Methods</EM>, <B>10(3)</B>, 259-284.
+</p>
+<p>Searle, S. R., Casella, G., &amp; McCulloch, C. E. (1992). <EM>Variance components</EM>. New York: Wiley.
+</p>
+
+
+<h3>See Also</h3>
+
+ <p><code><a href="meta3.html">meta3</a></code>, <code><a href="reml.html">reml</a></code>, <code><a href="Cooper03.html">Cooper03</a></code>, <code><a href="Bornmann07.html">Bornmann07</a></code>
+
+</p>
+
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

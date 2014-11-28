@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Convert 'metaSEM' objects into 'semPlotModel' objects for...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body>
+
+<table width="100%" summary="page for meta2semPlot {metaSEM}"><tr><td>meta2semPlot {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>
+Convert <code>metaSEM</code> objects into <code>semPlotModel</code> objects for plotting
+</h2>
+
+<h3>Description</h3>
+
+<p>It converts objects in class <code>wls</code> into objects of class <code>semPlotModel</code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+meta2semPlot(object, manNames = NULL, latNames = NULL, labels = c("labels", "RAM"), ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+<p>An object of class <code>wls</code> returned from <code>wls()</code>
+or <code>tssem2()</code>.
+</p>
+</td></tr>
+<tr valign="top"><td><code>manNames</code></td>
+<td>
+<p>A character vector of the manifest names. The program
+will try to get it from the <code>object</code> if it is not given. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>latNames</code></td>
+<td>
+<p>A character vector of the latent names. The program
+will create it by using &quot;L1&quot;, &quot;L2&quot;, etc if it is not given. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>labels</code></td>
+<td>
+<p>Either <code>labels</code> (default if missing) or
+<code>RAM</code>. If <code>labels</code>, the labels of the parameters are used
+in plotting. If <code>RAM</code>, the RAM notations are used in plotting.
+</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Further arguments to be passed to <code><a href="../../semPlot/html/ramModel.html">ramModel</a></code>
+</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>It uses the <code>ramModel()</code> to do the conversion.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A &quot;semPlotModel&quot; object.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../semPlot/html/ramModel.html">ramModel</a></code>,
+<code><a href="Becker92.html">Becker92</a></code>, <code><a href="Becker09.html">Becker09</a></code>,
+<code><a href="Digman97.html">Digman97</a></code>, <code><a href="Hunter83.html">Hunter83</a></code>
+</p>
+
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

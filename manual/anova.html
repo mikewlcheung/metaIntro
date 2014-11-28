@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Compare Nested Models with Likelihood Ratio Statistic</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/languages/r.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head><body>
+
+<table width="100%" summary="page for anova {metaSEM}"><tr><td>anova {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Compare Nested Models with Likelihood Ratio Statistic
+</h2>
+
+<h3>Description</h3>
+
+<p>It compares nested models with the likelihood ratio
+statistic from either <code>wls</code>, <code>meta</code>, <code>meta3X</code> or
+<code>reml</code> objects. It is a wrapper of <code><a href="../../OpenMx/html/mxCompare.html">mxCompare</a></code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'wls'
+anova(object, ..., all=FALSE)
+## S3 method for class 'meta'
+anova(object, ..., all=FALSE)
+## S3 method for class 'meta3X'
+anova(object, ..., all=FALSE)
+## S3 method for class 'reml'
+anova(object, ..., all=FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+<p>An object or a list of objects of either class
+<code><a href="wls.html">wls</a></code>, class <code><a href="meta.html">meta</a></code>, class <code><a href="meta3.html">meta3</a></code> or
+class <code><a href="reml.html">reml</a></code>. It will be passed to the
+<code>base</code> argument in <code><a href="../../OpenMx/html/mxCompare.html">mxCompare</a></code>.
+</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>An object or a list of objects of either class
+<code><a href="wls.html">wls</a></code>, class <code><a href="meta.html">meta</a></code>, class <code><a href="meta3.html">meta3</a></code> or
+class <code><a href="reml.html">reml</a></code>. It will be passed to the
+<code>comparison</code> argument in <code><a href="../../OpenMx/html/mxCompare.html">mxCompare</a></code>.
+</p>
+</td></tr>  
+<tr valign="top"><td><code>all</code></td>
+<td>
+<p>A boolean value on whether to compare all bases with all
+comparisons. It will be passed to the <code>all</code> argument in
+<code><a href="../../OpenMx/html/mxCompare.html">mxCompare</a></code>.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>A table of comparisons between the models in base and comparison.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class="r">## Test the significance of a predictor with likelihood ratio test
+## Model0: No predictor
+model0 &lt;- meta(y=yi, v=vi, data=Hox02, model.name=&quot;No predictor&quot;)
+
+## Model1: With a predictor
+model1 &lt;- meta(y=yi, v=vi, x=weeks, data=Hox02, model.name=&quot;One predictor&quot;)
+
+## Compare these two models
+anova(model1, model0) 
+</code></pre>
+
+<pre><code>##            base   comparison ep minus2LL df        AIC   diffLL diffdf
+## 1 One predictor         &lt;NA&gt;  3 13.90435 17 -20.095649       NA     NA
+## 2 One predictor No predictor  2 27.79916 18  -8.200837 13.89481      1
+##              p
+## 1           NA
+## 2 0.0001933314
+</code></pre>
+
+
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

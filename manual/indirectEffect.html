@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Estimate the asymptotic covariance matrix of standardized or...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/languages/r.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head><body>
+
+<table width="100%" summary="page for indirectEffect {metaSEM}"><tr><td>indirectEffect {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Estimate the asymptotic covariance matrix of standardized or unstandardized indirect and direct effects
+</h2>
+
+<h3>Description</h3>
+
+<p>It estimates the standardized or unstandardized indirect and direct effects
+and their asymptotic sampling covariance matrix.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+indirectEffect(x, n, standardized = TRUE, direct.effect = TRUE, run = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>A 3x3 correlation/covariance matrix or a list of
+correlation/covariance matrices. Variables are
+arranged as dependent variable (y), mediator (m) and independent
+variable (x)
+</p>
+</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+<p>Sample size or a vector of sample sizes
+</p>
+</td></tr>
+<tr valign="top"><td><code>standardized</code></td>
+<td>
+<p>Logical. Whether the indirect effect is
+standardized.
+</p>
+</td></tr>
+<tr valign="top"><td><code>direct.effect</code></td>
+<td>
+<p>Logical. Whether the direct effect is
+estimated. If it is <code>FALSE</code>, the direct effect is fixed at zero.
+</p>
+</td></tr>
+<tr valign="top"><td><code>run</code></td>
+<td>
+<p>Logical. If <code>FALSE</code>, only return the mx model without running the analysis.</p>
+</td></tr>
+</table>
+
+
+<h3>Details</h3>
+
+<p>Cheung (2009) estimated the standardized indirect effect and
+its standard error with non-linear constraints. Since <code>OpenMx</code> does not generate standard errors when there
+are non-linear constraints, Kwan and Chan's (2011) approach is used in
+this function. Delta method is used to calculate the asymptotic covariance matrix.
+</p>
+
+
+<h3>Value</h3>
+
+<p>A vector (or a matrix if the input is a list of matrices) of
+(standardized) indirect effect, standardized direct effect and their
+asymptotic sampling covariance matrices
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p>Cheung, M. W.-L. (2009). Comparison of methods for constructing confidence intervals of standardized indirect effects. <EM>Behavior
+Research Methods</EM>, <EM>41</EM>, 425-438.
+</p>
+<p>Kwan, J., &amp; Chan, W. (2011). Comparing standardized coefficients in
+structural equation modeling: a model reparameterization
+approach. <EM>Behavior Research Methods</EM>, <EM>43</EM>, 730-745.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class="r">## A correlation matrix as input
+x &lt;- matrix(c(1, 0.4, 0.2, 0.4, 1, 0.3, 0.2, 0.3, 1), ncol=3)
+dimnames(x) &lt;- list( c(&quot;y&quot;, &quot;m&quot;, &quot;x&quot;), c(&quot;y&quot;, &quot;m&quot;, &quot;x&quot;) )
+indirectEffect(x, n=300)
+</code></pre>
+
+<pre><code>##       ind_eff       dir_eff       ind_var   ind_dir_cov       dir_var 
+##  0.1132088711  0.0887913338  0.0006706233 -0.0002732750  0.0031620700
+</code></pre>
+
+<pre><code class="r">## A list of correlation matrices
+indirectEffect( list(x, x), n=c(300,500), standardized=FALSE )
+</code></pre>
+
+<pre><code>##        ind_eff    dir_eff      ind_var   ind_dir_cov     dir_var
+## [1,] 0.1120878 0.08791209 0.0007003815 -0.0002755246 0.003061384
+## [2,] 0.1120879 0.08791202 0.0004196683 -0.0001650925 0.001834370
+</code></pre>
+
+
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Five Published Trails from Berkey et al. (1998)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/languages/r.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head><body>
+
+<table width="100%" summary="page for Berkey98 {metaSEM}"><tr><td>Berkey98 {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Five Published Trails from Berkey et al. (1998)</h2>
+
+<h3>Description</h3>
+
+<p>The data set includes five published trials, reported by Berkey et al. (1998), comparing surgical and non-surgical treatments
+for medium-severity periodontal disease, one year after treatment. 
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(Berkey98)</pre>
+
+
+<h3>Details</h3>
+
+<p>The variables are:
+</p>
+
+<dl>
+<dt>trial</dt><dd><p>Trial number</p>
+</dd>
+<dt>pub_year</dt><dd><p>Publication year</p>
+</dd>
+<dt>no_of_patients</dt><dd><p>Number of patients</p>
+</dd>
+<dt>PD</dt><dd><p>Patient improvements (mm) in <EM>probing depth</EM></p>
+</dd>
+<dt>AL</dt><dd><p>Patient improvements (mm) in <EM>attachment level</EM></p>
+</dd>
+<dt>var_PD</dt><dd><p>Sampling variance of PD</p>
+</dd>
+<dt>cov_PD_AL</dt><dd><p>Sampling covariance between PD and AD</p>
+</dd>
+<dt>var_AL</dt><dd><p>Sampling variance of AL</p>
+</dd>
+</dl>
+
+
+
+<h3>Source</h3>
+
+<p>Berkey, C. S., Hoaglin, D. C., Antczak-Bouckoms, A., Mosteller, F, &amp; Colditz, G. A. (1998). Meta-analysis of multiple outcomes by regression with random effects. <EM>Statistics in Medicine</EM>, <B>17</B>, 2537-2550.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class="r">data(Berkey98)
+
+#### ML estimation method
+## Multivariate meta-analysis
+summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
+              data=Berkey98, I2=c(&quot;I2q&quot;, &quot;I2hm&quot;, &quot;I2am&quot;),
+              intervals.type=&quot;LB&quot;) )
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta(y = cbind(PD, AL), v = cbind(var_PD, cov_PD_AL, var_AL), 
+##     data = Berkey98, intervals.type = &quot;LB&quot;, I2 = c(&quot;I2q&quot;, &quot;I2hm&quot;, 
+##         &quot;I2am&quot;))
+## 
+## 95% confidence intervals: Likelihood-based statistic
+## Coefficients:
+##              Estimate Std.Error lbound ubound z value Pr(&gt;|z|)
+## Intercept1  0.3448392        NA     NA     NA      NA       NA
+## Intercept2 -0.3379381        NA     NA     NA      NA       NA
+## Tau2_1_1    0.0070020        NA     NA     NA      NA       NA
+## Tau2_2_1    0.0094607        NA     NA     NA      NA       NA
+## Tau2_2_2    0.0261445        NA     NA     NA      NA       NA
+## 
+## Q statistic on the homogeneity of effect sizes: 128.2267
+## Degrees of freedom of the Q statistic: 8
+## P value of the Q statistic: 0
+## 
+## Heterogeneity indices (I2) and their 95% likelihood-based CIs:
+##                                  lbound Estimate ubound
+## Intercept1: I2 (Q statistic)         NA  0.60206     NA
+## Intercept2: I2 (Q statistic)         NA  0.92498     NA
+## Intercept1: I2 (harmonic mean)       NA  0.62642     NA
+## Intercept2: I2 (harmonic mean)       NA  0.93593     NA
+## Intercept1: I2 (arithmetic mean)     NA  0.51478     NA
+## Intercept2: I2 (arithmetic mean)     NA  0.75771     NA
+## 
+## Number of studies (or clusters): 5
+## Number of observed statistics: 10
+## Number of estimated parameters: 5
+## Degrees of freedom: 5
+## -2 log likelihood: -11.68131 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+<pre><code class="r">## Multivariate meta-analysis with &quot;publication year-1979&quot; as the predictor
+summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
+              x=scale(pub_year, center=1979), data=Berkey98) )
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta(y = cbind(PD, AL), v = cbind(var_PD, cov_PD_AL, var_AL), 
+##     x = scale(pub_year, center = 1979), data = Berkey98)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##              Estimate  Std.Error     lbound     ubound z value  Pr(&gt;|z|)
+## Intercept1  0.3440000  0.0857659  0.1759019  0.5120981  4.0109 6.048e-05
+## Intercept2 -0.2918176  0.1312797 -0.5491210 -0.0345141 -2.2229   0.02622
+## Slope1_1    0.0063540  0.1078235 -0.2049762  0.2176842  0.0589   0.95301
+## Slope2_1   -0.0705888  0.1620966 -0.3882923  0.2471147 -0.4355   0.66322
+## Tau2_1_1    0.0080405  0.0101206 -0.0117955  0.0278766  0.7945   0.42692
+## Tau2_2_1    0.0093413  0.0105515 -0.0113392  0.0300218  0.8853   0.37599
+## Tau2_2_2    0.0250135  0.0170788 -0.0084603  0.0584873  1.4646   0.14303
+##               
+## Intercept1 ***
+## Intercept2 *  
+## Slope1_1      
+## Slope2_1      
+## Tau2_1_1      
+## Tau2_2_1      
+## Tau2_2_2      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Q statistic on the homogeneity of effect sizes: 128.2267
+## Degrees of freedom of the Q statistic: 8
+## P value of the Q statistic: 0
+## 
+## Explained variances (R2):
+##                               y1     y2
+## Tau2 (no predictor)    0.0070020 0.0261
+## Tau2 (with predictors) 0.0080405 0.0250
+## R2                     0.0000000 0.0433
+## 
+## Number of studies (or clusters): 5
+## Number of observed statistics: 10
+## Number of estimated parameters: 7
+## Degrees of freedom: 3
+## -2 log likelihood: -12.00859 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+<pre><code class="r">## Multivariate meta-analysis with equality constraint on the regression coefficients
+summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
+              x=scale(pub_year, center=1979), data=Berkey98,
+              coef.constraints=matrix(c(&quot;0.3*Eq_slope&quot;, &quot;0.3*Eq_slope&quot;),
+              nrow=2)) )
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta(y = cbind(PD, AL), v = cbind(var_PD, cov_PD_AL, var_AL), 
+##     x = scale(pub_year, center = 1979), data = Berkey98, coef.constraints = matrix(c(&quot;0.3*Eq_slope&quot;, 
+##         &quot;0.3*Eq_slope&quot;), nrow = 2))
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##              Estimate  Std.Error     lbound     ubound z value  Pr(&gt;|z|)
+## Intercept1  0.3437612  0.0849828  0.1771979  0.5103245  4.0451 5.231e-05
+## Intercept2 -0.3390010  0.1041005 -0.5430344 -0.1349677 -3.2565  0.001128
+## Eq_slope    0.0016748  0.1024443 -0.1991123  0.2024619  0.0163  0.986956
+## Tau2_1_1    0.0070474  0.0094638 -0.0115013  0.0255962  0.7447  0.456471
+## Tau2_2_1    0.0095165  0.0105668 -0.0111940  0.0302269  0.9006  0.367800
+## Tau2_2_2    0.0261979  0.0180773 -0.0092330  0.0616288  1.4492  0.147278
+##               
+## Intercept1 ***
+## Intercept2 ** 
+## Eq_slope      
+## Tau2_1_1      
+## Tau2_2_1      
+## Tau2_2_2      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Q statistic on the homogeneity of effect sizes: 128.2267
+## Degrees of freedom of the Q statistic: 8
+## P value of the Q statistic: 0
+## 
+## Explained variances (R2):
+##                               y1     y2
+## Tau2 (no predictor)    0.0070020 0.0261
+## Tau2 (with predictors) 0.0070474 0.0262
+## R2                     0.0000000 0.0000
+## 
+## Number of studies (or clusters): 5
+## Number of observed statistics: 10
+## Number of estimated parameters: 6
+## Degrees of freedom: 4
+## -2 log likelihood: -11.68158 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+<pre><code class="r">#### REML estimation method
+## Multivariate meta-analysis
+summary( reml(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL,var_AL),
+              data=Berkey98,
+              model.name=&quot;Multivariate meta analysis with REML&quot;) )
+</code></pre>
+
+<pre><code>## 
+## Call:
+## reml(y = cbind(PD, AL), v = cbind(var_PD, cov_PD_AL, var_AL), 
+##     data = Berkey98, model.name = &quot;Multivariate meta analysis with REML&quot;)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##           Estimate Std.Error    lbound    ubound z value Pr(&gt;|z|)
+## Tau2_1_1  0.011733  0.013645 -0.015011  0.038477  0.8599   0.3899
+## Tau2_2_1  0.011916  0.014416 -0.016340  0.040172  0.8266   0.4085
+## Tau2_2_2  0.032651  0.024402 -0.015176  0.080479  1.3380   0.1809
+## 
+## Number of studies (or clusters): 5
+## Number of observed statistics: 8
+## Number of estimated parameters: 3
+## Degrees of freedom: 5
+## -2 log likelihood: -18.86768 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+<pre><code class="r">## Multivariate meta-analysis with &quot;publication year-1979&quot; as the predictor
+summary( reml(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
+              x=scale(pub_year, center=1979), data=Berkey98) )
+</code></pre>
+
+<pre><code>## 
+## Call:
+## reml(y = cbind(PD, AL), v = cbind(var_PD, cov_PD_AL, var_AL), 
+##     x = scale(pub_year, center = 1979), data = Berkey98)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##           Estimate Std.Error    lbound    ubound z value Pr(&gt;|z|)
+## Tau2_1_1  0.020447  0.022523 -0.023697  0.064590  0.9078   0.3640
+## Tau2_2_1  0.016226  0.022696 -0.028258  0.060710  0.7149   0.4747
+## Tau2_2_2  0.040857  0.034707 -0.027168  0.108882  1.1772   0.2391
+## 
+## Number of studies (or clusters): 5
+## Number of observed statistics: 6
+## Number of estimated parameters: 3
+## Degrees of freedom: 3
+## -2 log likelihood: -11.44636 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Approximate Variance or Covariance Matrix of Functions Using...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/languages/r.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head><body>
+
+<table width="100%" summary="page for deltaMethod {metaSEM}"><tr><td>deltaMethod {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Approximate Variance or Covariance Matrix of Functions Using the Delta Method
+</h2>
+
+<h3>Description</h3>
+
+<p>It calculates the approximate variance or covariance matrix
+of functions using the delta method. 
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+deltaMethod(fn, variables, Mean, Cov)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>fn</code></td>
+<td>
+<p>A list of functions in characters.  
+</p>
+</td></tr>  
+<tr valign="top"><td><code>variables</code></td>
+<td>
+<p>Variables used in <code>fn</code>, <code>Mean</code>, and <code>Cov</code>
+</p>
+</td></tr>
+<tr valign="top"><td><code>Mean</code></td>
+<td>
+<p>The sample mean or the parameter estimates
+</p>
+</td></tr>
+<tr valign="top"><td><code>Cov</code></td>
+<td>
+<p>The sample covariance matrix or the sampling covariance of
+the paramter estimates
+</p>
+</td></tr>	
+</table>
+
+
+<h3>Value</h3>
+
+<p>The approximate variance or the covariance matrix of <code>fn</code>
+</p>
+
+
+<h3>Note</h3>
+
+<p>This function is modified from the <code>deltamethod()</code> in the
+<code>msm</code> package</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class="r">## Not run: 
+##D ## Example taken from http://lavaan.ugent.be/tutorial/mediation.html
+##D ## Generate artificial data to estimate the indirect effect
+##D set.seed(1234)
+##D X &lt;- rnorm(100)
+##D M &lt;- 0.5*X + rnorm(100)
+##D Y &lt;- 0.7*M + rnorm(100)
+##D Data &lt;- data.frame(X=X, Y=Y, M=M)
+##D 
+##D model &lt;- &#39;# direct effect
+##D           Y ~ c*X
+##D           # mediator
+##D           M ~ a*X
+##D           Y ~ b*M
+##D           # indirect effect (a*b)
+##D           ab := a*b
+##D           # total effect
+##D           total := c + (a*b)&#39;
+##D fit &lt;- sem(model, data = Data)
+##D summary(fit)
+## End(Not run)
+
+
+## Approximate standard errors of the indirect and total effects using the delta method.
+## The first and second functions are the direct and indirect effects, respectively.
+fn &lt;- list(&quot;a*b&quot;, &quot;a*b+c&quot;)
+variables &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
+
+## Results from the above analysis
+Mean &lt;- c(0.47391503, 0.78831930, 0.03635467)
+
+Cov &lt;- structure(c(0.0105540501465901, -5.36944694410567e-19,
+4.78727359106282e-18, 3.56339238409499e-19, 0.00852258573549811,
+-0.00403898148221173, 1.60078511618195e-18, -0.00403898148221173,
+0.0109089137570649), .Dim = c(3L, 3L), .Dimnames = list(c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;), c(&quot;a&quot;, 
+&quot;b&quot;, &quot;c&quot;)))
+
+ind.Cov &lt;- deltaMethod(fn=fn, variables=variables, Mean=Mean, Cov=Cov)
+
+## Standard errors
+sqrt(diag(ind.Cov))
+</code></pre>
+
+<pre><code>## [1] 0.09204847 0.12471394
+</code></pre>
+
+<pre><code class="r">## Approximate sampling variance of log(p/(1-p))
+## Number of success
+x &lt;- 20
+## Total number of trials
+n &lt;- 100
+## Estimated proportion of success
+p &lt;- x/n
+## Sampling variance of p
+v &lt;- p*(1-p)/n
+
+## logit(p)
+fn &lt;- &quot;log(p/(1-p))&quot;
+variables &lt;- c(&quot;p&quot;)
+
+## Sampling variance of logit(p)
+deltaMethod(fn=fn, variables=variables, Mean=p, Cov=v)
+</code></pre>
+
+<pre><code>##        [,1]
+## [1,] 0.0625
+</code></pre>
+
+
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

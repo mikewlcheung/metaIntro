@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Effects of Open Education Reported by Hedges and Olkin (1985)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/languages/r.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head><body>
+
+<table width="100%" summary="page for HedgesOlkin85 {metaSEM}"><tr><td>HedgesOlkin85 {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Effects of Open Education Reported by Hedges and Olkin (1985)
+</h2>
+
+<h3>Description</h3>
+
+<p>Effects of open education on attitude toward school and on reading achievement reported by Hedges and Olkin (1985).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(HedgesOlkin85)</pre>
+
+
+<h3>Details</h3>
+
+<p>The variables are:
+</p>
+
+<dl>
+<dt>study</dt><dd><p>Study number</p>
+</dd>
+<dt>d_att</dt><dd><p>Standardized mean difference on <EM>attitude</EM></p>
+</dd>
+<dt>d_ach</dt><dd><p>Standardized mean difference on <EM>achievement</EM></p>
+</dd>
+<dt>var_att</dt><dd><p>Sampling variance of the effect size of <EM>attitude</EM></p>
+</dd>
+<dt>cov_att_ach</dt><dd><p>Sampling covariance between the effect sizes</p>
+</dd>
+<dt>var_ach</dt><dd><p>Sampling variance of the effect size of <EM>achievement</EM></p>
+</dd>
+</dl>
+
+
+
+<h3>Source</h3>
+
+<p>Hedges, L. V., &amp; Olkin, I. (1985). <EM>Statistical methods for meta-analysis.</EM> Orlando, FL: Academic Press. 
+</p>
+
+
+<h3>References</h3>
+
+<p>Cheung, M. W.-L. (2010). Fixed-effects meta-analyses as multiple-group structural equation models. <EM>Structural Equation Modeling</EM>, <B>17</B>, 481-509.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class="r">data(HedgesOlkin85)
+
+## Fixed-effects meta-analysis
+summary( meta(y=cbind(d_att, d_ach),
+              v=cbind(var_att, cov_att_ach, var_ach),
+              data=HedgesOlkin85,
+              RE.constraints=matrix(0, nrow=2, ncol=2)) )
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta(y = cbind(d_att, d_ach), v = cbind(var_att, cov_att_ach, 
+##     var_ach), data = HedgesOlkin85, RE.constraints = matrix(0, 
+##     nrow = 2, ncol = 2))
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##             Estimate Std.Error    lbound    ubound z value Pr(&gt;|z|)   
+## Intercept1  0.320969  0.099492  0.125968  0.515971  3.2261 0.001255 **
+## Intercept2  0.077797  0.099128 -0.116491  0.272085  0.7848 0.432564   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Q statistic on the homogeneity of effect sizes: 2.248917
+## Degrees of freedom of the Q statistic: 6
+## P value of the Q statistic: 0.8954419
+## 
+## Heterogeneity indices (based on the estimated Tau2):
+##                              Estimate
+## Intercept1: I2 (Q statistic)        0
+## Intercept2: I2 (Q statistic)        0
+## 
+## Number of studies (or clusters): 4
+## Number of observed statistics: 8
+## Number of estimated parameters: 2
+## Degrees of freedom: 6
+## -2 log likelihood: -10.64183 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

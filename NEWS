@@ -1,0 +1,180 @@
+Release 0.9-1 (Nov 27, 2014)
+====================================
+* Released after the official release of OpenMx 2.0
+* Removed dataset Craft03 which is duplicated of Becker09
+
+Release 0.9-0 (Nov 16, 2014)
+====================================
+* Added semPlot package in Suggests and meta2semPlot() to convert wls objects to semPlotModel objects
+* Fixed a bug in tssem1REM() that may throw away correlation coefficients when there are missing correlations (not missing variables)
+* Added byrow argument in vec2symMat()
+* Added datasets Aloe14 and Becker09
+* Removed ellipse package in the dependence
+* Added silent=TRUE and run=TRUE arguments in most functions
+* Fixed the package to work in OpenMx 2.0
+* Used labels rather than Amatrix and Smatrix in wls() and tssem2()
+* Fixed a bug in create.mxMatrix() to respect byrow=TRUE for "Symm" and "Stand" types 
+
+Release 0.8-5 (Jun 6, 2014)
+====================================
+* Change "." to "_" in datasets Jaramillo05 and wvs94a, and indirectEffect.R
+* Added pattern.n() to display the accumulative sample sizes of the matrices
+* Added a function deltaMethod() to calculate approximate sampling variance or covariance matrix
+* Added methods for coef.MxRAMModel and vcov.MxRAMModel
+* Modified the formula to calculate SRMR in summary.tssem1FEM()
+* Added xlim and ylim arguments in plot.meta()
+* Added datasets wvs94b and BCG
+* Renamed the dataset wvs94 to wvs94a
+* Revised is.pd() so that it returns NA rather than throws an error when there are NA in the input matrices
+* Added byrow argument in create.mxMatrix()
+* Added pattern.na() to display the pattern of missing data in TSSEM
+* Fixed a bug in asyCov() returning an error in diffferent dimensions when the input is a list of 2x2 matrices
+* Fixed a bug reported by Andre Plamondon that tssem1FEM() returns an error when acovS is a scalar 
+
+Release 0.8-4 (May 1, 2013)
+====================================
+* Fixed an issue in diag() that breaks the metaSEM in R-3.0.0
+* Added Diag() that preserves the same functions as diag() prior to R-3.0.0
+* Added dataset Craft03
+
+Release 0.8-2 (Dec 28, 2012)
+====================================
+* Finalized features for release
+
+Release 0.8-1 (Nov 28, 2012)
+====================================
+* Added automatic constraint on the diagonals when diag.constraints=FALSE argument in wls() for cor.analysis=TRUE. It is usually not necessary to set diag.constraints=TRUE unless there are mediators.
+* Added meta3X() to handle missing covariates with FIML for 3-level meta-analysis
+* Fixed the issue that there are missing levels in "cluster" in meta3() (and reml3()) reported by David Stanley
+* Modified meta(), reml(), meta3() and reml3() functions so that intercept.constraints, coef.constraints, RE.constraints, RE2.constraints and RE3.constraints may accept a scalar or vector as inputs
+* Added mx.algebras argument in wls() and tssem2()
+* Added datasets Hunter83 and Jaramillo05
+* Changed the default in as.mxMatrix. If 'x' is not a matrix, as.matrix(x) is applied on 'x' instead of throwing an error.
+
+Release 0.8-0 (Aug 30, 2012)
+====================================
+* Finalized features for release
+
+Release 0.7-1 (Aug 20, 2012)
+====================================
+* Removed argument RE_diag and added RE.type in tssem1() and tssem1REM()
+* Removed standard error, z value and p values from summary() when intervals.type="LB"
+* Added rerun() to refit models
+* Renamed all mx fitted objects to mx.fit
+* Fixed a bug in .minus2LL(), tssem1FEM() and summary.tssem1FEM in calculating the df of the independence model when cor.analysis=FALSE
+* Fixed a bug in tssem1REM() that my.df is a list of covariance matrices when cor.analysis=TRUE
+* Fixed a bug in calculating acov (solve()) in asyCov(), indirectEffect, tssem1.FE()
+* Added indirectEffect() to calculate the asymptotic covariance matrix of indirect and direct effects
+* Added create.Fmatrix() and create.mxMatrix() to create mxMatrix objects
+* Added df.adjustment argument in summary.wls()
+* Rewrote wls() using RAM specification (A, S and F matrices)
+* Added diag.constraints argument in wls() to constrain diagonals as 1
+* Improved efficiency by removing the call on installed.packages() and summary() from OpenMx
+* Fixed a bug in vec2symMat() reported by Yonghao Lim
+* Added meta3() and reml3() for 3-level meta-analysis
+* Added datasets Becker92, Becker94, Cooper03, Mak09, issp05 and Bornmann07
+* Added I2 and R2 arguments to calculate heterogeneity and explained variance in meta()
+* Rewrote meta() so that the predictors are treated as design matrix rather than as variables
+* Revised meta() to replace NA with 1e5 in v object
+* Renamed coeff.constraints argument to coef.constraints in meta()
+* Added homoStat argument in summary.meta()
+* Renamed tssem1FE() and tssem1RE() to tssem1FEM() and tssem1REM()
+
+Release 0.7-0 (Nov 6, 2011)
+====================================
+* Fixed a bug in meta() that does not include RE.lbound in Tau matrix when RE.lbound is a matrix
+* Revised tssemFE() to handle incomplete data in the first group
+* Added tssem1RE() for random-effects TSSEM
+* Renamed tssem1() to tssem1FE() for fixed-effects TSSEM
+* Modified tssem1() to be a wrapper for tssem1FE() and tssem1RE()
+* Modified tssem2() to fit both fixed- and random-effects structural models from tssem1()
+* Added "cluster" argument in tssem1.FE() and some methods for it
+* Added "select" argument in coef.meta() and vcov.meta()
+* Fixed a bug by removing the characters in matrix column when OpenMx 1.1 is used 
+* Fixed a bug in asyCov() that uses only the first sample size
+
+Release 0.6-0 (May 24, 2011)
+====================================
+* Added a dataset WVS94
+* Changed dropNA argument from TRUE to FALSE in asyCov()
+* Added data argument in meta() and reml()
+* Fixed a bug by addinng dimnames in M matrix in meta() when OpenMx 1.1 is used
+* Fixed a bug in summary.meta(), summary.reml() and summary.wls() when OpenMx 1.1 is used
+* Added plot() method for multivariate meta-analysis
+* Added the ellipse package on "Imports" in the DESCRIPTION
+* Added the metafor package on "Suggests" in the DESCRIPTION
+
+Release 0.5-4 (March 19, 2011)
+====================================
+* Fixed a bug in tssem1() when OpenMx 1.0.6 is used
+* Fixed a bug in tssem1() which ignores start.values argument
+
+Release 0.5-3 (February 20, 2011)
+====================================
+* Added model.name argument in tssem1(), tssem2(), wls(), meta() and reml()
+* Added anova() method for wls, meta and reml objects
+* Added no. of studies and no. of observed statistics in reml object (Ad-hoc) 
+* Used Tau2 to represent variance component in both meta() and reml()
+* Fixed a bug in meta() that exists when no. of predictors is larger than 1
+
+Release 0.5-2 (December 11, 2010)
+====================================
+* Added name argument in as.mxMatrix()
+* Added reml() to estimate variance components with REML
+
+Release 0.5-1 (October 10, 2010)
+====================================
+* Added bdiagMat() and bdiagRep() functions to create block diagonal matrix
+* Fixed a bug in meta() that ignored RE.lbound when RE.constraints was used
+* Fixed a bug in readFullMat() that converts data into data.frames rather than matrices
+
+Release 0.5-0 (October 2, 2010)
+====================================
+* Added vcov() methods for tssem1, wls objects
+* Added coef() methods for tssem1, wls and meta objects
+
+Release 0.3-9 (September 24, 2010)
+====================================
+* Added a vignette
+
+Release 0.3-8 (September 20, 2010)
+====================================
+* Added suppressWarnings = TRUE in meta(), tssem1(), tssem2(), and wls()
+* Added OpenMx.status[[1]] into summary method
+
+Release 0.3-7 (September 19, 2010)
+====================================
+* Added vec2symMat(), matrix2bdiag() and homoStat() functions
+* Moved startValues(), minus2LL() and indepwlsChisq() to hidden functions
+* Updated datasets on Cheung09 and Digman97
+
+Release 0.3-6 (September 16, 2010)
+====================================
+* Renamed the package to "Meta-Analysis using Structural Equation Modeling"
+* Added vcov() method for meta object
+
+Release 0.3-5 (September 14, 2010)
+====================================
+* Fixed a few bugs
+
+Release 0.3-4 (September 12, 2010)
+====================================
+* Added summary.meta() for meta objects
+
+Release 0.3-3 (September 8, 2010)
+====================================
+* Added new arguments in asyCov()
+* Added meta() for univariate and multivariate meta-analysis
+* Added as.mxMatrix() to convert matrices to mxMatrices
+
+Release 0.3-2 (August 29, 2010)
+====================================
+* Added indepWLSChisq() to calculate the chi-square statistic for an independent model based on WLS
+* Added minus2LL() to calculate the chi-square statistic for independent and saturated models based on ML
+* Added summary.wls() and print.summary.wls() for wls objects
+* Added summary.tssem1() and print.summary.tssem1() for tssem1 objects
+
+Release 0.3-1 (August 09, 2010)
+====================================
+* First alpha release to R-forge
+* Added basic functions for TSSEM

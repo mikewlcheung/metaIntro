@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Extract Parameter Estimates from tssem1FEM,...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/languages/r.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head><body>
+
+<table width="100%" summary="page for coef {metaSEM}"><tr><td>coef {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Extract Parameter Estimates from tssem1FEM, tssem1FEM.cluster,
+tssem1REM, wls, wls.cluster, meta, meta3X, reml and MxRAMModel Objects
+</h2>
+
+<h3>Description</h3>
+
+<p>It extracts the parameter estimates from either
+<code>tssem1FEM</code>, <code>tssem1FEM.cluster</code>, <code>tssem1REM</code>, <code>wls</code>, <code>wls.cluster</code>,
+<code>meta</code>, <code>meta3X</code>, <code>reml</code> or <code>MxRAMModel</code> objects.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'tssem1FEM'
+coef(object, ...)
+## S3 method for class 'tssem1FEM.cluster'
+coef(object, ...)
+## S3 method for class 'tssem1REM'
+coef(object, select = c("all", "fixed", "random"), ...)
+## S3 method for class 'wls'
+coef(object, ...)
+## S3 method for class 'wls.cluster'
+coef(object, ...)
+## S3 method for class 'meta'
+coef(object, select = c("all", "fixed", "random"), ...)
+## S3 method for class 'meta3X'
+coef(object, select = c("all", "fixed", "random", "allX"), ...)
+## S3 method for class 'reml'
+coef(object, ...)
+## S3 method for class 'MxRAMModel'
+coef(object, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>object</code></td>
+<td>
+<p>An object returned from either class
+<code>tssem1FEM</code>, class <code>tssem1FEM.cluster</code>, class <code>tssem1REM</code>, 
+class <code>wls</code>, class <code>wls.cluster</code>, class <code>meta</code>, class
+<code>reml</code> or class <code>MxRAMModel</code>
+</p>
+</td></tr>
+<tr valign="top"><td><code>select</code></td>
+<td>
+<p>Select <code>all</code> for both fixed- and random-effects parameters, <code>fixed</code> for the
+fixed-effects parameters or <code>random</code> for the random-effects
+parameters. For <code>meta3X</code> objects, <code>allX</code> is used to extract
+all parameters including the predictors and auxiliary variables.  
+</p>
+</td></tr>  
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Further arguments; currently none is used</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Parameter estimates for both fixed-effects (if any) and random-effects (if any)
+</p>
+
+
+<h3>Note</h3>
+
+<p><code>coef.MxRAMModel</code> is simply a wraper of
+<code>omxGetParameters</code>. Extra arguments will be passed to it</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+</p>
+
+
+<h3>See Also</h3>
+
+ <p><code><a href="tssem1.html">tssem1</a></code>, <code><a href="wls.html">wls</a></code>,
+<code><a href="meta.html">meta</a></code>, <code><a href="reml.html">reml</a></code>, <code><a href="../../OpenMx/html/omxGetParameters.html">omxGetParameters</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class="r">## Random-effects meta-analysis
+model1 &lt;- meta(y=yi, v=vi, data=Hox02)
+coef(model1)
+</code></pre>
+
+<pre><code>## Intercept1   Tau2_1_1 
+##  0.5790348  0.1315197
+</code></pre>
+
+<pre><code class="r">## Fixed-effects only
+coef(model1, select=&quot;fixed&quot;)
+</code></pre>
+
+<pre><code>## Intercept1 
+##  0.5790348
+</code></pre>
+
+
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Plot method for meta objects</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/languages/r.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head><body>
+
+<table width="100%" summary="page for plot {metaSEM}"><tr><td>plot {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Plot method for meta objects
+
+</h2>
+
+<h3>Description</h3>
+
+<p>It plots the pooled and the individual effect sizes and
+their confidence ellipses for <code>meta</code> objects.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+## S3 method for class 'meta'
+plot(x, effect.sizes, add.margin = 0.1, interval = 0.95,
+main= "Effect Sizes and their Confidence Ellipses",
+axis.labels= paste("Effect size ", effect.sizes, sep = ""),
+study.col = "black", study.pch = 19, study.min.cex = 0.8,
+study.weight.plot = FALSE, study.ellipse.plot = TRUE,
+study.ellipse.col = "black", study.ellipse.lty = 2,
+study.ellipse.lwd = 0.5,
+estimate.col = "blue", estimate.pch = 18, estimate.cex = 2,
+estimate.ellipse.plot = TRUE, estimate.ellipse.col = "red",
+estimate.ellipse.lty = 1, estimate.ellipse.lwd = 2,
+randeff.ellipse.plot = TRUE, randeff.ellipse.col = "green",
+randeff.ellipse.lty = 1, randeff.ellipse.lwd = 2,
+univariate.plot = TRUE, univariate.lines.col = "gray",
+univariate.lines.lty = 3,
+univariate.lines.lwd = 1, univariate.polygon.width = 0.02,
+univariate.polygon.col = "red", univariate.arrows.col = "green",
+univariate.arrows.lwd = 2,
+diag.panel = FALSE, xlim=NULL, ylim=NULL, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>An object of class <code><a href="meta.html">meta</a></code>.
+</p>
+</td></tr>
+<tr valign="top"><td><code>effect.sizes</code></td>
+<td>
+<p>Numeric values indicating which effect sizes to
+be plotted. At least two effect sizes are required. To plot the effect sizes of <i>y1</i> and
+<i>y2</i>, one may use <code>effect.sizes=c(1,2)</code>. If it is missing, all effect sizes will be plotted in a
+pairwise way.
+</p>
+</td></tr>
+<tr valign="top"><td><code>add.margin</code></td>
+<td>
+<p>Value for additional margins on the left and bottom margins.
+</p>
+</td></tr>
+<tr valign="top"><td><code>interval</code></td>
+<td>
+<p>Interval for the confidence ellipses.
+</p>
+</td></tr>
+<tr valign="top"><td><code>main</code></td>
+<td>
+<p>Main title of each plot. If there are multiple plots, a
+vector of character titles may be used.
+</p>
+</td></tr>
+<tr valign="top"><td><code>axis.labels</code></td>
+<td>
+<p>Labels for the effect sizes.
+</p>
+</td></tr>
+<tr valign="top"><td><code>study.col</code></td>
+<td>
+<p>Color of individual studies. See <code>col</code> in <code><a href="../../graphics/html/par.html">par</a></code>.  
+</p>
+</td></tr>
+<tr valign="top"><td><code>study.pch</code></td>
+<td>
+<p>Plotting character of individual studies. See <code>pch</code> in <code><a href="../../graphics/html/points.html">points</a></code>. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>study.min.cex</code></td>
+<td>
+<p>Minimum value of cex for individual
+studies. See <code>cex</code> in <code><a href="../../graphics/html/par.html">par</a></code>.
+</p>
+</td></tr>
+<tr valign="top"><td><code>study.weight.plot</code></td>
+<td>
+<p>Logical. If <code>TRUE</code>, the ploting size of individual
+studies (cex) will be proportional to one over the square root of the
+determinant of the sampling covariance matrix of the study.
+</p>
+</td></tr>
+<tr valign="top"><td><code>study.ellipse.plot</code></td>
+<td>
+<p>Logical. If <code>TRUE</code>, the confidence
+ellipses of individual studies are plotted.
+</p>
+</td></tr>
+<tr valign="top"><td><code>study.ellipse.col</code></td>
+<td>
+<p>Color of the confidence ellipses of
+individual studies. See <code>col</code> in <code><a href="../../graphics/html/par.html">par</a></code>. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>study.ellipse.lty</code></td>
+<td>
+<p>Line type of the confidence ellipse of
+individual studies. See <code>lty</code> in <code><a href="../../graphics/html/par.html">par</a></code>. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>study.ellipse.lwd</code></td>
+<td>
+<p>Line width of the confidence ellipse of
+individual studies. See <code>lwd</code> in <code><a href="../../graphics/html/par.html">par</a></code>. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>estimate.col</code></td>
+<td>
+<p>Color of the estimated effect size. See <code>col</code> in <code><a href="../../graphics/html/par.html">par</a></code>. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>estimate.pch</code></td>
+<td>
+<p>Plotting character of the estimated effect sizes. See <code>pch</code> in <code><a href="../../graphics/html/points.html">points</a></code>.
+</p>
+</td></tr>
+<tr valign="top"><td><code>estimate.cex</code></td>
+<td>
+<p>Amount of plotting of the estimated effect sizes. See <code>cex</code> in <code><a href="../../graphics/html/par.html">par</a></code>.
+</p>
+</td></tr>
+<tr valign="top"><td><code>estimate.ellipse.plot</code></td>
+<td>
+<p>Logical. If <code>TRUE</code>, the confidence
+ellipse of the estimated effect sizes will be plotted.
+</p>
+</td></tr>
+<tr valign="top"><td><code>estimate.ellipse.col</code></td>
+<td>
+<p>Color of the confidence
+ellipse of the estimated effect sizes. See <code>col</code> in <code><a href="../../graphics/html/par.html">par</a></code>. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>estimate.ellipse.lty</code></td>
+<td>
+<p>Line type of the confidence
+ellipse of the estimated effect sizes. See <code>lty</code> in <code><a href="../../graphics/html/par.html">par</a></code>. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>estimate.ellipse.lwd</code></td>
+<td>
+<p>Line width of the confidence
+ellipse of the estimated effect sizes. See <code>lwd</code> in <code><a href="../../graphics/html/par.html">par</a></code>. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>randeff.ellipse.plot</code></td>
+<td>
+<p>Logical. If <code>TRUE</code>, the confidence
+ellipses of the random effects will be plotted.
+</p>
+</td></tr>
+<tr valign="top"><td><code>randeff.ellipse.col</code></td>
+<td>
+<p>Color of the confidence
+ellipses of the random effects. See <code>col</code> in <code><a href="../../graphics/html/par.html">par</a></code>. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>randeff.ellipse.lty</code></td>
+<td>
+<p>Line type of the confidence
+ellipses of the random effects. See <code>lty</code> in <code><a href="../../graphics/html/par.html">par</a></code>. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>randeff.ellipse.lwd</code></td>
+<td>
+<p>Line width of the confidence
+ellipses of the random effects. See <code>lwd</code> in <code><a href="../../graphics/html/par.html">par</a></code>. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>univariate.plot</code></td>
+<td>
+<p>Logical. If <code>TRUE</code>, the estimated univariate effect
+sizes will be plotted.
+</p>
+</td></tr>
+<tr valign="top"><td><code>univariate.lines.col</code></td>
+<td>
+<p>Color of the estimated univariate effect
+sizes. See <code>col</code> in <code><a href="../../graphics/html/par.html">par</a></code>. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>univariate.lines.lty</code></td>
+<td>
+<p>Line type of the estimated univariate effect
+sizes. See <code>lty</code> in <code><a href="../../graphics/html/par.html">par</a></code>. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>univariate.lines.lwd</code></td>
+<td>
+<p>Line width of the estimated univariate effect
+sizes. See <code>lwd</code> in <code><a href="../../graphics/html/par.html">par</a></code>. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>univariate.polygon.width</code></td>
+<td>
+<p>Width of the polygon of the estimated univariate effect
+sizes.
+</p>
+</td></tr>
+<tr valign="top"><td><code>univariate.polygon.col</code></td>
+<td>
+<p>Color of the polygon of the estimated univariate effect
+sizes.
+</p>
+</td></tr>
+<tr valign="top"><td><code>univariate.arrows.col</code></td>
+<td>
+<p>Color of the arrows of the estimated univariate effect
+sizes.
+</p>
+</td></tr>
+<tr valign="top"><td><code>univariate.arrows.lwd</code></td>
+<td>
+<p>Line width of the arrows of the estimated univariate effect
+sizes.
+</p>
+</td></tr>
+<tr valign="top"><td><code>diag.panel</code></td>
+<td>
+<p>Logical. If <code>TRUE</code>, diagonal panels will be
+created. They can then be used for forrest plots for univariate meta-analysis.
+</p>
+</td></tr>
+<tr valign="top"><td><code>xlim</code></td>
+<td>
+<p>NULL or a numeric vector of length 2; if it is NULL, it
+provides defaults estimated from the data.</p>
+</td></tr>
+<tr valign="top"><td><code>ylim</code></td>
+<td>
+<p>NULL or a numeric vector of length 2; if it is NULL, it
+provides defaults estimated from the data.</p>
+</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Further arguments to be passed to the plot function.
+</p>
+</td></tr>
+</table>
+
+
+<h3>Note</h3>
+
+<p>The estimated effect sizes and random effects are based on the
+labels Intercept1, Intercept2, ... and Tau2_1_1, Tau2_2_1, Tau2_2_2,
+etc. At least two effect sizes are required for this function. The
+.ellipse() function is adopted from the ellipse package written by
+Duncan Murdoch and E. D. Chow.  
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p>Cheung, M. W.-L. (2013). Multivariate meta-analysis as structural equation models. <EM>Structural Equation Modeling</EM>, <B>20</B>, 429-454.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class="r">## Not run: 
+##D ## Multivariate meta-analysis
+##D x &lt;- meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL), data=Berkey98)
+##D plot(x)
+##D 
+##D ## Plot individual studies proportional to the weights
+##D plot(x, study.weight.plot=TRUE)
+##D 
+##D ## Include forest plot from the metafor package
+##D library(metafor)
+##D plot(x, diag.panel=TRUE, main=&quot;Multivariate meta-analysis&quot;,
+##D axis.label=c(&quot;PD&quot;, &quot;AL&quot;))
+##D forest( rma(yi=PD, vi=var_PD, data=Berkey98) )
+##D title(&quot;Forest plot of PD&quot;)
+##D forest( rma(yi=AL, vi=var_AL, data=Berkey98) )
+##D title(&quot;Forest plot of AL&quot;)
+## End(Not run)
+</code></pre>
+
+
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

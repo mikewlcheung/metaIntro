@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Eight studies from Mak et al. (2009)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/languages/r.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head><body>
+
+<table width="100%" summary="page for Mak09 {metaSEM}"><tr><td>Mak09 {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Eight studies from Mak et al. (2009)</h2>
+
+<h3>Description</h3>
+
+<p>Eight studies from Mak et al. (2009) were reported by Cheung et al. (2012).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(Mak09)</pre>
+
+
+<h3>Format</h3>
+
+<p>A data frame with 8 observations on the following 10 variables.
+</p>
+
+<dl>
+<dt><code>Study</code></dt><dd><p>a character vector of study</p>
+</dd>
+<dt><code>type</code></dt><dd><p>a character vector</p>
+</dd>
+<dt><code>AF.BP</code></dt><dd><p>a numeric vector</p>
+</dd>
+<dt><code>Tot.BP</code></dt><dd><p>a numeric vector</p>
+</dd>
+<dt><code>AF.non.BP</code></dt><dd><p>a numeric vector</p>
+</dd>
+<dt><code>Tot.non.BP</code></dt><dd><p>a numeric vector</p>
+</dd>
+<dt><code>yi</code></dt><dd><p>a numeric vector</p>
+</dd>
+<dt><code>vi</code></dt><dd><p>a numeric vector</p>
+</dd>
+<dt><code>age.mean</code></dt><dd><p>a numeric vector</p>
+</dd>
+<dt><code>study.duration</code></dt><dd><p>a numeric vector</p>
+</dd>
+</dl>
+
+
+
+<h3>Source</h3>
+
+<p>Mak, A., Cheung, M. W.-L., Ho, R. C. M., Cheak, A. A. C., &amp; Lau,
+C. S. (2009). Bisphosphonate and atrial fibrillation: Bayesian
+meta-analyses of randomized controlled trials and observational
+studies. <EM>BMC Musculoskeletal Disorders</EM>,
+<B>10(113)</B>. doi:10.1186/1471-2474-10-113 Available at <a href="http://www.biomedcentral.com/1471-2474/10/113">http://www.biomedcentral.com/1471-2474/10/113</a>.
+</p>
+
+
+<h3>References</h3>
+
+<p>Cheung, M. W.-L., Ho, R. C. M., Lim, Y., &amp; Mak, A. (2012). Conducting a
+meta-analysis: Basics and good practices. <EM>International Journal
+of Rheumatic Diseases</EM>, <B>15(2)</B>, 129-135. doi: 10.1111/j.1756-185X.2012.01712.x
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class="r">## Random-effects meta-analysis
+( meta1 &lt;- summary(meta(y=yi, v=vi, data=Mak09, I2=c(&quot;I2q&quot;, &quot;I2hm&quot;))) )
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta(y = yi, v = vi, data = Mak09, I2 = c(&quot;I2q&quot;, &quot;I2hm&quot;))
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##               Estimate   Std.Error      lbound      ubound z value
+## Intercept1  1.8082e-01  2.8942e-02  1.2410e-01  2.3755e-01  6.2477
+## Tau2_1_1    9.9792e-11  2.2166e-03 -4.3444e-03  4.3444e-03  0.0000
+##             Pr(&gt;|z|)    
+## Intercept1 4.165e-10 ***
+## Tau2_1_1           1    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Q statistic on the homogeneity of effect sizes: 7.159836
+## Degrees of freedom of the Q statistic: 7
+## P value of the Q statistic: 0.4124299
+## 
+## Heterogeneity indices (based on the estimated Tau2):
+##                                Estimate
+## Intercept1: I2 (Q statistic)          0
+## Intercept1: I2 (harmonic mean)        0
+## 
+## Number of studies (or clusters): 8
+## Number of observed statistics: 8
+## Number of estimated parameters: 2
+## Degrees of freedom: 6
+## -2 log likelihood: -10.26621 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+<pre><code class="r">## Convert the estimates back into odds ratio 
+OR &lt;- with(coef(meta1), exp(c(Estimate[1], lbound[1], ubound[1])))
+names(OR) &lt;- c(&quot;Estimate in OR&quot;, &quot;lbound in OR&quot;, &quot;ubound in OR&quot;)
+OR
+</code></pre>
+
+<pre><code>## Estimate in OR   lbound in OR   ubound in OR 
+##       1.198202       1.132125       1.268135
+</code></pre>
+
+<pre><code class="r">## Mixed-effects meta-analysis with mean age as a predictor
+summary( meta(y=yi, v=vi, x=age.mean, data=Mak09) )
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta(y = yi, v = vi, x = age.mean, data = Mak09)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##               Estimate   Std.Error      lbound      ubound z value
+## Intercept1  1.2778e-01  1.7073e+00 -3.2186e+00  3.4741e+00  0.0748
+## Slope1_1    7.0920e-04  2.2794e-02 -4.3966e-02  4.5384e-02  0.0311
+## Tau2_1_1    1.0000e-10  2.8254e-03 -5.5377e-03  5.5377e-03  0.0000
+##            Pr(&gt;|z|)
+## Intercept1   0.9403
+## Slope1_1     0.9752
+## Tau2_1_1     1.0000
+## 
+## Q statistic on the homogeneity of effect sizes: 7.159836
+## Degrees of freedom of the Q statistic: 7
+## P value of the Q statistic: 0.4124299
+## 
+## Explained variances (R2):
+##                        y1
+## Tau2 (no predictor)     0
+## Tau2 (with predictors)  0
+## R2                      0
+## 
+## Number of studies (or clusters): 8
+## Number of observed statistics: 8
+## Number of estimated parameters: 3
+## Degrees of freedom: 5
+## -2 log likelihood: -10.26789 
+## OpenMx status1: 1 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: A Dataset from Bornmann et al. (2007)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/languages/r.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head><body>
+
+<table width="100%" summary="page for Bornmann07 {metaSEM}"><tr><td>Bornmann07 {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>A Dataset from Bornmann et al. (2007)</h2>
+
+<h3>Description</h3>
+
+<p>A dataset from Bornmann et al. (2007) for three-level meta-analysis.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(Bornmann07)</pre>
+
+
+<h3>Details</h3>
+
+<p>The variables are:
+</p>
+
+<dl>
+<dt>ID</dt><dd><p>ID of the study</p>
+</dd>
+<dt>Study</dt><dd><p>Study name</p>
+</dd>
+<dt>Cluster</dt><dd><p>Cluster for effect sizes</p>
+</dd>
+<dt>logOR</dt><dd><p>Effect size: log odds ratio</p>
+</dd>
+<dt>v</dt><dd><p>Sampling variance of logOR</p>
+</dd>
+<dt>Year</dt><dd><p>Year of publication</p>
+</dd>
+<dt>Type</dt><dd><p>Type of proposal: either <B>Grant</B> or <B>Fellowship</B></p>
+</dd>
+<dt>Discipline</dt><dd><p>Discipline of proposal: either <B>Physical sciences</B>, <B>Life sciences/biology</B>, 
+<B>Social sciences/humanities</B> or <B>Multidisciplinary</B>)</p>
+</dd>
+<dt>Country</dt><dd><p>Country of proposal: either <B>United States</B>,
+<B>Canada</B>, <B>Australia</B>, <B>United Kingdom</B> or <B>Europe</B></p>
+</dd>
+</dl>
+
+
+
+<h3>Source</h3>
+
+<p>Bornmann, L., Mutz, R., &amp; Daniel, H.-D. (2007). Gender differences in grant peer review: A meta-analysis. <EM>Journal of Informetrics</EM>, <B>1(3)</B>, 226-238. doi:10.1016/j.joi.2007.03.001
+</p>
+
+
+<h3>References</h3>
+
+<p>Cheung, M. W.-L. (2014). Modeling dependent effect sizes with three-level meta-analyses: A structural equation modeling approach. <EM>Psychological Methods</EM>, <B>19</B>, 211-229.
+</p>
+<p>Marsh, H. W., Bornmann, L., Mutz, R., Daniel, H.-D., &amp; O'Mara, A. (2009). Gender Effects in the Peer Reviews of Grant Proposals: A Comprehensive Meta-Analysis Comparing Traditional and Multilevel Approaches. <EM>Review of Educational Research</EM>, <B>79(3)</B>, 1290-1326. doi:10.3102/0034654309334143
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class="r">data(Bornmann07)
+
+#### ML estimation method
+## No predictor
+summary( meta3(y=logOR, v=v, cluster=Cluster, data=Bornmann07) )
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta3(y = logOR, v = v, cluster = Cluster, data = Bornmann07)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##             Estimate  Std.Error     lbound     ubound z value Pr(&gt;|z|)  
+## Intercept -0.1007784  0.0401327 -0.1794370 -0.0221198 -2.5111  0.01203 *
+## Tau2_2     0.0037965  0.0027210 -0.0015367  0.0091297  1.3952  0.16295  
+## Tau2_3     0.0141352  0.0091445 -0.0037877  0.0320580  1.5458  0.12216  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Q statistic on the homogeneity of effect sizes: 221.2809
+## Degrees of freedom of the Q statistic: 65
+## P value of the Q statistic: 0
+## 
+## Heterogeneity indices (based on the estimated Tau2):
+##                               Estimate
+## I2_2 (Typical v: Q statistic)   0.1568
+## I2_3 (Typical v: Q statistic)   0.5839
+## 
+## Number of studies (or clusters): 21
+## Number of observed statistics: 66
+## Number of estimated parameters: 3
+## Degrees of freedom: 63
+## -2 log likelihood: 25.80256 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+<pre><code class="r">## Type as a predictor
+## Grant: 0
+## Fellowship: 1
+summary( meta3(y=logOR, v=v, x=(as.numeric(Type)-1),
+               cluster=Cluster, data=Bornmann07) ) 
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta3(y = logOR, v = v, cluster = Cluster, x = (as.numeric(Type) - 
+##     1), data = Bornmann07)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##             Estimate  Std.Error     lbound     ubound z value  Pr(&gt;|z|)
+## Intercept -0.0066071  0.0371125 -0.0793462  0.0661320 -0.1780 0.8587001
+## Slope_1   -0.1955869  0.0541649 -0.3017483 -0.0894256 -3.6110 0.0003051
+## Tau2_2     0.0035335  0.0024306 -0.0012303  0.0082974  1.4538 0.1460058
+## Tau2_3     0.0029079  0.0031183 -0.0032039  0.0090197  0.9325 0.3510704
+##              
+## Intercept    
+## Slope_1   ***
+## Tau2_2       
+## Tau2_3       
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Q statistic on the homogeneity of effect sizes: 221.2809
+## Degrees of freedom of the Q statistic: 65
+## P value of the Q statistic: 0
+## 
+## Explained variances (R2):
+##                          Level 2 Level 3
+## Tau2 (no predictor)    0.0037965  0.0141
+## Tau2 (with predictors) 0.0035335  0.0029
+## R2                     0.0692595  0.7943
+## 
+## Number of studies (or clusters): 21
+## Number of observed statistics: 66
+## Number of estimated parameters: 4
+## Degrees of freedom: 62
+## -2 log likelihood: 17.62569 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+<pre><code class="r">## Centered Year as a predictor
+summary( meta3(y=logOR, v=v, x=scale(Year, scale=FALSE),
+               cluster=Cluster, data=Bornmann07) )
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta3(y = logOR, v = v, cluster = Cluster, x = scale(Year, scale = FALSE), 
+##     data = Bornmann07)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##             Estimate  Std.Error     lbound     ubound z value Pr(&gt;|z|)   
+## Intercept -0.1007172  0.0388512 -0.1768642 -0.0245702 -2.5924 0.009531 **
+## Slope_1    0.0045812  0.0064555 -0.0080714  0.0172338  0.7097 0.477919   
+## Tau2_2     0.0041930  0.0029068 -0.0015043  0.0098904  1.4425 0.149171   
+## Tau2_3     0.0125756  0.0088638 -0.0047972  0.0299483  1.4188 0.155970   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Q statistic on the homogeneity of effect sizes: 221.2809
+## Degrees of freedom of the Q statistic: 65
+## P value of the Q statistic: 0
+## 
+## Explained variances (R2):
+##                          Level 2 Level 3
+## Tau2 (no predictor)    0.0037965  0.0141
+## Tau2 (with predictors) 0.0041930  0.0126
+## R2                     0.0000000  0.1103
+## 
+## Number of studies (or clusters): 21
+## Number of observed statistics: 66
+## Number of estimated parameters: 4
+## Degrees of freedom: 62
+## -2 log likelihood: 25.28968 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+<pre><code class="r">#### REML estimation method
+## No predictor
+summary( reml3(y=logOR, v=v, cluster=Cluster, data=Bornmann07) )
+</code></pre>
+
+<pre><code>## 
+## Call:
+## reml3(y = logOR, v = v, cluster = Cluster, data = Bornmann07)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##          Estimate  Std.Error     lbound     ubound z value Pr(&gt;|z|)
+## Tau2_2  0.0037528  0.0026831 -0.0015060  0.0090116  1.3987   0.1619
+## Tau2_3  0.0160846  0.0104008 -0.0043005  0.0364698  1.5465   0.1220
+## 
+## Number of studies (or clusters): 66
+## Number of observed statistics: 65
+## Number of estimated parameters: 2
+## Degrees of freedom: 63
+## -2 log likelihood: -89.10382 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+<pre><code class="r">## Type as a predictor
+## Grants: 0
+## Fellowship: 1
+summary( reml3(y=logOR, v=v, x=(as.numeric(Type)-1),
+               cluster=Cluster, data=Bornmann07) ) 
+</code></pre>
+
+<pre><code>## 
+## Call:
+## reml3(y = logOR, v = v, cluster = Cluster, x = (as.numeric(Type) - 
+##     1), data = Bornmann07)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##          Estimate  Std.Error     lbound     ubound z value Pr(&gt;|z|)
+## Tau2_2  0.0035470  0.0024639 -0.0012821  0.0083760  1.4396   0.1500
+## Tau2_3  0.0044844  0.0045692 -0.0044711  0.0134400  0.9814   0.3264
+## 
+## Number of studies (or clusters): 66
+## Number of observed statistics: 64
+## Number of estimated parameters: 2
+## Degrees of freedom: 62
+## -2 log likelihood: -90.66179 
+## OpenMx status1: 6 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+<pre><code class="r">## Centered Year as a predictor
+summary( reml3(y=logOR, v=v, x=scale(Year, scale=FALSE),
+               cluster=Cluster, data=Bornmann07) )
+</code></pre>
+
+<pre><code>## 
+## Call:
+## reml3(y = logOR, v = v, cluster = Cluster, x = scale(Year, scale = FALSE), 
+##     data = Bornmann07)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##          Estimate  Std.Error     lbound     ubound z value Pr(&gt;|z|)
+## Tau2_2  0.0044586  0.0030516 -0.0015225  0.0104397  1.4610   0.1440
+## Tau2_3  0.0150012  0.0103867 -0.0053563  0.0353587  1.4443   0.1487
+## 
+## Number of studies (or clusters): 66
+## Number of observed statistics: 64
+## Number of estimated parameters: 2
+## Degrees of freedom: 62
+## -2 log likelihood: -79.4153 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+<pre><code class="r">## Handling missing covariates with FIML
+## MCAR
+## Set seed for replication
+set.seed(1000000)
+
+## Copy Bornmann07 to my.df
+my.df &lt;- Bornmann07
+## &quot;Fellowship&quot;: 1; &quot;Grant&quot;: 0
+my.df$Type_MCAR &lt;- ifelse(Bornmann07$Type==&quot;Fellowship&quot;, yes=1, no=0)
+
+## Create 17 out of 66 missingness with MCAR
+my.df$Type_MCAR[sample(1:66, 17)] &lt;- NA
+summary(meta3X(y=logOR, v=v, cluster=Cluster, x2=Type_MCAR, data=my.df))
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta3X(y = logOR, v = v, cluster = Cluster, x2 = Type_MCAR, data = my.df)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##             Estimate  Std.Error     lbound     ubound z value Pr(&gt;|z|)   
+## Intercept -0.0106318  0.0397685 -0.0885766  0.0673131 -0.2673 0.789207   
+## SlopeX2_1 -0.1753249  0.0582619 -0.2895162 -0.0611336 -3.0093 0.002619 **
+## Tau2_2     0.0030338  0.0026839 -0.0022266  0.0082941  1.1304 0.258324   
+## Tau2_3     0.0036839  0.0042817 -0.0047082  0.0120759  0.8604 0.389586   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Explained variances (R2):
+##                          Level 2 Level 3
+## Tau2 (no predictor)    0.0037965  0.0141
+## Tau2 (with predictors) 0.0030338  0.0037
+## R2                     0.2009070  0.7394
+## 
+## Number of studies (or clusters): 21
+## Number of observed statistics: 115
+## Number of estimated parameters: 7
+## Degrees of freedom: 108
+## -2 log likelihood: 49.76372 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+<pre><code class="r">## MAR
+Type_MAR &lt;- ifelse(Bornmann07$Type==&quot;Fellowship&quot;, yes=1, no=0)
+
+## Create 27 out of 66 missingness with MAR for cases Year&lt;1996
+index_MAR &lt;- ifelse(Bornmann07$Year&lt;1996, yes=TRUE, no=FALSE)
+Type_MAR[index_MAR] &lt;- NA
+
+## Include auxiliary variable
+summary(meta3X(y=logOR, v=v, cluster=Cluster, x2=Type_MAR, av2=Year, data=my.df))
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta3X(y = logOR, v = v, cluster = Cluster, x2 = Type_MAR, av2 = Year, 
+##     data = my.df)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##             Estimate  Std.Error     lbound     ubound z value Pr(&gt;|z|)   
+## Intercept -0.0264057  0.0572041 -0.1385237  0.0857122 -0.4616 0.644364   
+## SlopeX2_1 -0.2003999  0.0691082 -0.3358495 -0.0649503 -2.8998 0.003734 **
+## Tau2_2     0.0029970  0.0022371 -0.0013877  0.0073816  1.3397 0.180358   
+## Tau2_3     0.0030212  0.0032463 -0.0033414  0.0093838  0.9307 0.352029   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Explained variances (R2):
+##                          Level 2 Level 3
+## Tau2 (no predictor)    0.0049237  0.0088
+## Tau2 (with predictors) 0.0029970  0.0030
+## R2                     0.3913242  0.6571
+## 
+## Number of studies (or clusters): 21
+## Number of observed statistics: 171
+## Number of estimated parameters: 14
+## Degrees of freedom: 157
+## -2 log likelihood: 377.3479 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

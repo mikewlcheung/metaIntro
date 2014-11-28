@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Univariate and Multivariate Meta-Analysis with Maximum...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+</head><body>
+
+<table width="100%" summary="page for meta {metaSEM}"><tr><td>meta {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Univariate and Multivariate Meta-Analysis with Maximum
+Likelihood Estimation
+</h2>
+
+<h3>Description</h3>
+
+<p>It conducts univariate and multivariate meta-analysis with maximum
+likelihood estimation method. Mixed-effects meta-analysis can be
+conducted by including study characteristics as predictors. Equality constraints on
+intercepts, regression coefficients and variance components can be
+easily imposed by setting the same labels on the parameter estimates.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+meta(y, v, x, data, intercept.constraints = NULL, coef.constraints = NULL,
+     RE.constraints = NULL, RE.startvalues=0.1, RE.lbound = 1e-10,
+     intervals.type = c("z", "LB"), I2="I2q", R2=TRUE,
+     model.name="Meta analysis with ML", suppressWarnings = TRUE,
+     silent = TRUE, run = TRUE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>y</code></td>
+<td>
+<p>A vector of effect size for univariate meta-analysis or a <i>k</i> x
+<i>p</i> matrix of effect sizes for multivariate meta-analysis
+where <i>k</i> is the number of studies and <i>p</i> is the
+number of effect sizes. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>v</code></td>
+<td>
+<p>A vector of the sampling variance of the effect size for univarite
+meta-analysis or a <i>k</i> x <i>p*</i> matrix of the sampling
+covariance matrix of the effect sizes for multivariate meta-analysis
+where <i>p* = p(p+1)/2</i>. It is arranged by column
+major as used by <code><a href="../../OpenMx/html/vech.html">vech</a></code>.
+</p>
+</td></tr>
+<tr valign="top"><td><code>x</code></td>
+<td>
+<p>A predictor or a <i>k</i> x <i>m</i> matrix of predictors
+where <i>m</i> is the number of predictors. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>An optional data frame containing the variables in the model.
+</p>
+</td></tr>  
+<tr valign="top"><td><code>intercept.constraints</code></td>
+<td>
+<p>A <i>1</i> x <i>p</i> matrix
+specifying whether the intercepts of the effect sizes are fixed or
+free. If the input is not a matrix, the input is converted into a
+<i>1</i> x <i>p</i> matrix with
+<code>t(as.matrix(intercept.constraints))</code>. The default is that the intercepts are free. When there is no predictor, these intercepts are the same as
+the pooled effect sizes. The format of this matrix follows
+<code><a href="as.mxMatrix.html">as.mxMatrix</a></code>. The intercepts can be
+constrained equally by using the same labels.
+</p>
+</td></tr>
+<tr valign="top"><td><code>coef.constraints</code></td>
+<td>
+<p>A <i>p</i> x <i>m</i> matrix
+specifying how the predictors predict the effect sizes. If the input
+is not a matrix, it is converted into a matrix by
+<code>as.matrix()</code>. The default is that all <i>m</i> predictors predict all <i>p</i> effect sizes. The
+format of this matrix follows
+<code><a href="as.mxMatrix.html">as.mxMatrix</a></code>. The regression coefficients can be
+constrained equally by using the same labels.
+</p>
+</td></tr>
+<tr valign="top"><td><code>RE.constraints</code></td>
+<td>
+<p>A <i>p</i> x <i>p</i> matrix
+specifying the variance componets of the random effects. If the input
+is not a matrix, it is converted into a matrix by
+<code>as.matrix()</code>. The default is that all
+covariance/variance components are free. The format of this matrix
+follows <code><a href="as.mxMatrix.html">as.mxMatrix</a></code>. Elements of the variance
+components can be constrained equally by using the same labels. If a zero matrix is
+specified, it becomes a fixed-effects meta-analysis.
+</p>
+</td></tr>
+<tr valign="top"><td><code>RE.startvalues</code></td>
+<td>
+<p>A vector of <i>p</i> starting values on the
+diagonals of the variance component of the random effects. If only one
+scalar is given, it will be duplicated across the diagonals. Starting values for the
+off-diagonals of the variance component are all 0. A <i>p</i> x
+<i>p</i> symmetric matrix of starting values is also accepted. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>RE.lbound</code></td>
+<td>
+<p>A vector of <i>p</i> lower bounds on the
+diagonals of the variance component of the random effects. If only one
+scalar is given, it will be duplicated across the diagonals. Lower
+bounds for the off-diagonals of the variance component are set at <code>NA</code>. A <i>p</i> x
+<i>p</i> symmetric matrix of the lower bounds is also accepted.
+</p>
+</td></tr>
+<tr valign="top"><td><code>intervals.type</code></td>
+<td>
+<p>Either <code>z</code> (default if missing) or
+<code>LB</code>. If it is <code>z</code>, it calculates the 95% Wald confidence
+intervals (CIs) based on the z statistic. If it is <code>LB</code>, it
+calculates the 95% likelihood-based CIs on the
+parameter estimates. Note that the z values and their
+associated p values are based on the z statistic. They are not
+related to the likelihood-based CIs.
+</p>
+</td></tr>
+<tr valign="top"><td><code>I2</code></td>
+<td>
+<p>Possible options are <code>"I2q"</code>, <code>"I2hm"</code> and
+<code>"I2am"</code>. They represent the <code>I2</code> calculated by using a
+typical within-study sampling variance from the Q statistic, the
+harmonic mean and the arithmatic mean of the within-study sampling
+variances (Xiong, Miller, &amp; Morris, 2010). More than one options are possible. If <code>intervals.type="LB"</code>, 95% confidence intervals on the heterogeneity indices will be constructed. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>R2</code></td>
+<td>
+<p>Logical. If <code>TRUE</code> and there are predictors, R2 is
+calculated (Raudenbush, 2009). 
+</p>
+</td></tr>
+<tr valign="top"><td><code>model.name</code></td>
+<td>
+<p>A string for the model name in <code><a href="../../OpenMx/html/mxModel.html">mxModel</a></code>. 
+</p>
+</td></tr>
+<tr valign="top"><td><code>suppressWarnings</code></td>
+<td>
+<p>Logical. If <code>TRUE</code>, warnings are
+suppressed. Argument to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>silent</code></td>
+<td>
+<p>Logical. Argument to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code></p>
+</td></tr>
+<tr valign="top"><td><code>run</code></td>
+<td>
+<p>Logical. If <code>FALSE</code>, only return the mx model without
+running the analysis.</p>
+</td></tr> 
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Futher arguments to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code></p>
+</td></tr>    
+</table>
+
+
+<h3>Value</h3>
+
+<p>An object of class <code>meta</code> with a list of
+</p>
+<table summary="R valueblock">
+<tr valign="top"><td><code>call</code></td>
+<td>
+<p>Object returned by <code><a href="../../base/html/match.call.html">match.call</a></code></p>
+</td></tr>
+<tr valign="top"><td><code>data</code></td>
+<td>
+<p>A data matrix of y, v and x  </p>
+</td></tr>
+<tr valign="top"><td><code>no.y</code></td>
+<td>
+<p>No. of effect sizes</p>
+</td></tr>
+<tr valign="top"><td><code>no.x</code></td>
+<td>
+<p>No. of predictors</p>
+</td></tr>
+<tr valign="top"><td><code>miss.x</code></td>
+<td>
+<p>A vector indicating whether the predictors are
+missing. Studies will be removed before the analysis if they are
+<code>TRUE</code></p>
+</td></tr>
+<tr valign="top"><td><code>I2</code></td>
+<td>
+<p>Types of I2 calculated</p>
+</td></tr>
+<tr valign="top"><td><code>R2</code></td>
+<td>
+<p>Logical</p>
+</td></tr>
+<tr valign="top"><td><code>mx.fit</code></td>
+<td>
+<p>A fitted object returned from
+<code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code></p>
+</td></tr>
+<tr valign="top"><td><code>mx0.fit</code></td>
+<td>
+<p>A fitted object without any predictor returned from
+<code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code></p>
+</td></tr>
+</table>
+
+
+<h3>Note</h3>
+
+<p>Missing values (NA) in y and their related elements in v
+will be removed automatically. When there are missing values in v but
+not in y, missing values will be replaced by 1e5. Effectively, these
+effect sizes will have little impact on the analysis.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p>Cheung, M. W.-L. (2008). A model for integrating fixed-, random-, and
+mixed-effects meta-analyses into structural equation
+modeling. <EM>Psychological Methods</EM>, <B>13</B>, 182-202.
+</p>
+<p>Cheung, M. W.-L. (2009). Constructing approximate confidence intervals
+for parameters with structural equation models. <EM>Structural
+Equation Modeling</EM>, <B>16</B>, 267-294.
+</p>
+<p>Cheung, M. W.-L. (2013). Multivariate meta-analysis as structural equation models. <EM>Structural Equation Modeling</EM>, <B>20</B>, 429-454.
+</p>
+<p>Hardy, R. J., &amp; Thompson, S. G. (1996). A likelihood approach to
+meta-analysis with random effects. <EM>Statistics in Medicine</EM>,
+<B>15</B>, 619-629.
+</p>
+<p>Neale, M. C., &amp; Miller, M. B. (1997). The use of likelihood-based
+confidence intervals in genetic models. <EM>Behavior Genetics</EM>,
+<B>27</B>, 113-120.
+</p>
+<p>Raudenbush, S. W. (2009). Analyzing effect sizes: random effects models. In H. M. Cooper, L. V. Hedges, &amp; J. C. Valentine (Eds.), <EM>The handbook of research synthesis and meta-analysis</EM> (2nd ed., pp. 295-315). New York: Russell Sage Foundation.
+</p>
+<p>Xiong, C., Miller, J. P., &amp; Morris, J. C. (2010). Measuring study-specific heterogeneity in meta-analysis: application to an antecedent biomarker study of alzheimer's disease. <EM>Statistics in Biopharmaceutical Research</EM>, <B>2(3)</B>, 300-309. doi:10.1198/sbr.2009.0067
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="reml.html">reml</a></code>, <code><a href="Hox02.html">Hox02</a></code>,
+<code><a href="Berkey98.html">Berkey98</a></code>, <code><a href="wvs94a.html">wvs94a</a></code>
+</p>
+
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+</body></html>

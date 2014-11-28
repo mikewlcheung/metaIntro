@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>R Documentation of metaSEM</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+* {
+	font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Arial, sans-serif;
+	font-size: 14px;
+}
+body {
+  padding: 0 5px; 
+  margin: 0 auto; 
+  width: 80%;
+  max-width: 60em; /* 960px */
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #666;
+}
+h1, h2 {
+	text-align: center;
+}
+h1 {
+	font-size: x-large;
+}
+h2, h3 {
+	font-size: large;
+}
+h4, h6 {
+	font-style: italic;
+}
+h3 {
+	border-left: solid 5px #ddd;
+	padding-left: 5px;
+	font-variant: small-caps;
+}
+
+p img {
+	display: block;
+	margin: auto;
+}
+
+span, code, pre {
+	font-family: Monaco, "Lucida Console", "Courier New", Courier, monospace;
+}
+span.acronym {}
+span.env {
+	font-style: italic;
+}
+span.file {}
+span.option {}
+span.pkg {
+	font-weight: bold;
+}
+span.samp{}
+
+dt, p code {
+	background-color: #F7F7F7;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+<h1>metaSEM</h1>
+
+<ul>
+<li><a href="Aloe14.html" target="content">Aloe14</a></li>
+<li><a href="BCG.html" target="content">BCG</a></li>
+<li><a href="Becker09.html" target="content">Becker09</a></li>
+<li><a href="Becker83.html" target="content">Becker83</a></li>
+<li><a href="Becker92.html" target="content">Becker92</a></li>
+<li><a href="Becker94.html" target="content">Becker94</a></li>
+<li><a href="Berkey98.html" target="content">Berkey98</a></li>
+<li><a href="Bornmann07.html" target="content">Bornmann07</a></li>
+<li><a href="Cheung09.html" target="content">Cheung09</a></li>
+<li><a href="Cooper03.html" target="content">Cooper03</a></li>
+<li><a href="Diag.html" target="content">Diag</a></li>
+<li><a href="Digman97.html" target="content">Digman97</a></li>
+<li><a href="HedgesOlkin85.html" target="content">HedgesOlkin85</a></li>
+<li><a href="Hox02.html" target="content">Hox02</a></li>
+<li><a href="Hunter83.html" target="content">Hunter83</a></li>
+<li><a href="Jaramillo05.html" target="content">Jaramillo05</a></li>
+<li><a href="Mak09.html" target="content">Mak09</a></li>
+<li><a href="anova.html" target="content">anova</a></li>
+<li><a href="as.mxMatrix.html" target="content">as.mxMatrix</a></li>
+<li><a href="asyCov.html" target="content">asyCov</a></li>
+<li><a href="bdiagMat.html" target="content">bdiagMat</a></li>
+<li><a href="bdiagRep.html" target="content">bdiagRep</a></li>
+<li><a href="coef.html" target="content">coef</a></li>
+<li><a href="create.Fmatrix.html" target="content">create.Fmatrix</a></li>
+<li><a href="create.mxMatrix.html" target="content">create.mxMatrix</a></li>
+<li><a href="deltaMethod.html" target="content">deltaMethod</a></li>
+<li><a href="homoStat.html" target="content">homoStat</a></li>
+<li><a href="indirectEffect.html" target="content">indirectEffect</a></li>
+<li><a href="is.pd.html" target="content">is.pd</a></li>
+<li><a href="issp05.html" target="content">issp05</a></li>
+<li><a href="issp89.html" target="content">issp89</a></li>
+<li><a href="list2matrix.html" target="content">list2matrix</a></li>
+<li><a href="matrix2bdiag.html" target="content">matrix2bdiag</a></li>
+<li><a href="meta.html" target="content">meta</a></li>
+<li><a href="meta2semPlot.html" target="content">meta2semPlot</a></li>
+<li><a href="meta3.html" target="content">meta3</a></li>
+<li><a href="metaSEM-package.html" target="content">metaSEM-package</a></li>
+<li><a href="pattern.n.html" target="content">pattern.n</a></li>
+<li><a href="pattern.na.html" target="content">pattern.na</a></li>
+<li><a href="plot.meta.html" target="content">plot.meta</a></li>
+<li><a href="print.html" target="content">print</a></li>
+<li><a href="readData.html" target="content">readData</a></li>
+<li><a href="reml.html" target="content">reml</a></li>
+<li><a href="reml3.html" target="content">reml3</a></li>
+<li><a href="rerun.html" target="content">rerun</a></li>
+<li><a href="summary.html" target="content">summary</a></li>
+<li><a href="tssem1.html" target="content">tssem1</a></li>
+<li><a href="vcov.html" target="content">vcov</a></li>
+<li><a href="vec2symMat.html" target="content">vec2symMat</a></li>
+<li><a href="wls.html" target="content">wls</a></li>
+<li><a href="wvs94a.html" target="content">wvs94a</a></li>
+<li><a href="wvs94b.html" target="content">wvs94b</a></li>
+</ul>
+
+<p>Generated with <a href="http://yihui.name/knitr">knitr</a>  1.8</p>
+
+</body>
+
+</html>

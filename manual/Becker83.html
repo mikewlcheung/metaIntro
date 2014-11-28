@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Studies on Sex Differences in Conformity Reported by Becker...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="R.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/languages/r.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head><body>
+
+<table width="100%" summary="page for Becker83 {metaSEM}"><tr><td>Becker83 {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+
+<h2>Studies on Sex Differences in Conformity Reported by Becker (1983)
+</h2>
+
+<h3>Description</h3>
+
+<p>The data set includes studies on sex differences in conformity using the fictitious norm group
+paradigm reported by Becker (1983).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>data(Becker83)</pre>
+
+
+<h3>Details</h3>
+
+<p>The variables are:
+</p>
+
+<dl>
+<dt>study</dt><dd><p>study number</p>
+</dd>
+<dt>di</dt><dd><p>Standardized mean difference</p>
+</dd>
+<dt>vi</dt><dd><p>Sampling variance of the effect size</p>
+</dd>
+<dt>percentage</dt><dd><p>Percentage of male authors</p>
+</dd>
+<dt>items</dt><dd><p>Number of items</p>
+</dd>
+</dl>
+
+
+
+<h3>Source</h3>
+
+<p>Becker, B. J. (1983, April). Influence again: A comparison of methods
+for meta-analysis. <EM>Paper presented at the annual meeting of the
+American Educational Research Association, Montreal.</EM>
+</p>
+<p>Hedges, L. V., &amp; Olkin, I. (1985). <EM>Statistical methods for meta-analysis.</EM> Orlando, FL: Academic Press. 
+</p>
+
+
+<h3>References</h3>
+
+<p>Cheung, M. W.-L. (2010). Fixed-effects meta-analyses as multiple-group structural equation models. <EM>Structural Equation Modeling</EM>, <B>17</B>, 481-509.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class="r">data(Becker83)
+
+## Random-effects meta-analysis
+summary( meta(y=di, v=vi, data=Becker83) )
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta(y = di, v = vi, data = Becker83)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##             Estimate Std.Error    lbound    ubound z value Pr(&gt;|z|)
+## Intercept1  0.174734  0.113378 -0.047482  0.396950  1.5412   0.1233
+## Tau2_1_1    0.077376  0.054108 -0.028674  0.183426  1.4300   0.1527
+## 
+## Q statistic on the homogeneity of effect sizes: 30.64949
+## Degrees of freedom of the Q statistic: 9
+## P value of the Q statistic: 0.0003399239
+## 
+## Heterogeneity indices (based on the estimated Tau2):
+##                              Estimate
+## Intercept1: I2 (Q statistic)   0.6718
+## 
+## Number of studies (or clusters): 10
+## Number of observed statistics: 10
+## Number of estimated parameters: 2
+## Degrees of freedom: 8
+## -2 log likelihood: 7.928307 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+<pre><code class="r">## Mixed-effects meta-analysis with log(items) as the predictor
+summary( meta(y=di, v=vi, x=log(items), data=Becker83) )
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta(y = di, v = vi, x = log(items), data = Becker83)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##               Estimate   Std.Error      lbound      ubound z value
+## Intercept1 -3.2015e-01  1.0981e-01 -5.3539e-01 -1.0492e-01 -2.9154
+## Slope1_1    2.1088e-01  4.5084e-02  1.2251e-01  2.9924e-01  4.6774
+## Tau2_1_1    1.0000e-10  2.0095e-02 -3.9386e-02  3.9386e-02  0.0000
+##             Pr(&gt;|z|)    
+## Intercept1  0.003552 ** 
+## Slope1_1   2.905e-06 ***
+## Tau2_1_1    1.000000    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Q statistic on the homogeneity of effect sizes: 30.64949
+## Degrees of freedom of the Q statistic: 9
+## P value of the Q statistic: 0.0003399239
+## 
+## Explained variances (R2):
+##                            y1
+## Tau2 (no predictor)    0.0774
+## Tau2 (with predictors) 0.0000
+## R2                     1.0000
+## 
+## Number of studies (or clusters): 10
+## Number of observed statistics: 10
+## Number of estimated parameters: 3
+## Degrees of freedom: 7
+## -2 log likelihood: -4.208024 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+</body></html>
