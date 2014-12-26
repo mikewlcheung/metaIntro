@@ -1124,7 +1124,7 @@ summary(rerun(Model8))
 ```
 
 ```
-[1] "0.0535236181791552,-0.173644299023977,0.225829442961052,0.109119799000635,-0.00998438234060444,-0.0965364646916492,-0.23908250881336,-0.328450166224618,-0.125433589747216,0.00229312698904285,7.77101331739686e-11"
+[1] "0.0744009543036696,-0.167035057444758,0.301593347395788,0.15037722845459,-0.00980151666578962,-0.140211322776554,-0.248439312400467,-0.309203230001729,-0.132399127464346,0.00238332822852042,8.21430195937865e-11"
 ```
 
 ```
@@ -1142,12 +1142,12 @@ Slope_1   -1.6885e-01  4.1545e-02 -2.5028e-01 -8.7425e-02 -4.0643
 Slope_2    2.5329e-01  1.5814e-01 -5.6670e-02  5.6324e-01  1.6016
 Slope_3    1.2689e-01  1.4774e-01 -1.6268e-01  4.1646e-01  0.8589
 Slope_4   -8.3549e-03  1.5796e-01 -3.1795e-01  3.0124e-01 -0.0529
-Slope_5   -1.1530e-01  1.1147e-01 -3.3377e-01  1.0317e-01 -1.0344
+Slope_5   -1.1530e-01  1.1146e-01 -3.3377e-01  1.0317e-01 -1.0344
 Slope_6   -2.6412e-01  1.6402e-01 -5.8559e-01  5.7343e-02 -1.6103
-Slope_7   -2.9029e-01  1.4859e-01 -5.8152e-01  9.5188e-04 -1.9536
+Slope_7   -2.9029e-01  1.4859e-01 -5.8152e-01  9.5157e-04 -1.9536
 Slope_8   -1.5975e-01  1.6285e-01 -4.7893e-01  1.5943e-01 -0.9810
 Tau2_2     2.1010e-03  1.2925e-03 -4.3226e-04  4.6342e-03  1.6255
-Tau2_3     9.9973e-11          NA          NA          NA      NA
+Tau2_3     9.9997e-11          NA          NA          NA      NA
            Pr(>|z|)    
 Intercept  0.000233 ***
 Slope_1   4.818e-05 ***
@@ -1156,8 +1156,8 @@ Slope_3    0.390410
 Slope_4    0.957818    
 Slope_5    0.300948    
 Slope_6    0.107323    
-Slope_7    0.050754 .  
-Slope_8    0.326609    
+Slope_7    0.050753 .  
+Slope_8    0.326608    
 Tau2_2     0.104051    
 Tau2_3           NA    
 ---
@@ -1178,7 +1178,7 @@ Number of observed statistics: 66
 Number of estimated parameters: 11
 Degrees of freedom: 55
 -2 log likelihood: -1.645211 
-OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
+OpenMx status1: 6 ("0" or "1": The optimization is considered fine.
 Other values indicate problems.)
 ```
 
@@ -1553,8 +1553,8 @@ BIC:     -110.29858               23.98356                 14.95056
 Some of your fit indices are missing.
   To get them, fit saturated and independence models, and include them with
   summary(yourModel, SaturatedLikelihood=..., IndependenceLikelihood=...). 
-timestamp: 2014-11-28 18:32:14 
-Wall clock time (HH:MM:SS.hh): 00:00:00.08 
+timestamp: 2014-12-26 22:34:14 
+Wall clock time (HH:MM:SS.hh): 00:00:00.06 
 optimizer:  NPSOL 
 OpenMx version number: 2.0.0.4004 
 Need help?  See help(mxSummary) 
@@ -1616,8 +1616,8 @@ BIC:     -108.25427               26.02787                 13.98387
 Some of your fit indices are missing.
   To get them, fit saturated and independence models, and include them with
   summary(yourModel, SaturatedLikelihood=..., IndependenceLikelihood=...). 
-timestamp: 2014-11-28 18:32:14 
-Wall clock time (HH:MM:SS.hh): 00:00:00.10 
+timestamp: 2014-12-26 22:34:14 
+Wall clock time (HH:MM:SS.hh): 00:00:00.08 
 optimizer:  NPSOL 
 OpenMx version number: 2.0.0.4004 
 Need help?  See help(mxSummary) 

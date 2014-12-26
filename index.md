@@ -13,6 +13,7 @@ Mike Cheung
     + Cheung, M.W.-L. (2010). Fixed-effects meta-analyses as multiple-group structural equation models. _Structural Equation Modeling_, _17_, 481-509.
     + Cheung, M.W.-L. (2013). Implementing restricted maximum likelihood estimation in structural equation models. _Structural Equation Modeling_, _20_, 157-167.
     + Cheung, M.W.-L. (2013). Multivariate meta-analysis as structural equation models. _Structural Equation Modeling_, _20_, 429-454. 
+    + Cheung, M.W.-L. (2014). MetaSEM: an R package for meta-analysis using structural equation modeling. _Frontiers in Psychology_, _5 (1521)_.
     + Cheung, M.W.-L. (2014). Fixed- and random-effects meta-analytic structural equation modeling: Examples and analyses in R. _Behavior Research Methods_, _46_, 29-40. 
     + Cheung, M.W.-L. (2014). Modeling dependent effect sizes with three-level meta-analyses: A structural equation modeling approach. _Psychological Methods_, _19_, 211-229.
     + Cheung, M.W.-L. (2015). Meta-Analysis: A Structural Equation Modeling Approach. [Wiley](http://as.wiley.com/WileyCDA/WileyTitle/productCd-1119993431.html). 
@@ -225,7 +226,7 @@ Other values indicate problems.)
 plot(mult1)
 ```
 
-![](./index_files/figure-html/unnamed-chunk-5-1.png) 
+![](index_files/figure-html/unnamed-chunk-5-1.png) 
 
 ```r
 ## Plot the effect sizes with the forest plots
@@ -245,7 +246,7 @@ forest( rma(yi=AL, vi=var_AL, data=Berkey98) )
 title("Forest plot of AL")
 ```
 
-![](./index_files/figure-html/unnamed-chunk-5-2.png) 
+![](index_files/figure-html/unnamed-chunk-5-2.png) 
 
 ### Fixed-effects model
 
@@ -371,7 +372,7 @@ R CMD INSTALL metaSEM_0.9-1.tar.gz
 
 ## Help
 * [Reference manual](./manual/index.html)
-* Vignette (coming soon)
+* [Vignette](https://dl.dropboxusercontent.com/u/25182759/metaSEM.pdf)
 * If you need help,
   	 + **[OpenMx discussion forum](http://openmx.psyc.virginia.edu/forums/third-party-software/metasem)**: A discussion forum for the `metaSEM` package in `OpenMx`. You may post technical questions related to `metaSEM` there. Please include information on the session. It will be helpful if you can include a reproducible example. You may save a copy of your data, say `my.df`, and attach the content of `myData.R` in the post by using
 ```
@@ -404,7 +405,7 @@ attached base packages:
 
 other attached packages:
 [1] metafor_1.9-5     metaSEM_0.9-1     OpenMx_2.0.0-4004 MASS_7.3-35      
-[5] digest_0.6.4      knitr_1.8         rmarkdown_0.3.3  
+[5] digest_0.6.7      knitr_1.8         rmarkdown_0.4.2  
 
 loaded via a namespace (and not attached):
 [1] evaluate_0.5.5  formatR_1.0     grid_3.1.2      htmltools_0.2.6
