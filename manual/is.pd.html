@@ -28,7 +28,7 @@ the missing variables.
 <h3>Usage</h3>
 
 <pre>
-is.pd(x, tol = 1e-06)
+is.pd(x, check.asyCov=FALSE, cor.analysis=TRUE, tol=1e-06)
 </pre>
 
 
@@ -38,6 +38,16 @@ is.pd(x, tol = 1e-06)
 <tr valign="top"><td><code>x</code></td>
 <td>
 <p>A square matrix or a list of square matrices</p>
+</td></tr>
+<tr valign="top"><td><code>check.asyCov</code></td>
+<td>
+<p>If it is <code>TRUE</code>, it mirrors the checking in
+<code><a href="asyCov.html">asyCov</a></code>.</p>
+</td></tr>
+<tr valign="top"><td><code>cor.analysis</code></td>
+<td>
+<p>Whether the input matrix is a correlation or a
+covariance matrix. It is ignored when <code>check.asyCov=FALSE</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>tol</code></td>
 <td>
@@ -104,5 +114,5 @@ is.pd(C)
 </code></pre>
 
 
-<hr><div align="center">[Package <em>metaSEM</em> version 0.9-1 <a href="00Index.html">Index</a>]</div>
+<hr><div align="center">[Package <em>metaSEM</em> version 0.9-2 <a href="00Index.html">Index</a>]</div>
 </body></html>

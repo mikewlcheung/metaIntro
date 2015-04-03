@@ -21,7 +21,7 @@ opts_chunk$set(comment=NA, message=FALSE)
 # Introduction
 * This file illustrates how to conduct three-level meta-analyses using the [metaSEM](http://courses.nus.edu.sg/course/psycwlm/internet/metaSEM) and [OpenMx](http://openmx.psyc.virginia.edu/) packages available in the [R](http://www.r-project.org/) environment. The `metaSEM` package was written to simplify the procedures to conduct meta-analysis. Most readers may only need to use the `metaSEM` package to conduct the analysis. The next section shows how to conduct two- and three-level meta-analyses with the `meta()` and `meta3()` functions. The third section demonstrates more complicated three-level meta-analyses using a dataset with more predictors. The final section shows how to implement three-level meta-analyses as structural equation models using the `OpenMx` package. It provides detailed steps on how three-level meta-analyses can be formulated as structural equation models.
 
-* This file also demonstrates the advantages of using the SEM approach to conduct three-level meta-analyses. These include flexibility on imposing constraints for model comparisons and construction of likelihood-based confidence interval (LBCI). I also demonstrate how to conduct three-level meta-analysis with restricted (or residual) maximum likelihood (REML) using the `reml3()` function and handling missing covariates with full information maximum likelihood (FIML) using the `meta3X()` function. Readers may refer to Cheung (2014b) for the design and implementation of the `metaSEM` package and Cheung (2014a) for the theory and issues on how to formulate three-level meta-analyses as structural equation models. 
+* This file also demonstrates the advantages of using the SEM approach to conduct three-level meta-analyses. These include flexibility on imposing constraints for model comparisons and construction of likelihood-based confidence interval (LBCI). I also demonstrate how to conduct three-level meta-analysis with restricted (or residual) maximum likelihood (REML) using the `reml3()` function and handling missing covariates with full information maximum likelihood (FIML) using the `meta3X()` function. Readers may refer to Cheung (2015) for the design and implementation of the `metaSEM` package and Cheung (2014) for the theory and issues on how to formulate three-level meta-analyses as structural equation models. 
 
 * Two datasets from published meta-analyses were used in the illustrations. The first dataset was based on Cooper et al. (2003) and Konstantopoulos (2011). Konstantopoulos (2011) selected part of the dataset to illustrate how to conduct three-level meta-analysis. The second dataset was reported by Bornmann et al. (2007) and Marsh et al. (2009). They conducted a three-level meta-analysis on gender effects in peer reviews of grant proposals. 
 
@@ -512,9 +512,9 @@ Bornmann, L., Mutz, R., & Daniel, H.-D. (2007). Gender differences in grant peer
 
 Cheung, M.W.-L. (2009). Constructing approximate confidence intervals for parameters with structural equation models. _Structural Equation Modeling_, _16(2)_, 267-294. 
 
-Cheung, M.W.-L. (2014a). Modeling dependent effect sizes with three-level meta-analyses: A structural equation modeling approach. _Psychological Methods_, _19_, 211-229.
+Cheung, M.W.-L. (2014). Modeling dependent effect sizes with three-level meta-analyses: A structural equation modeling approach. _Psychological Methods_, _19_, 211-229.
 
-Cheung, M.W.-L. (2014b). _metaSEM: Meta-analysis using structural equation modeling_. Retrieved from http://courses.nus.edu.sg/course/psycwlm/Internet/metaSEM/
+Cheung, M. W.-L. (2015). metaSEM: an R package for meta-analysis using structural equation modeling. _Frontiers in Psychology_, 5(1521). http://doi.org/10.3389/fpsyg.2014.01521
 
 Cooper, H., Valentine, J.C., Charlton, K., & Melson, A. (2003). The effects of modified school calendars on student achievement and on school and community attitudes. _Review of Educational Research_, _73(1)_, 1 –52. 
 

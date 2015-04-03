@@ -348,26 +348,26 @@ Other values indicate problems.)
 * [Meta-analytic structural equation modeling](./masem.html)
 
 # Installation and help
-* The current version is 0.9-1.
+* The current version is 0.9-2.
 * First of all, you need [R](http://www.r-project.org/) to run it. Since `metaSEM` depends on [OpenMx](http://openmx.psyc.virginia.edu/), you may also need to install `OpenMx` by run the following command inside an `R` session:
 ```
 source('http://openmx.psyc.virginia.edu/getOpenMx.R') 
 ```
 
 ## Windows platform
-* Download the Windows [Binary for Windows](https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9-1.zip) package of the `metaSEM`. Please note that d:\ in Windows is represented by either d:/ or d:\\ in `R`. If the file is saved at d:\\, run the following command inside an `R` session:
+* Download the Windows [Binary for Windows](https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9-2.zip) package of the `metaSEM`. Please note that d:\ in Windows is represented by either d:/ or d:\\ in `R`. If the file is saved at d:\\, run the following command inside an `R` session:
 ```
-install.packages(pkgs="d:/metaSEM_0.9-1.zip", repos=NULL)
+install.packages(pkgs="d:/metaSEM_0.9-2.zip", repos=NULL)
 ```
 
 ## Linux and Mac OS X platforms
-* Download the [Source](https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9-1.tar.gz) package of `metaSEM`. If the file is saved at /home/mike/, run the following command inside an `R` session:
+* Download the [Source](https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9-2.tar.gz) package of `metaSEM`. If the file is saved at /home/mike/, run the following command inside an `R` session:
 ```
-install.packages(pkgs="/home/mike/metaSEM_0.9-1.tar.gz", repos=NULL, type="source")
+install.packages(pkgs="/home/mike/metaSEM_0.9-2.tar.gz", repos=NULL, type="source")
 ```
 * Alternatively, the `metaSEM` package may also be installed in the terminal by using:
 ```
-R CMD INSTALL metaSEM_0.9-1.tar.gz
+R CMD INSTALL metaSEM_0.9-2.tar.gz
 ```
 
 ## Help
@@ -404,11 +404,11 @@ attached base packages:
 [8] base     
 
 other attached packages:
-[1] metafor_1.9-5     metaSEM_0.9-1     OpenMx_2.0.0-4004 MASS_7.3-35      
-[5] digest_0.6.7      knitr_1.8         rmarkdown_0.4.2  
+[1] metafor_1.9-5     metaSEM_0.9-2     OpenMx_2.0.1-4157 MASS_7.3-39      
+[5] digest_0.6.8      knitr_1.9         rmarkdown_0.5.3.1
 
 loaded via a namespace (and not attached):
 [1] evaluate_0.5.5  formatR_1.0     grid_3.1.2      htmltools_0.2.6
-[5] lattice_0.20-29 Matrix_1.1-4    stringr_0.6.2   tools_3.1.2    
+[5] lattice_0.20-30 Matrix_1.1-5    stringr_0.6.2   tools_3.1.2    
 [9] yaml_2.1.13    
 ```

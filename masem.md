@@ -552,35 +552,35 @@ meta(y = ES, v = acovR, RE.constraints = Diag(x = paste(RE.startvalues,
 95% confidence intervals: z statistic approximation
 Coefficients:
                Estimate   Std.Error      lbound      ubound z value
-Intercept1   0.39464565  0.05422316  0.28837020  0.50092109  7.2782
-Intercept2   0.44009383  0.04125825  0.35922914  0.52095852 10.6668
-Intercept3   0.05454216  0.06171551 -0.06641803  0.17550234  0.8838
-Intercept4   0.09866798  0.04621867  0.00808106  0.18925491  2.1348
-Intercept5   0.42966148  0.04015557  0.35095801  0.50836495 10.6999
-Intercept6   0.12851201  0.04081609  0.04851394  0.20851009  3.1486
-Intercept7   0.20525647  0.04959083  0.10806023  0.30245271  4.1390
-Intercept8   0.23993553  0.03192383  0.17736598  0.30250508  7.5159
-Intercept9   0.18910276  0.04301426  0.10479637  0.27340915  4.3963
-Intercept10  0.44413287  0.03254674  0.38034244  0.50792330 13.6460
-Tau2_1_1     0.03720727  0.01499993  0.00780795  0.06660660  2.4805
-Tau2_2_2     0.02030536  0.00843479  0.00377348  0.03683724  2.4073
-Tau2_3_3     0.04821936  0.01972294  0.00956311  0.08687561  2.4448
-Tau2_4_4     0.02461034  0.01062424  0.00378721  0.04543347  2.3164
-Tau2_5_5     0.01872485  0.00824742  0.00256021  0.03488949  2.2704
-Tau2_6_6     0.01825605  0.00878888  0.00103016  0.03548194  2.0772
-Tau2_7_7     0.02942392  0.01226275  0.00538937  0.05345848  2.3995
-Tau2_8_8     0.00965109  0.00488243  0.00008171  0.01922047  1.9767
-Tau2_9_9     0.02093349  0.00912798  0.00304297  0.03882401  2.2933
-Tau2_10_10   0.01115058  0.00504674  0.00125916  0.02104201  2.2095
+Intercept1   3.9465e-01  5.4223e-02  2.8837e-01  5.0092e-01  7.2782
+Intercept2   4.4009e-01  4.1258e-02  3.5923e-01  5.2096e-01 10.6668
+Intercept3   5.4543e-02  6.1716e-02 -6.6418e-02  1.7550e-01  0.8838
+Intercept4   9.8668e-02  4.6219e-02  8.0816e-03  1.8926e-01  2.1348
+Intercept5   4.2966e-01  4.0156e-02  3.5096e-01  5.0837e-01 10.6999
+Intercept6   1.2851e-01  4.0816e-02  4.8514e-02  2.0851e-01  3.1486
+Intercept7   2.0526e-01  4.9591e-02  1.0806e-01  3.0245e-01  4.1390
+Intercept8   2.3994e-01  3.1924e-02  1.7737e-01  3.0251e-01  7.5159
+Intercept9   1.8910e-01  4.3014e-02  1.0480e-01  2.7341e-01  4.3963
+Intercept10  4.4413e-01  3.2547e-02  3.8034e-01  5.0792e-01 13.6461
+Tau2_1_1     3.7207e-02  1.5000e-02  7.8079e-03  6.6606e-02  2.4805
+Tau2_2_2     2.0305e-02  8.4348e-03  3.7735e-03  3.6837e-02  2.4073
+Tau2_3_3     4.8219e-02  1.9723e-02  9.5631e-03  8.6876e-02  2.4448
+Tau2_4_4     2.4610e-02  1.0624e-02  3.7872e-03  4.5433e-02  2.3164
+Tau2_5_5     1.8725e-02  8.2474e-03  2.5602e-03  3.4889e-02  2.2704
+Tau2_6_6     1.8256e-02  8.7889e-03  1.0301e-03  3.5482e-02  2.0772
+Tau2_7_7     2.9424e-02  1.2263e-02  5.3893e-03  5.3458e-02  2.3995
+Tau2_8_8     9.6509e-03  4.8824e-03  8.1681e-05  1.9220e-02  1.9767
+Tau2_9_9     2.0933e-02  9.1280e-03  3.0429e-03  3.8824e-02  2.2933
+Tau2_10_10   1.1150e-02  5.0467e-03  1.2591e-03  2.1042e-02  2.2095
              Pr(>|z|)    
 Intercept1  3.384e-13 ***
 Intercept2  < 2.2e-16 ***
-Intercept3   0.376822    
-Intercept4   0.032777 *  
+Intercept3   0.376817    
+Intercept4   0.032776 *  
 Intercept5  < 2.2e-16 ***
 Intercept6   0.001641 ** 
 Intercept7  3.488e-05 ***
-Intercept8  5.662e-14 ***
+Intercept8  5.640e-14 ***
 Intercept9  1.101e-05 ***
 Intercept10 < 2.2e-16 ***
 Tau2_1_1     0.013120 *  
@@ -588,7 +588,7 @@ Tau2_2_2     0.016069 *
 Tau2_3_3     0.014492 *  
 Tau2_4_4     0.020535 *  
 Tau2_5_5     0.023184 *  
-Tau2_6_6     0.037785 *  
+Tau2_6_6     0.037786 *  
 Tau2_7_7     0.016420 *  
 Tau2_8_8     0.048076 *  
 Tau2_9_9     0.021829 *  
@@ -596,7 +596,7 @@ Tau2_10_10   0.027142 *
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Q statistic on the homogeneity of effect sizes: 2381.012
+Q statistic on the homogeneity of effect sizes: 2380.97
 Degrees of freedom of the Q statistic: 130
 P value of the Q statistic: 0
 
@@ -617,7 +617,7 @@ Number of studies (or clusters): 14
 Number of observed statistics: 140
 Number of estimated parameters: 20
 Degrees of freedom: 120
--2 log likelihood: -110.8452 
+-2 log likelihood: -110.8455 
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
 Other values indicate problems.)
 ```
@@ -631,9 +631,9 @@ coef(random1, select="fixed")
 
 ```
  Intercept1  Intercept2  Intercept3  Intercept4  Intercept5  Intercept6 
- 0.39464565  0.44009383  0.05454216  0.09866799  0.42966148  0.12851201 
+ 0.39464593  0.44009397  0.05454267  0.09866837  0.42966174  0.12851249 
  Intercept7  Intercept8  Intercept9 Intercept10 
- 0.20525647  0.23993553  0.18910276  0.44413287 
+ 0.20525696  0.23993606  0.18910321  0.44413311 
 ```
 
 ```r
@@ -643,9 +643,9 @@ coef(random1, select="random")
 
 ```
    Tau2_1_1    Tau2_2_2    Tau2_3_3    Tau2_4_4    Tau2_5_5    Tau2_6_6 
-0.037207275 0.020305361 0.048219359 0.024610344 0.018724850 0.018256052 
+0.037207133 0.020305318 0.048219331 0.024610235 0.018724801 0.018256028 
    Tau2_7_7    Tau2_8_8    Tau2_9_9  Tau2_10_10 
-0.029423920 0.009651089 0.020933491 0.011150583 
+0.029423837 0.009650949 0.020933457 0.011150496 
 ```
 
 ### Stage 2 analysis
@@ -672,30 +672,30 @@ Coefficients:
 Alpha_A   0.57255        NA 0.47370 0.67690      NA       NA
 Alpha_C   0.59010        NA 0.49047 0.69487      NA       NA
 Alpha_ES  0.77046        NA 0.65994 0.90431      NA       NA
-Beta_E    0.69340        NA 0.56258 0.87183      NA       NA
+Beta_E    0.69341        NA 0.56258 0.87183      NA       NA
 Beta_I    0.64011        NA 0.50833 0.78644      NA       NA
 e1        0.67218        NA 0.54176 0.77561      NA       NA
 e2        0.65178        NA 0.51711 0.75944      NA       NA
 e3        0.40640        NA 0.18193 0.56452      NA       NA
-e4        0.51919        NA 0.23937 0.68353      NA       NA
-e5        0.59026        NA 0.38131 0.74161      NA       NA
+e4        0.51919        NA 0.23937 0.68352      NA       NA
+e5        0.59026        NA 0.38132 0.74161      NA       NA
 cor       0.39366        NA 0.30236 0.49030      NA       NA
 
 Goodness-of-fit indices:
                                                Value
 Sample size                                4496.0000
-Chi-square of target model                    8.5118
+Chi-square of target model                    8.5119
 DF of target model                            4.0000
 p value of target model                       0.0745
 Number of constraints imposed on "Smatrix"    5.0000
 DF manually adjusted                          0.0000
-Chi-square of independence model            514.5588
+Chi-square of independence model            514.5596
 DF of independence model                     10.0000
 RMSEA                                         0.0158
 SRMR                                          0.0463
 TLI                                           0.9776
 CFI                                           0.9911
-AIC                                           0.5118
+AIC                                           0.5119
 BIC                                         -25.1319
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
 Other values indicate problems.)
@@ -1181,12 +1181,12 @@ meta(y = ES, v = acovR, RE.constraints = Diag(x = paste(RE.startvalues,
 95% confidence intervals: z statistic approximation
 Coefficients:
               Estimate   Std.Error      lbound      ubound z value
-Intercept1  3.7078e-01  3.6894e-02  2.9846e-01  4.4309e-01 10.0496
+Intercept1  3.7078e-01  3.6894e-02  2.9846e-01  4.4309e-01 10.0497
 Intercept2  4.3160e-01  7.7260e-02  2.8018e-01  5.8303e-01  5.5864
-Intercept3  2.0294e-01  4.6493e-02  1.1182e-01  2.9407e-01  4.3650
+Intercept3  2.0294e-01  4.6494e-02  1.1182e-01  2.9407e-01  4.3650
 Tau2_1_1    1.0000e-10  4.8927e-03 -9.5895e-03  9.5895e-03  0.0000
-Tau2_2_2    4.7467e-02  2.6207e-02 -3.8972e-03  9.8832e-02  1.8113
-Tau2_3_3    5.1622e-03  9.7471e-03 -1.3942e-02  2.4266e-02  0.5296
+Tau2_2_2    4.7468e-02  2.6207e-02 -3.8972e-03  9.8832e-02  1.8113
+Tau2_3_3    5.1623e-03  9.7471e-03 -1.3942e-02  2.4266e-02  0.5296
             Pr(>|z|)    
 Intercept1 < 2.2e-16 ***
 Intercept2 2.319e-08 ***
@@ -1197,9 +1197,9 @@ Tau2_3_3      0.5964
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Q statistic on the homogeneity of effect sizes: 81.65914
+Q statistic on the homogeneity of effect sizes: 81.65925
 Degrees of freedom of the Q statistic: 27
-P value of the Q statistic: 2.111523e-07
+P value of the Q statistic: 2.111442e-07
 
 Heterogeneity indices (based on the estimated Tau2):
                              Estimate
@@ -1211,7 +1211,7 @@ Number of studies (or clusters): 10
 Number of observed statistics: 30
 Number of estimated parameters: 6
 Degrees of freedom: 24
--2 log likelihood: -23.64429 
+-2 log likelihood: -23.64427 
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
 Other values indicate problems.)
 ```
@@ -1222,7 +1222,7 @@ coef(random1, select="fixed")
 
 ```
 Intercept1 Intercept2 Intercept3 
- 0.3707764  0.4316038  0.2029439 
+ 0.3707766  0.4316037  0.2029439 
 ```
 
 ```r
@@ -1231,7 +1231,7 @@ coef(random1, select="random")
 
 ```
     Tau2_1_1     Tau2_2_2     Tau2_3_3 
-0.0000000001 0.0474674174 0.0051622353 
+0.0000000001 0.0474675234 0.0051622637 
 ```
 
 ### Stage 2 analysis

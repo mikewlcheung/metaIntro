@@ -7,7 +7,7 @@ Mike Cheung
 # Introduction
 * This file illustrates how to conduct three-level meta-analyses using the [metaSEM](http://courses.nus.edu.sg/course/psycwlm/internet/metaSEM) and [OpenMx](http://openmx.psyc.virginia.edu/) packages available in the [R](http://www.r-project.org/) environment. The `metaSEM` package was written to simplify the procedures to conduct meta-analysis. Most readers may only need to use the `metaSEM` package to conduct the analysis. The next section shows how to conduct two- and three-level meta-analyses with the `meta()` and `meta3()` functions. The third section demonstrates more complicated three-level meta-analyses using a dataset with more predictors. The final section shows how to implement three-level meta-analyses as structural equation models using the `OpenMx` package. It provides detailed steps on how three-level meta-analyses can be formulated as structural equation models.
 
-* This file also demonstrates the advantages of using the SEM approach to conduct three-level meta-analyses. These include flexibility on imposing constraints for model comparisons and construction of likelihood-based confidence interval (LBCI). I also demonstrate how to conduct three-level meta-analysis with restricted (or residual) maximum likelihood (REML) using the `reml3()` function and handling missing covariates with full information maximum likelihood (FIML) using the `meta3X()` function. Readers may refer to Cheung (2014b) for the design and implementation of the `metaSEM` package and Cheung (2014a) for the theory and issues on how to formulate three-level meta-analyses as structural equation models. 
+* This file also demonstrates the advantages of using the SEM approach to conduct three-level meta-analyses. These include flexibility on imposing constraints for model comparisons and construction of likelihood-based confidence interval (LBCI). I also demonstrate how to conduct three-level meta-analysis with restricted (or residual) maximum likelihood (REML) using the `reml3()` function and handling missing covariates with full information maximum likelihood (FIML) using the `meta3X()` function. Readers may refer to Cheung (2015) for the design and implementation of the `metaSEM` package and Cheung (2014) for the theory and issues on how to formulate three-level meta-analyses as structural equation models. 
 
 * Two datasets from published meta-analyses were used in the illustrations. The first dataset was based on Cooper et al. (2003) and Konstantopoulos (2011). Konstantopoulos (2011) selected part of the dataset to illustrate how to conduct three-level meta-analysis. The second dataset was reported by Bornmann et al. (2007) and Marsh et al. (2009). They conducted a three-level meta-analysis on gender effects in peer reviews of grant proposals. 
 
@@ -1124,7 +1124,7 @@ summary(rerun(Model8))
 ```
 
 ```
-[1] "0.0744009543036696,-0.167035057444758,0.301593347395788,0.15037722845459,-0.00980151666578962,-0.140211322776554,-0.248439312400467,-0.309203230001729,-0.132399127464346,0.00238332822852042,8.21430195937865e-11"
+[1] "0.0595009674022948,-0.206804601541643,0.256004310002801,0.119954325762183,-0.00937226794683468,-0.0959295635136401,-0.30070496043511,-0.304935259274129,-0.164929226853574,0.00244246731096368,7.45202755671151e-07"
 ```
 
 ```
@@ -1139,25 +1139,25 @@ Coefficients:
              Estimate   Std.Error      lbound      ubound z value
 Intercept  6.8563e-02  1.8630e-02  3.2049e-02  1.0508e-01  3.6802
 Slope_1   -1.6885e-01  4.1545e-02 -2.5028e-01 -8.7425e-02 -4.0643
-Slope_2    2.5329e-01  1.5814e-01 -5.6670e-02  5.6324e-01  1.6016
+Slope_2    2.5329e-01  1.5814e-01 -5.6671e-02  5.6325e-01  1.6016
 Slope_3    1.2689e-01  1.4774e-01 -1.6268e-01  4.1646e-01  0.8589
 Slope_4   -8.3549e-03  1.5796e-01 -3.1795e-01  3.0124e-01 -0.0529
-Slope_5   -1.1530e-01  1.1146e-01 -3.3377e-01  1.0317e-01 -1.0344
-Slope_6   -2.6412e-01  1.6402e-01 -5.8559e-01  5.7343e-02 -1.6103
-Slope_7   -2.9029e-01  1.4859e-01 -5.8152e-01  9.5157e-04 -1.9536
+Slope_5   -1.1530e-01  1.1147e-01 -3.3377e-01  1.0317e-01 -1.0344
+Slope_6   -2.6412e-01  1.6402e-01 -5.8559e-01  5.7344e-02 -1.6103
+Slope_7   -2.9029e-01  1.4859e-01 -5.8152e-01  9.5256e-04 -1.9536
 Slope_8   -1.5975e-01  1.6285e-01 -4.7893e-01  1.5943e-01 -0.9810
 Tau2_2     2.1010e-03  1.2925e-03 -4.3226e-04  4.6342e-03  1.6255
-Tau2_3     9.9997e-11          NA          NA          NA      NA
+Tau2_3     1.0000e-10          NA          NA          NA      NA
            Pr(>|z|)    
 Intercept  0.000233 ***
 Slope_1   4.818e-05 ***
-Slope_2    0.109239    
-Slope_3    0.390410    
+Slope_2    0.109240    
+Slope_3    0.390411    
 Slope_4    0.957818    
-Slope_5    0.300948    
-Slope_6    0.107323    
-Slope_7    0.050753 .  
-Slope_8    0.326608    
+Slope_5    0.300949    
+Slope_6    0.107324    
+Slope_7    0.050754 .  
+Slope_8    0.326610    
 Tau2_2     0.104051    
 Tau2_3           NA    
 ---
@@ -1553,10 +1553,10 @@ BIC:     -110.29858               23.98356                 14.95056
 Some of your fit indices are missing.
   To get them, fit saturated and independence models, and include them with
   summary(yourModel, SaturatedLikelihood=..., IndependenceLikelihood=...). 
-timestamp: 2014-12-26 22:34:14 
-Wall clock time (HH:MM:SS.hh): 00:00:00.06 
+timestamp: 2015-04-01 22:56:15 
+Wall clock time (HH:MM:SS.hh): 00:00:00.07 
 optimizer:  NPSOL 
-OpenMx version number: 2.0.0.4004 
+OpenMx version number: 2.0.1.4157 
 Need help?  See help(mxSummary) 
 ```
 
@@ -1616,10 +1616,10 @@ BIC:     -108.25427               26.02787                 13.98387
 Some of your fit indices are missing.
   To get them, fit saturated and independence models, and include them with
   summary(yourModel, SaturatedLikelihood=..., IndependenceLikelihood=...). 
-timestamp: 2014-12-26 22:34:14 
+timestamp: 2015-04-01 22:56:15 
 Wall clock time (HH:MM:SS.hh): 00:00:00.08 
 optimizer:  NPSOL 
-OpenMx version number: 2.0.0.4004 
+OpenMx version number: 2.0.1.4157 
 Need help?  See help(mxSummary) 
 ```
 
@@ -1630,9 +1630,9 @@ Bornmann, L., Mutz, R., & Daniel, H.-D. (2007). Gender differences in grant peer
 
 Cheung, M.W.-L. (2009). Constructing approximate confidence intervals for parameters with structural equation models. _Structural Equation Modeling_, _16(2)_, 267-294. 
 
-Cheung, M.W.-L. (2014a). Modeling dependent effect sizes with three-level meta-analyses: A structural equation modeling approach. _Psychological Methods_, _19_, 211-229.
+Cheung, M.W.-L. (2014). Modeling dependent effect sizes with three-level meta-analyses: A structural equation modeling approach. _Psychological Methods_, _19_, 211-229.
 
-Cheung, M.W.-L. (2014b). _metaSEM: Meta-analysis using structural equation modeling_. Retrieved from http://courses.nus.edu.sg/course/psycwlm/Internet/metaSEM/
+Cheung, M. W.-L. (2015). metaSEM: an R package for meta-analysis using structural equation modeling. _Frontiers in Psychology_, 5(1521). http://doi.org/10.3389/fpsyg.2014.01521
 
 Cooper, H., Valentine, J.C., Charlton, K., & Melson, A. (2003). The effects of modified school calendars on student achievement and on school and community attitudes. _Review of Educational Research_, _73(1)_, 1 –52. 
 
