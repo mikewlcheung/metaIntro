@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">Examples of three-level meta-analysis</h1>
 <h4 class="author"><em>Mike Cheung</em></h4>
-<h4 class="date"><em>01 April, 2015</em></h4>
+<h4 class="date"><em>10 April, 2015</em></h4>
 </div>
 
 <div id="TOC">
@@ -1088,7 +1088,7 @@ Model8 &lt;- meta3(logOR, v, x=cbind(Type2, DisciplinePhy, DisciplineLife, Disci
                            model.name=&quot;Model 8&quot;) 
 ## There was an estimation error. The model was rerun again.
 summary(rerun(Model8))</code></pre>
-<pre><code>[1] &quot;0.0595009674022948,-0.206804601541643,0.256004310002801,0.119954325762183,-0.00937226794683468,-0.0959295635136401,-0.30070496043511,-0.304935259274129,-0.164929226853574,0.00244246731096368,7.45202755671151e-07&quot;</code></pre>
+<pre><code>[1] &quot;0.0674435324551843,-0.197453073537844,0.249998226573273,0.151843552891383,-0.0100818460933364,-0.0923610099206517,-0.311566891960388,-0.346510057886027,-0.174017127902477,0.00230645167696388,1.11240712073842e-10&quot;</code></pre>
 <pre><code>
 Call:
 meta3(y = logOR, v = v, cluster = Cluster, x = cbind(Type2, DisciplinePhy, 
@@ -1100,25 +1100,25 @@ Coefficients:
              Estimate   Std.Error      lbound      ubound z value
 Intercept  6.8563e-02  1.8630e-02  3.2049e-02  1.0508e-01  3.6802
 Slope_1   -1.6885e-01  4.1545e-02 -2.5028e-01 -8.7425e-02 -4.0643
-Slope_2    2.5329e-01  1.5814e-01 -5.6671e-02  5.6325e-01  1.6016
+Slope_2    2.5329e-01  1.5814e-01 -5.6670e-02  5.6325e-01  1.6016
 Slope_3    1.2689e-01  1.4774e-01 -1.6268e-01  4.1646e-01  0.8589
 Slope_4   -8.3549e-03  1.5796e-01 -3.1795e-01  3.0124e-01 -0.0529
 Slope_5   -1.1530e-01  1.1147e-01 -3.3377e-01  1.0317e-01 -1.0344
 Slope_6   -2.6412e-01  1.6402e-01 -5.8559e-01  5.7344e-02 -1.6103
-Slope_7   -2.9029e-01  1.4859e-01 -5.8152e-01  9.5256e-04 -1.9536
+Slope_7   -2.9029e-01  1.4859e-01 -5.8152e-01  9.5229e-04 -1.9536
 Slope_8   -1.5975e-01  1.6285e-01 -4.7893e-01  1.5943e-01 -0.9810
 Tau2_2     2.1010e-03  1.2925e-03 -4.3226e-04  4.6342e-03  1.6255
-Tau2_3     1.0000e-10          NA          NA          NA      NA
+Tau2_3     9.9988e-11          NA          NA          NA      NA
            Pr(&gt;|z|)    
 Intercept  0.000233 ***
 Slope_1   4.818e-05 ***
 Slope_2    0.109240    
 Slope_3    0.390411    
 Slope_4    0.957818    
-Slope_5    0.300949    
+Slope_5    0.300948    
 Slope_6    0.107324    
 Slope_7    0.050754 .  
-Slope_8    0.326610    
+Slope_8    0.326609    
 Tau2_2     0.104051    
 Tau2_3           NA    
 ---
@@ -1139,7 +1139,7 @@ Number of observed statistics: 66
 Number of estimated parameters: 11
 Degrees of freedom: 55
 -2 log likelihood: -1.645211 
-OpenMx status1: 6 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
 Other values indicate problems.)</code></pre>
 </div>
 </div>
@@ -1489,8 +1489,8 @@ BIC:     -110.29858               23.98356                 14.95056
 Some of your fit indices are missing.
   To get them, fit saturated and independence models, and include them with
   summary(yourModel, SaturatedLikelihood=..., IndependenceLikelihood=...). 
-timestamp: 2015-04-01 22:56:15 
-Wall clock time (HH:MM:SS.hh): 00:00:00.07 
+timestamp: 2015-04-10 10:55:37 
+Wall clock time (HH:MM:SS.hh): 00:00:00.06 
 optimizer:  NPSOL 
 OpenMx version number: 2.0.1.4157 
 Need help?  See help(mxSummary) </code></pre>
@@ -1547,7 +1547,7 @@ BIC:     -108.25427               26.02787                 13.98387
 Some of your fit indices are missing.
   To get them, fit saturated and independence models, and include them with
   summary(yourModel, SaturatedLikelihood=..., IndependenceLikelihood=...). 
-timestamp: 2015-04-01 22:56:15 
+timestamp: 2015-04-10 10:55:37 
 Wall clock time (HH:MM:SS.hh): 00:00:00.08 
 optimizer:  NPSOL 
 OpenMx version number: 2.0.1.4157 

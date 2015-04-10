@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">The metaSEM package</h1>
 <h4 class="author"><em>Mike Cheung</em></h4>
-<h4 class="date"><em>01 April, 2015</em></h4>
+<h4 class="date"><em>10 April, 2015</em></h4>
 </div>
 
 <div id="TOC">
@@ -399,25 +399,33 @@ Other values indicate problems.)</code></pre>
 <div id="installation-and-help" class="section level1">
 <h1>Installation and help</h1>
 <ul>
-<li>The current version is 0.9-2.</li>
-<li><p>First of all, you need <a href="http://www.r-project.org/">R</a> to run it. Since <code>metaSEM</code> depends on <a href="http://openmx.psyc.virginia.edu/">OpenMx</a>, you may also need to install <code>OpenMx</code> by run the following command inside an <code>R</code> session:</p>
-<pre><code>source('http://openmx.psyc.virginia.edu/getOpenMx.R') </code></pre></li>
+<li>The current version is 0.9-2. There are several methods to install the <code>metaSEM</code> package. If you have already installed the developmental tools and the <code>devtools</code> package. You may install the <code>metaSEM</code> package from the GitHub. Alternatively, you may download the binary package for Windows platform and the source for Linxu and Mac OS X platforms.</li>
+<li>First of all, you need <a href="http://www.r-project.org/">R</a> to run it. Since <code>metaSEM</code> depends on <a href="http://openmx.psyc.virginia.edu/">OpenMx</a>, you may also need to install <code>OpenMx</code> by run the following command inside an <code>R</code> session:</li>
 </ul>
+<pre><code>## Install OpenMx
+source('http://openmx.psyc.virginia.edu/getOpenMx.R') 
+
+library(devtools)
+
+## Install metaSEM from GitHub
+install_github(&quot;mikewlcheung/metasem&quot;)</code></pre>
 <div id="windows-platform" class="section level2">
 <h2>Windows platform</h2>
 <ul>
-<li><p>Download the Windows <a href="https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9-2.zip">Binary for Windows</a> package of the <code>metaSEM</code>. Please note that d: in Windows is represented by either d:/ or d:\ in <code>R</code>. If the file is saved at d:\, run the following command inside an <code>R</code> session:</p>
-<pre><code>install.packages(pkgs=&quot;d:/metaSEM_0.9-2.zip&quot;, repos=NULL)</code></pre></li>
+<li>Download the Windows <a href="https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9-2.zip">Binary for Windows</a> package of the <code>metaSEM</code>. Please note that d: in Windows is represented by either d:/ or d:\ in <code>R</code>. If the file is saved at d:\, run the following command inside an <code>R</code> session:</li>
 </ul>
+<pre><code>install.packages(pkgs=&quot;d:/metaSEM_0.9-2.zip&quot;, repos=NULL)</code></pre>
 </div>
 <div id="linux-and-mac-os-x-platforms" class="section level2">
 <h2>Linux and Mac OS X platforms</h2>
 <ul>
-<li><p>Download the <a href="https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9-2.tar.gz">Source</a> package of <code>metaSEM</code>. If the file is saved at /home/mike/, run the following command inside an <code>R</code> session:</p>
-<pre><code>install.packages(pkgs=&quot;/home/mike/metaSEM_0.9-2.tar.gz&quot;, repos=NULL, type=&quot;source&quot;)</code></pre></li>
-<li><p>Alternatively, the <code>metaSEM</code> package may also be installed in the terminal by using:</p>
-<pre><code>R CMD INSTALL metaSEM_0.9-2.tar.gz</code></pre></li>
+<li>Download the <a href="https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9-2.tar.gz">Source</a> package of <code>metaSEM</code>. If the file is saved at /home/mike/, run the following command inside an <code>R</code> session:</li>
 </ul>
+<pre><code>install.packages(pkgs=&quot;/home/mike/metaSEM_0.9-2.tar.gz&quot;, repos=NULL, type=&quot;source&quot;)</code></pre>
+<ul>
+<li>Alternatively, the <code>metaSEM</code> package may also be installed in the terminal by using:</li>
+</ul>
+<pre><code>R CMD INSTALL metaSEM_0.9-2.tar.gz</code></pre>
 </div>
 <div id="help" class="section level2">
 <h2>Help</h2>
