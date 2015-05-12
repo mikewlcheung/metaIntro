@@ -362,7 +362,7 @@ Coefficients:
 Intercept  0.1780268        NA  0.0052929  0.3515622      NA       NA
 Slope_1    0.0050737        NA -0.0128356  0.0237979      NA       NA
 Tau2_2     0.0329390        NA  0.0163732  0.0632779      NA       NA
-Tau2_3     0.0564628        NA  0.0192355  0.1720022      NA       NA
+Tau2_3     0.0564628        NA  0.0192314  0.1720022      NA       NA
 
 Q statistic on the homogeneity of effect sizes: 578.864
 Degrees of freedom of the Q statistic: 55
@@ -671,14 +671,14 @@ meta3(y = logOR, v = v, cluster = Cluster, x = cbind(Grants,
 Coefficients:
            Estimate   Std.Error      lbound      ubound z value  Pr(>|z|)
 Slope_1  0.10000000          NA          NA          NA      NA        NA
-Slope_2 -0.20209280  0.03953671 -0.27958332 -0.12460227 -5.1115 3.196e-07
-Tau2_2   0.00357518  0.00229434 -0.00092164  0.00807201  1.5583    0.1192
-Tau2_3   0.00271391  0.00037933  0.00197044  0.00345737  7.1546 8.396e-13
+Slope_2 -0.20209280  0.03954426 -0.27959812 -0.12458747 -5.1105 3.212e-07
+Tau2_2   0.00357518  0.00187968 -0.00010892  0.00725929  1.9020   0.05717
+Tau2_3   0.00271391  0.00128338  0.00019853  0.00522929  2.1147   0.03446
            
 Slope_1    
 Slope_2 ***
-Tau2_2     
-Tau2_3  ***
+Tau2_2  .  
+Tau2_3  *  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -721,8 +721,8 @@ meta3(y = logOR, v = v, cluster = Cluster, x = cbind(scale(Year),
 95% confidence intervals: z statistic approximation
 Coefficients:
              Estimate   Std.Error      lbound      ubound z value Pr(>|z|)
-Intercept -0.08627312  0.04125581 -0.16713302 -0.00541321 -2.0912  0.03651
-Slope_1   -0.00095287  0.02365224 -0.04731040  0.04540466 -0.0403  0.96786
+Intercept -0.08627312  0.04125581 -0.16713302 -0.00541322 -2.0912  0.03651
+Slope_1   -0.00095287  0.02365224 -0.04731040  0.04540467 -0.0403  0.96786
 Slope_2   -0.01176840  0.00659995 -0.02470407  0.00116727 -1.7831  0.07457
 Tau2_2     0.00287389  0.00206817 -0.00117965  0.00692744  1.3896  0.16466
 Tau2_3     0.01479446  0.00926095 -0.00335666  0.03294558  1.5975  0.11015
@@ -791,13 +791,20 @@ meta3(y = logOR, v = v, cluster = Cluster, x = cbind(DisciplinePhy,
 
 95% confidence intervals: z statistic approximation
 Coefficients:
-            Estimate  Std.Error     lbound     ubound z value Pr(>|z|)  
-Intercept -0.0147478  0.0638994 -0.1399885  0.1104928 -0.2308  0.81747  
-Slope_1   -0.0091306  0.0994920 -0.2041313  0.1858701 -0.0918  0.92688  
-Slope_2   -0.1261796  0.0786627 -0.2803557  0.0279966 -1.6041  0.10870  
-Slope_3   -0.2369570  0.1212309 -0.4745652  0.0006513 -1.9546  0.05063 .
-Tau2_2     0.0039094  0.0028395 -0.0016559  0.0094747  1.3768  0.16857  
-Tau2_3     0.0071034  0.0064321 -0.0055033  0.0197101  1.1044  0.26944  
+             Estimate   Std.Error      lbound      ubound z value Pr(>|z|)
+Intercept -0.01474783  0.06389946 -0.13998848  0.11049281 -0.2308  0.81747
+Slope_1   -0.00913064  0.09949200 -0.20413137  0.18587009 -0.0918  0.92688
+Slope_2   -0.12617957  0.07866275 -0.28035572  0.02799657 -1.6041  0.10870
+Slope_3   -0.23695697  0.12123093 -0.47456522  0.00065127 -1.9546  0.05063
+Tau2_2     0.00390942  0.00283948 -0.00165587  0.00947471  1.3768  0.16857
+Tau2_3     0.00710338  0.00643210 -0.00550331  0.01971006  1.1044  0.26944
+           
+Intercept  
+Slope_1    
+Slope_2    
+Slope_3   .
+Tau2_2     
+Tau2_3     
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -863,9 +870,9 @@ meta3(y = logOR, v = v, cluster = Cluster, x = cbind(CountryAus,
 95% confidence intervals: z statistic approximation
 Coefficients:
             Estimate  Std.Error     lbound     ubound z value Pr(>|z|)   
-Intercept  0.0025681  0.0597768 -0.1145922  0.1197284  0.0430 0.965732   
+Intercept  0.0025681  0.0597768 -0.1145923  0.1197285  0.0430 0.965732   
 Slope_1   -0.0240109  0.1104328 -0.2404552  0.1924333 -0.2174 0.827876   
-Slope_2   -0.1340800  0.1190667 -0.3674465  0.0992865 -1.1261 0.260127   
+Slope_2   -0.1340800  0.1190668 -0.3674465  0.0992866 -1.1261 0.260127   
 Slope_3   -0.2210801  0.0739174 -0.3659556 -0.0762046 -2.9909 0.002782 **
 Slope_4    0.0537251  0.0994803 -0.1412527  0.2487030  0.5401 0.589157   
 Tau2_2     0.0033376  0.0023492 -0.0012667  0.0079420  1.4208 0.155383   
@@ -938,7 +945,7 @@ Tau2_3     1.0000e-10          NA          NA          NA      NA
            Pr(>|z|)    
 Intercept 0.0003025 ***
 Slope_1    2.32e-06 ***
-Slope_2   0.7673210    
+Slope_2   0.7673209    
 Slope_3   0.0003734 ***
 Slope_4   0.0108849 *  
 Tau2_2    0.1060586    
@@ -1004,7 +1011,7 @@ Coefficients:
 Intercept  6.7507e-02  1.8933e-02  3.0399e-02  1.0461e-01  3.5656
 Slope_1   -1.5167e-01  4.1113e-02 -2.3225e-01 -7.1092e-02 -3.6892
 Slope_2   -6.9580e-02  8.5164e-02 -2.3650e-01  9.7339e-02 -0.8170
-Slope_3   -1.4231e-01  7.5204e-02 -2.8970e-01  5.0879e-03 -1.8923
+Slope_3   -1.4231e-01  7.5204e-02 -2.8970e-01  5.0878e-03 -1.8923
 Slope_4   -1.6116e-01  4.0203e-02 -2.3995e-01 -8.2361e-02 -4.0086
 Slope_5    9.0419e-03  7.0074e-02 -1.2830e-01  1.4639e-01  0.1290
 Tau2_2     2.2976e-03  1.4407e-03 -5.2618e-04  5.1213e-03  1.5947
@@ -1079,13 +1086,13 @@ meta3(y = logOR, v = v, cluster = Cluster, x = cbind(DisciplinePhy,
 Coefficients:
             Estimate  Std.Error     lbound     ubound z value Pr(>|z|)  
 Intercept  0.0029305  0.0576743 -0.1101090  0.1159700  0.0508  0.95948  
-Slope_1    0.1742169  0.1702553 -0.1594774  0.5079113  1.0233  0.30618  
-Slope_2    0.0826806  0.1599802 -0.2308748  0.3962359  0.5168  0.60528  
-Slope_3   -0.0462265  0.1715773 -0.3825118  0.2900588 -0.2694  0.78761  
-Slope_4   -0.0486321  0.1306918 -0.3047834  0.2075192 -0.3721  0.70981  
-Slope_5   -0.2169132  0.1915703 -0.5923841  0.1585576 -1.1323  0.25751  
-Slope_6   -0.3036578  0.1670720 -0.6311128  0.0237973 -1.8175  0.06914 .
-Slope_7   -0.0605272  0.1809419 -0.4151667  0.2941123 -0.3345  0.73799  
+Slope_1    0.1742169  0.1702554 -0.1594775  0.5079113  1.0233  0.30618  
+Slope_2    0.0826806  0.1599802 -0.2308749  0.3962360  0.5168  0.60528  
+Slope_3   -0.0462265  0.1715773 -0.3825119  0.2900589 -0.2694  0.78761  
+Slope_4   -0.0486321  0.1306919 -0.3047835  0.2075192 -0.3721  0.70981  
+Slope_5   -0.2169132  0.1915704 -0.5923843  0.1585578 -1.1323  0.25751  
+Slope_6   -0.3036578  0.1670721 -0.6311130  0.0237975 -1.8175  0.06914 .
+Slope_7   -0.0605272  0.1809419 -0.4151669  0.2941125 -0.3345  0.73799  
 Tau2_2     0.0032661  0.0022784 -0.0011994  0.0077317  1.4335  0.15171  
 Tau2_3     0.0040618  0.0038459 -0.0034759  0.0115996  1.0562  0.29090  
 ---
@@ -1124,10 +1131,6 @@ summary(rerun(Model8))
 ```
 
 ```
-[1] "0.0674435324551843,-0.197453073537844,0.249998226573273,0.151843552891383,-0.0100818460933364,-0.0923610099206517,-0.311566891960388,-0.346510057886027,-0.174017127902477,0.00230645167696388,1.11240712073842e-10"
-```
-
-```
 
 Call:
 meta3(y = logOR, v = v, cluster = Cluster, x = cbind(Type2, DisciplinePhy, 
@@ -1139,25 +1142,25 @@ Coefficients:
              Estimate   Std.Error      lbound      ubound z value
 Intercept  6.8563e-02  1.8630e-02  3.2049e-02  1.0508e-01  3.6802
 Slope_1   -1.6885e-01  4.1545e-02 -2.5028e-01 -8.7425e-02 -4.0643
-Slope_2    2.5329e-01  1.5814e-01 -5.6670e-02  5.6325e-01  1.6016
+Slope_2    2.5329e-01  1.5814e-01 -5.6669e-02  5.6324e-01  1.6016
 Slope_3    1.2689e-01  1.4774e-01 -1.6268e-01  4.1646e-01  0.8589
 Slope_4   -8.3549e-03  1.5796e-01 -3.1795e-01  3.0124e-01 -0.0529
-Slope_5   -1.1530e-01  1.1147e-01 -3.3377e-01  1.0317e-01 -1.0344
-Slope_6   -2.6412e-01  1.6402e-01 -5.8559e-01  5.7344e-02 -1.6103
-Slope_7   -2.9029e-01  1.4859e-01 -5.8152e-01  9.5229e-04 -1.9536
+Slope_5   -1.1530e-01  1.1146e-01 -3.3377e-01  1.0317e-01 -1.0344
+Slope_6   -2.6412e-01  1.6402e-01 -5.8559e-01  5.7343e-02 -1.6103
+Slope_7   -2.9029e-01  1.4859e-01 -5.8152e-01  9.5150e-04 -1.9536
 Slope_8   -1.5975e-01  1.6285e-01 -4.7893e-01  1.5943e-01 -0.9810
 Tau2_2     2.1010e-03  1.2925e-03 -4.3226e-04  4.6342e-03  1.6255
-Tau2_3     9.9988e-11          NA          NA          NA      NA
+Tau2_3     1.0000e-10          NA          NA          NA      NA
            Pr(>|z|)    
 Intercept  0.000233 ***
 Slope_1   4.818e-05 ***
-Slope_2    0.109240    
-Slope_3    0.390411    
+Slope_2    0.109239    
+Slope_3    0.390410    
 Slope_4    0.957818    
 Slope_5    0.300948    
-Slope_6    0.107324    
-Slope_7    0.050754 .  
-Slope_8    0.326609    
+Slope_6    0.107323    
+Slope_7    0.050753 .  
+Slope_8    0.326608    
 Tau2_2     0.104051    
 Tau2_3           NA    
 ---
@@ -1215,7 +1218,7 @@ meta3(y = logOR, v = v, cluster = Cluster, x = Type_MCAR, data = my.df)
 Coefficients:
              Estimate   Std.Error      lbound      ubound z value
 Intercept -0.00484542  0.03934429 -0.08195881  0.07226797 -0.1232
-Slope_1   -0.21090081  0.05346221 -0.31568482 -0.10611680 -3.9449
+Slope_1   -0.21090081  0.05346222 -0.31568483 -0.10611679 -3.9449
 Tau2_2     0.00446788  0.00549282 -0.00629784  0.01523361  0.8134
 Tau2_3     0.00092884  0.00336491 -0.00566625  0.00752394  0.2760
            Pr(>|z|)    
@@ -1259,7 +1262,7 @@ meta3X(y = logOR, v = v, cluster = Cluster, x2 = Type_MCAR, data = my.df)
 Coefficients:
             Estimate  Std.Error     lbound     ubound z value Pr(>|z|)   
 Intercept -0.0106318  0.0397685 -0.0885766  0.0673131 -0.2673 0.789207   
-SlopeX2_1 -0.1753249  0.0582619 -0.2895162 -0.0611336 -3.0093 0.002619 **
+SlopeX2_1 -0.1753249  0.0582619 -0.2895161 -0.0611337 -3.0093 0.002619 **
 Tau2_2     0.0030338  0.0026839 -0.0022266  0.0082941  1.1304 0.258324   
 Tau2_3     0.0036839  0.0042817 -0.0047082  0.0120759  0.8604 0.389586   
 ---
@@ -1303,7 +1306,7 @@ meta3(y = logOR, v = v, cluster = Cluster, x = Type_MAR, data = Bornmann07)
 Coefficients:
              Estimate   Std.Error      lbound      ubound z value Pr(>|z|)
 Intercept -0.01587052  0.03952546 -0.09333900  0.06159795 -0.4015 0.688032
-Slope_1   -0.17573648  0.06328326 -0.29976939 -0.05170356 -2.7770 0.005487
+Slope_1   -0.17573648  0.06328325 -0.29976937 -0.05170358 -2.7770 0.005487
 Tau2_2     0.00259266  0.00171596 -0.00077056  0.00595588  1.5109 0.130811
 Tau2_3     0.00278384  0.00267150 -0.00245221  0.00801989  1.0421 0.297388
             
@@ -1348,10 +1351,10 @@ meta3X(y = logOR, v = v, cluster = Cluster, x2 = Type_MAR, av2 = Year,
 95% confidence intervals: z statistic approximation
 Coefficients:
             Estimate  Std.Error     lbound     ubound z value Pr(>|z|)   
-Intercept -0.0264057  0.0572041 -0.1385237  0.0857122 -0.4616 0.644364   
-SlopeX2_1 -0.2003999  0.0691082 -0.3358495 -0.0649503 -2.8998 0.003734 **
-Tau2_2     0.0029970  0.0022371 -0.0013877  0.0073816  1.3397 0.180358   
-Tau2_3     0.0030212  0.0032463 -0.0033414  0.0093838  0.9307 0.352029   
+Intercept -0.0264057  0.0571975 -0.1385108  0.0856994 -0.4617 0.644326   
+SlopeX2_1 -0.2003999  0.0691035 -0.3358402 -0.0649596 -2.9000 0.003732 **
+Tau2_2     0.0029970  0.0022371 -0.0013877  0.0073816  1.3397 0.180357   
+Tau2_3     0.0030212  0.0032462 -0.0033412  0.0093836  0.9307 0.352012   
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1544,7 +1547,7 @@ free parameters:
 observed statistics:  56 
 estimated parameters:  3 
 degrees of freedom:  53 
--2 log likelihood:  16.78987 
+fit value ( -2lnL units ):  16.78987 
 number of observations:  11 
 Information Criteria: 
       |  df Penalty  |  Parameters Penalty  |  Sample-Size Adjusted
@@ -1552,11 +1555,12 @@ AIC:      -89.21013               22.78987                       NA
 BIC:     -110.29858               23.98356                 14.95056
 Some of your fit indices are missing.
   To get them, fit saturated and independence models, and include them with
-  summary(yourModel, SaturatedLikelihood=..., IndependenceLikelihood=...). 
-timestamp: 2015-04-10 10:55:37 
-Wall clock time (HH:MM:SS.hh): 00:00:00.06 
+  summary(yourModel, refModels=...) 
+  See help(mxRefModels) for an easy way of doing this in many cases. 
+timestamp: 2015-05-12 14:22:46 
+Wall clock time (HH:MM:SS.hh): 00:00:00.07 
 optimizer:  NPSOL 
-OpenMx version number: 2.0.1.4157 
+OpenMx version number: 2.1.0 
 Need help?  See help(mxSummary) 
 ```
 
@@ -1599,15 +1603,15 @@ Summary of Mixed effects model
  
 free parameters:
     name matrix row col    Estimate   Std.Error
-1  beta0  Beta0   1   1 0.178026727 0.080521929
-2  beta1  Beta1   1   1 0.005073715 0.008526627
-3 tau2_2   Tau2   1   1 0.032939012 0.011162043
-4 tau2_3   Tau3   1   1 0.056462847 0.030032975
+1  beta0  Beta0   1   1 0.178026803 0.080521920
+2  beta1  Beta1   1   1 0.005073722 0.008526625
+3 tau2_2   Tau2   1   1 0.032939017 0.011162045
+4 tau2_3   Tau3   1   1 0.056462816 0.030032948
 
 observed statistics:  56 
 estimated parameters:  4 
 degrees of freedom:  52 
--2 log likelihood:  16.43629 
+fit value ( -2lnL units ):  16.43629 
 number of observations:  11 
 Information Criteria: 
       |  df Penalty  |  Parameters Penalty  |  Sample-Size Adjusted
@@ -1615,11 +1619,12 @@ AIC:      -87.56371               24.43629                       NA
 BIC:     -108.25427               26.02787                 13.98387
 Some of your fit indices are missing.
   To get them, fit saturated and independence models, and include them with
-  summary(yourModel, SaturatedLikelihood=..., IndependenceLikelihood=...). 
-timestamp: 2015-04-10 10:55:37 
-Wall clock time (HH:MM:SS.hh): 00:00:00.08 
+  summary(yourModel, refModels=...) 
+  See help(mxRefModels) for an easy way of doing this in many cases. 
+timestamp: 2015-05-12 14:22:46 
+Wall clock time (HH:MM:SS.hh): 00:00:00.09 
 optimizer:  NPSOL 
-OpenMx version number: 2.0.1.4157 
+OpenMx version number: 2.1.0 
 Need help?  See help(mxSummary) 
 ```
 

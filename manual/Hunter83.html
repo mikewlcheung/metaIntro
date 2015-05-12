@@ -1,7 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Fourteen Studies of Correlation Matrices reported by Hunter...</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="R.css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Fourteen Studies of Correlation Matrices reported by Hunter...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
@@ -9,7 +8,7 @@
 <script>hljs.initHighlightingOnLoad();</script>
 </head><body>
 
-<table width="100%" summary="page for Hunter83 {metaSEM}"><tr><td>Hunter83 {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+<table width="100%" summary="page for Hunter83 {metaSEM}"><tr><td>Hunter83 {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
 <h2>Fourteen Studies of Correlation Matrices reported by Hunter (1983)
 </h2>
@@ -32,8 +31,8 @@
 
 <dl>
 <dt>data</dt><dd><p>A list of 14 studies of correlation matrices. The
-variables are <EM>Ability</EM>, <EM>Job knowledge</EM>, <EM>Work
-sample</EM> and <EM>Supervisor rating</EM></p>
+variables are <em>Ability</em>, <em>Job knowledge</em>, <em>Work
+sample</em> and <em>Supervisor rating</em></p>
 </dd>
 <dt>n</dt><dd><p>A vector of sample sizes</p>
 </dd>
@@ -43,7 +42,7 @@ sample</EM> and <EM>Supervisor rating</EM></p>
 
 <h3>Source</h3>
 
-<p>Hunter, J. E. (1983). A causal analysis of cognitive ability, job knowledge, job performance, and supervisor ratings. In F. Landy, S. Zedeck, &amp; J. Cleveland (Eds.), <EM>Performance Measurement and Theory</EM> (pp. 257-266). Hillsdale, NJ: Erlbaum.
+<p>Hunter, J. E. (1983). A causal analysis of cognitive ability, job knowledge, job performance, and supervisor ratings. In F. Landy, S. Zedeck, &amp; J. Cleveland (Eds.), <em>Performance Measurement and Theory</em> (pp. 257-266). Hillsdale, NJ: Erlbaum.
 </p>
 
 
@@ -66,12 +65,12 @@ summary(fixed1)
 ## 
 ## Coefficients:
 ##        Estimate Std.Error z value  Pr(&gt;|z|)    
-## S[1,2] 0.510464  0.012724  40.118 &lt; 2.2e-16 ***
-## S[1,3] 0.426989  0.014107  30.267 &lt; 2.2e-16 ***
+## S[1,2] 0.510464  0.012724  40.119 &lt; 2.2e-16 ***
+## S[1,3] 0.426989  0.014107  30.268 &lt; 2.2e-16 ***
 ## S[1,4] 0.207679  0.015958  13.014 &lt; 2.2e-16 ***
-## S[2,3] 0.522925  0.013134  39.815 &lt; 2.2e-16 ***
+## S[2,3] 0.522925  0.013134  39.816 &lt; 2.2e-16 ***
 ## S[2,4] 0.284622  0.015795  18.020 &lt; 2.2e-16 ***
-## S[3,4] 0.243198  0.016295  14.925 &lt; 2.2e-16 ***
+## S[3,4] 0.243199  0.016295  14.925 &lt; 2.2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -142,15 +141,15 @@ summary(fixed2)
 ## 
 ## 95% confidence intervals: Likelihood-based statistic
 ## Coefficients:
-##         Estimate Std.Error  lbound  ubound z value Pr(&gt;|z|)
-## A2J      0.51333        NA 0.48833 0.53833      NA       NA
-## A2W      0.21782        NA 0.18350 0.25209      NA       NA
-## J2W      0.41118        NA 0.37773 0.44476      NA       NA
-## J2S      0.21896        NA 0.18047 0.25750      NA       NA
-## W2S      0.13095        NA 0.09175 0.17019      NA       NA
-## Var_e_J  0.73649        NA 0.71020 0.76153      NA       NA
-## Var_e_W  0.69154        NA 0.66449 0.71752      NA       NA
-## Var_e_S  0.90492        NA 0.88535 0.92269      NA       NA
+##         Estimate Std.Error   lbound   ubound z value Pr(&gt;|z|)
+## A2J     0.513335        NA 0.488329 0.538328      NA       NA
+## A2W     0.217817        NA 0.183498 0.252089      NA       NA
+## J2W     0.411177        NA 0.377733 0.444755      NA       NA
+## J2S     0.218957        NA 0.180470 0.257502      NA       NA
+## W2S     0.130953        NA 0.091751 0.170188      NA       NA
+## Var_e_J 0.736487        NA 0.710203 0.761534      NA       NA
+## Var_e_W 0.691540        NA 0.664491 0.717520      NA       NA
+## Var_e_S 0.904918        NA 0.885355 0.922690      NA       NA
 ## 
 ## Goodness-of-fit indices:
 ##                                                Value
@@ -160,7 +159,7 @@ summary(fixed2)
 ## p value of target model                       0.0022
 ## Number of constraints imposed on &quot;Smatrix&quot;    3.0000
 ## DF manually adjusted                          0.0000
-## Chi-square of independence model           2687.9549
+## Chi-square of independence model           2688.1894
 ## DF of independence model                      6.0000
 ## RMSEA                                         0.0459
 ## SRMR                                          0.0161
@@ -177,7 +176,7 @@ coef(fixed2)
 </code></pre>
 
 <pre><code>##       A2J       A2W       J2W       J2S       W2S   Var_e_J   Var_e_W 
-## 0.5133352 0.2178170 0.4111766 0.2189575 0.1309526 0.7364869 0.6915397 
+## 0.5133354 0.2178171 0.4111765 0.2189574 0.1309528 0.7364867 0.6915396 
 ##   Var_e_S 
 ## 0.9049176
 </code></pre>
@@ -190,23 +189,23 @@ vcov(fixed2)
 </code></pre>
 
 <pre><code>##                   A2J           A2W           J2W           J2S
-## A2J      1.574601e-04 -1.965531e-05 -9.275792e-06  5.350506e-05
-## A2W     -1.965531e-05  3.313147e-04 -2.036815e-04 -1.171361e-04
-## J2W     -9.275792e-06 -2.036815e-04  2.605045e-04  9.873362e-05
-## J2S      5.350506e-05 -1.171361e-04  9.873362e-05  3.475565e-04
-## W2S     -3.157446e-05  1.140614e-04 -4.028100e-05 -1.637488e-04
-## Var_e_J -1.605786e-04  2.066906e-05  8.830395e-06 -5.491586e-05
-## Var_e_W -1.876055e-06 -7.273715e-05 -9.332680e-05 -8.488201e-06
-## Var_e_S -1.718822e-05  1.268580e-05 -4.432015e-05 -1.211011e-04
+## A2J      1.574535e-04 -1.965807e-05 -9.280251e-06  5.349649e-05
+## A2W     -1.965807e-05  3.313138e-04 -2.036819e-04 -1.171369e-04
+## J2W     -9.280251e-06 -2.036819e-04  2.604971e-04  9.872814e-05
+## J2S      5.349649e-05 -1.171369e-04  9.872814e-05  3.475534e-04
+## W2S     -3.158061e-05  1.140613e-04 -4.028685e-05 -1.637517e-04
+## Var_e_J -1.605718e-04  2.067186e-05  8.835019e-06 -5.490715e-05
+## Var_e_W -1.867784e-06 -7.273558e-05 -9.331777e-05 -8.480285e-06
+## Var_e_S -1.717977e-05  1.268627e-05 -4.431351e-05 -1.210972e-04
 ##                   W2S       Var_e_J       Var_e_W       Var_e_S
-## A2J     -3.157446e-05 -1.605786e-04 -1.876055e-06 -1.718822e-05
-## A2W      1.140614e-04  2.066906e-05 -7.273715e-05  1.268580e-05
-## J2W     -4.028100e-05  8.830395e-06 -9.332680e-05 -4.432015e-05
-## J2S     -1.637488e-04 -5.491586e-05 -8.488201e-06 -1.211011e-04
-## W2S      3.681760e-04  3.252977e-05 -5.276846e-05 -9.043838e-05
-## Var_e_J  3.252977e-05  1.637985e-04  2.003064e-06  1.759768e-05
-## Var_e_W -5.276846e-05  2.003064e-06  1.621421e-04  3.772259e-05
-## Var_e_S -9.043838e-05  1.759768e-05  3.772259e-05  1.175131e-04
+## A2J     -3.158061e-05 -1.605718e-04 -1.867784e-06 -1.717977e-05
+## A2W      1.140613e-04  2.067186e-05 -7.273558e-05  1.268627e-05
+## J2W     -4.028685e-05  8.835019e-06 -9.331777e-05 -4.431351e-05
+## J2S     -1.637517e-04 -5.490715e-05 -8.480285e-06 -1.210972e-04
+## W2S      3.681748e-04  3.253620e-05 -5.276130e-05 -9.043585e-05
+## Var_e_J  3.253620e-05  1.637917e-04  1.994579e-06  1.758900e-05
+## Var_e_W -5.276130e-05  1.994579e-06  1.621298e-04  3.771378e-05
+## Var_e_S -9.043585e-05  1.758900e-05  3.771378e-05  1.175090e-04
 </code></pre>
 
 <pre><code class="r">#### Random-effects model with diagonal elements only
@@ -217,10 +216,14 @@ random1 &lt;- tssem1(Hunter83$data, Hunter83$n, method=&quot;REM&quot;, RE.type=
 random1 &lt;- rerun(random1)
 </code></pre>
 
-<pre><code>## Running TSSEM1 random effects model
-</code></pre>
-
-<pre><code>## [1] &quot;0.505878962282786,0.446946670005528,0.212228717033617,0.530654279951491,0.259148927339762,0.241039084929333,0.00636963842302819,0.004414059151409,0.0043123923671845,0.0102325544116584,0.0138715673797447,1.32010049998998e-05&quot;
+<pre><code>## 
+## Solution found
+## 
+## Refit using best inits and estimate confidence intervals
+## 
+## 
+## Start values from best fit:
+## 0.505879043681353,0.446946683901457,0.212228721968383,0.530654280831816,0.259148933678725,0.241039079807602,0.00636963500951203,0.00441404542652831,0.00431237403181788,0.0102325768614228,0.0138715448819461,1.32040871795207e-05
 </code></pre>
 
 <pre><code class="r">summary(random1)
@@ -243,11 +246,11 @@ random1 &lt;- rerun(random1)
 ## Intercept5  2.5915e-01  3.9510e-02  1.8171e-01  3.3659e-01  6.5591
 ## Intercept6  2.4104e-01  1.6894e-02  2.0793e-01  2.7415e-01 14.2681
 ## Tau2_1_1    6.3696e-03  3.5245e-03 -5.3821e-04  1.3277e-02  1.8073
-## Tau2_2_2    4.4141e-03  3.1004e-03 -1.6626e-03  1.0491e-02  1.4237
-## Tau2_3_3    4.3124e-03  2.8211e-03 -1.2169e-03  9.8417e-03  1.5286
+## Tau2_2_2    4.4140e-03  3.1004e-03 -1.6626e-03  1.0491e-02  1.4237
+## Tau2_3_3    4.3124e-03  2.8211e-03 -1.2169e-03  9.8416e-03  1.5286
 ## Tau2_4_4    1.0233e-02  5.4023e-03 -3.5568e-04  2.0821e-02  1.8941
-## Tau2_5_5    1.3872e-02  7.3096e-03 -4.5507e-04  2.8198e-02  1.8977
-## Tau2_6_6    1.3201e-05  1.2582e-03 -2.4527e-03  2.4791e-03  0.0105
+## Tau2_5_5    1.3872e-02  7.3096e-03 -4.5509e-04  2.8198e-02  1.8977
+## Tau2_6_6    1.3204e-05  1.2582e-03 -2.4527e-03  2.4791e-03  0.0105
 ##             Pr(&gt;|z|)    
 ## Intercept1 &lt; 2.2e-16 ***
 ## Intercept2 &lt; 2.2e-16 ***
@@ -264,7 +267,7 @@ random1 &lt;- rerun(random1)
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Q statistic on the homogeneity of effect sizes: 314.423
+## Q statistic on the homogeneity of effect sizes: 314.4227
 ## Degrees of freedom of the Q statistic: 60
 ## P value of the Q statistic: 0
 ## 
@@ -314,23 +317,23 @@ summary(random2)
 ## J2W     0.396548        NA 0.300212 0.493542      NA       NA
 ## J2S     0.231424        NA 0.138200 0.325700      NA       NA
 ## W2S     0.121406        NA 0.054381 0.182985      NA       NA
-## Var_e_J 0.733357        NA 0.675243 0.785749      NA       NA
+## Var_e_J 0.733357        NA 0.675242 0.785749      NA       NA
 ## Var_e_W 0.681364        NA 0.616489 0.738149      NA       NA
 ## Var_e_S 0.902278        NA 0.863087 0.931512      NA       NA
 ## 
 ## mxAlgebras objects (and their 95% likelihood-based CIs):
 ##             lbound  Estimate    ubound
-## ind[1,1] 0.1428647 0.1742441 0.2073609
+## ind[1,1] 0.1428648 0.1742442 0.2073609
 ## 
 ## Goodness-of-fit indices:
 ##                                                Value
 ## Sample size                                3975.0000
 ## Chi-square of target model                    3.8132
 ## DF of target model                            1.0000
-## p value of target model                       0.0509
+## p value of target model                       0.0508
 ## Number of constraints imposed on &quot;Smatrix&quot;    3.0000
 ## DF manually adjusted                          0.0000
-## Chi-square of independence model            938.2310
+## Chi-square of independence model            938.2305
 ## DF of independence model                      6.0000
 ## RMSEA                                         0.0266
 ## SRMR                                          0.0220
@@ -361,5 +364,5 @@ semPaths(my.plot, whatLabels=&quot;est&quot;, nCharNodes=10, color=&quot;green&q
 <p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/> </p>
 
 
-<hr><div align="center">[Package <em>metaSEM</em> version 0.9-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.3-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

@@ -1,9 +1,9 @@
 Package: metaSEM
 Type: Package
 Title: Meta-Analysis using Structural Equation Modeling
-Version: 0.9-2
-Date: 2015-01-16
-Depends: R (>= 3.1.0), OpenMx (>= 2.0.0)
+Version: 0.9.3-1
+Date: 2015-05-12
+Depends: R (>= 3.1.0), OpenMx (>= 2.0.0)  
 Imports: Matrix, MASS
 Suggests: metafor, semPlot
 Author: Mike W.-L. Cheung <mikewlcheung@nus.edu.sg>
@@ -16,6 +16,4 @@ License: GPL (>=2)
 LazyLoad: yes
 LazyData: yes
 ByteCompile: yes
-URL: http://courses.nus.edu.sg/course/psycwlm/Internet/metaSEM/
-Packaged: 2015-01-28 14:01:25 UTC; mikewlcheung
-Built: R 3.1.2; ; 2015-04-01 15:05:38 UTC; unix
+URL: https://github.com/mikewlcheung/metasem

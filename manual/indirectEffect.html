@@ -1,7 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Estimate the asymptotic covariance matrix of standardized or...</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="R.css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Estimate the asymptotic covariance matrix of standardized or...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
@@ -9,7 +8,7 @@
 <script>hljs.initHighlightingOnLoad();</script>
 </head><body>
 
-<table width="100%" summary="page for indirectEffect {metaSEM}"><tr><td>indirectEffect {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+<table width="100%" summary="page for indirectEffect {metaSEM}"><tr><td>indirectEffect {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
 <h2>Estimate the asymptotic covariance matrix of standardized or unstandardized indirect and direct effects
 </h2>
@@ -88,12 +87,12 @@ asymptotic sampling covariance matrices
 
 <h3>References</h3>
 
-<p>Cheung, M. W.-L. (2009). Comparison of methods for constructing confidence intervals of standardized indirect effects. <EM>Behavior
-Research Methods</EM>, <EM>41</EM>, 425-438.
+<p>Cheung, M. W.-L. (2009). Comparison of methods for constructing confidence intervals of standardized indirect effects. <em>Behavior
+Research Methods</em>, <em>41</em>, 425-438.
 </p>
 <p>Kwan, J., &amp; Chan, W. (2011). Comparing standardized coefficients in
 structural equation modeling: a model reparameterization
-approach. <EM>Behavior Research Methods</EM>, <EM>43</EM>, 730-745.
+approach. <em>Behavior Research Methods</em>, <em>43</em>, 730-745.
 </p>
 
 
@@ -106,7 +105,7 @@ indirectEffect(x, n=300)
 </code></pre>
 
 <pre><code>##       ind_eff       dir_eff       ind_var   ind_dir_cov       dir_var 
-##  0.1132088711  0.0887913338  0.0006706233 -0.0002732750  0.0031620700
+##  0.1132090432  0.0887911850  0.0006706257 -0.0002732887  0.0031621066
 </code></pre>
 
 <pre><code class="r">## A list of correlation matrices
@@ -114,10 +113,10 @@ indirectEffect( list(x, x), n=c(300,500), standardized=FALSE )
 </code></pre>
 
 <pre><code>##        ind_eff    dir_eff      ind_var   ind_dir_cov     dir_var
-## [1,] 0.1120878 0.08791209 0.0007003815 -0.0002755246 0.003061384
-## [2,] 0.1120879 0.08791202 0.0004196683 -0.0001650925 0.001834370
+## [1,] 0.1120879 0.08791202 0.0007003811 -0.0002755200 0.003061364
+## [2,] 0.1120879 0.08791213 0.0004196679 -0.0001650916 0.001834363
 </code></pre>
 
 
-<hr><div align="center">[Package <em>metaSEM</em> version 0.9-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.3-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

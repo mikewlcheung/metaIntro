@@ -1,7 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Five Studies of Ten Correlation Matrices reported by Becker...</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="R.css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Five Studies of Ten Correlation Matrices reported by Becker...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
@@ -9,7 +8,7 @@
 <script>hljs.initHighlightingOnLoad();</script>
 </head><body>
 
-<table width="100%" summary="page for Becker94 {metaSEM}"><tr><td>Becker94 {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+<table width="100%" summary="page for Becker94 {metaSEM}"><tr><td>Becker94 {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
 <h2>Five Studies of Ten Correlation Matrices reported by Becker and
 Schram (1994)
@@ -34,11 +33,11 @@ reported by Becker and Schram (1994).
 
 <dl>
 <dt>data</dt><dd><p>A list of 10 correlation matrices. The
-variables are <EM>SAT (Math)</EM>, <EM>Spatial</EM> and <EM>SAT (Verbal)</EM></p>
+variables are <em>SAT (Math)</em>, <em>Spatial</em> and <em>SAT (Verbal)</em></p>
 </dd>
 <dt>n</dt><dd><p>A vector of sample sizes</p>
 </dd>
-<dt>gender</dt><dd><p><EM>Females</EM> or <EM>Males</EM> samples</p>
+<dt>gender</dt><dd><p><em>Females</em> or <em>Males</em> samples</p>
 </dd>
 </dl>
 
@@ -46,7 +45,7 @@ variables are <EM>SAT (Math)</EM>, <EM>Spatial</EM> and <EM>SAT (Verbal)</EM></p
 
 <h3>Source</h3>
 
-<p>Becker, B. J., &amp; Schram, C. M. (1994). Examining explanatory models through research synthesis. In H. Cooper &amp; L. V. Hedges (Eds.), <EM>The handbook of research synthesis</EM> (pp. 357-381). New York: Russell Sage Foundation.
+<p>Becker, B. J., &amp; Schram, C. M. (1994). Examining explanatory models through research synthesis. In H. Cooper &amp; L. V. Hedges (Eds.), <em>The handbook of research synthesis</em> (pp. 357-381). New York: Russell Sage Foundation.
 </p>
 
 
@@ -69,7 +68,7 @@ summary(fixed1)
 ## Coefficients:
 ##        Estimate Std.Error z value  Pr(&gt;|z|)    
 ## S[1,2] 0.379638  0.037484 10.1281 &lt; 2.2e-16 ***
-## S[1,3] 0.332255  0.040384  8.2274 2.220e-16 ***
+## S[1,3] 0.332255  0.040384  8.2273 2.220e-16 ***
 ## S[2,3] 0.175639  0.042743  4.1092 3.971e-05 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
@@ -128,8 +127,8 @@ summary(fixed2)
 ## Coefficients:
 ##                         Estimate Std.Error   lbound   ubound z value
 ## Spatial2Aptitude        0.331508        NA 0.257718 0.405183      NA
-## Verbal2Aptitude         0.274030        NA 0.196571 0.351545      NA
-## CorBetweenSpatialVerbal 0.175639        NA 0.091809 0.259479      NA
+## Verbal2Aptitude         0.274030        NA 0.196570 0.351545      NA
+## CorBetweenSpatialVerbal 0.175639        NA 0.091804 0.259474      NA
 ##                         Pr(&gt;|z|)
 ## Spatial2Aptitude              NA
 ## Verbal2Aptitude               NA
@@ -244,7 +243,7 @@ summary(cluster2)
 ##                         Estimate Std.Error  lbound  ubound z value
 ## Spatial2Aptitude         0.41027        NA 0.30512 0.51470      NA
 ## Verbal2Aptitude          0.26905        NA 0.15249 0.38586      NA
-## CorBetweenSpatialVerbal  0.17047        NA 0.04201 0.29893      NA
+## CorBetweenSpatialVerbal  0.17047        NA 0.04201 0.29892      NA
 ##                         Pr(&gt;|z|)
 ## Spatial2Aptitude              NA
 ## Verbal2Aptitude               NA
@@ -281,10 +280,10 @@ summary(cluster2)
 ## 
 ## 95% confidence intervals: Likelihood-based statistic
 ## Coefficients:
-##                         Estimate Std.Error  lbound  ubound z value
-## Spatial2Aptitude         0.26770        NA 0.16586 0.36951      NA
-## Verbal2Aptitude          0.27825        NA 0.17502 0.38151      NA
-## CorBetweenSpatialVerbal  0.17920        NA 0.06854 0.28988      NA
+##                         Estimate Std.Error   lbound   ubound z value
+## Spatial2Aptitude        0.267697        NA 0.165864 0.369508      NA
+## Verbal2Aptitude         0.278250        NA 0.175016 0.381510      NA
+## CorBetweenSpatialVerbal 0.179204        NA 0.068536 0.289871      NA
 ##                         Pr(&gt;|z|)
 ## Spatial2Aptitude              NA
 ## Verbal2Aptitude               NA
@@ -328,15 +327,15 @@ summary(gls1)
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
 ##            Estimate Std.Error   lbound   ubound z value  Pr(&gt;|z|)    
-## Intercept1 0.410544  0.046911 0.318600 0.502488  8.7515 &lt; 2.2e-16 ***
-## Intercept2 0.470995  0.044028 0.384703 0.557288 10.6977 &lt; 2.2e-16 ***
+## Intercept1 0.410544  0.046911 0.318600 0.502488  8.7516 &lt; 2.2e-16 ***
+## Intercept2 0.470995  0.044028 0.384702 0.557288 10.6977 &lt; 2.2e-16 ***
 ## Intercept3 0.252571  0.052958 0.148775 0.356368  4.7693 1.849e-06 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Q statistic on the homogeneity of effect sizes: 9.216149
+## Q statistic on the homogeneity of effect sizes: 9.216176
 ## Degrees of freedom of the Q statistic: 9
-## P value of the Q statistic: 0.4175659
+## P value of the Q statistic: 0.4175634
 ## 
 ## Heterogeneity indices (based on the estimated Tau2):
 ##                              Estimate
@@ -348,7 +347,7 @@ summary(gls1)
 ## Number of observed statistics: 12
 ## Number of estimated parameters: 3
 ## Degrees of freedom: 9
-## -2 log likelihood: -25.98567 
+## -2 log likelihood: -25.98566 
 ## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
 ## Other values indicate problems.)
 </code></pre>
@@ -399,5 +398,5 @@ summary(gls2)
 </code></pre>
 
 
-<hr><div align="center">[Package <em>metaSEM</em> version 0.9-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.3-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

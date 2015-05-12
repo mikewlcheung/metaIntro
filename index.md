@@ -190,7 +190,7 @@ meta(y = cbind(PD, AL), v = cbind(var_PD, cov_PD_AL, var_AL),
 Coefficients:
              Estimate  Std.Error     lbound     ubound z value  Pr(>|z|)
 Intercept1  0.3448392  0.0536312  0.2397239  0.4499544  6.4298 1.278e-10
-Intercept2 -0.3379381  0.0812480 -0.4971812 -0.1786951 -4.1593 3.192e-05
+Intercept2 -0.3379381  0.0812479 -0.4971812 -0.1786951 -4.1593 3.192e-05
 Tau2_1_1    0.0070020  0.0090497 -0.0107351  0.0247391  0.7737    0.4391
 Tau2_2_1    0.0094607  0.0099698 -0.0100797  0.0290010  0.9489    0.3427
 Tau2_2_2    0.0261445  0.0177409 -0.0086270  0.0609161  1.4737    0.1406
@@ -306,10 +306,10 @@ meta(y = cbind(PD, AL), v = cbind(var_PD, cov_PD_AL, var_AL),
 95% confidence intervals: z statistic approximation
 Coefficients:
              Estimate  Std.Error     lbound     ubound z value  Pr(>|z|)
-Intercept1  0.3440000  0.0857659  0.1759019  0.5120981  4.0109 6.048e-05
-Intercept2 -0.2918176  0.1312797 -0.5491210 -0.0345141 -2.2229   0.02622
-Slope1_1    0.0063540  0.1078235 -0.2049762  0.2176842  0.0589   0.95301
-Slope2_1   -0.0705888  0.1620966 -0.3882923  0.2471147 -0.4355   0.66322
+Intercept1  0.3440001  0.0857659  0.1759021  0.5120982  4.0109 6.048e-05
+Intercept2 -0.2918176  0.1312796 -0.5491209 -0.0345143 -2.2229   0.02622
+Slope1_1    0.0063540  0.1078235 -0.2049762  0.2176841  0.0589   0.95301
+Slope2_1   -0.0705888  0.1620965 -0.3882921  0.2471145 -0.4355   0.66322
 Tau2_1_1    0.0080405  0.0101206 -0.0117955  0.0278766  0.7945   0.42692
 Tau2_2_1    0.0093413  0.0105515 -0.0113392  0.0300218  0.8853   0.37599
 Tau2_2_2    0.0250135  0.0170788 -0.0084603  0.0584873  1.4646   0.14303
@@ -399,8 +399,14 @@ sessionInfo()
 ```
 
 ```
-R version 3.1.2 (2014-10-31)
+Warning in readLines("/etc/os-release"): incomplete final line found on '/
+etc/os-release'
+```
+
+```
+R version 3.2.0 (2015-04-16)
 Platform: x86_64-unknown-linux-gnu (64-bit)
+Running under: Linux Mint LMDE
 
 locale:
  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
@@ -415,11 +421,11 @@ attached base packages:
 [8] base     
 
 other attached packages:
-[1] metafor_1.9-5     metaSEM_0.9-2     OpenMx_2.0.1-4157 MASS_7.3-39      
-[5] digest_0.6.8      knitr_1.9         rmarkdown_0.5.3.1
+[1] metafor_1.9-6   Matrix_1.2-0    metaSEM_0.9.3-1 OpenMx_2.1.0   
+[5] MASS_7.3-40     digest_0.6.8    knitr_1.10.5    rmarkdown_0.6.1
 
 loaded via a namespace (and not attached):
-[1] evaluate_0.5.5  formatR_1.0     grid_3.1.2      htmltools_0.2.6
-[5] lattice_0.20-30 Matrix_1.1-5    stringr_0.6.2   tools_3.1.2    
-[9] yaml_2.1.13    
+ [1] lattice_0.20-31 grid_3.2.0      formatR_1.2     magrittr_1.5   
+ [5] evaluate_0.7    stringi_0.4-1   tools_3.2.0     stringr_1.0.0  
+ [9] yaml_2.1.13     htmltools_0.2.6
 ```

@@ -1,7 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Five Published Trails from Berkey et al. (1998)</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="R.css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Five Published Trails from Berkey et al. (1998)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
@@ -9,7 +8,7 @@
 <script>hljs.initHighlightingOnLoad();</script>
 </head><body>
 
-<table width="100%" summary="page for Berkey98 {metaSEM}"><tr><td>Berkey98 {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+<table width="100%" summary="page for Berkey98 {metaSEM}"><tr><td>Berkey98 {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
 <h2>Five Published Trails from Berkey et al. (1998)</h2>
 
@@ -37,9 +36,9 @@ for medium-severity periodontal disease, one year after treatment.
 </dd>
 <dt>no_of_patients</dt><dd><p>Number of patients</p>
 </dd>
-<dt>PD</dt><dd><p>Patient improvements (mm) in <EM>probing depth</EM></p>
+<dt>PD</dt><dd><p>Patient improvements (mm) in <em>probing depth</em></p>
 </dd>
-<dt>AL</dt><dd><p>Patient improvements (mm) in <EM>attachment level</EM></p>
+<dt>AL</dt><dd><p>Patient improvements (mm) in <em>attachment level</em></p>
 </dd>
 <dt>var_PD</dt><dd><p>Sampling variance of PD</p>
 </dd>
@@ -53,7 +52,7 @@ for medium-severity periodontal disease, one year after treatment.
 
 <h3>Source</h3>
 
-<p>Berkey, C. S., Hoaglin, D. C., Antczak-Bouckoms, A., Mosteller, F, &amp; Colditz, G. A. (1998). Meta-analysis of multiple outcomes by regression with random effects. <EM>Statistics in Medicine</EM>, <B>17</B>, 2537-2550.
+<p>Berkey, C. S., Hoaglin, D. C., Antczak-Bouckoms, A., Mosteller, F, &amp; Colditz, G. A. (1998). Meta-analysis of multiple outcomes by regression with random effects. <em>Statistics in Medicine</em>, <b>17</b>, 2537-2550.
 </p>
 
 
@@ -76,25 +75,25 @@ summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
 ## 
 ## 95% confidence intervals: Likelihood-based statistic
 ## Coefficients:
-##              Estimate Std.Error lbound ubound z value Pr(&gt;|z|)
-## Intercept1  0.3448392        NA     NA     NA      NA       NA
-## Intercept2 -0.3379381        NA     NA     NA      NA       NA
-## Tau2_1_1    0.0070020        NA     NA     NA      NA       NA
-## Tau2_2_1    0.0094607        NA     NA     NA      NA       NA
-## Tau2_2_2    0.0261445        NA     NA     NA      NA       NA
+##              Estimate Std.Error     lbound     ubound z value Pr(&gt;|z|)
+## Intercept1  0.3448392        NA  0.3448392  0.3449392      NA       NA
+## Intercept2 -0.3379381        NA -0.3379381 -0.3378381      NA       NA
+## Tau2_1_1    0.0070020        NA  0.0070020  0.0071020      NA       NA
+## Tau2_2_1    0.0094607        NA  0.0094607  0.0095607      NA       NA
+## Tau2_2_2    0.0261445        NA  0.0261445  0.0262445      NA       NA
 ## 
 ## Q statistic on the homogeneity of effect sizes: 128.2267
 ## Degrees of freedom of the Q statistic: 8
 ## P value of the Q statistic: 0
 ## 
 ## Heterogeneity indices (I2) and their 95% likelihood-based CIs:
-##                                  lbound Estimate ubound
-## Intercept1: I2 (Q statistic)         NA  0.60206     NA
-## Intercept2: I2 (Q statistic)         NA  0.92498     NA
-## Intercept1: I2 (harmonic mean)       NA  0.62642     NA
-## Intercept2: I2 (harmonic mean)       NA  0.93593     NA
-## Intercept1: I2 (arithmetic mean)     NA  0.51478     NA
-## Intercept2: I2 (arithmetic mean)     NA  0.75771     NA
+##                                   lbound Estimate ubound
+## Intercept1: I2 (Q statistic)     0.60206  0.60206 0.6055
+## Intercept2: I2 (Q statistic)     0.92498  0.92498 0.9252
+## Intercept1: I2 (harmonic mean)   0.62642  0.62642 0.6297
+## Intercept2: I2 (harmonic mean)   0.93593  0.93593 0.9362
+## Intercept1: I2 (arithmetic mean) 0.51478  0.51478 0.5183
+## Intercept2: I2 (arithmetic mean) 0.75771  0.75771 0.7584
 ## 
 ## Number of studies (or clusters): 5
 ## Number of observed statistics: 10
@@ -118,10 +117,10 @@ summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
 ##              Estimate  Std.Error     lbound     ubound z value  Pr(&gt;|z|)
-## Intercept1  0.3440000  0.0857659  0.1759019  0.5120981  4.0109 6.048e-05
-## Intercept2 -0.2918176  0.1312797 -0.5491210 -0.0345141 -2.2229   0.02622
-## Slope1_1    0.0063540  0.1078235 -0.2049762  0.2176842  0.0589   0.95301
-## Slope2_1   -0.0705888  0.1620966 -0.3882923  0.2471147 -0.4355   0.66322
+## Intercept1  0.3440001  0.0857659  0.1759021  0.5120982  4.0109 6.048e-05
+## Intercept2 -0.2918176  0.1312796 -0.5491209 -0.0345143 -2.2229   0.02622
+## Slope1_1    0.0063540  0.1078235 -0.2049762  0.2176841  0.0589   0.95301
+## Slope2_1   -0.0705888  0.1620965 -0.3882921  0.2471145 -0.4355   0.66322
 ## Tau2_1_1    0.0080405  0.0101206 -0.0117955  0.0278766  0.7945   0.42692
 ## Tau2_2_1    0.0093413  0.0105515 -0.0113392  0.0300218  0.8853   0.37599
 ## Tau2_2_2    0.0250135  0.0170788 -0.0084603  0.0584873  1.4646   0.14303
@@ -171,8 +170,8 @@ summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
 ##              Estimate  Std.Error     lbound     ubound z value  Pr(&gt;|z|)
-## Intercept1  0.3437612  0.0849828  0.1771979  0.5103245  4.0451 5.231e-05
-## Intercept2 -0.3390010  0.1041005 -0.5430344 -0.1349677 -3.2565  0.001128
+## Intercept1  0.3437612  0.0849829  0.1771979  0.5103245  4.0451 5.231e-05
+## Intercept2 -0.3390010  0.1041006 -0.5430344 -0.1349677 -3.2565  0.001128
 ## Eq_slope    0.0016748  0.1024443 -0.1991123  0.2024619  0.0163  0.986956
 ## Tau2_1_1    0.0070474  0.0094638 -0.0115013  0.0255962  0.7447  0.456471
 ## Tau2_2_1    0.0095165  0.0105668 -0.0111940  0.0302269  0.9006  0.367800
@@ -220,16 +219,16 @@ summary( reml(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL,var_AL),
 ## 
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
-##           Estimate Std.Error    lbound    ubound z value Pr(&gt;|z|)
-## Tau2_1_1  0.011733  0.013645 -0.015011  0.038477  0.8599   0.3899
-## Tau2_2_1  0.011916  0.014416 -0.016340  0.040172  0.8266   0.4085
-## Tau2_2_2  0.032651  0.024402 -0.015176  0.080479  1.3380   0.1809
+##           Estimate Std.Error lbound ubound z value Pr(&gt;|z|)
+## Tau2_1_1  0.013244        NA     NA     NA      NA       NA
+## Tau2_2_1 -0.082411        NA     NA     NA      NA       NA
+## Tau2_2_2  0.367988        NA     NA     NA      NA       NA
 ## 
 ## Number of studies (or clusters): 5
 ## Number of observed statistics: 8
 ## Number of estimated parameters: 3
 ## Degrees of freedom: 5
-## -2 log likelihood: -18.86768 
+## -2 log likelihood: -37.05175 
 ## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
 ## Other values indicate problems.)
 </code></pre>
@@ -246,20 +245,20 @@ summary( reml(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
 ## 
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
-##           Estimate Std.Error    lbound    ubound z value Pr(&gt;|z|)
-## Tau2_1_1  0.020447  0.022523 -0.023697  0.064590  0.9078   0.3640
-## Tau2_2_1  0.016226  0.022696 -0.028258  0.060710  0.7149   0.4747
-## Tau2_2_2  0.040857  0.034707 -0.027168  0.108882  1.1772   0.2391
+##          Estimate Std.Error lbound ubound z value Pr(&gt;|z|)
+## Tau2_1_1 0.038016        NA     NA     NA      NA       NA
+## Tau2_2_1 0.151046        NA     NA     NA      NA       NA
+## Tau2_2_2 0.512632        NA     NA     NA      NA       NA
 ## 
 ## Number of studies (or clusters): 5
 ## Number of observed statistics: 6
 ## Number of estimated parameters: 3
 ## Degrees of freedom: 3
-## -2 log likelihood: -11.44636 
+## -2 log likelihood: -52.86918 
 ## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
 ## Other values indicate problems.)
 </code></pre>
 
 
-<hr><div align="center">[Package <em>metaSEM</em> version 0.9-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.3-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

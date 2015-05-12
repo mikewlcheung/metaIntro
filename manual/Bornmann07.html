@@ -1,7 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: A Dataset from Bornmann et al. (2007)</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="R.css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: A Dataset from Bornmann et al. (2007)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
@@ -9,7 +8,7 @@
 <script>hljs.initHighlightingOnLoad();</script>
 </head><body>
 
-<table width="100%" summary="page for Bornmann07 {metaSEM}"><tr><td>Bornmann07 {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+<table width="100%" summary="page for Bornmann07 {metaSEM}"><tr><td>Bornmann07 {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
 <h2>A Dataset from Bornmann et al. (2007)</h2>
 
@@ -42,13 +41,13 @@
 </dd>
 <dt>Year</dt><dd><p>Year of publication</p>
 </dd>
-<dt>Type</dt><dd><p>Type of proposal: either <B>Grant</B> or <B>Fellowship</B></p>
+<dt>Type</dt><dd><p>Type of proposal: either <b>Grant</b> or <b>Fellowship</b></p>
 </dd>
-<dt>Discipline</dt><dd><p>Discipline of proposal: either <B>Physical sciences</B>, <B>Life sciences/biology</B>, 
-<B>Social sciences/humanities</B> or <B>Multidisciplinary</B>)</p>
+<dt>Discipline</dt><dd><p>Discipline of proposal: either <b>Physical sciences</b>, <b>Life sciences/biology</b>, 
+<b>Social sciences/humanities</b> or <b>Multidisciplinary</b>)</p>
 </dd>
-<dt>Country</dt><dd><p>Country of proposal: either <B>United States</B>,
-<B>Canada</B>, <B>Australia</B>, <B>United Kingdom</B> or <B>Europe</B></p>
+<dt>Country</dt><dd><p>Country of proposal: either <b>United States</b>,
+<b>Canada</b>, <b>Australia</b>, <b>United Kingdom</b> or <b>Europe</b></p>
 </dd>
 </dl>
 
@@ -56,15 +55,15 @@
 
 <h3>Source</h3>
 
-<p>Bornmann, L., Mutz, R., &amp; Daniel, H.-D. (2007). Gender differences in grant peer review: A meta-analysis. <EM>Journal of Informetrics</EM>, <B>1(3)</B>, 226-238. doi:10.1016/j.joi.2007.03.001
+<p>Bornmann, L., Mutz, R., &amp; Daniel, H.-D. (2007). Gender differences in grant peer review: A meta-analysis. <em>Journal of Informetrics</em>, <b>1(3)</b>, 226-238. doi:10.1016/j.joi.2007.03.001
 </p>
 
 
 <h3>References</h3>
 
-<p>Cheung, M. W.-L. (2014). Modeling dependent effect sizes with three-level meta-analyses: A structural equation modeling approach. <EM>Psychological Methods</EM>, <B>19</B>, 211-229.
+<p>Cheung, M. W.-L. (2014). Modeling dependent effect sizes with three-level meta-analyses: A structural equation modeling approach. <em>Psychological Methods</em>, <b>19</b>, 211-229.
 </p>
-<p>Marsh, H. W., Bornmann, L., Mutz, R., Daniel, H.-D., &amp; O'Mara, A. (2009). Gender Effects in the Peer Reviews of Grant Proposals: A Comprehensive Meta-Analysis Comparing Traditional and Multilevel Approaches. <EM>Review of Educational Research</EM>, <B>79(3)</B>, 1290-1326. doi:10.3102/0034654309334143
+<p>Marsh, H. W., Bornmann, L., Mutz, R., Daniel, H.-D., &amp; O'Mara, A. (2009). Gender Effects in the Peer Reviews of Grant Proposals: A Comprehensive Meta-Analysis Comparing Traditional and Multilevel Approaches. <em>Review of Educational Research</em>, <b>79(3)</b>, 1290-1326. doi:10.3102/0034654309334143
 </p>
 
 
@@ -292,7 +291,7 @@ summary(meta3X(y=logOR, v=v, cluster=Cluster, x2=Type_MCAR, data=my.df))
 ## Coefficients:
 ##             Estimate  Std.Error     lbound     ubound z value Pr(&gt;|z|)   
 ## Intercept -0.0106318  0.0397685 -0.0885766  0.0673131 -0.2673 0.789207   
-## SlopeX2_1 -0.1753249  0.0582619 -0.2895162 -0.0611336 -3.0093 0.002619 **
+## SlopeX2_1 -0.1753249  0.0582619 -0.2895161 -0.0611337 -3.0093 0.002619 **
 ## Tau2_2     0.0030338  0.0026839 -0.0022266  0.0082941  1.1304 0.258324   
 ## Tau2_3     0.0036839  0.0042817 -0.0047082  0.0120759  0.8604 0.389586   
 ## ---
@@ -332,10 +331,10 @@ summary(meta3X(y=logOR, v=v, cluster=Cluster, x2=Type_MAR, av2=Year, data=my.df)
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
 ##             Estimate  Std.Error     lbound     ubound z value Pr(&gt;|z|)   
-## Intercept -0.0264057  0.0572041 -0.1385237  0.0857122 -0.4616 0.644364   
-## SlopeX2_1 -0.2003999  0.0691082 -0.3358495 -0.0649503 -2.8998 0.003734 **
-## Tau2_2     0.0029970  0.0022371 -0.0013877  0.0073816  1.3397 0.180358   
-## Tau2_3     0.0030212  0.0032463 -0.0033414  0.0093838  0.9307 0.352029   
+## Intercept -0.0264057  0.0571975 -0.1385108  0.0856994 -0.4617 0.644326   
+## SlopeX2_1 -0.2003999  0.0691035 -0.3358402 -0.0649596 -2.9000 0.003732 **
+## Tau2_2     0.0029970  0.0022371 -0.0013877  0.0073816  1.3397 0.180357   
+## Tau2_3     0.0030212  0.0032462 -0.0033412  0.0093836  0.9307 0.352012   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -355,5 +354,5 @@ summary(meta3X(y=logOR, v=v, cluster=Cluster, x2=Type_MAR, av2=Year, data=my.df)
 </code></pre>
 
 
-<hr><div align="center">[Package <em>metaSEM</em> version 0.9-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.3-1 <a href="00Index.html">Index</a>]</div>
 </body></html>

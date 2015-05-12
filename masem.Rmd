@@ -123,27 +123,28 @@ The pooled correlation matrix for each cluster can be extracted by the use of th
 coef(cluster1)
 ```
 
-### Stage 2 analysis
+<!-- ### Stage 2 analysis
 The goodness-of-fit indices of the Stage 2 analysis for the older and younger participants were $\chi^2(4, N=3,658) = 21.92, p < .001$, CFI=0.9921, RMSEA=0.0350 and SRMR=0.0160, and $\chi^2(4, N=838) = 144.87, p < .001$, CFI=0.9427, RMSEA=0.2051 and SRMR=0.1051, respectively. 
 ```{r}
-cluster2 <- tssem2(cluster1, Amatrix=A1, Smatrix=S1, Fmatrix=F1, 
-                   diag.constraints=TRUE, intervals.type="LB")
-#### Please note that the estimates for the younger participants are problematic.
-summary(cluster2)
+# cluster2 <- tssem2(cluster1, Amatrix=A1, Smatrix=S1, Fmatrix=F1, 
+#                    diag.constraints=TRUE, intervals.type="LB")
+# #### Please note that the estimates for the younger participants are problematic.
+# summary(cluster2)
 ```
 
 We may also plot the parameter estimates of these two groups.
 ```{r}
-## Convert the model to semPlotModel object with 2 plots
-my.plots <- lapply(X=cluster2, FUN=meta2semPlot, latNames=c("Alpha","Beta"))
-
-## Setup two plots
-layout(t(1:2))
-semPaths(my.plots[[1]], whatLabels="est", nCharNodes=10, color="green")
-title("Younger") 
-semPaths(my.plots[[2]], whatLabels="est", nCharNodes=10, color="yellow")
-title("Older")
+# ## Convert the model to semPlotModel object with 2 plots
+# my.plots <- lapply(X=cluster2, FUN=meta2semPlot, latNames=c("Alpha","Beta"))
+# 
+# ## Setup two plots
+# layout(t(1:2))
+# semPaths(my.plots[[1]], whatLabels="est", nCharNodes=10, color="green")
+# title("Younger") 
+# semPaths(my.plots[[2]], whatLabels="est", nCharNodes=10, color="yellow")
+# title("Older")
 ```
+-->
 
 ## Random-effects TSSEM
 ### Stage 1 analysis
@@ -174,6 +175,8 @@ summary(random2)
 
 We may also plot the models with the labels or the parameter estimates.
 ```{r}
+library(semPlot)
+
 ## Convert the model to semPlotModel object
 my.plot <- meta2semPlot(random2, latNames=c("Alpha","Beta"))
 

@@ -1,7 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html><head><title>R: Rerun models via mxRun()</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="R.css">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Rerun models via mxRun()</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
@@ -9,7 +8,7 @@
 <script>hljs.initHighlightingOnLoad();</script>
 </head><body>
 
-<table width="100%" summary="page for rerun {metaSEM}"><tr><td>rerun {metaSEM}</td><td align="right">R Documentation</td></tr></table>
+<table width="100%" summary="page for rerun {metaSEM}"><tr><td>rerun {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
 <h2>Rerun models via mxRun()
 </h2>
@@ -55,10 +54,14 @@ class <code>tssem1REM</code>, class <code>wls</code>, class <code>meta</code> or
 random1_rerun &lt;- rerun(random1)
 </code></pre>
 
-<pre><code>## Running TSSEM1 (Random Effects Model) Analysis of Correlation Matrix
-</code></pre>
-
-<pre><code>## [1] &quot;0.394645680026419,0.440093971681826,0.0545422017732456,0.0986678567925706,0.429661581883159,0.128512091319704,0.205256352625568,0.239935575911159,0.18910263476435,0.444133061730298,0.037207305356293,0.0203053772160111,0.0482195524961822,0.0246105358006469,0.0187247947539412,0.0182562022178481,0.029423904966572,0.00965123030135922,0.0209334993262044,0.011150578829812&quot;
+<pre><code>## 
+## Solution found
+## 
+## Refit using best inits and estimate confidence intervals
+## 
+## 
+## Start values from best fit:
+## 0.39464544319512,0.44009359350163,0.0545416566503648,0.0986675658733708,0.429661248387427,0.128511514453086,0.205256176764094,0.239935131871635,0.189102327604401,0.444132840665751,0.0372072932246182,0.0203054135338118,0.0482195123365732,0.0246104439734877,0.0187248679548507,0.0182562147943488,0.0294239341828409,0.00965114995746296,0.0209335559207332,0.0111505692346045
 </code></pre>
 
 <pre><code class="r">summary(random1_rerun)
@@ -76,28 +79,28 @@ random1_rerun &lt;- rerun(random1)
 ##                Estimate   Std.Error      lbound      ubound z value
 ## Intercept1   3.9465e-01  5.4223e-02  2.8837e-01  5.0092e-01  7.2782
 ## Intercept2   4.4009e-01  4.1258e-02  3.5923e-01  5.2096e-01 10.6668
-## Intercept3   5.4542e-02  6.1716e-02 -6.6418e-02  1.7550e-01  0.8838
-## Intercept4   9.8668e-02  4.6219e-02  8.0806e-03  1.8926e-01  2.1348
+## Intercept3   5.4542e-02  6.1716e-02 -6.6419e-02  1.7550e-01  0.8838
+## Intercept4   9.8668e-02  4.6219e-02  8.0805e-03  1.8925e-01  2.1348
 ## Intercept5   4.2966e-01  4.0156e-02  3.5096e-01  5.0836e-01 10.6999
-## Intercept6   1.2851e-01  4.0816e-02  4.8514e-02  2.0851e-01  3.1486
+## Intercept6   1.2851e-01  4.0816e-02  4.8513e-02  2.0851e-01  3.1485
 ## Intercept7   2.0526e-01  4.9591e-02  1.0806e-01  3.0245e-01  4.1390
-## Intercept8   2.3994e-01  3.1924e-02  1.7737e-01  3.0251e-01  7.5158
+## Intercept8   2.3994e-01  3.1924e-02  1.7737e-01  3.0250e-01  7.5159
 ## Intercept9   1.8910e-01  4.3014e-02  1.0480e-01  2.7341e-01  4.3963
 ## Intercept10  4.4413e-01  3.2547e-02  3.8034e-01  5.0792e-01 13.6460
 ## Tau2_1_1     3.7207e-02  1.5000e-02  7.8079e-03  6.6607e-02  2.4805
 ## Tau2_2_2     2.0305e-02  8.4348e-03  3.7735e-03  3.6837e-02  2.4073
 ## Tau2_3_3     4.8220e-02  1.9723e-02  9.5631e-03  8.6876e-02  2.4448
-## Tau2_4_4     2.4611e-02  1.0624e-02  3.7872e-03  4.5434e-02  2.3164
-## Tau2_5_5     1.8725e-02  8.2474e-03  2.5602e-03  3.4889e-02  2.2704
+## Tau2_4_4     2.4610e-02  1.0624e-02  3.7872e-03  4.5434e-02  2.3164
+## Tau2_5_5     1.8725e-02  8.2474e-03  2.5602e-03  3.4890e-02  2.2704
 ## Tau2_6_6     1.8256e-02  8.7890e-03  1.0302e-03  3.5482e-02  2.0772
-## Tau2_7_7     2.9424e-02  1.2263e-02  5.3893e-03  5.3458e-02  2.3995
-## Tau2_8_8     9.6512e-03  4.8825e-03  8.1717e-05  1.9221e-02  1.9767
-## Tau2_9_9     2.0933e-02  9.1280e-03  3.0430e-03  3.8824e-02  2.2933
+## Tau2_7_7     2.9424e-02  1.2263e-02  5.3893e-03  5.3459e-02  2.3995
+## Tau2_8_8     9.6512e-03  4.8825e-03  8.1698e-05  1.9221e-02  1.9767
+## Tau2_9_9     2.0934e-02  9.1280e-03  3.0430e-03  3.8824e-02  2.2933
 ## Tau2_10_10   1.1151e-02  5.0467e-03  1.2592e-03  2.1042e-02  2.2095
 ##              Pr(&gt;|z|)    
 ## Intercept1  3.384e-13 ***
 ## Intercept2  &lt; 2.2e-16 ***
-## Intercept3   0.376823    
+## Intercept3   0.376827    
 ## Intercept4   0.032778 *  
 ## Intercept5  &lt; 2.2e-16 ***
 ## Intercept6   0.001641 ** 
@@ -112,13 +115,13 @@ random1_rerun &lt;- rerun(random1)
 ## Tau2_5_5     0.023184 *  
 ## Tau2_6_6     0.037785 *  
 ## Tau2_7_7     0.016420 *  
-## Tau2_8_8     0.048075 *  
+## Tau2_8_8     0.048076 *  
 ## Tau2_9_9     0.021829 *  
-## Tau2_10_10   0.027142 *  
+## Tau2_10_10   0.027143 *  
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Q statistic on the homogeneity of effect sizes: 2381.005
+## Q statistic on the homogeneity of effect sizes: 2381.026
 ## Degrees of freedom of the Q statistic: 130
 ## P value of the Q statistic: 0
 ## 
@@ -145,5 +148,5 @@ random1_rerun &lt;- rerun(random1)
 </code></pre>
 
 
-<hr><div align="center">[Package <em>metaSEM</em> version 0.9-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.3-1 <a href="00Index.html">Index</a>]</div>
 </body></html>
