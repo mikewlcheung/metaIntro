@@ -514,7 +514,7 @@ Cheung, M.W.-L. (2009). Constructing approximate confidence intervals for parame
 
 Cheung, M.W.-L. (2014). Modeling dependent effect sizes with three-level meta-analyses: A structural equation modeling approach. _Psychological Methods_, _19_, 211-229.
 
-Cheung, M. W.-L. (2015). metaSEM: an R package for meta-analysis using structural equation modeling. _Frontiers in Psychology_, 5(1521). http://doi.org/10.3389/fpsyg.2014.01521
+Cheung, M.W.-L. (2015). metaSEM: an R package for meta-analysis using structural equation modeling. _Frontiers in Psychology_, 5(1521). http://doi.org/10.3389/fpsyg.2014.01521
 
 Cooper, H., Valentine, J.C., Charlton, K., & Melson, A. (2003). The effects of modified school calendars on student achievement and on school and community attitudes. _Review of Educational Research_, _73(1)_, 1 –52. 
 

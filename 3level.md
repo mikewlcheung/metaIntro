@@ -1142,12 +1142,12 @@ Coefficients:
              Estimate   Std.Error      lbound      ubound z value
 Intercept  6.8563e-02  1.8630e-02  3.2049e-02  1.0508e-01  3.6802
 Slope_1   -1.6885e-01  4.1545e-02 -2.5028e-01 -8.7425e-02 -4.0643
-Slope_2    2.5329e-01  1.5814e-01 -5.6669e-02  5.6324e-01  1.6016
+Slope_2    2.5329e-01  1.5814e-01 -5.6670e-02  5.6324e-01  1.6016
 Slope_3    1.2689e-01  1.4774e-01 -1.6268e-01  4.1646e-01  0.8589
 Slope_4   -8.3549e-03  1.5796e-01 -3.1795e-01  3.0124e-01 -0.0529
-Slope_5   -1.1530e-01  1.1146e-01 -3.3377e-01  1.0317e-01 -1.0344
+Slope_5   -1.1530e-01  1.1147e-01 -3.3377e-01  1.0317e-01 -1.0344
 Slope_6   -2.6412e-01  1.6402e-01 -5.8559e-01  5.7343e-02 -1.6103
-Slope_7   -2.9029e-01  1.4859e-01 -5.8152e-01  9.5150e-04 -1.9536
+Slope_7   -2.9029e-01  1.4859e-01 -5.8152e-01  9.5187e-04 -1.9536
 Slope_8   -1.5975e-01  1.6285e-01 -4.7893e-01  1.5943e-01 -0.9810
 Tau2_2     2.1010e-03  1.2925e-03 -4.3226e-04  4.6342e-03  1.6255
 Tau2_3     1.0000e-10          NA          NA          NA      NA
@@ -1160,7 +1160,7 @@ Slope_4    0.957818
 Slope_5    0.300948    
 Slope_6    0.107323    
 Slope_7    0.050753 .  
-Slope_8    0.326608    
+Slope_8    0.326609    
 Tau2_2     0.104051    
 Tau2_3           NA    
 ---
@@ -1181,7 +1181,7 @@ Number of observed statistics: 66
 Number of estimated parameters: 11
 Degrees of freedom: 55
 -2 log likelihood: -1.645211 
-OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
+OpenMx status1: 6 ("0" or "1": The optimization is considered fine.
 Other values indicate problems.)
 ```
 
@@ -1557,8 +1557,8 @@ Some of your fit indices are missing.
   To get them, fit saturated and independence models, and include them with
   summary(yourModel, refModels=...) 
   See help(mxRefModels) for an easy way of doing this in many cases. 
-timestamp: 2015-05-12 14:22:46 
-Wall clock time (HH:MM:SS.hh): 00:00:00.07 
+timestamp: 2015-05-22 22:32:02 
+Wall clock time (HH:MM:SS.hh): 00:00:00.10 
 optimizer:  NPSOL 
 OpenMx version number: 2.1.0 
 Need help?  See help(mxSummary) 
@@ -1621,7 +1621,7 @@ Some of your fit indices are missing.
   To get them, fit saturated and independence models, and include them with
   summary(yourModel, refModels=...) 
   See help(mxRefModels) for an easy way of doing this in many cases. 
-timestamp: 2015-05-12 14:22:46 
+timestamp: 2015-05-22 22:32:02 
 Wall clock time (HH:MM:SS.hh): 00:00:00.09 
 optimizer:  NPSOL 
 OpenMx version number: 2.1.0 
@@ -1637,7 +1637,7 @@ Cheung, M.W.-L. (2009). Constructing approximate confidence intervals for parame
 
 Cheung, M.W.-L. (2014). Modeling dependent effect sizes with three-level meta-analyses: A structural equation modeling approach. _Psychological Methods_, _19_, 211-229.
 
-Cheung, M. W.-L. (2015). metaSEM: an R package for meta-analysis using structural equation modeling. _Frontiers in Psychology_, 5(1521). http://doi.org/10.3389/fpsyg.2014.01521
+Cheung, M.W.-L. (2015). metaSEM: an R package for meta-analysis using structural equation modeling. _Frontiers in Psychology_, 5(1521). http://doi.org/10.3389/fpsyg.2014.01521
 
 Cooper, H., Valentine, J.C., Charlton, K., & Melson, A. (2003). The effects of modified school calendars on student achievement and on school and community attitudes. _Review of Educational Research_, _73(1)_, 1 –52. 
 

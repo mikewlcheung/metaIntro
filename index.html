@@ -63,7 +63,7 @@ img {
 <div id="header">
 <h1 class="title">The metaSEM package</h1>
 <h4 class="author"><em>Mike Cheung</em></h4>
-<h4 class="date"><em>12 May, 2015</em></h4>
+<h4 class="date"><em>22 May, 2015</em></h4>
 </div>
 
 <div id="TOC">
@@ -85,6 +85,7 @@ img {
 <li><a href="#installation-and-help">Installation and help</a><ul>
 <li><a href="#windows-platform">Windows platform</a></li>
 <li><a href="#linux-and-mac-os-x-platforms">Linux and Mac OS X platforms</a></li>
+<li><a href="#potential-issues-with-openmx-2.2.2-available-at-cran">Potential issues with OpenMx 2.2.2 available at CRAN</a></li>
 <li><a href="#help">Help</a></li>
 </ul></li>
 </ul>
@@ -399,7 +400,7 @@ Other values indicate problems.)</code></pre>
 <div id="installation-and-help" class="section level1">
 <h1>Installation and help</h1>
 <ul>
-<li>The current version is 0.9-2. There are several methods to install the <code>metaSEM</code> package. If you have already installed the developmental tools and the <code>devtools</code> package. You may install the <code>metaSEM</code> package from the GitHub. Alternatively, you may download the binary package for Windows platform and the source for Linxu and Mac OS X platforms.</li>
+<li>The current version is 0.9.3. There are several methods to install the <code>metaSEM</code> package. If you have already installed the developmental tools and the <code>devtools</code> package. You may install the <code>metaSEM</code> package from the GitHub. Alternatively, you may download the binary package for Windows platform and the source for Linxu and Mac OS X platforms.</li>
 <li>First of all, you need <a href="http://www.r-project.org/">R</a> to run it. Since <code>metaSEM</code> depends on <a href="http://openmx.psyc.virginia.edu/">OpenMx</a>, you may also need to install <code>OpenMx</code> by run the following command inside an <code>R</code> session:</li>
 </ul>
 <pre><code>## Install OpenMx
@@ -412,20 +413,34 @@ install_github(&quot;mikewlcheung/metasem&quot;)</code></pre>
 <div id="windows-platform" class="section level2">
 <h2>Windows platform</h2>
 <ul>
-<li>Download the Windows <a href="https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9-2.zip">Binary for Windows</a> package of the <code>metaSEM</code>. Please note that d: in Windows is represented by either d:/ or d:\ in <code>R</code>. If the file is saved at d:\, run the following command inside an <code>R</code> session:</li>
+<li>Download the Windows <a href="https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9.3-1.zip">Binary for Windows</a> package of the <code>metaSEM</code>. Please note that d: in Windows is represented by either d:/ or d:\ in <code>R</code>. If the file is saved at d:\, run the following command inside an <code>R</code> session:</li>
 </ul>
-<pre><code>install.packages(pkgs=&quot;d:/metaSEM_0.9-2.zip&quot;, repos=NULL)</code></pre>
+<pre><code>install.packages(pkgs=&quot;d:/metaSEM_0.9.3-1.zip&quot;, repos=NULL)</code></pre>
 </div>
 <div id="linux-and-mac-os-x-platforms" class="section level2">
 <h2>Linux and Mac OS X platforms</h2>
 <ul>
-<li>Download the <a href="https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9-2.tar.gz">Source</a> package of <code>metaSEM</code>. If the file is saved at /home/mike/, run the following command inside an <code>R</code> session:</li>
+<li>Download the <a href="https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9.3-1.tar.gz">Source</a> package of <code>metaSEM</code>. If the file is saved at /home/mike/, run the following command inside an <code>R</code> session:</li>
 </ul>
-<pre><code>install.packages(pkgs=&quot;/home/mike/metaSEM_0.9-2.tar.gz&quot;, repos=NULL, type=&quot;source&quot;)</code></pre>
+<pre><code>install.packages(pkgs=&quot;/home/mike/metaSEM_0.9.3-1.tar.gz&quot;, repos=NULL, type=&quot;source&quot;)</code></pre>
 <ul>
 <li>Alternatively, the <code>metaSEM</code> package may also be installed in the terminal by using:</li>
 </ul>
-<pre><code>R CMD INSTALL metaSEM_0.9-2.tar.gz</code></pre>
+<pre><code>R CMD INSTALL metaSEM_0.9.3-1.tar.gz</code></pre>
+</div>
+<div id="potential-issues-with-openmx-2.2.2-available-at-cran" class="section level2">
+<h2>Potential issues with OpenMx 2.2.2 available at CRAN</h2>
+<ul>
+<li>OpenMx 2.2.2 is available at the <a href="http://cran.r-project.org/web/packages/OpenMx/">CRAN</a>. It only includes the open source <code>SLSQP</code> optimizer while the metaSEM package uses the non-open source <code>NPSOL</code> optimizer as the default optimizer.</li>
+<li>I would suggest using the OpenMx version from the <a href="http://openmx.psyc.virginia.edu/">OpenMx website</a> if possible.</li>
+<li>If you want to use the version from the CRAN, you may install the OpenMx from the CRAN. After installing the OpenMx from CRAN, you may switch to the <code>SLSQP</code> optimizer by calling the following command in R:</li>
+</ul>
+<pre><code>library(metaSEM)
+mxOption(NULL, &quot;Default optimizer&quot;, &quot;SLSQP&quot;)
+mxOption(NULL, &quot;Gradient algorithm&quot;, &quot;central&quot;)</code></pre>
+<ul>
+<li>My limited experience with the <code>SLSQP</code> optimizer suggests that it may return an error code 6 when the estimated variances are very small, e.g., close to 1e-10. If you encounter this issue, one option is to fix the variances at 0 and to refit the model again. An alternative option is to use the OpenMx 2.1.0, that includes both the <code>SLSQP</code> and <code>NPSOL</code> optimizers, from the <a href="http://openmx.psyc.virginia.edu/">OpenMx website</a>.</li>
+</ul>
 </div>
 <div id="help" class="section level2">
 <h2>Help</h2>
@@ -461,7 +476,7 @@ attached base packages:
 [8] base     
 
 other attached packages:
-[1] metafor_1.9-6   Matrix_1.2-0    metaSEM_0.9.3-1 OpenMx_2.1.0   
+[1] metafor_1.9-7   Matrix_1.2-0    metaSEM_0.9.3-1 OpenMx_2.1.0   
 [5] MASS_7.3-40     digest_0.6.8    knitr_1.10.5    rmarkdown_0.6.1
 
 loaded via a namespace (and not attached):

@@ -348,7 +348,7 @@ Other values indicate problems.)
 * [Meta-analytic structural equation modeling](./masem.html)
 
 # Installation and help
-* The current version is 0.9-2. There are several methods to install the `metaSEM` package. If you have already installed the developmental tools and the `devtools` package. You may install the `metaSEM` package from the GitHub. Alternatively, you may download the binary package for Windows platform and the source for Linxu and Mac OS X platforms.
+* The current version is 0.9.3. There are several methods to install the `metaSEM` package. If you have already installed the developmental tools and the `devtools` package. You may install the `metaSEM` package from the GitHub. Alternatively, you may download the binary package for Windows platform and the source for Linxu and Mac OS X platforms.
 * First of all, you need [R](http://www.r-project.org/) to run it. Since `metaSEM` depends on [OpenMx](http://openmx.psyc.virginia.edu/), you may also need to install `OpenMx` by run the following command inside an `R` session:
 
 ```
@@ -362,24 +362,36 @@ install_github("mikewlcheung/metasem")
 ```
 
 ## Windows platform
-* Download the Windows [Binary for Windows](https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9-2.zip) package of the `metaSEM`. Please note that d:\ in Windows is represented by either d:/ or d:\\ in `R`. If the file is saved at d:\\, run the following command inside an `R` session:
+* Download the Windows [Binary for Windows](https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9.3-1.zip) package of the `metaSEM`. Please note that d:\ in Windows is represented by either d:/ or d:\\ in `R`. If the file is saved at d:\\, run the following command inside an `R` session:
 
 ```
-install.packages(pkgs="d:/metaSEM_0.9-2.zip", repos=NULL)
+install.packages(pkgs="d:/metaSEM_0.9.3-1.zip", repos=NULL)
 ```
 
 ## Linux and Mac OS X platforms
-* Download the [Source](https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9-2.tar.gz) package of `metaSEM`. If the file is saved at /home/mike/, run the following command inside an `R` session:
+* Download the [Source](https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9.3-1.tar.gz) package of `metaSEM`. If the file is saved at /home/mike/, run the following command inside an `R` session:
 
 ```
-install.packages(pkgs="/home/mike/metaSEM_0.9-2.tar.gz", repos=NULL, type="source")
+install.packages(pkgs="/home/mike/metaSEM_0.9.3-1.tar.gz", repos=NULL, type="source")
 ```
 
 * Alternatively, the `metaSEM` package may also be installed in the terminal by using:
 
 ```
-R CMD INSTALL metaSEM_0.9-2.tar.gz
+R CMD INSTALL metaSEM_0.9.3-1.tar.gz
 ```
+
+## Potential issues with OpenMx 2.2.2 available at CRAN
+* OpenMx 2.2.2 is available at the [CRAN](http://cran.r-project.org/web/packages/OpenMx/). It only includes the open source `SLSQP` optimizer while the metaSEM package uses the non-open source `NPSOL` optimizer as the default optimizer.
+* I would suggest using the OpenMx version from the [OpenMx website](http://openmx.psyc.virginia.edu/) if possible.
+* If you want to use the version from the CRAN, you may install the OpenMx from the CRAN. After installing the OpenMx from CRAN, you may switch to the `SLSQP` optimizer by calling the following command in R:
+
+```
+library(metaSEM)
+mxOption(NULL, "Default optimizer", "SLSQP")
+mxOption(NULL, "Gradient algorithm", "central")
+```
+* My limited experience with the `SLSQP` optimizer suggests that it may return an error code 6 when the estimated variances are very small, e.g., close to 1e-10. If you encounter this issue, one option is to fix the variances at 0 and to refit the model again. An alternative option is to use the OpenMx 2.1.0, that includes both the `SLSQP` and `NPSOL` optimizers, from the [OpenMx website](http://openmx.psyc.virginia.edu/).
 
 ## Help
 * [Reference manual](./manual/index.html)
@@ -421,7 +433,7 @@ attached base packages:
 [8] base     
 
 other attached packages:
-[1] metafor_1.9-6   Matrix_1.2-0    metaSEM_0.9.3-1 OpenMx_2.1.0   
+[1] metafor_1.9-7   Matrix_1.2-0    metaSEM_0.9.3-1 OpenMx_2.1.0   
 [5] MASS_7.3-40     digest_0.6.8    knitr_1.10.5    rmarkdown_0.6.1
 
 loaded via a namespace (and not attached):
