@@ -56,197 +56,40 @@ continuous study characteristic reported by Hox (2002).
 
 <h3>Examples</h3>
 
-<pre><code class="r">data(Hox02)
-
-#### ML estimation method
-## Random-effects meta-analysis
-summary( meta(y=yi, v=vi, data=Hox02, I2=c(&quot;I2q&quot;, &quot;I2hm&quot;), intervals.type=&quot;LB&quot;) ) 
-</code></pre>
-
-<pre><code>## 
-## Call:
-## meta(y = yi, v = vi, data = Hox02, intervals.type = &quot;LB&quot;, I2 = c(&quot;I2q&quot;, 
-##     &quot;I2hm&quot;))
-## 
-## 95% confidence intervals: Likelihood-based statistic
-## Coefficients:
-##            Estimate Std.Error   lbound   ubound z value Pr(&gt;|z|)
-## Intercept1 0.579035        NA 0.364949 0.800770      NA       NA
-## Tau2_1_1   0.131520        NA 0.032355 0.365412      NA       NA
-## 
-## Q statistic on the homogeneity of effect sizes: 49.5852
-## Degrees of freedom of the Q statistic: 19
-## P value of the Q statistic: 0.000150801
-## 
-## Heterogeneity indices (I2) and their 95% likelihood-based CIs:
-##                                 lbound Estimate ubound
-## Intercept1: I2 (Q statistic)   0.27485  0.60780 0.8113
-## Intercept1: I2 (harmonic mean) 0.27572  0.60885 0.8119
-## 
-## Number of studies (or clusters): 20
-## Number of observed statistics: 20
-## Number of estimated parameters: 2
-## Degrees of freedom: 18
-## -2 log likelihood: 27.79916 
-## OpenMx status1: 1 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
-</code></pre>
-
-<pre><code class="r">## Fixed-effects meta-analysis
-summary( meta(y=yi, v=vi, data=Hox02, RE.constraints=0,
-              model.name=&quot;Fixed effects model&quot;) )
-</code></pre>
-
-<pre><code>## 
-## Call:
-## meta(y = yi, v = vi, data = Hox02, RE.constraints = 0, model.name = &quot;Fixed effects model&quot;)
-## 
-## 95% confidence intervals: z statistic approximation
-## Coefficients:
-##            Estimate Std.Error   lbound   ubound z value  Pr(&gt;|z|)    
-## Intercept1 0.550206  0.064998 0.422813 0.677599   8.465 &lt; 2.2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Q statistic on the homogeneity of effect sizes: 49.5852
-## Degrees of freedom of the Q statistic: 19
-## P value of the Q statistic: 0.000150801
-## 
-## Heterogeneity indices (based on the estimated Tau2):
-##                              Estimate
-## Intercept1: I2 (Q statistic)        0
-## 
-## Number of studies (or clusters): 20
-## Number of observed statistics: 20
-## Number of estimated parameters: 1
-## Degrees of freedom: 19
-## -2 log likelihood: 37.70073 
-## OpenMx status1: 1 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
-</code></pre>
-
-<pre><code class="r">## Mixed-effects meta-analysis with &quot;weeks&quot; as a predictor
-## Request likelihood-based CI
-summary( meta(y=yi, v=vi, x=weeks, data=Hox02, intervals.type=&quot;LB&quot;,
-              model.name=&quot;Mixed effects meta analysis with LB CI&quot;) )
-</code></pre>
-
-<pre><code>## 
-## Call:
-## meta(y = yi, v = vi, x = weeks, data = Hox02, intervals.type = &quot;LB&quot;, 
-##     model.name = &quot;Mixed effects meta analysis with LB CI&quot;)
-## 
-## 95% confidence intervals: Likelihood-based statistic
-## Coefficients:
-##               Estimate Std.Error      lbound      ubound z value Pr(&gt;|z|)
-## Intercept1 -2.1356e-01        NA -6.1977e-01  1.8104e-01      NA       NA
-## Slope1_1    1.3866e-01        NA  7.4635e-02  2.0695e-01      NA       NA
-## Tau2_1_1    2.3252e-02        NA  9.9780e-11  1.3790e-01      NA       NA
-## 
-## Q statistic on the homogeneity of effect sizes: 49.5852
-## Degrees of freedom of the Q statistic: 19
-## P value of the Q statistic: 0.000150801
-## 
-## Explained variances (R2):
-##                            y1
-## Tau2 (no predictor)    0.1315
-## Tau2 (with predictors) 0.0233
-## R2                     0.8232
-## 
-## Number of studies (or clusters): 20
-## Number of observed statistics: 20
-## Number of estimated parameters: 3
-## Degrees of freedom: 17
-## -2 log likelihood: 13.90435 
-## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
-</code></pre>
-
-<pre><code class="r">#### REML estimation method
-## Random-effects meta-analysis with REML
-summary( VarComp &lt;- reml(y=yi, v=vi, data=Hox02) )
-</code></pre>
-
-<pre><code>## 
-## Call:
-## reml(y = yi, v = vi, data = Hox02)
-## 
-## 95% confidence intervals: z statistic approximation
-## Coefficients:
-##           Estimate Std.Error    lbound    ubound z value Pr(&gt;|z|)  
-## Tau2_1_1  0.144609  0.079766 -0.011729  0.300947  1.8129  0.06984 .
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Number of studies (or clusters): 20
-## Number of observed statistics: 19
-## Number of estimated parameters: 1
-## Degrees of freedom: 18
-## -2 log likelihood: -4.477744 
-## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
-</code></pre>
-
-<pre><code class="r">## Extract the variance component
-VarComp_REML &lt;- matrix( coef(VarComp), ncol=1, nrow=1 )
-
-## Meta-analysis by treating the variance component as fixed
-summary( meta(y=yi, v=vi, data=Hox02, RE.constraints=VarComp_REML) )
-</code></pre>
-
-<pre><code>## 
-## Call:
-## meta(y = yi, v = vi, data = Hox02, RE.constraints = VarComp_REML)
-## 
-## 95% confidence intervals: z statistic approximation
-## Coefficients:
-##            Estimate Std.Error  lbound  ubound z value  Pr(&gt;|z|)    
-## Intercept1  0.58015   0.10800 0.36847 0.79182  5.3716 7.802e-08 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Q statistic on the homogeneity of effect sizes: 49.5852
-## Degrees of freedom of the Q statistic: 19
-## P value of the Q statistic: 0.000150801
-## 
-## Heterogeneity indices (based on the estimated Tau2):
-##                              Estimate
-## Intercept1: I2 (Q statistic)   0.6302
-## 
-## Number of studies (or clusters): 20
-## Number of observed statistics: 20
-## Number of estimated parameters: 1
-## Degrees of freedom: 19
-## -2 log likelihood: 27.82858 
-## OpenMx status1: 1 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
-</code></pre>
-
-<pre><code class="r">## Mixed-effects meta-analysis with &quot;weeks&quot; as a predictor
-## Request likelihood-based CI
-summary( reml(y=yi, v=vi, x=weeks, intervals.type=&quot;LB&quot;,
-              data=Hox02, model.name=&quot;REML with LB CI&quot;) )
-</code></pre>
-
-<pre><code>## 
-## Call:
-## reml(y = yi, v = vi, x = weeks, data = Hox02, intervals.type = &quot;LB&quot;, 
-##     model.name = &quot;REML with LB CI&quot;)
-## 
-## 95% confidence intervals: Likelihood-based statistic
-## Coefficients:
-##            Estimate Std.Error     lbound     ubound z value Pr(&gt;|z|)
-## Tau2_1_1 3.6582e-02        NA 9.9815e-11 1.7650e-01      NA       NA
-## 
-## Number of studies (or clusters): 20
-## Number of observed statistics: 18
-## Number of estimated parameters: 1
-## Degrees of freedom: 17
-## -2 log likelihood: -10.86705 
-## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
+<pre><code class="r">## Not run: 
+##D data(Hox02)
+##D 
+##D #### ML estimation method
+##D ## Random-effects meta-analysis
+##D summary( meta(y=yi, v=vi, data=Hox02, I2=c(&quot;I2q&quot;, &quot;I2hm&quot;), intervals.type=&quot;LB&quot;) ) 
+##D 
+##D ## Fixed-effects meta-analysis
+##D summary( meta(y=yi, v=vi, data=Hox02, RE.constraints=0,
+##D               model.name=&quot;Fixed effects model&quot;) )
+##D 
+##D ## Mixed-effects meta-analysis with &quot;weeks&quot; as a predictor
+##D ## Request likelihood-based CI
+##D summary( meta(y=yi, v=vi, x=weeks, data=Hox02, intervals.type=&quot;LB&quot;,
+##D               model.name=&quot;Mixed effects meta analysis with LB CI&quot;) )
+##D 
+##D #### REML estimation method
+##D ## Random-effects meta-analysis with REML
+##D summary( VarComp &lt;- reml(y=yi, v=vi, data=Hox02) )
+##D 
+##D ## Extract the variance component
+##D VarComp_REML &lt;- matrix( coef(VarComp), ncol=1, nrow=1 )
+##D 
+##D ## Meta-analysis by treating the variance component as fixed
+##D summary( meta(y=yi, v=vi, data=Hox02, RE.constraints=VarComp_REML) )
+##D 
+##D 
+##D ## Mixed-effects meta-analysis with &quot;weeks&quot; as a predictor
+##D ## Request likelihood-based CI
+##D summary( reml(y=yi, v=vi, x=weeks, intervals.type=&quot;LB&quot;,
+##D               data=Hox02, model.name=&quot;REML with LB CI&quot;) )
+## End(Not run)
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.3-1 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.4 <a href="00Index.html">Index</a>]</div>
 </body></html>

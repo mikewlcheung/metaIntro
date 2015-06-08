@@ -116,9 +116,9 @@ asyCov(C1, n=100)
 </code></pre>
 
 <pre><code>##              x2x1         x3x1        x3x2
-## x2x1 0.0056818277 0.0006363694 0.002590911
-## x3x1 0.0006363694 0.0071272877 0.003818199
-## x3x2 0.0025909111 0.0038181992 0.009309098
+## x2x1 0.0056818164 0.0006363813 0.002590919
+## x3x1 0.0006363813 0.0071272669 0.003818187
+## x3x2 0.0025909187 0.0038181868 0.009309098
 </code></pre>
 
 <pre><code class="r">## Data with missing values
@@ -131,17 +131,17 @@ asyCov(list(C1,C2,C3), n=c(100,50,50), dropNA=TRUE, as.matrix=FALSE)
 
 <pre><code>## [[1]]
 ##              x2x1         x3x1        x3x2
-## x2x1 0.0056818293 0.0006363568 0.002590916
-## x3x1 0.0006363568 0.0071272724 0.003818173
-## x3x2 0.0025909162 0.0038181729 0.009309092
+## x2x1 0.0056818084 0.0006363522 0.002590892
+## x3x1 0.0006363522 0.0071272620 0.003818173
+## x3x2 0.0025908922 0.0038181728 0.009309078
 ## 
 ## [[2]]
-##            x2x1
-## x2x1 0.01440001
+##        x2x1
+## x2x1 0.0144
 ## 
 ## [[3]]
 ##            x2x1
-## x2x1 0.01880815
+## x2x1 0.01880814
 </code></pre>
 
 <pre><code class="r">## Output is a stacked matrix of asymptotic covariance matrices
@@ -149,10 +149,10 @@ asyCov(list(C1,C2), n=c(100,50), as.matrix=TRUE)
 </code></pre>
 
 <pre><code>##      cov(x2x1_x2x1) cov(x3x1_x2x1) cov(x3x2_x2x1) cov(x3x1_x3x1)
-## [1,]    0.005681823   0.0006363791     0.00259093     0.00712727
-## [2,]    0.014399992             NA             NA             NA
+## [1,]    0.005681815   0.0006363571    0.002590896    0.007127269
+## [2,]    0.014399983             NA             NA             NA
 ##      cov(x3x2_x3x1) cov(x3x2_x3x2)
-## [1,]    0.003818184    0.009309084
+## [1,]    0.003818172    0.009309074
 ## [2,]             NA             NA
 </code></pre>
 
@@ -161,10 +161,10 @@ asyCov(list(C3,C3), n=c(100,50), as.matrix=TRUE)
 </code></pre>
 
 <pre><code>##      cov(x2x1_x2x1)
-## [1,]    0.009309112
-## [2,]    0.018808176
+## [1,]    0.009309105
+## [2,]    0.018808173
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.3-1 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.4 <a href="00Index.html">Index</a>]</div>
 </body></html>

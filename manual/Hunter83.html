@@ -48,321 +48,73 @@ sample</em> and <em>Supervisor rating</em></p>
 
 <h3>Examples</h3>
 
-<pre><code class="r">data(Hunter83)
-
-#### Fixed-effects model
-## First stage analysis
-fixed1 &lt;- tssem1(Hunter83$data, Hunter83$n, method=&quot;FEM&quot;,
-                 model.name=&quot;TSSEM1 fixed effects model&quot;)
-summary(fixed1)
+<pre><code class="r">## Not run: 
+##D data(Hunter83)
+##D 
+##D #### Fixed-effects model
+##D ## First stage analysis
+##D fixed1 &lt;- tssem1(Hunter83$data, Hunter83$n, method=&quot;FEM&quot;,
+##D                  model.name=&quot;TSSEM1 fixed effects model&quot;)
+##D summary(fixed1)
+##D 
+##D #### Second stage analysis
+##D ## Model without direct effect from Ability to Supervisor
+##D A1 &lt;- create.mxMatrix(c(0,&quot;0.1*A2J&quot;,&quot;0.1*A2W&quot;,0,0,0,&quot;0.1*J2W&quot;,&quot;0.1*J2S&quot;,
+##D                         0,0,0,&quot;0.1*W2S&quot;,0,0,0,0),
+##D                         type=&quot;Full&quot;, ncol=4, nrow=4, as.mxMatrix=FALSE)
+##D 
+##D ## This step is not necessary but it is useful for inspecting the model.
+##D dimnames(A1)[[1]] &lt;- dimnames(A1)[[2]] &lt;- c(&quot;Ability&quot;,&quot;Job&quot;,&quot;Work&quot;,&quot;Supervisor&quot;) 
+##D A1
+##D 
+##D S1 &lt;- create.mxMatrix(c(1,&quot;0.1*Var_e_J&quot;, &quot;0.1*Var_e_W&quot;, &quot;0.1*Var_e_S&quot;),
+##D                       type=&quot;Diag&quot;, as.mxMatrix=FALSE)
+##D dimnames(S1)[[1]] &lt;- dimnames(S1)[[2]] &lt;- c(&quot;Ability&quot;,&quot;Job&quot;,&quot;Work&quot;,&quot;Supervisor&quot;) 
+##D S1
+##D 
+##D ## diag.constraints=TRUE is required as there are mediators  
+##D fixed2 &lt;- tssem2(fixed1, Amatrix=A1, Smatrix=S1, intervals.type=&quot;LB&quot;,
+##D                  diag.constraints=TRUE,
+##D                  model.name=&quot;TSSEM2 fixed effects model&quot;)
+##D summary(fixed2)
+##D 
+##D ## Coefficients
+##D coef(fixed2)
+##D 
+##D ## VCOV based on parametric bootstrap
+##D vcov(fixed2)
+##D 
+##D #### Random-effects model with diagonal elements only
+##D ## First stage analysis
+##D random1 &lt;- tssem1(Hunter83$data, Hunter83$n, method=&quot;REM&quot;, RE.type=&quot;Diag&quot;, 
+##D                   model.name=&quot;TSSEM1 random effects model&quot;)
+##D summary(random1)
+##D 
+##D ## Second stage analysis
+##D ## Model without direct effect from Ability to Supervisor
+##D 
+##D ## diag.constraints=TRUE is required as there are mediators 
+##D random2 &lt;- tssem2(random1, Amatrix=A1, Smatrix=S1, intervals.type=&quot;LB&quot;,
+##D                   diag.constraints=TRUE,
+##D                   mx.algebras=
+##D                   list( ind=mxAlgebra(A2J*J2S+A2J*J2W*W2S+A2W*W2S, name=&quot;ind&quot;) ),
+##D                   model.name=&quot;TSSEM2 random effects model&quot;)
+##D summary(random2)
+##D 
+##D ## Load the library
+##D library(&quot;semPlot&quot;)
+##D 
+##D ## Convert the model to semPlotModel object
+##D my.plot &lt;- meta2semPlot(random2)
+##D 
+##D ## Plot the model with labels
+##D semPaths(my.plot, whatLabels=&quot;path&quot;, nCharEdges=10, nCharNodes=10, color=&quot;red&quot;)
+##D 
+##D ## Plot the parameter estimates
+##D semPaths(my.plot, whatLabels=&quot;est&quot;, nCharNodes=10, color=&quot;green&quot;)
+## End(Not run)
 </code></pre>
 
-<pre><code>## 
-## Call:
-## tssem1FEM(my.df = my.df, n = n, cor.analysis = cor.analysis, 
-##     model.name = model.name, cluster = cluster, suppressWarnings = suppressWarnings, 
-##     silent = silent, run = run)
-## 
-## Coefficients:
-##        Estimate Std.Error z value  Pr(&gt;|z|)    
-## S[1,2] 0.510464  0.012724  40.119 &lt; 2.2e-16 ***
-## S[1,3] 0.426989  0.014107  30.268 &lt; 2.2e-16 ***
-## S[1,4] 0.207679  0.015958  13.014 &lt; 2.2e-16 ***
-## S[2,3] 0.522925  0.013134  39.816 &lt; 2.2e-16 ***
-## S[2,4] 0.284622  0.015795  18.020 &lt; 2.2e-16 ***
-## S[3,4] 0.243199  0.016295  14.925 &lt; 2.2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Goodness-of-fit indices:
-##                                      Value
-## Sample size                      3975.0000
-## Chi-square of target model        263.3389
-## DF of target model                 60.0000
-## p value of target model             0.0000
-## Chi-square of independence model 2767.4129
-## DF of independence model           66.0000
-## RMSEA                               0.1093
-## SRMR                                0.0918
-## TLI                                 0.9172
-## CFI                                 0.9247
-## AIC                               143.3389
-## BIC                              -233.9279
-## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
-</code></pre>
 
-<pre><code class="r">#### Second stage analysis
-## Model without direct effect from Ability to Supervisor
-A1 &lt;- create.mxMatrix(c(0,&quot;0.1*A2J&quot;,&quot;0.1*A2W&quot;,0,0,0,&quot;0.1*J2W&quot;,&quot;0.1*J2S&quot;,
-                        0,0,0,&quot;0.1*W2S&quot;,0,0,0,0),
-                        type=&quot;Full&quot;, ncol=4, nrow=4, as.mxMatrix=FALSE)
-
-## This step is not necessary but it is useful for inspecting the model.
-dimnames(A1)[[1]] &lt;- dimnames(A1)[[2]] &lt;- c(&quot;Ability&quot;,&quot;Job&quot;,&quot;Work&quot;,&quot;Supervisor&quot;) 
-A1
-</code></pre>
-
-<pre><code>##            Ability   Job       Work      Supervisor
-## Ability    &quot;0&quot;       &quot;0&quot;       &quot;0&quot;       &quot;0&quot;       
-## Job        &quot;0.1*A2J&quot; &quot;0&quot;       &quot;0&quot;       &quot;0&quot;       
-## Work       &quot;0.1*A2W&quot; &quot;0.1*J2W&quot; &quot;0&quot;       &quot;0&quot;       
-## Supervisor &quot;0&quot;       &quot;0.1*J2S&quot; &quot;0.1*W2S&quot; &quot;0&quot;
-</code></pre>
-
-<pre><code class="r">S1 &lt;- create.mxMatrix(c(1,&quot;0.1*Var_e_J&quot;, &quot;0.1*Var_e_W&quot;, &quot;0.1*Var_e_S&quot;),
-                      type=&quot;Diag&quot;, as.mxMatrix=FALSE)
-dimnames(S1)[[1]] &lt;- dimnames(S1)[[2]] &lt;- c(&quot;Ability&quot;,&quot;Job&quot;,&quot;Work&quot;,&quot;Supervisor&quot;) 
-S1
-</code></pre>
-
-<pre><code>##            Ability Job           Work          Supervisor   
-## Ability    &quot;1&quot;     &quot;0&quot;           &quot;0&quot;           &quot;0&quot;          
-## Job        &quot;0&quot;     &quot;0.1*Var_e_J&quot; &quot;0&quot;           &quot;0&quot;          
-## Work       &quot;0&quot;     &quot;0&quot;           &quot;0.1*Var_e_W&quot; &quot;0&quot;          
-## Supervisor &quot;0&quot;     &quot;0&quot;           &quot;0&quot;           &quot;0.1*Var_e_S&quot;
-</code></pre>
-
-<pre><code class="r">## diag.constraints=TRUE is required as there are mediators  
-fixed2 &lt;- tssem2(fixed1, Amatrix=A1, Smatrix=S1, intervals.type=&quot;LB&quot;,
-                 diag.constraints=TRUE,
-                 model.name=&quot;TSSEM2 fixed effects model&quot;)
-summary(fixed2)
-</code></pre>
-
-<pre><code>## 
-## Call:
-## wls(Cov = pooledS, asyCov = tssem1.obj$acovS, n = sum(tssem1.obj$n), 
-##     Amatrix = Amatrix, Smatrix = Smatrix, Fmatrix = Fmatrix, 
-##     diag.constraints = diag.constraints, cor.analysis = cor.analysis, 
-##     intervals.type = intervals.type, mx.algebras = mx.algebras, 
-##     model.name = model.name, suppressWarnings = suppressWarnings, 
-##     silent = silent, run = run)
-## 
-## 95% confidence intervals: Likelihood-based statistic
-## Coefficients:
-##         Estimate Std.Error   lbound   ubound z value Pr(&gt;|z|)
-## A2J     0.513335        NA 0.488329 0.538328      NA       NA
-## A2W     0.217817        NA 0.183498 0.252089      NA       NA
-## J2W     0.411177        NA 0.377733 0.444755      NA       NA
-## J2S     0.218957        NA 0.180470 0.257502      NA       NA
-## W2S     0.130953        NA 0.091751 0.170188      NA       NA
-## Var_e_J 0.736487        NA 0.710203 0.761534      NA       NA
-## Var_e_W 0.691540        NA 0.664491 0.717520      NA       NA
-## Var_e_S 0.904918        NA 0.885355 0.922690      NA       NA
-## 
-## Goodness-of-fit indices:
-##                                                Value
-## Sample size                                3975.0000
-## Chi-square of target model                    9.3632
-## DF of target model                            1.0000
-## p value of target model                       0.0022
-## Number of constraints imposed on &quot;Smatrix&quot;    3.0000
-## DF manually adjusted                          0.0000
-## Chi-square of independence model           2688.1894
-## DF of independence model                      6.0000
-## RMSEA                                         0.0459
-## SRMR                                          0.0161
-## TLI                                           0.9813
-## CFI                                           0.9969
-## AIC                                           7.3632
-## BIC                                           1.0754
-## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
-</code></pre>
-
-<pre><code class="r">## Coefficients
-coef(fixed2)
-</code></pre>
-
-<pre><code>##       A2J       A2W       J2W       J2S       W2S   Var_e_J   Var_e_W 
-## 0.5133354 0.2178171 0.4111765 0.2189574 0.1309528 0.7364867 0.6915396 
-##   Var_e_S 
-## 0.9049176
-</code></pre>
-
-<pre><code class="r">## VCOV based on parametric bootstrap
-vcov(fixed2)
-</code></pre>
-
-<pre><code>## Warning in vcov.wls(fixed2): Parametric bootstrap with 50 replications was used to approximate the sampling covariance matrix of the parameter estimates. A better approach is to use likelihood-based confidence interval by including the intervals.type=&quot;LB&quot; argument in the analysis.
-</code></pre>
-
-<pre><code>##                   A2J           A2W           J2W           J2S
-## A2J      1.574535e-04 -1.965807e-05 -9.280251e-06  5.349649e-05
-## A2W     -1.965807e-05  3.313138e-04 -2.036819e-04 -1.171369e-04
-## J2W     -9.280251e-06 -2.036819e-04  2.604971e-04  9.872814e-05
-## J2S      5.349649e-05 -1.171369e-04  9.872814e-05  3.475534e-04
-## W2S     -3.158061e-05  1.140613e-04 -4.028685e-05 -1.637517e-04
-## Var_e_J -1.605718e-04  2.067186e-05  8.835019e-06 -5.490715e-05
-## Var_e_W -1.867784e-06 -7.273558e-05 -9.331777e-05 -8.480285e-06
-## Var_e_S -1.717977e-05  1.268627e-05 -4.431351e-05 -1.210972e-04
-##                   W2S       Var_e_J       Var_e_W       Var_e_S
-## A2J     -3.158061e-05 -1.605718e-04 -1.867784e-06 -1.717977e-05
-## A2W      1.140613e-04  2.067186e-05 -7.273558e-05  1.268627e-05
-## J2W     -4.028685e-05  8.835019e-06 -9.331777e-05 -4.431351e-05
-## J2S     -1.637517e-04 -5.490715e-05 -8.480285e-06 -1.210972e-04
-## W2S      3.681748e-04  3.253620e-05 -5.276130e-05 -9.043585e-05
-## Var_e_J  3.253620e-05  1.637917e-04  1.994579e-06  1.758900e-05
-## Var_e_W -5.276130e-05  1.994579e-06  1.621298e-04  3.771378e-05
-## Var_e_S -9.043585e-05  1.758900e-05  3.771378e-05  1.175090e-04
-</code></pre>
-
-<pre><code class="r">#### Random-effects model with diagonal elements only
-## First stage analysis
-random1 &lt;- tssem1(Hunter83$data, Hunter83$n, method=&quot;REM&quot;, RE.type=&quot;Diag&quot;, 
-                  model.name=&quot;TSSEM1 random effects model&quot;)
-## rerun to remove error code
-random1 &lt;- rerun(random1)
-</code></pre>
-
-<pre><code>## 
-## Solution found
-## 
-## Refit using best inits and estimate confidence intervals
-## 
-## 
-## Start values from best fit:
-## 0.505879043681353,0.446946683901457,0.212228721968383,0.530654280831816,0.259148933678725,0.241039079807602,0.00636963500951203,0.00441404542652831,0.00431237403181788,0.0102325768614228,0.0138715448819461,1.32040871795207e-05
-</code></pre>
-
-<pre><code class="r">summary(random1)
-</code></pre>
-
-<pre><code>## 
-## Call:
-## meta(y = ES, v = acovR, RE.constraints = Diag(x = paste(RE.startvalues, 
-##     &quot;*Tau2_&quot;, 1:no.es, &quot;_&quot;, 1:no.es, sep = &quot;&quot;)), RE.lbound = RE.lbound, 
-##     I2 = I2, model.name = model.name, suppressWarnings = TRUE, 
-##     silent = silent, run = run)
-## 
-## 95% confidence intervals: z statistic approximation
-## Coefficients:
-##               Estimate   Std.Error      lbound      ubound z value
-## Intercept1  5.0588e-01  2.7894e-02  4.5121e-01  5.6055e-01 18.1355
-## Intercept2  4.4695e-01  2.4711e-02  3.9851e-01  4.9538e-01 18.0867
-## Intercept3  2.1223e-01  2.5239e-02  1.6276e-01  2.6170e-01  8.4086
-## Intercept4  5.3065e-01  3.4725e-02  4.6260e-01  5.9871e-01 15.2818
-## Intercept5  2.5915e-01  3.9510e-02  1.8171e-01  3.3659e-01  6.5591
-## Intercept6  2.4104e-01  1.6894e-02  2.0793e-01  2.7415e-01 14.2681
-## Tau2_1_1    6.3696e-03  3.5245e-03 -5.3821e-04  1.3277e-02  1.8073
-## Tau2_2_2    4.4140e-03  3.1004e-03 -1.6626e-03  1.0491e-02  1.4237
-## Tau2_3_3    4.3124e-03  2.8211e-03 -1.2169e-03  9.8416e-03  1.5286
-## Tau2_4_4    1.0233e-02  5.4023e-03 -3.5568e-04  2.0821e-02  1.8941
-## Tau2_5_5    1.3872e-02  7.3096e-03 -4.5509e-04  2.8198e-02  1.8977
-## Tau2_6_6    1.3204e-05  1.2582e-03 -2.4527e-03  2.4791e-03  0.0105
-##             Pr(&gt;|z|)    
-## Intercept1 &lt; 2.2e-16 ***
-## Intercept2 &lt; 2.2e-16 ***
-## Intercept3 &lt; 2.2e-16 ***
-## Intercept4 &lt; 2.2e-16 ***
-## Intercept5 5.415e-11 ***
-## Intercept6 &lt; 2.2e-16 ***
-## Tau2_1_1     0.07072 .  
-## Tau2_2_2     0.15453    
-## Tau2_3_3     0.12636    
-## Tau2_4_4     0.05821 .  
-## Tau2_5_5     0.05773 .  
-## Tau2_6_6     0.99163    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Q statistic on the homogeneity of effect sizes: 314.4227
-## Degrees of freedom of the Q statistic: 60
-## P value of the Q statistic: 0
-## 
-## Heterogeneity indices (based on the estimated Tau2):
-##                              Estimate
-## Intercept1: I2 (Q statistic)   0.7560
-## Intercept2: I2 (Q statistic)   0.6426
-## Intercept3: I2 (Q statistic)   0.5708
-## Intercept4: I2 (Q statistic)   0.8349
-## Intercept5: I2 (Q statistic)   0.8198
-## Intercept6: I2 (Q statistic)   0.0040
-## 
-## Number of studies (or clusters): 14
-## Number of observed statistics: 66
-## Number of estimated parameters: 12
-## Degrees of freedom: 54
-## -2 log likelihood: -126.334 
-## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
-</code></pre>
-
-<pre><code class="r">## Second stage analysis
-## Model without direct effect from Ability to Supervisor
-
-## diag.constraints=TRUE is required as there are mediators 
-random2 &lt;- tssem2(random1, Amatrix=A1, Smatrix=S1, intervals.type=&quot;LB&quot;,
-                  diag.constraints=TRUE,
-                  mx.algebras=
-                  list( ind=mxAlgebra(A2J*J2S+A2J*J2W*W2S+A2W*W2S, name=&quot;ind&quot;) ),
-                  model.name=&quot;TSSEM2 random effects model&quot;)
-summary(random2)
-</code></pre>
-
-<pre><code>## 
-## Call:
-## wls(Cov = pooledS, asyCov = asyCov, n = tssem1.obj$total.n, Amatrix = Amatrix, 
-##     Smatrix = Smatrix, Fmatrix = Fmatrix, diag.constraints = diag.constraints, 
-##     cor.analysis = cor.analysis, intervals.type = intervals.type, 
-##     mx.algebras = mx.algebras, model.name = model.name, suppressWarnings = suppressWarnings, 
-##     silent = silent, run = run)
-## 
-## 95% confidence intervals: Likelihood-based statistic
-## Coefficients:
-##         Estimate Std.Error   lbound   ubound z value Pr(&gt;|z|)
-## A2J     0.516375        NA 0.462871 0.569872      NA       NA
-## A2W     0.246137        NA 0.162867 0.325141      NA       NA
-## J2W     0.396548        NA 0.300212 0.493542      NA       NA
-## J2S     0.231424        NA 0.138200 0.325700      NA       NA
-## W2S     0.121406        NA 0.054381 0.182985      NA       NA
-## Var_e_J 0.733357        NA 0.675242 0.785749      NA       NA
-## Var_e_W 0.681364        NA 0.616489 0.738149      NA       NA
-## Var_e_S 0.902278        NA 0.863087 0.931512      NA       NA
-## 
-## mxAlgebras objects (and their 95% likelihood-based CIs):
-##             lbound  Estimate    ubound
-## ind[1,1] 0.1428648 0.1742442 0.2073609
-## 
-## Goodness-of-fit indices:
-##                                                Value
-## Sample size                                3975.0000
-## Chi-square of target model                    3.8132
-## DF of target model                            1.0000
-## p value of target model                       0.0508
-## Number of constraints imposed on &quot;Smatrix&quot;    3.0000
-## DF manually adjusted                          0.0000
-## Chi-square of independence model            938.2305
-## DF of independence model                      6.0000
-## RMSEA                                         0.0266
-## SRMR                                          0.0220
-## TLI                                           0.9819
-## CFI                                           0.9970
-## AIC                                           1.8132
-## BIC                                          -4.4746
-## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
-</code></pre>
-
-<pre><code class="r">## Load the library
-library(&quot;semPlot&quot;)
-
-## Convert the model to semPlotModel object
-my.plot &lt;- meta2semPlot(random2)
-
-## Plot the model with labels
-semPaths(my.plot, whatLabels=&quot;path&quot;, nCharEdges=10, nCharNodes=10, color=&quot;red&quot;)
-</code></pre>
-
-<p><img src="data:image/png;base64,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wbnfj8mhn+bLHiX/7HNyclavXr169eqRkZGGhoYjR45cvXp1zpw51dXVVVVVXq83mRfjXI47d+caGRm5dOlSfX19W1tbcXFxdXX1unXrrPqFyrmPwdjQx+XF7aw6e6/Xu2TJkiVLlki6evVqQ0PD8ePHXS5XVVXVwoULCwsLk39JTuHoc3eEaDQaCAQaGhouX74cDocrKyvXrFlTXFxs7V+ucu5jMzb0owc2tV8B9jnvoqKioqKidevWxdbTRx991N7ePnv27AULFlRWVib/T8c2Z8y5201vb++lS5caGho6OzuLi4sXLFiwZs0a+7ycH+c+NmNDP6qsrOy73/2u2+2eyK+Al19+ORwOv/baa0m4sMnyer2LFy9evHixpGvXrl26dOmdd94ZGhoqKyurrKycN28eT9q5lTHnbqGhoaHGxsZLly61tbX5fL6qqqqNGzfe8cozdsO535P5XzD1wQcfVFRULFy4cIK3v3jxYmNj4+bNmxN6VfESiUSam5sbGxv9fn8kEolFv6ysLC3N/E/hYzP73BNneHjY7/dfvny5ubnZ6/VWVFRUVlbOnTvXKU9759zvyfwcrFu37o033qisrJzI1yVFIpGDBw9u3bo1CRcWF263e968efPmzZMUDodbW1sbGxsPHz4cjUYLCwvLy8vnzZuXmg/vmH3u8TUwMOD3+xsbG69cuZKWllZWVlZdXf3444878Uv5OPd78rzyyitWX0OcXfp/288V1JRnu4ebfrvz9MwVC/K9Hs9nn322aNGicX/ue++9t3Tp0rKyMknScOPutxpLaooznLFl3G53Xl7e/Pnzly1b9sADD2RlZQUCgSNHjhw5csTv9w8ODqanp2dlZVl9mfF3x4nXzMt2S+np6Z5JnPtvsrt6ossfmj1w9Kf/+3DB6prcax/+4qB3RXVeEq7fEp2dnfX19ceOHTt48GBDQ4PX662url6/fv2KFSsqKiry8/Pdbgf883N3H33G5M79vaVLlxZntr2z68DpC2dOnO3Kr5qXl+aM3++TYuCiL19RePhsR+2G/NbT1xc8NHP48u/qG/rTQoP7WweX1P96f7tv7sNbHp37h2eADV/5dO+nbaFIeMaKpzcu8G3ZssXai48Xt9tdWlpaWlq6bt26aDTa0dHR1NS0f//+rq4un89XUlJSWlpaUlJin79Mm467T/y9uv600GD+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" alt="plot of chunk unnamed-chunk-1"/> </p>
-
-<pre><code class="r">## Plot the parameter estimates
-semPaths(my.plot, whatLabels=&quot;est&quot;, nCharNodes=10, color=&quot;green&quot;)
-</code></pre>
-
-<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/> </p>
-
-
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.3-1 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.4 <a href="00Index.html">Index</a>]</div>
 </body></html>

@@ -63,37 +63,43 @@ for medium-severity periodontal disease, one year after treatment.
 #### ML estimation method
 ## Multivariate meta-analysis
 summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
-              data=Berkey98, I2=c(&quot;I2q&quot;, &quot;I2hm&quot;, &quot;I2am&quot;),
-              intervals.type=&quot;LB&quot;) )
+              data=Berkey98, I2=c(&quot;I2q&quot;, &quot;I2hm&quot;, &quot;I2am&quot;)) )
 </code></pre>
 
 <pre><code>## 
 ## Call:
 ## meta(y = cbind(PD, AL), v = cbind(var_PD, cov_PD_AL, var_AL), 
-##     data = Berkey98, intervals.type = &quot;LB&quot;, I2 = c(&quot;I2q&quot;, &quot;I2hm&quot;, 
-##         &quot;I2am&quot;))
+##     data = Berkey98, I2 = c(&quot;I2q&quot;, &quot;I2hm&quot;, &quot;I2am&quot;))
 ## 
-## 95% confidence intervals: Likelihood-based statistic
+## 95% confidence intervals: z statistic approximation
 ## Coefficients:
-##              Estimate Std.Error     lbound     ubound z value Pr(&gt;|z|)
-## Intercept1  0.3448392        NA  0.3448392  0.3449392      NA       NA
-## Intercept2 -0.3379381        NA -0.3379381 -0.3378381      NA       NA
-## Tau2_1_1    0.0070020        NA  0.0070020  0.0071020      NA       NA
-## Tau2_2_1    0.0094607        NA  0.0094607  0.0095607      NA       NA
-## Tau2_2_2    0.0261445        NA  0.0261445  0.0262445      NA       NA
+##              Estimate  Std.Error     lbound     ubound z value  Pr(&gt;|z|)
+## Intercept1  0.3448392  0.0536312  0.2397239  0.4499544  6.4298 1.278e-10
+## Intercept2 -0.3379381  0.0812480 -0.4971812 -0.1786951 -4.1593 3.192e-05
+## Tau2_1_1    0.0070020  0.0090497 -0.0107351  0.0247391  0.7737    0.4391
+## Tau2_2_1    0.0094607  0.0099698 -0.0100797  0.0290010  0.9489    0.3427
+## Tau2_2_2    0.0261445  0.0177409 -0.0086270  0.0609161  1.4737    0.1406
+##               
+## Intercept1 ***
+## Intercept2 ***
+## Tau2_1_1      
+## Tau2_2_1      
+## Tau2_2_2      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Q statistic on the homogeneity of effect sizes: 128.2267
 ## Degrees of freedom of the Q statistic: 8
 ## P value of the Q statistic: 0
 ## 
-## Heterogeneity indices (I2) and their 95% likelihood-based CIs:
-##                                   lbound Estimate ubound
-## Intercept1: I2 (Q statistic)     0.60206  0.60206 0.6055
-## Intercept2: I2 (Q statistic)     0.92498  0.92498 0.9252
-## Intercept1: I2 (harmonic mean)   0.62642  0.62642 0.6297
-## Intercept2: I2 (harmonic mean)   0.93593  0.93593 0.9362
-## Intercept1: I2 (arithmetic mean) 0.51478  0.51478 0.5183
-## Intercept2: I2 (arithmetic mean) 0.75771  0.75771 0.7584
+## Heterogeneity indices (based on the estimated Tau2):
+##                                  Estimate
+## Intercept1: I2 (Q statistic)       0.6021
+## Intercept2: I2 (Q statistic)       0.9250
+## Intercept1: I2 (harmonic mean)     0.6264
+## Intercept2: I2 (harmonic mean)     0.9359
+## Intercept1: I2 (arithmetic mean)   0.5148
+## Intercept2: I2 (arithmetic mean)   0.7577
 ## 
 ## Number of studies (or clusters): 5
 ## Number of observed statistics: 10
@@ -101,26 +107,27 @@ summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
 ## Degrees of freedom: 5
 ## -2 log likelihood: -11.68131 
 ## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
+## Other values may indicate problems.)
 </code></pre>
 
 <pre><code class="r">## Multivariate meta-analysis with &quot;publication year-1979&quot; as the predictor
 summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
-              x=scale(pub_year, center=1979), data=Berkey98) )
+              x=scale(pub_year, center=1979), data=Berkey98,
+              RE.lbound=NA) )
 </code></pre>
 
 <pre><code>## 
 ## Call:
 ## meta(y = cbind(PD, AL), v = cbind(var_PD, cov_PD_AL, var_AL), 
-##     x = scale(pub_year, center = 1979), data = Berkey98)
+##     x = scale(pub_year, center = 1979), data = Berkey98, RE.lbound = NA)
 ## 
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
 ##              Estimate  Std.Error     lbound     ubound z value  Pr(&gt;|z|)
-## Intercept1  0.3440001  0.0857659  0.1759021  0.5120982  4.0109 6.048e-05
-## Intercept2 -0.2918176  0.1312796 -0.5491209 -0.0345143 -2.2229   0.02622
-## Slope1_1    0.0063540  0.1078235 -0.2049762  0.2176841  0.0589   0.95301
-## Slope2_1   -0.0705888  0.1620965 -0.3882921  0.2471145 -0.4355   0.66322
+## Intercept1  0.3440001  0.0857659  0.1759021  0.5120981  4.0109 6.048e-05
+## Intercept2 -0.2918175  0.1312795 -0.5491206 -0.0345143 -2.2229   0.02622
+## Slope1_1    0.0063540  0.1078234 -0.2049761  0.2176841  0.0589   0.95301
+## Slope2_1   -0.0705888  0.1620964 -0.3882918  0.2471143 -0.4355   0.66322
 ## Tau2_1_1    0.0080405  0.0101206 -0.0117955  0.0278766  0.7945   0.42692
 ## Tau2_2_1    0.0093413  0.0105515 -0.0113392  0.0300218  0.8853   0.37599
 ## Tau2_2_2    0.0250135  0.0170788 -0.0084603  0.0584873  1.4646   0.14303
@@ -151,7 +158,7 @@ summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
 ## Degrees of freedom: 3
 ## -2 log likelihood: -12.00859 
 ## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
+## Other values may indicate problems.)
 </code></pre>
 
 <pre><code class="r">## Multivariate meta-analysis with equality constraint on the regression coefficients
@@ -171,7 +178,7 @@ summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
 ## Coefficients:
 ##              Estimate  Std.Error     lbound     ubound z value  Pr(&gt;|z|)
 ## Intercept1  0.3437612  0.0849829  0.1771979  0.5103245  4.0451 5.231e-05
-## Intercept2 -0.3390010  0.1041006 -0.5430344 -0.1349677 -3.2565  0.001128
+## Intercept2 -0.3390010  0.1041005 -0.5430344 -0.1349677 -3.2565  0.001128
 ## Eq_slope    0.0016748  0.1024443 -0.1991123  0.2024619  0.0163  0.986956
 ## Tau2_1_1    0.0070474  0.0094638 -0.0115013  0.0255962  0.7447  0.456471
 ## Tau2_2_1    0.0095165  0.0105668 -0.0111940  0.0302269  0.9006  0.367800
@@ -202,12 +209,12 @@ summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
 ## Degrees of freedom: 4
 ## -2 log likelihood: -11.68158 
 ## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
+## Other values may indicate problems.)
 </code></pre>
 
 <pre><code class="r">#### REML estimation method
 ## Multivariate meta-analysis
-summary( reml(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL,var_AL),
+summary( reml(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
               data=Berkey98,
               model.name=&quot;Multivariate meta analysis with REML&quot;) )
 </code></pre>
@@ -219,18 +226,18 @@ summary( reml(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL,var_AL),
 ## 
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
-##           Estimate Std.Error lbound ubound z value Pr(&gt;|z|)
-## Tau2_1_1  0.013244        NA     NA     NA      NA       NA
-## Tau2_2_1 -0.082411        NA     NA     NA      NA       NA
-## Tau2_2_2  0.367988        NA     NA     NA      NA       NA
+##           Estimate Std.Error    lbound    ubound z value Pr(&gt;|z|)
+## Tau2_1_1  0.011733  0.013645 -0.015011  0.038477  0.8599   0.3899
+## Tau2_2_1  0.011916  0.014416 -0.016340  0.040172  0.8266   0.4085
+## Tau2_2_2  0.032651  0.024402 -0.015176  0.080479  1.3380   0.1809
 ## 
 ## Number of studies (or clusters): 5
 ## Number of observed statistics: 8
 ## Number of estimated parameters: 3
 ## Degrees of freedom: 5
-## -2 log likelihood: -37.05175 
+## -2 log likelihood: -18.86768 
 ## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
+## Other values may indicate problems.)
 </code></pre>
 
 <pre><code class="r">## Multivariate meta-analysis with &quot;publication year-1979&quot; as the predictor
@@ -245,20 +252,20 @@ summary( reml(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
 ## 
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
-##          Estimate Std.Error lbound ubound z value Pr(&gt;|z|)
-## Tau2_1_1 0.038016        NA     NA     NA      NA       NA
-## Tau2_2_1 0.151046        NA     NA     NA      NA       NA
-## Tau2_2_2 0.512632        NA     NA     NA      NA       NA
+##             Estimate Std.Error lbound ubound z value Pr(&gt;|z|)
+## Tau2_1_1  0.00023168        NA     NA     NA      NA       NA
+## Tau2_2_1 -0.01160166        NA     NA     NA      NA       NA
+## Tau2_2_2  0.00185663        NA     NA     NA      NA       NA
 ## 
 ## Number of studies (or clusters): 5
 ## Number of observed statistics: 6
 ## Number of estimated parameters: 3
 ## Degrees of freedom: 3
-## -2 log likelihood: -52.86918 
-## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
+## -2 log likelihood: -48.55547 
+## OpenMx status1: 6 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values may indicate problems.)
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.3-1 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.4 <a href="00Index.html">Index</a>]</div>
 </body></html>

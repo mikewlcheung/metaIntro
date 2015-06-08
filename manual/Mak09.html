@@ -85,7 +85,7 @@ of Rheumatic Diseases</em>, <b>15(2)</b>, 129-135. doi: 10.1111/j.1756-185X.2012
 ## Coefficients:
 ##               Estimate   Std.Error      lbound      ubound z value
 ## Intercept1  1.8082e-01  2.8942e-02  1.2410e-01  2.3755e-01  6.2477
-## Tau2_1_1    9.9792e-11  2.2166e-03 -4.3444e-03  4.3444e-03  0.0000
+## Tau2_1_1    1.6561e-10  2.2166e-03 -4.3444e-03  4.3444e-03  0.0000
 ##             Pr(&gt;|z|)    
 ## Intercept1 4.165e-10 ***
 ## Tau2_1_1           1    
@@ -107,7 +107,7 @@ of Rheumatic Diseases</em>, <b>15(2)</b>, 129-135. doi: 10.1111/j.1756-185X.2012
 ## Degrees of freedom: 6
 ## -2 log likelihood: -10.26621 
 ## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
+## Other values may indicate problems.)
 </code></pre>
 
 <pre><code class="r">## Convert the estimates back into odds ratio 
@@ -131,9 +131,9 @@ summary( meta(y=yi, v=vi, x=age.mean, data=Mak09) )
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
 ##               Estimate   Std.Error      lbound      ubound z value
-## Intercept1  1.2778e-01  1.7073e+00 -3.2186e+00  3.4741e+00  0.0748
-## Slope1_1    7.0920e-04  2.2794e-02 -4.3966e-02  4.5384e-02  0.0311
-## Tau2_1_1    1.0000e-10  2.8254e-03 -5.5377e-03  5.5377e-03  0.0000
+## Intercept1  1.2778e-01  1.7073e+00 -3.2185e+00  3.4740e+00  0.0748
+## Slope1_1    7.0920e-04  2.2793e-02 -4.3965e-02  4.5383e-02  0.0311
+## Tau2_1_1    1.0000e-10  2.8254e-03 -5.5376e-03  5.5376e-03  0.0000
 ##            Pr(&gt;|z|)
 ## Intercept1   0.9403
 ## Slope1_1     0.9752
@@ -144,20 +144,20 @@ summary( meta(y=yi, v=vi, x=age.mean, data=Mak09) )
 ## P value of the Q statistic: 0.4124299
 ## 
 ## Explained variances (R2):
-##                        y1
-## Tau2 (no predictor)     0
-## Tau2 (with predictors)  0
-## R2                      0
+##                            y1
+## Tau2 (no predictor)    0.0000
+## Tau2 (with predictors) 0.0000
+## R2                     0.3962
 ## 
 ## Number of studies (or clusters): 8
 ## Number of observed statistics: 8
 ## Number of estimated parameters: 3
 ## Degrees of freedom: 5
 ## -2 log likelihood: -10.26789 
-## OpenMx status1: 1 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values may indicate problems.)
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.3-1 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.4 <a href="00Index.html">Index</a>]</div>
 </body></html>

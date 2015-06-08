@@ -93,16 +93,16 @@ tssem1FEM(my.df = my.df, n = n, cor.analysis = cor.analysis,
 
 Coefficients:
        Estimate Std.Error z value  Pr(>|z|)    
-S[1,2] 0.363116  0.013391 27.1170 < 2.2e-16 ***
-S[1,3] 0.390176  0.012903 30.2387 < 2.2e-16 ***
-S[1,4] 0.103751  0.015070  6.8846 5.797e-12 ***
-S[1,5] 0.092246  0.015071  6.1207 9.316e-10 ***
-S[2,3] 0.415999  0.012540 33.1732 < 2.2e-16 ***
-S[2,4] 0.135208  0.014799  9.1362 < 2.2e-16 ***
-S[2,5] 0.141213  0.014890  9.4835 < 2.2e-16 ***
-S[3,4] 0.244505  0.014175 17.2487 < 2.2e-16 ***
-S[3,5] 0.138167  0.014858  9.2993 < 2.2e-16 ***
-S[4,5] 0.424514  0.012396 34.2468 < 2.2e-16 ***
+S[1,2] 0.363117  0.013390 27.1182 < 2.2e-16 ***
+S[1,3] 0.390178  0.012903 30.2403 < 2.2e-16 ***
+S[1,4] 0.103751  0.015070  6.8849 5.785e-12 ***
+S[1,5] 0.092246  0.015071  6.1208 9.309e-10 ***
+S[2,3] 0.415999  0.012539 33.1757 < 2.2e-16 ***
+S[2,4] 0.135208  0.014798  9.1367 < 2.2e-16 ***
+S[2,5] 0.141214  0.014890  9.4836 < 2.2e-16 ***
+S[3,4] 0.244505  0.014175 17.2494 < 2.2e-16 ***
+S[3,5] 0.138168  0.014858  9.2995 < 2.2e-16 ***
+S[4,5] 0.424515  0.012395 34.2475 < 2.2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -121,7 +121,7 @@ CFI                                 0.6825
 AIC                              1239.7340
 BIC                               406.3114
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
-Other values indicate problems.)
+Other values may indicate problems.)
 ```
 
 The pooled correlation matrix (the parameter estimates) can be extracted by the use of the `coef()` command.
@@ -132,11 +132,11 @@ coef(fixed1)
 
 ```
            x1        x2        x3        x4         x5
-x1 1.00000000 0.3631157 0.3901765 0.1037511 0.09224586
-x2 0.36311572 1.0000000 0.4159987 0.1352076 0.14121296
-x3 0.39017648 0.4159987 1.0000000 0.2445051 0.13816688
-x4 0.10375112 0.1352076 0.2445051 1.0000000 0.42451421
-x5 0.09224586 0.1412130 0.1381669 0.4245142 1.00000000
+x1 1.00000000 0.3631167 0.3901780 0.1037514 0.09224612
+x2 0.36311670 1.0000000 0.4159994 0.1352082 0.14121362
+x3 0.39017804 0.4159994 1.0000000 0.2445051 0.13816792
+x4 0.10375145 0.1352082 0.2445051 1.0000000 0.42451459
+x5 0.09224612 0.1412136 0.1381679 0.4245146 1.00000000
 ```
 
 ### Stage 2 analysis
@@ -236,34 +236,34 @@ wls(Cov = pooledS, asyCov = tssem1.obj$acovS, n = sum(tssem1.obj$n),
 95% confidence intervals: Likelihood-based statistic
 Coefficients:
          Estimate Std.Error  lbound  ubound z value Pr(>|z|)
-Alpha_A   0.56258        NA 0.53242 0.59286      NA       NA
-Alpha_C   0.60513        NA 0.57509 0.63532      NA       NA
-Alpha_ES  0.71913        NA 0.68863 0.75032      NA       NA
-Beta_E    0.78200        NA 0.71911 0.85587      NA       NA
-Beta_I    0.55089        NA 0.49939 0.60231      NA       NA
-e1        0.68351        NA 0.64851 0.71653      NA       NA
-e2        0.63382        NA 0.59636 0.66927      NA       NA
-e3        0.48285        NA 0.43702 0.52580      NA       NA
-e4        0.38847        NA 0.26741 0.48290      NA       NA
-e5        0.69652        NA 0.63721 0.75061      NA       NA
-cor       0.36261        NA 0.31842 0.40650      NA       NA
+Alpha_A   0.56258        NA 0.53239 0.59285      NA       NA
+Alpha_C   0.60512        NA 0.57510 0.63532      NA       NA
+Alpha_ES  0.71913        NA 0.68863 0.75031      NA       NA
+Beta_E    0.78200        NA 0.71899 0.85587      NA       NA
+Beta_I    0.55089        NA 0.49939 0.60232      NA       NA
+e1        0.68351        NA 0.64852 0.71652      NA       NA
+e2        0.63382        NA 0.59637 0.66929      NA       NA
+e3        0.48286        NA 0.43703 0.52581      NA       NA
+e4        0.38847        NA 0.26758 0.48288      NA       NA
+e5        0.69652        NA 0.63721 0.75059      NA       NA
+cor       0.36261        NA 0.31843 0.40648      NA       NA
 
 Goodness-of-fit indices:
                                                Value
 Sample size                                4496.0000
-Chi-square of target model                   65.0605
+Chi-square of target model                   65.0597
 DF of target model                            4.0000
 p value of target model                       0.0000
 Number of constraints imposed on "Smatrix"    5.0000
 DF manually adjusted                          0.0000
-Chi-square of independence model           3100.5603
+Chi-square of independence model           3101.3024
 DF of independence model                     10.0000
 RMSEA                                         0.0583
 SRMR                                          0.0284
 TLI                                           0.9506
 CFI                                           0.9802
-AIC                                          57.0605
-BIC                                          31.4167
+AIC                                          57.0597
+BIC                                          31.4159
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
 Other values indicate problems.)
 ```
@@ -321,16 +321,16 @@ tssem1FEM(my.df = data.cluster[[i]], n = n.cluster[[i]], cor.analysis = cor.anal
 
 Coefficients:
        Estimate Std.Error z value  Pr(>|z|)    
-S[1,2] 0.297484  0.015455 19.2486 < 2.2e-16 ***
-S[1,3] 0.370088  0.014552 25.4318 < 2.2e-16 ***
+S[1,2] 0.297484  0.015455 19.2484 < 2.2e-16 ***
+S[1,3] 0.370089  0.014552 25.4319 < 2.2e-16 ***
 S[1,4] 0.137688  0.016423  8.3837 < 2.2e-16 ***
 S[1,5] 0.097971  0.016744  5.8510 4.887e-09 ***
-S[2,3] 0.393709  0.014163 27.7980 < 2.2e-16 ***
-S[2,4] 0.182984  0.016075 11.3829 < 2.2e-16 ***
-S[2,5] 0.092664  0.016664  5.5608 2.685e-08 ***
-S[3,4] 0.260756  0.015573 16.7441 < 2.2e-16 ***
-S[3,5] 0.096063  0.016594  5.7890 7.082e-09 ***
-S[4,5] 0.411753  0.013917 29.5853 < 2.2e-16 ***
+S[2,3] 0.393710  0.014163 27.7978 < 2.2e-16 ***
+S[2,4] 0.182985  0.016075 11.3830 < 2.2e-16 ***
+S[2,5] 0.092665  0.016664  5.5608 2.685e-08 ***
+S[3,4] 0.260756  0.015573 16.7442 < 2.2e-16 ***
+S[3,5] 0.096063  0.016594  5.7890 7.081e-09 ***
+S[4,5] 0.411754  0.013917 29.5855 < 2.2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -349,7 +349,7 @@ CFI                                 0.7437
 AIC                               663.8769
 BIC                               167.5032
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
-Other values indicate problems.)
+Other values may indicate problems.)
 
 $`Younger participants`
 
@@ -359,16 +359,16 @@ tssem1FEM(my.df = data.cluster[[i]], n = n.cluster[[i]], cor.analysis = cor.anal
 
 Coefficients:
         Estimate Std.Error z value  Pr(>|z|)    
-S[1,2]  0.604396  0.022188 27.2394 < 2.2e-16 ***
-S[1,3]  0.465441  0.027578 16.8770 < 2.2e-16 ***
-S[1,4] -0.030869  0.036047 -0.8563   0.39181    
-S[1,5]  0.061581  0.034649  1.7772   0.07553 .  
-S[2,3]  0.501309  0.026431 18.9671 < 2.2e-16 ***
-S[2,4] -0.060834  0.034660 -1.7552   0.07923 .  
-S[2,5]  0.321019  0.031156 10.3035 < 2.2e-16 ***
+S[1,2]  0.604396  0.022189 27.2388 < 2.2e-16 ***
+S[1,3]  0.465442  0.027579 16.8767 < 2.2e-16 ***
+S[1,4] -0.030868  0.036047 -0.8563   0.39182    
+S[1,5]  0.061581  0.034650  1.7772   0.07553 .  
+S[2,3]  0.501310  0.026431 18.9666 < 2.2e-16 ***
+S[2,4] -0.060833  0.034660 -1.7551   0.07924 .  
+S[2,5]  0.321020  0.031157 10.3034 < 2.2e-16 ***
 S[3,4]  0.175422  0.033776  5.1937 2.061e-07 ***
-S[3,5]  0.305214  0.031679  9.6346 < 2.2e-16 ***
-S[4,5]  0.478573  0.026966 17.7474 < 2.2e-16 ***
+S[3,5]  0.305215  0.031680  9.6345 < 2.2e-16 ***
+S[4,5]  0.478573  0.026966 17.7473 < 2.2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -387,7 +387,7 @@ CFI                                 0.7845
 AIC                               264.1826
 BIC                                74.9419
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
-Other values indicate problems.)
+Other values may indicate problems.)
 ```
 
 The pooled correlation matrix for each cluster can be extracted by the use of the =coef()= command.
@@ -398,20 +398,20 @@ coef(cluster1)
 
 ```
 $`Older participants`
-           x1         x2        x3        x4         x5
-x1 1.00000000 0.29748426 0.3700879 0.1376877 0.09797125
-x2 0.29748426 1.00000000 0.3937095 0.1829840 0.09266441
-x3 0.37008786 0.39370949 1.0000000 0.2607561 0.09606280
-x4 0.13768766 0.18298404 0.2607561 1.0000000 0.41175343
-x5 0.09797125 0.09266441 0.0960628 0.4117534 1.00000000
+           x1         x2         x3        x4         x5
+x1 1.00000000 0.29748402 0.37008860 0.1376878 0.09797144
+x2 0.29748402 1.00000000 0.39370970 0.1829845 0.09266479
+x3 0.37008860 0.39370970 1.00000000 0.2607564 0.09606319
+x4 0.13768778 0.18298453 0.26075636 1.0000000 0.41175386
+x5 0.09797144 0.09266479 0.09606319 0.4117539 1.00000000
 
 $`Younger participants`
             x1          x2        x3          x4         x5
-x1  1.00000000  0.60439588 0.4654414 -0.03086891 0.06158054
-x2  0.60439588  1.00000000 0.5013091 -0.06083381 0.32101905
-x3  0.46544142  0.50130913 1.0000000  0.17542223 0.30521443
-x4 -0.03086891 -0.06083381 0.1754222  1.00000000 0.47857275
-x5  0.06158054  0.32101905 0.3052144  0.47857275 1.00000000
+x1  1.00000000  0.60439591 0.4654421 -0.03086827 0.06158105
+x2  0.60439591  1.00000000 0.5013096 -0.06083322 0.32101973
+x3  0.46544215  0.50130962 1.0000000  0.17542249 0.30521506
+x4 -0.03086827 -0.06083322 0.1754225  1.00000000 0.47857254
+x5  0.06158105  0.32101973 0.3052151  0.47857254 1.00000000
 ```
 
 ### Stage 2 analysis
@@ -446,17 +446,17 @@ wls(Cov = pooledS, asyCov = tssem1.obj$acovS, n = sum(tssem1.obj$n),
 95% confidence intervals: z statistic approximation
 Coefficients:
           Estimate Std.Error    lbound    ubound z value Pr(>|z|)    
-Alpha_A   0.512524  0.018373  0.476514  0.548534 27.8959   <2e-16 ***
-Alpha_C   0.550048  0.020627  0.509620  0.590477 26.6662   <2e-16 ***
-Alpha_ES  0.732091  0.017625  0.697547  0.766635 41.5372   <2e-16 ***
-Beta_E    0.967545  0.059923  0.850098  1.084993 16.1464   <2e-16 ***
-Beta_I    0.430459  0.025650  0.380185  0.480733 16.7817   <2e-16 ***
-e1        0.737319  0.019027  0.700027  0.774611 38.7514   <2e-16 ***
-e2        0.697447  0.022756  0.652845  0.742049 30.6484   <2e-16 ***
-e3        0.464043  0.025838  0.413402  0.514684 17.9598   <2e-16 ***
-e4        0.063856  0.120054 -0.171446  0.299157  0.5319   0.5948    
-e5        0.814705  0.022042  0.771504  0.857906 36.9622   <2e-16 ***
-cor       0.349090  0.031861  0.286644  0.411535 10.9568   <2e-16 ***
+Alpha_A   0.512525  0.017824  0.477591  0.547458 28.7552   <2e-16 ***
+Alpha_C   0.550048  0.017017  0.516696  0.583400 32.3239   <2e-16 ***
+Alpha_ES  0.732092  0.018724  0.695393  0.768790 39.0986   <2e-16 ***
+Beta_E    0.967545  0.065890  0.838402  1.096687 14.6842   <2e-16 ***
+Beta_I    0.430460  0.031414  0.368889  0.492030 13.7028   <2e-16 ***
+e1        0.737319  0.018269  0.701513  0.773124 40.3601   <2e-16 ***
+e2        0.697447  0.019019  0.660170  0.734725 36.6706   <2e-16 ***
+e3        0.464042  0.027446  0.410250  0.517834 16.9077   <2e-16 ***
+e4        0.063857  0.135367 -0.201457  0.329171  0.4717   0.6371    
+e5        0.814705  0.026616  0.762539  0.866871 30.6098   <2e-16 ***
+cor       0.349090  0.030783  0.288756  0.409425 11.3402   <2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -468,7 +468,7 @@ DF of target model                            4.0000
 p value of target model                       0.0002
 Number of constraints imposed on "Smatrix"    5.0000
 DF manually adjusted                          0.0000
-Chi-square of independence model           2267.3613
+Chi-square of independence model           2267.3476
 DF of independence model                     10.0000
 RMSEA                                         0.0350
 SRMR                                          0.0160
@@ -492,17 +492,17 @@ wls(Cov = pooledS, asyCov = tssem1.obj$acovS, n = sum(tssem1.obj$n),
 95% confidence intervals: z statistic approximation
 Coefficients:
             Estimate   Std.Error      lbound      ubound z value  Pr(>|z|)
-Alpha_A   7.4763e-01  1.0666e-01  5.3858e-01  9.5668e-01  7.0095 2.392e-12
-Alpha_C   9.1196e-01  1.3150e-01  6.5422e-01  1.1697e+00  6.9350 4.062e-12
-Alpha_ES  6.7721e-01  1.0071e-01  4.7981e-01  8.7460e-01  6.7241 1.767e-11
-Beta_E    1.5232e-01  2.5838e+00 -4.9119e+00  5.2165e+00  0.0590    0.9530
-Beta_I    3.2904e+00  1.5444e+01 -2.6979e+01  3.3560e+01  0.2131    0.8313
-e1        4.4104e-01  8.3452e-02  2.7748e-01  6.0461e-01  5.2850 1.257e-07
-e2        1.6834e-01  1.2552e-01 -7.7674e-02  4.1435e-01  1.3411    0.1799
-e3        5.4139e-01  7.7270e-02  3.8994e-01  6.9284e-01  7.0065 2.444e-12
-e4        9.7680e-01  4.7883e+01 -9.2873e+01  9.4826e+01  0.0204    0.9837
-e5       -9.8269e+00  6.1333e+02 -1.2119e+03  1.1923e+03 -0.0160    0.9872
-cor       1.1704e-01  1.7362e+01 -3.3912e+01  3.4146e+01  0.0067    0.9946
+Alpha_A   7.4764e-01  2.6671e-02  6.9536e-01  7.9991e-01 28.0319 < 2.2e-16
+Alpha_C   9.1196e-01  2.3336e-02  8.6622e-01  9.5770e-01 39.0788 < 2.2e-16
+Alpha_ES  6.7721e-01  2.9244e-02  6.1990e-01  7.3453e-01 23.1574 < 2.2e-16
+Beta_E    1.5236e-01  1.1232e-01 -6.7791e-02  3.7251e-01  1.3564    0.1750
+Beta_I    3.2897e+00  1.9745e+02 -3.8371e+02  3.9029e+02  0.0167    0.9867
+e1        4.4104e-01  3.9984e-02  3.6267e-01  5.1941e-01 11.0304 < 2.2e-16
+e2        1.6833e-01  4.3137e-02  8.3786e-02  2.5288e-01  3.9023 9.529e-05
+e3        5.4138e-01  3.9300e-02  4.6436e-01  6.1841e-01 13.7756 < 2.2e-16
+e4        9.7679e-01  3.2116e-02  9.1384e-01  1.0397e+00 30.4147 < 2.2e-16
+e5       -9.8220e+00  1.0086e+05 -1.9769e+05  1.9767e+05 -0.0001    0.9999
+cor       1.1707e-01  8.2452e-02 -4.4530e-02  2.7868e-01  1.4199    0.1556
             
 Alpha_A  ***
 Alpha_C  ***
@@ -510,9 +510,9 @@ Alpha_ES ***
 Beta_E      
 Beta_I      
 e1       ***
-e2          
+e2       ***
 e3       ***
-e4          
+e4       ***
 e5          
 cor         
 ---
@@ -521,19 +521,19 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 Goodness-of-fit indices:
                                                Value
 Sample size                                 838.0000
-Chi-square of target model                  144.8642
+Chi-square of target model                  144.8646
 DF of target model                            4.0000
 p value of target model                       0.0000
 Number of constraints imposed on "Smatrix"    5.0000
 DF manually adjusted                          0.0000
-Chi-square of independence model           2469.6180
+Chi-square of independence model           2469.4170
 DF of independence model                     10.0000
 RMSEA                                         0.2051
 SRMR                                          0.1051
 TLI                                           0.8568
 CFI                                           0.9427
-AIC                                         136.8642
-BIC                                         117.9402
+AIC                                         136.8646
+BIC                                         117.9405
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
 Other values indicate problems.)
 ```
@@ -580,8 +580,8 @@ Coefficients:
                Estimate   Std.Error      lbound      ubound z value
 Intercept1   3.9465e-01  5.4223e-02  2.8837e-01  5.0092e-01  7.2782
 Intercept2   4.4009e-01  4.1258e-02  3.5923e-01  5.2096e-01 10.6668
-Intercept3   5.4542e-02  6.1715e-02 -6.6418e-02  1.7550e-01  0.8838
-Intercept4   9.8668e-02  4.6219e-02  8.0815e-03  1.8926e-01  2.1348
+Intercept3   5.4542e-02  6.1716e-02 -6.6418e-02  1.7550e-01  0.8838
+Intercept4   9.8668e-02  4.6219e-02  8.0813e-03  1.8926e-01  2.1348
 Intercept5   4.2966e-01  4.0156e-02  3.5096e-01  5.0837e-01 10.6999
 Intercept6   1.2851e-01  4.0816e-02  4.8514e-02  2.0851e-01  3.1486
 Intercept7   2.0526e-01  4.9591e-02  1.0806e-01  3.0245e-01  4.1390
@@ -590,23 +590,23 @@ Intercept9   1.8910e-01  4.3014e-02  1.0480e-01  2.7341e-01  4.3963
 Intercept10  4.4413e-01  3.2547e-02  3.8034e-01  5.0792e-01 13.6461
 Tau2_1_1     3.7207e-02  1.5000e-02  7.8079e-03  6.6606e-02  2.4805
 Tau2_2_2     2.0305e-02  8.4348e-03  3.7735e-03  3.6837e-02  2.4073
-Tau2_3_3     4.8219e-02  1.9723e-02  9.5631e-03  8.6875e-02  2.4448
+Tau2_3_3     4.8219e-02  1.9723e-02  9.5631e-03  8.6876e-02  2.4448
 Tau2_4_4     2.4610e-02  1.0624e-02  3.7872e-03  4.5433e-02  2.3164
 Tau2_5_5     1.8725e-02  8.2474e-03  2.5602e-03  3.4889e-02  2.2704
-Tau2_6_6     1.8256e-02  8.7889e-03  1.0301e-03  3.5482e-02  2.0772
-Tau2_7_7     2.9424e-02  1.2263e-02  5.3894e-03  5.3458e-02  2.3995
-Tau2_8_8     9.6509e-03  4.8824e-03  8.1667e-05  1.9220e-02  1.9767
-Tau2_9_9     2.0933e-02  9.1280e-03  3.0430e-03  3.8824e-02  2.2933
+Tau2_6_6     1.8256e-02  8.7889e-03  1.0302e-03  3.5482e-02  2.0772
+Tau2_7_7     2.9424e-02  1.2263e-02  5.3893e-03  5.3458e-02  2.3995
+Tau2_8_8     9.6510e-03  4.8824e-03  8.1672e-05  1.9220e-02  1.9767
+Tau2_9_9     2.0934e-02  9.1280e-03  3.0430e-03  3.8824e-02  2.2933
 Tau2_10_10   1.1150e-02  5.0467e-03  1.2591e-03  2.1042e-02  2.2095
              Pr(>|z|)    
 Intercept1  3.384e-13 ***
 Intercept2  < 2.2e-16 ***
-Intercept3   0.376820    
+Intercept3   0.376821    
 Intercept4   0.032776 *  
 Intercept5  < 2.2e-16 ***
 Intercept6   0.001641 ** 
 Intercept7  3.488e-05 ***
-Intercept8  5.640e-14 ***
+Intercept8  5.662e-14 ***
 Intercept9  1.101e-05 ***
 Intercept10 < 2.2e-16 ***
 Tau2_1_1     0.013120 *  
@@ -615,14 +615,14 @@ Tau2_3_3     0.014492 *
 Tau2_4_4     0.020535 *  
 Tau2_5_5     0.023184 *  
 Tau2_6_6     0.037785 *  
-Tau2_7_7     0.016419 *  
-Tau2_8_8     0.048077 *  
+Tau2_7_7     0.016420 *  
+Tau2_8_8     0.048076 *  
 Tau2_9_9     0.021829 *  
-Tau2_10_10   0.027142 *  
+Tau2_10_10   0.027143 *  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Q statistic on the homogeneity of effect sizes: 2381
+Q statistic on the homogeneity of effect sizes: 2380.986
 Degrees of freedom of the Q statistic: 130
 P value of the Q statistic: 0
 
@@ -643,9 +643,9 @@ Number of studies (or clusters): 14
 Number of observed statistics: 140
 Number of estimated parameters: 20
 Degrees of freedom: 120
--2 log likelihood: -110.8455 
+-2 log likelihood: -110.8454 
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
-Other values indicate problems.)
+Other values may indicate problems.)
 ```
 
 The pooled correlation coefficients (fixed effects) and the variance components (the random effects) can be extracted by the use of the `coef()` command via the `select` argument.
@@ -657,9 +657,9 @@ coef(random1, select="fixed")
 
 ```
  Intercept1  Intercept2  Intercept3  Intercept4  Intercept5  Intercept6 
- 0.39464601  0.44009394  0.05454236  0.09866832  0.42966190  0.12851244 
+ 0.39464594  0.44009396  0.05454234  0.09866819  0.42966183  0.12851242 
  Intercept7  Intercept8  Intercept9 Intercept10 
- 0.20525706  0.23993592  0.18910327  0.44413322 
+ 0.20525687  0.23993590  0.18910320  0.44413332 
 ```
 
 ```r
@@ -669,9 +669,9 @@ coef(random1, select="random")
 
 ```
    Tau2_1_1    Tau2_2_2    Tau2_3_3    Tau2_4_4    Tau2_5_5    Tau2_6_6 
-0.037207113 0.020305357 0.048219255 0.024610270 0.018724847 0.018256033 
+0.037207135 0.020305356 0.048219412 0.024610341 0.018724824 0.018256158 
    Tau2_7_7    Tau2_8_8    Tau2_9_9  Tau2_10_10 
-0.029423895 0.009650927 0.020933476 0.011150498 
+0.029423857 0.009650998 0.020933513 0.011150497 
 ```
 
 ### Stage 2 analysis
@@ -695,17 +695,17 @@ wls(Cov = pooledS, asyCov = asyCov, n = tssem1.obj$total.n, Amatrix = Amatrix,
 95% confidence intervals: Likelihood-based statistic
 Coefficients:
          Estimate Std.Error  lbound  ubound z value Pr(>|z|)
-Alpha_A   0.57255        NA 0.47370 0.67690      NA       NA
-Alpha_C   0.59010        NA 0.49047 0.69487      NA       NA
-Alpha_ES  0.77046        NA 0.65994 0.90431      NA       NA
-Beta_E    0.69340        NA 0.56258 0.87183      NA       NA
-Beta_I    0.64011        NA 0.50833 0.78644      NA       NA
-e1        0.67218        NA 0.54176 0.77561      NA       NA
-e2        0.65178        NA 0.51711 0.75944      NA       NA
-e3        0.40640        NA 0.18193 0.56452      NA       NA
-e4        0.51919        NA 0.23937 0.68352      NA       NA
-e5        0.59026        NA 0.38132 0.74161      NA       NA
-cor       0.39366        NA 0.30236 0.49029      NA       NA
+Alpha_A   0.57255        NA 0.47377 0.67682      NA       NA
+Alpha_C   0.59010        NA 0.49055 0.69478      NA       NA
+Alpha_ES  0.77046        NA 0.65999 0.88425      NA       NA
+Beta_E    0.69340        NA 0.56269      NA      NA       NA
+Beta_I    0.64011        NA 0.50847 0.78620      NA       NA
+e1        0.67218        NA 0.54193 0.77558      NA       NA
+e2        0.65178        NA 0.51721 0.75938      NA       NA
+e3        0.40640        NA 0.32846 0.56438      NA       NA
+e4        0.51919        NA 0.36586 0.68373      NA       NA
+e5        0.59026        NA      NA 0.74156      NA       NA
+cor       0.39366        NA 0.30241 0.49021      NA       NA
 
 Goodness-of-fit indices:
                                                Value
@@ -715,7 +715,7 @@ DF of target model                            4.0000
 p value of target model                       0.0745
 Number of constraints imposed on "Smatrix"    5.0000
 DF manually adjusted                          0.0000
-Chi-square of independence model            514.5612
+Chi-square of independence model            514.5602
 DF of independence model                     10.0000
 RMSEA                                         0.0158
 SRMR                                          0.0463
@@ -826,9 +826,9 @@ tssem1FEM(my.df = my.df, n = n, cor.analysis = cor.analysis,
 
 Coefficients:
        Estimate Std.Error z value  Pr(>|z|)    
-S[1,2] 0.379638  0.037484 10.1281 < 2.2e-16 ***
-S[1,3] 0.332255  0.040384  8.2273 2.220e-16 ***
-S[2,3] 0.175639  0.042743  4.1092 3.971e-05 ***
+S[1,2] 0.379639  0.037484 10.1281 < 2.2e-16 ***
+S[1,3] 0.332256  0.040384  8.2274  2.22e-16 ***
+S[2,3] 0.175640  0.042743  4.1092  3.97e-05 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -847,7 +847,7 @@ CFI                                 0.7943
 AIC                                 8.4983
 BIC                              -107.2738
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
-Other values indicate problems.)
+Other values may indicate problems.)
 ```
 
 ```r
@@ -856,9 +856,9 @@ coef(fixed1)
 
 ```
           x1        x2        x3
-x1 1.0000000 0.3796383 0.3322554
-x2 0.3796383 1.0000000 0.1756393
-x3 0.3322554 0.1756393 1.0000000
+x1 1.0000000 0.3796392 0.3322560
+x2 0.3796392 1.0000000 0.1756403
+x3 0.3322560 0.1756403 1.0000000
 ```
 
 ### Stage 2 analysis
@@ -953,10 +953,10 @@ wls(Cov = pooledS, asyCov = tssem1.obj$acovS, n = sum(tssem1.obj$n),
 95% confidence intervals: Likelihood-based statistic
 Coefficients:
                         Estimate Std.Error   lbound   ubound z value
-Spatial2Math            0.331508        NA 0.257718 0.405183      NA
-Verbal2Math             0.274030        NA 0.196570 0.351545      NA
-ErrorVarMath            0.783099        NA 0.715505 0.842383      NA
-CorBetweenSpatialVerbal 0.175639        NA 0.091804 0.259474      NA
+Spatial2Math            0.331509        NA 0.257764 0.405140      NA
+Verbal2Math             0.274030        NA 0.196621 0.351498      NA
+ErrorVarMath            0.783098        NA 0.715549 0.842357      NA
+CorBetweenSpatialVerbal 0.175640        NA 0.091861 0.259416      NA
                         Pr(>|z|)
 Spatial2Math                  NA
 Verbal2Math                   NA
@@ -1003,9 +1003,9 @@ tssem1FEM(my.df = data.cluster[[i]], n = n.cluster[[i]], cor.analysis = cor.anal
 
 Coefficients:
        Estimate Std.Error z value  Pr(>|z|)    
-S[1,2] 0.456133  0.052536  8.6822 < 2.2e-16 ***
-S[1,3] 0.338984  0.062744  5.4027 6.565e-08 ***
-S[2,3] 0.170466  0.065469  2.6038   0.00922 ** 
+S[1,2] 0.456134  0.052537  8.6822 < 2.2e-16 ***
+S[1,3] 0.338985  0.062744  5.4027 6.565e-08 ***
+S[2,3] 0.170467  0.065469  2.6038   0.00922 ** 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1024,7 +1024,7 @@ CFI                                0.7116
 AIC                               18.4076
 BIC                              -23.1074
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
-Other values indicate problems.)
+Other values may indicate problems.)
 
 $Males
 
@@ -1055,7 +1055,7 @@ CFI                                0.9385
 AIC                               -7.8670
 BIC                              -52.4318
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
-Other values indicate problems.)
+Other values may indicate problems.)
 ```
 
 ```r
@@ -1065,15 +1065,15 @@ coef(cluster1)
 ```
 $Females
           x1        x2        x3
-x1 1.0000000 0.4561334 0.3389843
-x2 0.4561334 1.0000000 0.1704662
-x3 0.3389843 0.1704662 1.0000000
+x1 1.0000000 0.4561337 0.3389846
+x2 0.4561337 1.0000000 0.1704665
+x3 0.3389846 0.1704665 1.0000000
 
 $Males
           x1        x2        x3
-x1 1.0000000 0.3175609 0.3262228
-x2 0.3175609 1.0000000 0.1792036
-x3 0.3262228 0.1792036 1.0000000
+x1 1.0000000 0.3175612 0.3262230
+x2 0.3175612 1.0000000 0.1792039
+x3 0.3262230 0.1792039 1.0000000
 ```
 
 ### Stage 2 analysis
@@ -1098,11 +1098,11 @@ wls(Cov = pooledS, asyCov = tssem1.obj$acovS, n = sum(tssem1.obj$n),
 
 95% confidence intervals: Likelihood-based statistic
 Coefficients:
-                        Estimate Std.Error  lbound  ubound z value
-Spatial2Math             0.41027        NA 0.30512 0.51470      NA
-Verbal2Math              0.26905        NA 0.15249 0.38586      NA
-ErrorVarMath             0.72166        NA 0.61311 0.81439      NA
-CorBetweenSpatialVerbal  0.17047        NA 0.04201 0.29892      NA
+                        Estimate Std.Error   lbound   ubound z value
+Spatial2Math            0.410270        NA 0.305212 0.514615      NA
+Verbal2Math             0.269047        NA 0.152607 0.385747      NA
+ErrorVarMath            0.721659        NA 0.613223 0.814330      NA
+CorBetweenSpatialVerbal 0.170467        NA 0.042146 0.298784      NA
                         Pr(>|z|)
 Spatial2Math                  NA
 Verbal2Math                   NA
@@ -1141,10 +1141,10 @@ wls(Cov = pooledS, asyCov = tssem1.obj$acovS, n = sum(tssem1.obj$n),
 95% confidence intervals: Likelihood-based statistic
 Coefficients:
                         Estimate Std.Error   lbound   ubound z value
-Spatial2Math            0.267697        NA 0.165864 0.369508      NA
-Verbal2Math             0.278250        NA 0.175016 0.381510      NA
-ErrorVarMath            0.824218        NA 0.736662 0.895291      NA
-CorBetweenSpatialVerbal 0.179204        NA 0.068536 0.289871      NA
+Spatial2Math            0.267698        NA 0.165952 0.369421      NA
+Verbal2Math             0.278251        NA 0.175106 0.381420      NA
+ErrorVarMath            0.824218        NA 0.736732 0.895259      NA
+CorBetweenSpatialVerbal 0.179204        NA 0.068639 0.289768      NA
                         Pr(>|z|)
 Spatial2Math                  NA
 Verbal2Math                   NA
@@ -1209,12 +1209,12 @@ meta(y = ES, v = acovR, RE.constraints = Diag(x = paste(RE.startvalues,
 95% confidence intervals: z statistic approximation
 Coefficients:
               Estimate   Std.Error      lbound      ubound z value
-Intercept1  3.7078e-01  3.6894e-02  2.9846e-01  4.4309e-01 10.0496
+Intercept1  3.7078e-01  3.6894e-02  2.9847e-01  4.4309e-01 10.0497
 Intercept2  4.3160e-01  7.7260e-02  2.8018e-01  5.8303e-01  5.5864
-Intercept3  2.0294e-01  4.6493e-02  1.1182e-01  2.9407e-01  4.3650
-Tau2_1_1    1.0000e-10  4.8927e-03 -9.5896e-03  9.5896e-03  0.0000
-Tau2_2_2    4.7467e-02  2.6207e-02 -3.8973e-03  9.8832e-02  1.8113
-Tau2_3_3    5.1621e-03  9.7470e-03 -1.3942e-02  2.4266e-02  0.5296
+Intercept3  2.0294e-01  4.6494e-02  1.1182e-01  2.9407e-01  4.3650
+Tau2_1_1    1.0250e-10  4.8927e-03 -9.5894e-03  9.5894e-03  0.0000
+Tau2_2_2    4.7468e-02  2.6207e-02 -3.8972e-03  9.8832e-02  1.8113
+Tau2_3_3    5.1624e-03  9.7471e-03 -1.3942e-02  2.4266e-02  0.5296
             Pr(>|z|)    
 Intercept1 < 2.2e-16 ***
 Intercept2 2.319e-08 ***
@@ -1225,9 +1225,9 @@ Tau2_3_3      0.5964
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Q statistic on the homogeneity of effect sizes: 81.65888
+Q statistic on the homogeneity of effect sizes: 81.65924
 Degrees of freedom of the Q statistic: 27
-P value of the Q statistic: 2.111713e-07
+P value of the Q statistic: 2.111447e-07
 
 Heterogeneity indices (based on the estimated Tau2):
                              Estimate
@@ -1239,9 +1239,9 @@ Number of studies (or clusters): 10
 Number of observed statistics: 30
 Number of estimated parameters: 6
 Degrees of freedom: 24
--2 log likelihood: -23.64433 
+-2 log likelihood: -23.64422 
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
-Other values indicate problems.)
+Other values may indicate problems.)
 ```
 
 ```r
@@ -1250,7 +1250,7 @@ coef(random1, select="fixed")
 
 ```
 Intercept1 Intercept2 Intercept3 
- 0.3707762  0.4316036  0.2029437 
+ 0.3707769  0.4316037  0.2029440 
 ```
 
 ```r
@@ -1259,7 +1259,7 @@ coef(random1, select="random")
 
 ```
     Tau2_1_1     Tau2_2_2     Tau2_3_3 
-0.0000000001 0.0474672863 0.0051621367 
+1.025046e-10 4.746755e-02 5.162421e-03 
 ```
 
 ### Stage 2 analysis
@@ -1283,10 +1283,10 @@ wls(Cov = pooledS, asyCov = asyCov, n = tssem1.obj$total.n, Amatrix = Amatrix,
 95% confidence intervals: Likelihood-based statistic
 Coefficients:
                         Estimate Std.Error  lbound  ubound z value
-Spatial2Math             0.29535        NA 0.21440 0.37406      NA
-Verbal2Math              0.37166        NA 0.21310 0.52956      NA
-ErrorVarMath             0.73008        NA 0.59027 0.83046      NA
-CorBetweenSpatialVerbal  0.20294        NA 0.11175 0.29414      NA
+Spatial2Math             0.29535        NA 0.21445 0.37402      NA
+Verbal2Math              0.37166        NA 0.21323 0.52936      NA
+ErrorVarMath             0.73008        NA 0.59049 0.83042      NA
+CorBetweenSpatialVerbal  0.20294        NA 0.11182 0.29407      NA
                         Pr(>|z|)
 Spatial2Math                  NA
 Verbal2Math                   NA

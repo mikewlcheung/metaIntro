@@ -73,7 +73,7 @@ Number of estimated parameters: 2
 Degrees of freedom: 8
 -2 log likelihood: 7.928307 
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
-Other values indicate problems.)
+Other values may indicate problems.)
 ```
 
 ### Fixed-effects model
@@ -109,7 +109,7 @@ Number of estimated parameters: 1
 Degrees of freedom: 9
 -2 log likelihood: 17.86043 
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
-Other values indicate problems.)
+Other values may indicate problems.)
 ```
 
 ### Mixed-effects model
@@ -153,7 +153,7 @@ Number of estimated parameters: 3
 Degrees of freedom: 7
 -2 log likelihood: -4.208024 
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
-Other values indicate problems.)
+Other values may indicate problems.)
 ```
 
 ## Multivariate meta-analysis
@@ -190,7 +190,7 @@ meta(y = cbind(PD, AL), v = cbind(var_PD, cov_PD_AL, var_AL),
 Coefficients:
              Estimate  Std.Error     lbound     ubound z value  Pr(>|z|)
 Intercept1  0.3448392  0.0536312  0.2397239  0.4499544  6.4298 1.278e-10
-Intercept2 -0.3379381  0.0812479 -0.4971812 -0.1786951 -4.1593 3.192e-05
+Intercept2 -0.3379381  0.0812480 -0.4971812 -0.1786951 -4.1593 3.192e-05
 Tau2_1_1    0.0070020  0.0090497 -0.0107351  0.0247391  0.7737    0.4391
 Tau2_2_1    0.0094607  0.0099698 -0.0100797  0.0290010  0.9489    0.3427
 Tau2_2_2    0.0261445  0.0177409 -0.0086270  0.0609161  1.4737    0.1406
@@ -218,7 +218,7 @@ Number of estimated parameters: 5
 Degrees of freedom: 5
 -2 log likelihood: -11.68131 
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
-Other values indicate problems.)
+Other values may indicate problems.)
 ```
 
 ```r
@@ -286,7 +286,7 @@ Number of estimated parameters: 2
 Degrees of freedom: 8
 -2 log likelihood: 90.88326 
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
-Other values indicate problems.)
+Other values may indicate problems.)
 ```
 
 ### Mixed-effects model
@@ -306,10 +306,10 @@ meta(y = cbind(PD, AL), v = cbind(var_PD, cov_PD_AL, var_AL),
 95% confidence intervals: z statistic approximation
 Coefficients:
              Estimate  Std.Error     lbound     ubound z value  Pr(>|z|)
-Intercept1  0.3440001  0.0857659  0.1759021  0.5120982  4.0109 6.048e-05
-Intercept2 -0.2918176  0.1312796 -0.5491209 -0.0345143 -2.2229   0.02622
-Slope1_1    0.0063540  0.1078235 -0.2049762  0.2176841  0.0589   0.95301
-Slope2_1   -0.0705888  0.1620965 -0.3882921  0.2471145 -0.4355   0.66322
+Intercept1  0.3440001  0.0857659  0.1759020  0.5120982  4.0109 6.048e-05
+Intercept2 -0.2918175  0.1312797 -0.5491209 -0.0345140 -2.2229   0.02622
+Slope1_1    0.0063540  0.1078235 -0.2049762  0.2176842  0.0589   0.95301
+Slope2_1   -0.0705888  0.1620966 -0.3882922  0.2471147 -0.4355   0.66322
 Tau2_1_1    0.0080405  0.0101206 -0.0117955  0.0278766  0.7945   0.42692
 Tau2_2_1    0.0093413  0.0105515 -0.0113392  0.0300218  0.8853   0.37599
 Tau2_2_2    0.0250135  0.0170788 -0.0084603  0.0584873  1.4646   0.14303
@@ -340,7 +340,7 @@ Number of estimated parameters: 7
 Degrees of freedom: 3
 -2 log likelihood: -12.00859 
 OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
-Other values indicate problems.)
+Other values may indicate problems.)
 ```
 
 ## More examples
@@ -348,50 +348,33 @@ Other values indicate problems.)
 * [Meta-analytic structural equation modeling](./masem.html)
 
 # Installation and help
-* The current version is 0.9.3. There are several methods to install the `metaSEM` package. If you have already installed the developmental tools and the `devtools` package. You may install the `metaSEM` package from the GitHub. Alternatively, you may download the binary package for Windows platform and the source for Linxu and Mac OS X platforms.
-* First of all, you need [R](http://www.r-project.org/) to run it. Since `metaSEM` depends on [OpenMx](http://openmx.psyc.virginia.edu/), you may also need to install `OpenMx` by run the following command inside an `R` session:
+* First of most important, you need [R](http://www.r-project.org/) to run it. You can install the `metaSEM` package by running the following command inside an `R` session:
 
 ```
-## Install OpenMx
-source('http://openmx.psyc.virginia.edu/getOpenMx.R') 
+install.packages("metaSEM")
+```
 
+* The developmental version can be installed from [GitHub](https://github.com/mikewlcheung/metasem) by running:
+
+```
 library(devtools)
-
-## Install metaSEM from GitHub
 install_github("mikewlcheung/metasem")
 ```
 
-## Windows platform
-* Download the Windows [Binary for Windows](https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9.3-1.zip) package of the `metaSEM`. Please note that d:\ in Windows is represented by either d:/ or d:\\ in `R`. If the file is saved at d:\\, run the following command inside an `R` session:
+## Potential issues with the OpenMx available at CRAN
+* The OpenMx available at [CRAN](http://cran.r-project.org/web/packages/OpenMx/) includes only the open source `SLSQP` optimizer. 
+* If the `SLSQP` optimizer does not work well for you, e.g., there are many error codes, you may try to rerun the analysis. For example,
 
 ```
-install.packages(pkgs="d:/metaSEM_0.9.3-1.zip", repos=NULL)
+random1 <- meta(y=yi, v=vi, data=Hox02)
+random1 <- rerun(random1)
+summary(random1)
 ```
-
-## Linux and Mac OS X platforms
-* Download the [Source](https://dl.dropboxusercontent.com/u/25182759/metaSEM_0.9.3-1.tar.gz) package of `metaSEM`. If the file is saved at /home/mike/, run the following command inside an `R` session:
-
-```
-install.packages(pkgs="/home/mike/metaSEM_0.9.3-1.tar.gz", repos=NULL, type="source")
-```
-
-* Alternatively, the `metaSEM` package may also be installed in the terminal by using:
+* If you still prefer the non-free `NPSOL` optimizer, you may install it from the [OpenMx website](http://openmx.psyc.virginia.edu/) and call it by running:
 
 ```
-R CMD INSTALL metaSEM_0.9.3-1.tar.gz
+mxOption(NULL, "Default optimizer", "NPSOL")
 ```
-
-## Potential issues with OpenMx 2.2.2 available at CRAN
-* OpenMx 2.2.2 is available at the [CRAN](http://cran.r-project.org/web/packages/OpenMx/). It only includes the open source `SLSQP` optimizer while the metaSEM package uses the non-open source `NPSOL` optimizer as the default optimizer.
-* I would suggest using the OpenMx version from the [OpenMx website](http://openmx.psyc.virginia.edu/) if possible.
-* If you want to use the version from the CRAN, you may install the OpenMx from the CRAN. After installing the OpenMx from CRAN, you may switch to the `SLSQP` optimizer by calling the following command in R:
-
-```
-library(metaSEM)
-mxOption(NULL, "Default optimizer", "SLSQP")
-mxOption(NULL, "Gradient algorithm", "central")
-```
-* My limited experience with the `SLSQP` optimizer suggests that it may return an error code 6 when the estimated variances are very small, e.g., close to 1e-10. If you encounter this issue, one option is to fix the variances at 0 and to refit the model again. An alternative option is to use the OpenMx 2.1.0, that includes both the `SLSQP` and `NPSOL` optimizers, from the [OpenMx website](http://openmx.psyc.virginia.edu/).
 
 ## Help
 * [Reference manual](./manual/index.html)
@@ -433,7 +416,7 @@ attached base packages:
 [8] base     
 
 other attached packages:
-[1] metafor_1.9-7   Matrix_1.2-0    metaSEM_0.9.3-1 OpenMx_2.1.0   
+[1] metafor_1.9-7   Matrix_1.2-1    metaSEM_0.9.4   OpenMx_2.2.4   
 [5] MASS_7.3-40     digest_0.6.8    knitr_1.10.5    rmarkdown_0.6.1
 
 loaded via a namespace (and not attached):

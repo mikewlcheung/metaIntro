@@ -56,106 +56,22 @@ countries. <em>Organization Studies</em>, <b>25</b>, 1339-1362.
 
 <h3>Examples</h3>
 
-<pre><code class="r">data(wvs94b)
-
-## Get the indirect and the direct effects and
-## their sampling covariance matrices for each study
-indirect1 &lt;- indirectEffect(wvs94b$data, wvs94b$n)
-indirect1
-</code></pre>
-
-<pre><code>##             ind_eff       dir_eff      ind_var   ind_dir_cov      dir_var
-## france   0.15978108  0.0827522303 0.0006426931 -4.659597e-04 0.0024427389
-## britain  0.14168808 -0.0002263515 0.0002891757 -1.628624e-04 0.0012231464
-## wgermany 0.17524943  0.1527288041 0.0003160777 -2.686298e-04 0.0010403327
-## italy    0.20321199  0.0296688666 0.0002997076 -1.505101e-04 0.0009559007
-## nethland 0.07862695  0.1185530602 0.0004752512 -4.176597e-04 0.0025999332
-## denmark  0.08921958  0.0357813280 0.0002584776 -1.635621e-04 0.0015970492
-## belgium  0.18234856  0.0406593106 0.0002431887 -1.639835e-04 0.0008550998
-## spain    0.15684405  0.0166713898 0.0001386122 -8.535614e-05 0.0005436688
-## ireland  0.20451334 -0.0635824906 0.0005540246 -2.117545e-04 0.0016590868
-## nireland 0.14117362  0.1715056677 0.0016310751 -1.137921e-03 0.0067148900
-## usa      0.21260845  0.0097461333 0.0003355435 -2.567621e-04 0.0010405370
-## canada   0.15592968  0.0559243847 0.0002677202 -1.926672e-04 0.0010354988
-## japan    0.29279267 -0.1210110255 0.0010149803 -9.995416e-04 0.0020321008
-## mexico   0.27017716  0.0899476324 0.0003902701 -2.366825e-04 0.0010794982
-## s africa 0.22436787  0.1495905807 0.0002664489 -2.112686e-04 0.0007997336
-## hungary  0.11562892  0.1698172786 0.0003134032 -2.145055e-04 0.0015114093
-## norway   0.11717404 -0.0022130065 0.0002265677 -1.071985e-04 0.0011005281
-## sweden   0.14566214 -0.0139557116 0.0003340801 -2.808928e-04 0.0011892793
-## iceland  0.10093184 -0.0039303676 0.0003336170 -2.167083e-04 0.0018334279
-## argentin 0.12691357 -0.0226665700 0.0003771604 -1.913293e-04 0.0017279425
-## finland  0.22153351  0.0911582931 0.0011819287 -1.068610e-03 0.0032886942
-## skorea   0.26277917  0.1425266173 0.0004041737 -2.713505e-04 0.0011342220
-## poland   0.11064945 -0.0597437094 0.0005229831 -4.943965e-04 0.0015468657
-## switz    0.22223101  0.0093824325 0.0004571137 -3.593384e-04 0.0013720947
-## brazil   0.13247433  0.1370103961 0.0002411025 -1.563711e-04 0.0010607703
-## nigeria  0.11195585  0.1413838553 0.0002813955 -1.341443e-04 0.0013634305
-## chile    0.11531244  0.0395807520 0.0002569743 -1.572960e-04 0.0012841801
-## byelorus 0.11559907  0.1265706033 0.0002318953 -1.475468e-04 0.0011419204
-## india    0.15666920  0.0614854044 0.0002110460 -9.147373e-05 0.0007809675
-## czech    0.09205185  0.0373220487 0.0001603429 -1.110058e-04 0.0009433719
-## egermany 0.12373159  0.2026102677 0.0003155193 -2.794840e-04 0.0011994091
-## slovenia 0.11637792  0.0818733131 0.0003588974 -1.804093e-04 0.0017447837
-## bulgaria 0.18526471  0.1151117969 0.0005621604 -4.813908e-04 0.0017898510
-## romania  0.16122289  0.0311904765 0.0005056979 -3.325919e-04 0.0019383154
-## china    0.16410093  0.1558056052 0.0002978571 -1.825283e-04 0.0011046905
-## portugal 0.10308382  0.0423771114 0.0003108877 -1.964824e-04 0.0016999558
-## austria  0.08144796  0.0812576547 0.0002190289 -7.901503e-05 0.0013404471
-## turkey   0.09635397  0.1202193094 0.0004608044 -2.868799e-04 0.0026492032
-## lithuan  0.04971947  0.0906340653 0.0001547132 -1.260993e-04 0.0014005232
-## latvia   0.13141216  0.1555684327 0.0003636285 -2.772962e-04 0.0015477714
-## estonia  0.13213637  0.0910844945 0.0003967990 -3.413580e-04 0.0015334344
-## russia   0.11256491  0.0784024729 0.0001843387 -1.408801e-04 0.0008860437
-</code></pre>
-
-<pre><code class="r">## Multivariate meta-analysis on the indirect and direct effects
-indirect2 &lt;- meta(indirect1[, c(&quot;ind_eff&quot;, &quot;dir_eff&quot;)],
-                  indirect1[, c(&quot;ind_var&quot;, &quot;ind_dir_cov&quot;, &quot;dir_var&quot;)])
-
-summary(indirect2)  
-</code></pre>
-
-<pre><code>## 
-## Call:
-## meta(y = indirect1[, c(&quot;ind_eff&quot;, &quot;dir_eff&quot;)], v = indirect1[, 
-##     c(&quot;ind_var&quot;, &quot;ind_dir_cov&quot;, &quot;dir_var&quot;)])
-## 
-## 95% confidence intervals: z statistic approximation
-## Coefficients:
-##               Estimate   Std.Error      lbound      ubound z value
-## Intercept1  1.4809e-01  8.0687e-03  1.3227e-01  1.6390e-01 18.3536
-## Intercept2  6.8791e-02  1.0638e-02  4.7940e-02  8.9642e-02  6.4664
-## Tau2_1_1    2.3565e-03  6.0241e-04  1.1758e-03  3.5373e-03  3.9118
-## Tau2_2_1   -7.9476e-05  5.7031e-04 -1.1973e-03  1.0383e-03 -0.1394
-## Tau2_2_2    3.3153e-03  1.0385e-03  1.2799e-03  5.3506e-03  3.1925
-##             Pr(&gt;|z|)    
-## Intercept1 &lt; 2.2e-16 ***
-## Intercept2 1.004e-10 ***
-## Tau2_1_1   9.159e-05 ***
-## Tau2_2_1    0.889170    
-## Tau2_2_2    0.001411 ** 
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Q statistic on the homogeneity of effect sizes: 561.314
-## Degrees of freedom of the Q statistic: 82
-## P value of the Q statistic: 0
-## 
-## Heterogeneity indices (based on the estimated Tau2):
-##                              Estimate
-## Intercept1: I2 (Q statistic)   0.8836
-## Intercept2: I2 (Q statistic)   0.7195
-## 
-## Number of studies (or clusters): 42
-## Number of observed statistics: 84
-## Number of estimated parameters: 5
-## Degrees of freedom: 79
-## -2 log likelihood: -232.1633 
-## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
-## Other values indicate problems.)
+<pre><code class="r">## Not run: 
+##D data(wvs94b)
+##D 
+##D ## Get the indirect and the direct effects and
+##D ## their sampling covariance matrices for each study
+##D indirect1 &lt;- indirectEffect(wvs94b$data, wvs94b$n)
+##D indirect1
+##D 
+##D ## Multivariate meta-analysis on the indirect and direct effects
+##D indirect2 &lt;- meta(indirect1[, c(&quot;ind_eff&quot;, &quot;dir_eff&quot;)],
+##D                   indirect1[, c(&quot;ind_var&quot;, &quot;ind_dir_cov&quot;, &quot;dir_var&quot;)])
+##D 
+##D summary(indirect2)  
+## End(Not run)
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.3-1 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.4 <a href="00Index.html">Index</a>]</div>
 </body></html>
