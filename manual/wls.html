@@ -93,13 +93,9 @@ estimate the standard error by drawing samples from <i>N(vech(Cov), asyCov)</i> 
 correlation analysis while asyCov is treated as fixed. This process
 is computational intensive. A better approach is to request likelihood-based
 confidence intervals (CIs) by specifying <code>intervals.type="LB"</code>. 
-</p>
-<p>If <code>diag.constraints=FALSE</code> and <code>cor.analysis=TRUE</code>, the diagonals are automatically constrained as ones by
+If <code>diag.constraints=FALSE</code> and <code>cor.analysis=TRUE</code>, the diagonals are automatically constrained as ones by
 treating the error variances as computed values rather than as
-parameters. Since the error variances are not parameters, they are not reported. It is usually not necessary to set
-<code>diag.constraints=TRUE</code> unless there are mediators (variables
-acting as both a predictor and dependent variable) in the model. See
-the examples in <code><a href="Hunter83.html">Hunter83</a></code>.
+parameters. Since the error variances are not parameters, they are not reported. 
 </p>
 </td></tr>  
 <tr valign="top"><td><code>cor.analysis</code></td>
@@ -326,8 +322,8 @@ summary(wls.fit1)
 ## Coefficients:
 ##    Estimate Std.Error  lbound  ubound z value Pr(&gt;|z|)
 ## a1  0.42159        NA 0.34439 0.50013      NA       NA
-## a2  0.52376        NA 0.44601 0.60478      NA       NA
-## a3  0.57092        NA 0.49209 0.65446      NA       NA
+## a2  0.52376        NA 0.44601 0.60479      NA       NA
+## a3  0.57092        NA 0.49209 0.65451      NA       NA
 ## a4  0.42159        NA 0.34439 0.50013      NA       NA
 ## 
 ## Goodness-of-fit indices:
@@ -338,7 +334,7 @@ summary(wls.fit1)
 ## p value of target model                       0.9933
 ## Number of constraints imposed on &quot;Smatrix&quot;    0.0000
 ## DF manually adjusted                          0.0000
-## Chi-square of independence model            207.8652
+## Chi-square of independence model            207.8655
 ## DF of independence model                      6.0000
 ## RMSEA                                         0.0000
 ## SRMR                                          0.0012
@@ -434,7 +430,6 @@ summary(wls.fit2)
 ##              Estimate Std.Error  lbound  ubound z value Pr(&gt;|z|)
 ## Amatrix[1,2]  0.16264        NA 0.10106 0.22430      NA       NA
 ## Amatrix[1,3]  0.19121        NA 0.12993 0.25259      NA       NA
-## Smatrix[2,3]  0.30000        NA 0.24357 0.35643      NA       NA
 ## 
 ## Goodness-of-fit indices:
 ##                                             Value
@@ -511,14 +506,14 @@ summary(wls.fit3)
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
 ##    Estimate Std.Error   lbound   ubound z value  Pr(&gt;|z|)    
-## a1 0.422193  0.063787 0.297173 0.547213  6.6188 3.621e-11 ***
-## a2 0.523188  0.069694 0.386590 0.659787  7.5069 6.062e-14 ***
-## a3 0.570613  0.074823 0.423963 0.717262  7.6262 2.420e-14 ***
-## a4 0.421946  0.060419 0.303527 0.540366  6.9836 2.876e-12 ***
-## e1 1.321745  0.073423 1.177838 1.465651 18.0018 &lt; 2.2e-16 ***
+## a1 0.422193  0.063787 0.297173 0.547212  6.6188 3.620e-11 ***
+## a2 0.523188  0.069694 0.386591 0.659786  7.5069 6.062e-14 ***
+## a3 0.570613  0.074822 0.423963 0.717262  7.6262 2.420e-14 ***
+## a4 0.421946  0.060419 0.303527 0.540365  6.9837 2.876e-12 ***
+## e1 1.321745  0.073422 1.177840 1.465650 18.0020 &lt; 2.2e-16 ***
 ## e2 1.326269  0.085074 1.159526 1.493011 15.5895 &lt; 2.2e-16 ***
-## e3 1.474396  0.097522 1.283256 1.665536 15.1186 &lt; 2.2e-16 ***
-## e4 1.121955  0.065237 0.994093 1.249816 17.1982 &lt; 2.2e-16 ***
+## e3 1.474396  0.097521 1.283257 1.665534 15.1187 &lt; 2.2e-16 ***
+## e4 1.121955  0.065236 0.994095 1.249814 17.1985 &lt; 2.2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -530,7 +525,7 @@ summary(wls.fit3)
 ## p value of target model                       0.9975
 ## Number of constraints imposed on &quot;Smatrix&quot;    0.0000
 ## DF manually adjusted                          0.0000
-## Chi-square of independence model             78.2743
+## Chi-square of independence model             78.2704
 ## DF of independence model                      6.0000
 ## RMSEA                                         0.0000
 ## SRMR                                          0.0006
@@ -543,5 +538,5 @@ summary(wls.fit3)
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.4 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
 </body></html>

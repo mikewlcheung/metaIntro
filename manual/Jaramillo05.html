@@ -65,25 +65,122 @@ job performance</p>
 
 <h3>Examples</h3>
 
-<pre><code class="r">## Not run: 
-##D ## Research question 4.4.1
-##D summary(meta(r, r_v, data=Jaramillo05))
-##D 
-##D ## Research question 4.4.2
-##D ## Select cases with either &quot;sales&quot; or &quot;nonsales&quot;
-##D Sales.df &lt;- subset(Jaramillo05, Sales %in% c(&quot;sales&quot;, &quot;nonsales&quot;))
-##D 
-##D ## Create a predictor with 1 and 0 when they are &quot;sales&quot; or &quot;nonsales&quot;, respectively
-##D predictor &lt;- ifelse(Jaramillo05$Sales==&quot;sales&quot;, yes=1, no=0)
-##D 
-##D ## Mixed-effects meta-analysis
-##D summary( meta(y = r, v = r_v, x = predictor, data = Jaramillo05) )
-##D 
-##D ## Research question 4.4.3
-##D summary(meta(r, r_v, x=IDV, data=Jaramillo05))
-## End(Not run)
+<pre><code class="r">## Research question 4.4.1
+summary(meta(r, r_v, data=Jaramillo05))
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta(y = r, v = r_v, data = Jaramillo05)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##             Estimate Std.Error    lbound    ubound z value  Pr(&gt;|z|)    
+## Intercept1 0.1866221 0.0193303 0.1487354 0.2245088  9.6544 &lt; 2.2e-16 ***
+## Tau2_1_1   0.0170341 0.0041352 0.0089292 0.0251389  4.1193 3.801e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Q statistic on the homogeneity of effect sizes: 339.3886
+## Degrees of freedom of the Q statistic: 60
+## P value of the Q statistic: 0
+## 
+## Heterogeneity indices (based on the estimated Tau2):
+##                              Estimate
+## Intercept1: I2 (Q statistic)   0.8144
+## 
+## Number of studies (or clusters): 61
+## Number of observed statistics: 61
+## Number of estimated parameters: 2
+## Degrees of freedom: 59
+## -2 log likelihood: -55.44225 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values may indicate problems.)
+</code></pre>
+
+<pre><code class="r">## Research question 4.4.2
+## Select cases with either &quot;sales&quot; or &quot;nonsales&quot;
+Sales.df &lt;- subset(Jaramillo05, Sales %in% c(&quot;sales&quot;, &quot;nonsales&quot;))
+
+## Create a predictor with 1 and 0 when they are &quot;sales&quot; or &quot;nonsales&quot;, respectively
+predictor &lt;- ifelse(Jaramillo05$Sales==&quot;sales&quot;, yes=1, no=0)
+
+## Mixed-effects meta-analysis
+summary( meta(y = r, v = r_v, x = predictor, data = Jaramillo05) )
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta(y = r, v = r_v, x = predictor, data = Jaramillo05)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##             Estimate Std.Error    lbound    ubound z value  Pr(&gt;|z|)    
+## Intercept1 0.1510808 0.0255621 0.1009800 0.2011816  5.9103 3.414e-09 ***
+## Slope1_1   0.0772165 0.0376176 0.0034875 0.1509456  2.0527    0.0401 *  
+## Tau2_1_1   0.0157250 0.0038514 0.0081763 0.0232736  4.0829 4.448e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Q statistic on the homogeneity of effect sizes: 339.3886
+## Degrees of freedom of the Q statistic: 60
+## P value of the Q statistic: 0
+## 
+## Explained variances (R2):
+##                            y1
+## Tau2 (no predictor)    0.0170
+## Tau2 (with predictors) 0.0157
+## R2                     0.0769
+## 
+## Number of studies (or clusters): 61
+## Number of observed statistics: 61
+## Number of estimated parameters: 3
+## Degrees of freedom: 58
+## -2 log likelihood: -59.55025 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values may indicate problems.)
+</code></pre>
+
+<pre><code class="r">## Research question 4.4.3
+summary(meta(r, r_v, x=IDV, data=Jaramillo05))
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta(y = r, v = r_v, x = IDV, data = Jaramillo05)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##               Estimate   Std.Error      lbound      ubound z value
+## Intercept1  0.29409958  0.08166837  0.13403251  0.45416664  3.6011
+## Slope1_1   -0.00132138  0.00097695 -0.00323616  0.00059341 -1.3526
+## Tau2_1_1    0.01634054  0.00402026  0.00846097  0.02422010  4.0645
+##             Pr(&gt;|z|)    
+## Intercept1 0.0003168 ***
+## Slope1_1   0.1761986    
+## Tau2_1_1   4.813e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Q statistic on the homogeneity of effect sizes: 339.3886
+## Degrees of freedom of the Q statistic: 60
+## P value of the Q statistic: 0
+## 
+## Explained variances (R2):
+##                            y1
+## Tau2 (no predictor)    0.0170
+## Tau2 (with predictors) 0.0163
+## R2                     0.0407
+## 
+## Number of studies (or clusters): 61
+## Number of observed statistics: 61
+## Number of estimated parameters: 3
+## Degrees of freedom: 58
+## -2 log likelihood: -57.24231 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values may indicate problems.)
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.4 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
 </body></html>

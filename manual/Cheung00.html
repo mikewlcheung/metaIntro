@@ -58,55 +58,200 @@ coefficients were also excluded.
 
 <h3>References</h3>
 
-<p>Cheung, M.W.-L., &amp; Cheung, S.-F. (2014). Random effects models for
+<p>Cheung, M.W.-L., &amp; Cheung, S.-F. (in press). Random-effects models for
 meta-analytic structural equation modeling: Review, issues, and
-illustrations. <em>Manuscript submitted for publication.</em>
+illustrations. <em>Research Synthesis Methods.</em>
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">## Not run: 
-##D data(Cheung00)
-##D 
-##D ## Variable labels
-##D labels &lt;- colnames(Cheung00$data[[1]])
-##D 
-##D ## Full mediation model
-##D S &lt;- create.mxMatrix(c(&quot;1&quot;, 
-##D                        &quot;.2*cov_att_sn&quot;, &quot;1&quot;, 
-##D                        0, 0, &quot;.2*e_bi&quot;, 
-##D                        0, 0, 0, &quot;.2*e_beh&quot;), 
-##D                      type=&quot;Symm&quot;, as.mxMatrix=FALSE, byrow=TRUE)
-##D dimnames(S) &lt;- list(labels, labels)
-##D S
-##D 
-##D A &lt;- matrix(c(&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,
-##D               &quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,
-##D               &quot;.2*att2bi&quot;, &quot;.2*sn2bi&quot;, &quot;0&quot;, &quot;0&quot;,
-##D               &quot;0&quot;, &quot;0&quot;, &quot;.2*bi2beh&quot;, &quot;0&quot;),
-##D             byrow=TRUE, 4, 4)
-##D dimnames(A) &lt;- list(labels, labels)
-##D A
-##D 
-##D #### Random-effects model
-##D 
-##D ## Stage 1 analysis
-##D random_1 &lt;- tssem1(Cheung00$data, Cheung00$n, method=&quot;REM&quot;)
-##D summary(random_1)
-##D 
-##D ## Stage 2 analysis
-##D random_2 &lt;- tssem2(random_1, Amatrix=A, Smatrix=S, intervals.type=&quot;LB&quot;, diag.constraints=TRUE)
-##D summary(random_2)
-##D 
-##D ## Load the library
-##D library(&quot;semPlot&quot;)
-##D 
-##D my.plot1 &lt;- meta2semPlot(random_2)
-##D semPaths(my.plot1, whatLabels=&quot;est&quot;, col=&quot;yellow&quot;)
-## End(Not run)
+<pre><code class="r">data(Cheung00)
+
+## Variable labels
+labels &lt;- colnames(Cheung00$data[[1]])
+
+## Full mediation model
+S &lt;- create.mxMatrix(c(&quot;1&quot;, 
+                       &quot;.2*cov_att_sn&quot;, &quot;1&quot;, 
+                       0, 0, &quot;.2*e_bi&quot;, 
+                       0, 0, 0, &quot;.2*e_beh&quot;), 
+                     type=&quot;Symm&quot;, as.mxMatrix=FALSE, byrow=TRUE)
+dimnames(S) &lt;- list(labels, labels)
+S
 </code></pre>
 
+<pre><code>##     att             sn              bi        beh       
+## att &quot;1&quot;             &quot;.2*cov_att_sn&quot; &quot;0&quot;       &quot;0&quot;       
+## sn  &quot;.2*cov_att_sn&quot; &quot;1&quot;             &quot;0&quot;       &quot;0&quot;       
+## bi  &quot;0&quot;             &quot;0&quot;             &quot;.2*e_bi&quot; &quot;0&quot;       
+## beh &quot;0&quot;             &quot;0&quot;             &quot;0&quot;       &quot;.2*e_beh&quot;
+</code></pre>
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.4 <a href="00Index.html">Index</a>]</div>
+<pre><code class="r">A &lt;- matrix(c(&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,
+              &quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,
+              &quot;.2*att2bi&quot;, &quot;.2*sn2bi&quot;, &quot;0&quot;, &quot;0&quot;,
+              &quot;0&quot;, &quot;0&quot;, &quot;.2*bi2beh&quot;, &quot;0&quot;),
+            byrow=TRUE, 4, 4)
+dimnames(A) &lt;- list(labels, labels)
+A
+</code></pre>
+
+<pre><code>##     att         sn         bi          beh
+## att &quot;0&quot;         &quot;0&quot;        &quot;0&quot;         &quot;0&quot;
+## sn  &quot;0&quot;         &quot;0&quot;        &quot;0&quot;         &quot;0&quot;
+## bi  &quot;.2*att2bi&quot; &quot;.2*sn2bi&quot; &quot;0&quot;         &quot;0&quot;
+## beh &quot;0&quot;         &quot;0&quot;        &quot;.2*bi2beh&quot; &quot;0&quot;
+</code></pre>
+
+<pre><code class="r">#### Random-effects model
+
+## Stage 1 analysis
+random_1 &lt;- tssem1(Cheung00$data, Cheung00$n, method=&quot;REM&quot;)
+summary(random_1)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta(y = ES, v = acovR, RE.startvalues = RE.startvalues, RE.lbound = RE.lbound, 
+##     I2 = I2, model.name = model.name, suppressWarnings = TRUE, 
+##     silent = silent, run = run)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##               Estimate   Std.Error      lbound      ubound z value
+## Intercept1  3.5789e-01  2.5402e-02  3.0811e-01  4.0768e-01 14.0891
+## Intercept2  4.8637e-01  2.1223e-02  4.4478e-01  5.2797e-01 22.9171
+## Intercept3  2.7423e-01  2.9857e-02  2.1571e-01  3.3275e-01  9.1848
+## Intercept4  3.0924e-01  2.2681e-02  2.6478e-01  3.5369e-01 13.6342
+## Intercept5  1.3417e-01  2.4076e-02  8.6978e-02  1.8136e-01  5.5726
+## Intercept6  4.3921e-01  2.5078e-02  3.9006e-01  4.8836e-01 17.5136
+## Tau2_1_1    2.3615e-02  6.2394e-03  1.1386e-02  3.5844e-02  3.7849
+## Tau2_2_1    7.6316e-03  4.2149e-03 -6.2954e-04  1.5893e-02  1.8106
+## Tau2_2_2    1.6635e-02  4.3113e-03  8.1850e-03  2.5085e-02  3.8585
+## Tau2_3_1   -1.3776e-03  5.9218e-03 -1.2984e-02  1.0229e-02 -0.2326
+## Tau2_3_2    9.7808e-03  5.0122e-03 -4.2890e-05  1.9604e-02  1.9514
+## Tau2_3_3    2.0186e-02  6.8179e-03  6.8232e-03  3.3549e-02  2.9607
+## Tau2_4_1    1.5803e-02  4.9203e-03  6.1595e-03  2.5447e-02  3.2118
+## Tau2_4_2    8.1775e-03  3.6120e-03  1.0981e-03  1.5257e-02  2.2640
+## Tau2_4_3    8.0610e-04  4.7972e-03 -8.5962e-03  1.0208e-02  0.1680
+## Tau2_4_4    1.8402e-02  5.0379e-03  8.5284e-03  2.8277e-02  3.6528
+## Tau2_5_1    3.0893e-03  4.8819e-03 -6.4790e-03  1.2658e-02  0.6328
+## Tau2_5_2    2.1754e-03  3.8733e-03 -5.4162e-03  9.7670e-03  0.5616
+## Tau2_5_3    8.5508e-03  4.4045e-03 -8.1865e-05  1.7184e-02  1.9414
+## Tau2_5_4    4.8475e-03  4.0441e-03 -3.0788e-03  1.2774e-02  1.1987
+## Tau2_5_5    8.1756e-03  4.0920e-03  1.5544e-04  1.6196e-02  1.9979
+## Tau2_6_1   -5.1217e-03  4.5098e-03 -1.3961e-02  3.7173e-03 -1.1357
+## Tau2_6_2    2.3361e-03  3.8851e-03 -5.2785e-03  9.9507e-03  0.6013
+## Tau2_6_3    1.3482e-02  5.0535e-03  3.5769e-03  2.3386e-02  2.6678
+## Tau2_6_4   -2.5721e-03  3.8825e-03 -1.0182e-02  5.0375e-03 -0.6625
+## Tau2_6_5    6.7730e-03  3.8487e-03 -7.7033e-04  1.4316e-02  1.7598
+## Tau2_6_6    2.0667e-02  5.5427e-03  9.8034e-03  3.1530e-02  3.7287
+##             Pr(&gt;|z|)    
+## Intercept1 &lt; 2.2e-16 ***
+## Intercept2 &lt; 2.2e-16 ***
+## Intercept3 &lt; 2.2e-16 ***
+## Intercept4 &lt; 2.2e-16 ***
+## Intercept5  2.51e-08 ***
+## Intercept6 &lt; 2.2e-16 ***
+## Tau2_1_1   0.0001538 ***
+## Tau2_2_1   0.0702021 .  
+## Tau2_2_2   0.0001141 ***
+## Tau2_3_1   0.8160407    
+## Tau2_3_2   0.0510087 .  
+## Tau2_3_3   0.0030689 ** 
+## Tau2_4_1   0.0013190 ** 
+## Tau2_4_2   0.0235746 *  
+## Tau2_4_3   0.8665543    
+## Tau2_4_4   0.0002594 ***
+## Tau2_5_1   0.5268556    
+## Tau2_5_2   0.5743642    
+## Tau2_5_3   0.0522125 .  
+## Tau2_5_4   0.2306621    
+## Tau2_5_5   0.0457221 *  
+## Tau2_6_1   0.2560839    
+## Tau2_6_2   0.5476345    
+## Tau2_6_3   0.0076356 ** 
+## Tau2_6_4   0.5076550    
+## Tau2_6_5   0.0784398 .  
+## Tau2_6_6   0.0001925 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Q statistic on the homogeneity of effect sizes: 1324.594
+## Degrees of freedom of the Q statistic: 242
+## P value of the Q statistic: 0
+## 
+## Heterogeneity indices (based on the estimated Tau2):
+##                              Estimate
+## Intercept1: I2 (Q statistic)   0.8374
+## Intercept2: I2 (Q statistic)   0.8415
+## Intercept3: I2 (Q statistic)   0.7911
+## Intercept4: I2 (Q statistic)   0.7886
+## Intercept5: I2 (Q statistic)   0.5738
+## Intercept6: I2 (Q statistic)   0.8452
+## 
+## Number of studies (or clusters): 50
+## Number of observed statistics: 248
+## Number of estimated parameters: 27
+## Degrees of freedom: 221
+## -2 log likelihood: -300.67 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values may indicate problems.)
+</code></pre>
+
+<pre><code class="r">## Stage 2 analysis
+random_2 &lt;- tssem2(random_1, Amatrix=A, Smatrix=S, intervals.type=&quot;LB&quot;, diag.constraints=TRUE)
+summary(random_2)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## wls(Cov = pooledS, asyCov = asyCov, n = tssem1.obj$total.n, Amatrix = Amatrix, 
+##     Smatrix = Smatrix, Fmatrix = Fmatrix, diag.constraints = diag.constraints, 
+##     cor.analysis = cor.analysis, intervals.type = intervals.type, 
+##     mx.algebras = mx.algebras, model.name = model.name, suppressWarnings = suppressWarnings, 
+##     silent = silent, run = run)
+## 
+## 95% confidence intervals: Likelihood-based statistic
+## Coefficients:
+##            Estimate Std.Error  lbound  ubound z value Pr(&gt;|z|)
+## att2bi      0.42470        NA 0.38127 0.46843      NA       NA
+## sn2bi       0.15685        NA 0.11919 0.19515      NA       NA
+## bi2beh      0.43559        NA 0.38596 0.48527      NA       NA
+## cov_att_sn  0.36039        NA 0.31080 0.41001      NA       NA
+## e_bi        0.74702        NA 0.70549 0.78569      NA       NA
+## e_beh       0.81026        NA 0.76451 0.85103      NA       NA
+## 
+## Goodness-of-fit indices:
+##                                                Value
+## Sample size                                8182.0000
+## Chi-square of target model                    8.0242
+## DF of target model                            2.0000
+## p value of target model                       0.0181
+## Number of constraints imposed on &quot;Smatrix&quot;    2.0000
+## DF manually adjusted                          0.0000
+## Chi-square of independence model            907.1866
+## DF of independence model                      6.0000
+## RMSEA                                         0.0192
+## SRMR                                          0.0265
+## TLI                                           0.9799
+## CFI                                           0.9933
+## AIC                                           4.0242
+## BIC                                          -9.9952
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values indicate problems.)
+</code></pre>
+
+<pre><code class="r">## Load the library
+library(&quot;semPlot&quot;)
+
+my.plot1 &lt;- meta2semPlot(random_2)
+semPaths(my.plot1, whatLabels=&quot;est&quot;, col=&quot;yellow&quot;)
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/> </p>
+
+
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
 </body></html>

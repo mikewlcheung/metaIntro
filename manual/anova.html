@@ -69,6 +69,17 @@ comparisons. It will be passed to the <code>all</code> argument in
 </p>
 
 
+<h3>Note</h3>
+
+<p>When the objects are class <code><a href="wls.html">wls</a></code>, the degrees
+of freedom in the base and comparison models are incorrect, while the degrees of
+freedom on the difference between them is correct. If users want to
+obtain the correct degrees of freedom in the base and comparison
+models, they may individually apply the <code><a href="summary.html">summary</a></code> function on
+the base and comparison models.
+</p>
+
+
 <h3>Author(s)</h3>
 
 <p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
@@ -97,5 +108,5 @@ anova(model1, model0)
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.4 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
 </body></html>

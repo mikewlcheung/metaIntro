@@ -21,13 +21,15 @@ respectively. <code>tssem1()</code> is a wrapper of these functions.
 
 <pre>
 tssem1(my.df, n, method=c("FEM","REM"), cor.analysis = TRUE, cluster=NULL,
-       RE.type=c("Symm", "Diag", "Zero"), RE.startvalues=0.1, RE.lbound=1e-10, I2="I2q",
+       RE.type=c("Symm", "Diag", "Zero", "User"), RE.startvalues=0.1,
+       RE.lbound=1e-10, RE.constraints=NULL, I2="I2q",
        model.name=NULL, suppressWarnings=TRUE, silent=TRUE, run=TRUE, ...)
 tssem1FEM(my.df, n, cor.analysis=TRUE, model.name=NULL,
           cluster=NULL, suppressWarnings=TRUE, silent=TRUE, run=TRUE, ...)
-tssem1REM(my.df, n, cor.analysis=TRUE, RE.type=c("Symm", "Diag", "Zero"),
-          RE.startvalues=0.1, RE.lbound=1e-10, I2="I2q", model.name=NULL,
-          suppressWarnings=TRUE, silent=TRUE, run=TRUE, ...)
+tssem1REM(my.df, n, cor.analysis=TRUE, RE.type=c("Symm", "Diag", "Zero","User"),
+          RE.startvalues=0.1, RE.lbound=1e-10, RE.constraints=NULL,
+          I2="I2q", model.name=NULL, suppressWarnings=TRUE,
+          silent=TRUE, run=TRUE, ...)
 </pre>
 
 
@@ -65,15 +67,17 @@ ignored when <code>method="REM"</code>.
 </td></tr>
 <tr valign="top"><td><code>RE.type</code></td>
 <td>
-<p>Either <code>"Symm"</code>, <code>"Diag"</code> or
-<code>"Zero"</code>. If it is <code>"Symm"</code> (default if missing), a
+<p>Either <code>"Symm"</code>, <code>"Diag"</code>, 
+<code>"Zero"</code> or <code>"User"</code>. If it is <code>"Symm"</code> (default if missing), a
 symmetric matrix is used for the random effects on the covariances
 among the correlation (or covariance) vectors. If it is
 <code>"Diag"</code>, a diagonal matrix is used for the random effects
 meaning that the random effects are independent. If it is
 <code>"Zero"</code>, there is no random effects which is similar to the
 conventional Generalized Least Squares (GLS) approach to
-fixed-effects analysis. This argument will be ignored when <code>method="FEM"</code>.</p>
+fixed-effects analysis.
+<code>"User"</code>, user has to specific the variance component via the
+<code>RE.constraints</code> argument. This argument will be ignored when <code>method="FEM"</code>.</p>
 </td></tr>
 <tr valign="top"><td><code>RE.startvalues</code></td>
 <td>
@@ -86,6 +90,19 @@ diagonals of the variance component of the random effects. It will be ignored wh
 component of the random effects. It will be ignored when
 <code>method="FEM"</code>.</p>
 </td></tr>
+<tr valign="top"><td><code>RE.constraints</code></td>
+<td>
+<p>A <i>p*</i> x <i>p*</i> matrix
+specifying the variance componets of the random effects, where
+<i>p*</i> is the number of effect sizes. If the input
+is not a matrix, it is converted into a matrix by
+<code>as.matrix()</code>. The default is that all
+covariance/variance components are free. The format of this matrix
+follows <code><a href="as.mxMatrix.html">as.mxMatrix</a></code>. Elements of the variance
+components can be constrained equally by using the same labels. If a zero matrix is
+specified, it becomes a fixed-effects meta-analysis.
+</p>
+</td></tr>  
 <tr valign="top"><td><code>I2</code></td>
 <td>
 <p>Possible options are <code>"I2q"</code>, <code>"I2hm"</code> and
@@ -163,5 +180,5 @@ equation models. <em>Structural Equation Modeling</em>, <b>20</b>,
 <code><a href="Becker92.html">Becker92</a></code>, <code><a href="Digman97.html">Digman97</a></code>, <code><a href="issp89.html">issp89</a></code>, <code><a href="issp05.html">issp05</a></code>
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.4 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
 </body></html>

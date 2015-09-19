@@ -394,33 +394,28 @@ sessionInfo()
 ```
 
 ```
-Warning in readLines("/etc/os-release"): incomplete final line found on '/
-etc/os-release'
-```
-
-```
-R version 3.2.0 (2015-04-16)
-Platform: x86_64-unknown-linux-gnu (64-bit)
-Running under: Linux Mint LMDE
+R version 3.2.2 (2015-08-14)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 14.04.3 LTS
 
 locale:
- [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
- [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
- [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
- [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [1] LC_CTYPE=en_SG.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_SG.UTF-8        LC_COLLATE=en_SG.UTF-8    
+ [5] LC_MONETARY=en_SG.UTF-8    LC_MESSAGES=en_SG.UTF-8   
+ [7] LC_PAPER=en_SG.UTF-8       LC_NAME=C                 
  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+[11] LC_MEASUREMENT=en_SG.UTF-8 LC_IDENTIFICATION=C       
 
 attached base packages:
 [1] parallel  stats     graphics  grDevices utils     datasets  methods  
 [8] base     
 
 other attached packages:
-[1] metafor_1.9-7   Matrix_1.2-1    metaSEM_0.9.4   OpenMx_2.2.4   
-[5] MASS_7.3-40     digest_0.6.8    knitr_1.10.5    rmarkdown_0.6.1
+[1] metafor_1.9-7   Matrix_1.2-2    metaSEM_0.9.5-2 OpenMx_2.2.6-86
+[5] MASS_7.3-44     digest_0.6.8    knitr_1.11      rmarkdown_0.8  
 
 loaded via a namespace (and not attached):
- [1] lattice_0.20-31 grid_3.2.0      formatR_1.2     magrittr_1.5   
- [5] evaluate_0.7    stringi_0.4-1   tools_3.2.0     stringr_1.0.0  
+ [1] lattice_0.20-33 grid_3.2.2      formatR_1.2     magrittr_1.5   
+ [5] evaluate_0.7.2  stringi_0.5-5   tools_3.2.2     stringr_1.0.0  
  [9] yaml_2.1.13     htmltools_0.2.6
 ```

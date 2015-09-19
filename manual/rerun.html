@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Rerun models via mxRun()</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Rerun models via mxTryHard()</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="R.css" />
 
@@ -10,12 +10,12 @@
 
 <table width="100%" summary="page for rerun {metaSEM}"><tr><td>rerun {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Rerun models via mxRun()
+<h2>Rerun models via mxTryHard()
 </h2>
 
 <h3>Description</h3>
 
-<p>It reruns models via mxRun().
+<p>It reruns models via mxTryHard().
 </p>
 
 
@@ -37,7 +37,7 @@ class <code>tssem1REM</code>, class <code>wls</code>, class <code>meta</code> or
 </td></tr>
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>Futher arguments to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code></p>
+<p>Futher arguments to be passed to <code><a href="../../OpenMx/html/mxTryHard.html">mxTryHard</a></code></p>
 </td></tr>
 </table>
 
@@ -50,13 +50,101 @@ class <code>tssem1REM</code>, class <code>wls</code>, class <code>meta</code> or
 
 <h3>Examples</h3>
 
-<pre><code class="r">## Not run: 
-##D random1 &lt;- tssem1(Digman97$data, Digman97$n, method=&quot;REM&quot;, RE.type=&quot;Diag&quot;)
-##D random1_rerun &lt;- rerun(random1)
-##D summary(random1_rerun)
-## End(Not run)
+<pre><code class="r">random1 &lt;- tssem1(Digman97$data, Digman97$n, method=&quot;REM&quot;, RE.type=&quot;Diag&quot;)
+random1_rerun &lt;- rerun(random1)
+</code></pre>
+
+<pre><code>## 
+## Begin fit attempt 1 of at maximum 11 tries
+## 
+##  Lowest minimum so far:  -110.845241192874
+## 
+## Solution found
+</code></pre>
+
+<pre><code class="r">summary(random1_rerun)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## meta(y = ES, v = acovR, RE.constraints = Diag(x = paste(RE.startvalues, 
+##     &quot;*Tau2_&quot;, 1:no.es, &quot;_&quot;, 1:no.es, sep = &quot;&quot;)), RE.lbound = RE.lbound, 
+##     I2 = I2, model.name = model.name, suppressWarnings = TRUE, 
+##     silent = silent, run = run)
+## 
+## 95% confidence intervals: z statistic approximation
+## Coefficients:
+##                Estimate   Std.Error      lbound      ubound z value
+## Intercept1   0.39464552  0.05422319  0.28837002  0.50092103  7.2782
+## Intercept2   0.44009371  0.04125829  0.35922894  0.52095848 10.6668
+## Intercept3   0.05454208  0.06171559 -0.06641826  0.17550242  0.8838
+## Intercept4   0.09866803  0.04621868  0.00808109  0.18925497  2.1348
+## Intercept5   0.42966158  0.04015558  0.35095808  0.50836508 10.6999
+## Intercept6   0.12851180  0.04081614  0.04851363  0.20850996  3.1486
+## Intercept7   0.20525655  0.04959087  0.10806023  0.30245287  4.1390
+## Intercept8   0.23993541  0.03192375  0.17736601  0.30250482  7.5159
+## Intercept9   0.18910279  0.04301436  0.10479620  0.27340938  4.3963
+## Intercept10  0.44413298  0.03254669  0.38034263  0.50792333 13.6460
+## Tau2_1_1     0.03720732  0.01499996  0.00780794  0.06660669  2.4805
+## Tau2_2_2     0.02030540  0.00843481  0.00377348  0.03683732  2.4073
+## Tau2_3_3     0.04821942  0.01972298  0.00956310  0.08687575  2.4448
+## Tau2_4_4     0.02461032  0.01062424  0.00378720  0.04543344  2.3164
+## Tau2_5_5     0.01872485  0.00824743  0.00256019  0.03488952  2.2704
+## Tau2_6_6     0.01825608  0.00878891  0.00103013  0.03548202  2.0772
+## Tau2_7_7     0.02942396  0.01226278  0.00538935  0.05345857  2.3995
+## Tau2_8_8     0.00965101  0.00488241  0.00008167  0.01922036  1.9767
+## Tau2_9_9     0.02093358  0.00912803  0.00304296  0.03882420  2.2933
+## Tau2_10_10   0.01115054  0.00504672  0.00125915  0.02104194  2.2095
+##              Pr(&gt;|z|)    
+## Intercept1  3.384e-13 ***
+## Intercept2  &lt; 2.2e-16 ***
+## Intercept3   0.376823    
+## Intercept4   0.032777 *  
+## Intercept5  &lt; 2.2e-16 ***
+## Intercept6   0.001641 ** 
+## Intercept7  3.488e-05 ***
+## Intercept8  5.662e-14 ***
+## Intercept9  1.101e-05 ***
+## Intercept10 &lt; 2.2e-16 ***
+## Tau2_1_1     0.013120 *  
+## Tau2_2_2     0.016069 *  
+## Tau2_3_3     0.014492 *  
+## Tau2_4_4     0.020535 *  
+## Tau2_5_5     0.023184 *  
+## Tau2_6_6     0.037786 *  
+## Tau2_7_7     0.016420 *  
+## Tau2_8_8     0.048077 *  
+## Tau2_9_9     0.021829 *  
+## Tau2_10_10   0.027143 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Q statistic on the homogeneity of effect sizes: 2380.997
+## Degrees of freedom of the Q statistic: 130
+## P value of the Q statistic: 0
+## 
+## Heterogeneity indices (based on the estimated Tau2):
+##                               Estimate
+## Intercept1: I2 (Q statistic)    0.9487
+## Intercept2: I2 (Q statistic)    0.9082
+## Intercept3: I2 (Q statistic)    0.9414
+## Intercept4: I2 (Q statistic)    0.8894
+## Intercept5: I2 (Q statistic)    0.9005
+## Intercept6: I2 (Q statistic)    0.8537
+## Intercept7: I2 (Q statistic)    0.9093
+## Intercept8: I2 (Q statistic)    0.7714
+## Intercept9: I2 (Q statistic)    0.8746
+## Intercept10: I2 (Q statistic)   0.8431
+## 
+## Number of studies (or clusters): 14
+## Number of observed statistics: 140
+## Number of estimated parameters: 20
+## Degrees of freedom: 120
+## -2 log likelihood: -110.8452 
+## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
+## Other values may indicate problems.)
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.4 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
 </body></html>
