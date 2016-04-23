@@ -5,118 +5,119 @@
 
 <table width="100%" summary="page for summary {metaSEM}"><tr><td>summary {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Summary Method for tssem1, wls, meta and meta3X Objects
+<h2>Summary Method for tssem1, wls, meta and meta3X Objects 
 </h2>
 
 <h3>Description</h3>
 
-<p>It summaries results for either class <code>tssem1FEM</code>,
-class <code>tssem1FEM.cluster</code>, class <code>tssem1REM</code>, class
-<code>wls</code>, class <code>wls.cluster</code>, class <code>meta</code>, class <code>meta3X</code> or class <code>reml</code>.
+<p>It summaries results for either class <code>tssem1FEM</code>, 
+class <code>tssem1FEM.cluster</code>, class <code>tssem1REM</code>, class 
+<code>wls</code>, class <code>wls.cluster</code>, class <code>meta</code>, class <code>meta3X</code> or class <code>reml</code>. 
 </p>
 
 
 <h3>Usage</h3>
 
-<pre>
+<pre> 
 ## S3 method for class 'tssem1FEM'
-summary(object, ...)
+summary(object, ...) 
 ## S3 method for class 'tssem1FEM.cluster'
-summary(object, ...)
+summary(object, ...) 
 ## S3 method for class 'tssem1REM'
-summary(object, ...)
+summary(object, ...) 
 ## S3 method for class 'wls'
-summary(object, df.adjustment=0, R=50, ...)
+summary(object, df.adjustment=0, R=50, ...) 
 ## S3 method for class 'wls.cluster'
-summary(object, df.adjustment=0, R=50, ...)
+summary(object, df.adjustment=0, R=50, ...) 
 ## S3 method for class 'meta'
-summary(object, homoStat=TRUE, ...)
+summary(object, homoStat=TRUE, ...) 
 ## S3 method for class 'meta3X'
-summary(object, allX=FALSE, ...)
+summary(object, allX=FALSE, ...) 
 ## S3 method for class 'reml'
-summary(object, ...)
+summary(object, ...) 
 ## S3 method for class 'tssem1FEM'
-print.summary(x, ...)
+print.summary(x, ...) 
 ## S3 method for class 'wls'
-print.summary(x, ...)
+print.summary(x, ...) 
 ## S3 method for class 'meta'
-print.summary(x, ...)
+print.summary(x, ...) 
 ## S3 method for class 'meta3X'
-print.summary(x, ...)
+print.summary(x, ...) 
 ## S3 method for class 'reml'
-print.summary(x, ...)
+print.summary(x, ...) 
 </pre>
 
 
 <h3>Arguments</h3>
 
+ 
 <table summary="R argblock">
 <tr valign="top"><td><code>object</code></td>
 <td>
-<p>An object returned from either class
-<code>tssem1FEM</code>, class <code>tssem1FEM.cluster</code>,
-class <code>tssem1REM</code>, class <code>wls</code>, class <code>wls.cluster</code>,
-class <code>meta</code>, class <code>meta3X</code> or class <code>reml</code>.
+<p>An object returned from either class 
+<code>tssem1FEM</code>, class <code>tssem1FEM.cluster</code>, 
+class <code>tssem1REM</code>, class <code>wls</code>, class <code>wls.cluster</code>, 
+class <code>meta</code>, class <code>meta3X</code> or class <code>reml</code>. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>An object returned from either class <code>summary.tssem1FEM</code>,
-class <code>tssem1FEM.cluster</code>, class <code>summary.wls</code>, class
-<code>summary.meta</code>, class <code>summary.meta3X</code> or class <code>summary.reml</code>.
+<p>An object returned from either class <code>summary.tssem1FEM</code>, 
+class <code>tssem1FEM.cluster</code>, class <code>summary.wls</code>, class 
+<code>summary.meta</code>, class <code>summary.meta3X</code> or class <code>summary.reml</code>. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>homoStat</code></td>
 <td>
-<p>Logical. Whether to conduct a homogeneity test on the
+<p>Logical. Whether to conduct a homogeneity test on the 
 effect sizes.</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>allX</code></td>
 <td>
-<p>Logical. Whether to report the predictors and the
+<p>Logical. Whether to report the predictors and the 
 auxiliary variables.</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>df.adjustment</code></td>
 <td>
-<p>Numeric. Adjust the degrees of freedom
-manually. It may be necessary if the df calculated is incorrect when
-<code>diag.constraints=TRUE</code>.
+<p>Numeric. Adjust the degrees of freedom 
+manually. It may be necessary if the df calculated is incorrect when 
+<code>diag.constraints=TRUE</code>. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>R</code></td>
 <td>
-<p>Positive integer. The number of parameter bootstrap
-replicates when <code>diag.constraints=TRUE</code>.
+<p>Positive integer. The number of parameter bootstrap 
+replicates when <code>diag.constraints=TRUE</code>. 
 </p>
-</td></tr>	
+</td></tr>	 
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>Further arguments to be passed to <code><a href="../../stats/html/printCoefmat.html">printCoefmat</a></code>
+<p>Further arguments to be passed to <code><a href="../../stats/html/printCoefmat.html">printCoefmat</a></code> 
 </p>
-</td></tr>
+</td></tr> 
 </table>
 
 
 <h3>Note</h3>
 
-<p>If the OpenMx status1 is either 0 or 1, the estimation is
-considered fine. If the OpenMx status1 is other values, it indicates
-estimation problems. Users should refer to <a href="http://openmx.psyc.virginia.edu/wiki/errors">http://openmx.psyc.virginia.edu/wiki/errors</a> for more details.
+<p>If the OpenMx status1 is either 0 or 1, the estimation is 
+considered fine. If the OpenMx status1 is other values, it indicates 
+estimation problems. Users should refer to <a href="http://openmx.psyc.virginia.edu/wiki/errors">http://openmx.psyc.virginia.edu/wiki/errors</a> for more details. 
 </p>
 
 
 <h3>Author(s)</h3>
 
-<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt; 
 
 </p>
 
 
 <h3>See Also</h3>
 
- <p><code><a href="tssem1.html">tssem1</a></code>, <code><a href="wls.html">wls</a></code>,
-<code><a href="meta.html">meta</a></code>, <code><a href="reml.html">reml</a></code>
+ <p><code><a href="tssem1.html">tssem1</a></code>, <code><a href="wls.html">wls</a></code>, 
+<code><a href="meta.html">meta</a></code>, <code><a href="reml.html">reml</a></code> 
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

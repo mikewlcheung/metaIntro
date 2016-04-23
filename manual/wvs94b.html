@@ -14,10 +14,11 @@
 
 <h3>Description</h3>
 
-<p>Between 1990 and 1993, 57,561 adults aged 18 and above from 42 nations
-were interviewed by local academic institutes in Eastern European
-nations and by professional survey organizations in other nations. The
-covariance matrices among Life Satisfaction, Job Satisfaction, and Job Autonomy were calculated.
+ 
+<p>Between 1990 and 1993, 57,561 adults aged 18 and above from 42 nations 
+were interviewed by local academic institutes in Eastern European 
+nations and by professional survey organizations in other nations. The 
+covariance matrices among Life Satisfaction, Job Satisfaction, and Job Autonomy were calculated. 
 </p>
 
 
@@ -28,96 +29,100 @@ covariance matrices among Life Satisfaction, Job Satisfaction, and Job Autonomy 
 
 <h3>Details</h3>
 
-<p>The variables are:
+ 
+<p>The variables are: 
 </p>
-
+ 
 <dl>
-<dt>data</dt><dd><p>Covariance matrix among Life Satisfaction (LS), Job
+<dt>data</dt><dd><p>Covariance matrix among Life Satisfaction (LS), Job 
 Satisfaction (JS), and Job Autonomy (JA)</p>
-</dd>
+</dd> 
 <dt>n</dt><dd><p>Sample size in the country</p>
-</dd>
+</dd> 
 </dl>
-
+ 
 
 
 <h3>Source</h3>
 
-<p>World Values Study Group. (1994). World Values Survey, 1981-1984 and 1990-1993 [Computer file]. <em>Ann Arbor, MI: Inter-university Consortium for Political and Social Research.</em>
+ 
+<p>World Values Study Group. (1994). World Values Survey, 1981-1984 and 1990-1993 [Computer file]. <em>Ann Arbor, MI: Inter-university Consortium for Political and Social Research.</em> 
 </p>
 
 
 <h3>References</h3>
 
-<p>Au, K., &amp; Cheung, M. W.-L. (2004). Intra-cultural variation and job autonomy in 42
-countries. <em>Organization Studies</em>, <b>25</b>, 1339-1362.
+ 
+<p>Au, K., &amp; Cheung, M. W.-L. (2004). Intra-cultural variation and job autonomy in 42 
+countries. <em>Organization Studies</em>, <b>25</b>, 1339-1362. 
 </p>
-<p>Cheung, M.W.-L., &amp; Cheung, S.-F. (in press). Random-effects models for
-meta-analytic structural equation modeling: Review, issues, and
-illustrations. <em>Research Synthesis Methods.</em>
+<p>Cheung, M.W.-L., &amp; Cheung, S.-F. (in press). Random-effects models for 
+meta-analytic structural equation modeling: Review, issues, and 
+illustrations. <em>Research Synthesis Methods.</em> 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">data(wvs94b)
+<pre><code class="r">## \dontrun{ 
+data(wvs94b) 
 
-## Get the indirect and the direct effects and
-## their sampling covariance matrices for each study
-indirect1 &lt;- indirectEffect(wvs94b$data, wvs94b$n)
-indirect1
+## Get the indirect and the direct effects and 
+## their sampling covariance matrices for each study 
+indirect1 &lt;- indirectEffect(wvs94b$data, wvs94b$n) 
+indirect1 
 </code></pre>
 
 <pre><code>##             ind_eff       dir_eff      ind_var   ind_dir_cov      dir_var
-## france   0.15978141  0.0827522431 0.0006426889 -4.659352e-04 0.0024426794
-## britain  0.14168820 -0.0002263006 0.0002891774 -1.628594e-04 0.0012231401
-## wgermany 0.17524960  0.1527287440 0.0003160793 -2.686299e-04 0.0010403311
-## italy    0.20321233  0.0296684555 0.0002997084 -1.505074e-04 0.0009558993
-## nethland 0.07862686  0.1185534095 0.0004752478 -4.176474e-04 0.0025998998
-## denmark  0.08921949  0.0357811043 0.0002584755 -1.635535e-04 0.0015970313
-## belgium  0.18234893  0.0406592532 0.0002431905 -1.639931e-04 0.0008551220
-## spain    0.15684423  0.0166711391 0.0001386116 -8.535496e-05 0.0005436663
-## ireland  0.20451372 -0.0635826274 0.0005540251 -2.117564e-04 0.0016590964
-## nireland 0.14117359  0.1715056548 0.0016310868 -1.137911e-03 0.0067148723
-## usa      0.21260852  0.0097460309 0.0003355500 -2.567798e-04 0.0010405733
-## canada   0.15592998  0.0559244094 0.0002677214 -1.926679e-04 0.0010355020
-## japan    0.29279252 -0.1210110118 0.0010149349 -9.994713e-04 0.0020319893
-## mexico   0.27017766  0.0899476460 0.0003902704 -2.366794e-04 0.0010794907
-## s africa 0.22436811  0.1495906058 0.0002664471 -2.112609e-04 0.0007997194
-## hungary  0.11562915  0.1698170964 0.0003134071 -2.145078e-04 0.0015114144
-## norway   0.11717420 -0.0022129614 0.0002265684 -1.072010e-04 0.0011005334
-## sweden   0.14566226 -0.0139555999 0.0003340818 -2.808965e-04 0.0011892902
-## iceland  0.10093202 -0.0039303578 0.0003336176 -2.167107e-04 0.0018334352
-## argentin 0.12691382 -0.0226665421 0.0003771584 -1.913267e-04 0.0017279311
-## finland  0.22153359  0.0911586142 0.0011819266 -1.068610e-03 0.0032887041
-## skorea   0.26277918  0.1425267801 0.0004041715 -2.713560e-04 0.0011342315
-## poland   0.11064977 -0.0597440148 0.0005229728 -4.943737e-04 0.0015468192
-## switz    0.22223141  0.0093824786 0.0004571214 -3.593569e-04 0.0013721375
-## brazil   0.13247467  0.1370104168 0.0002411023 -1.563668e-04 0.0010607604
-## nigeria  0.11195614  0.1413833608 0.0002813959 -1.341408e-04 0.0013634255
-## chile    0.11531262  0.0395808324 0.0002569745 -1.572959e-04 0.0012841786
-## byelorus 0.11559917  0.1265705848 0.0002318938 -1.475425e-04 0.0011419077
-## india    0.15666943  0.0614854208 0.0002110465 -9.147194e-05 0.0007809664
-## czech    0.09205198  0.0373221690 0.0001603435 -1.109961e-04 0.0009433472
-## egermany 0.12373178  0.2026104211 0.0003155205 -2.794842e-04 0.0011994117
-## slovenia 0.11637801  0.0818733455 0.0003588966 -1.803961e-04 0.0017447498
-## bulgaria 0.18526507  0.1151116428 0.0005621641 -4.814075e-04 0.0017898810
-## romania  0.16122300  0.0311905872 0.0005057022 -3.325896e-04 0.0019383149
-## china    0.16410105  0.1558057177 0.0002978551 -1.825137e-04 0.0011046614
-## portugal 0.10308383  0.0423772978 0.0003108868 -1.964654e-04 0.0016999190
-## austria  0.08144816  0.0812577499 0.0002190283 -7.901212e-05 0.0013404392
-## turkey   0.09635418  0.1202190086 0.0004608066 -2.868848e-04 0.0026492180
-## lithuan  0.04971959  0.0906341984 0.0001547141 -1.261018e-04 0.0014005275
-## latvia   0.13141244  0.1555683547 0.0003636352 -2.773161e-04 0.0015478234
-## estonia  0.13213639  0.0910846401 0.0003968020 -3.413673e-04 0.0015334538
-## russia   0.11256496  0.0784023892 0.0001843395 -1.408835e-04 0.0008860497
+## france   0.15978141  0.0827522461 0.0006412924 -4.649454e-04 0.0024374059
+## britain  0.14168820 -0.0002263007 0.0002888310 -1.626571e-04 0.0012216599
+## wgermany 0.17524960  0.1527287443 0.0003158081 -2.684000e-04 0.0010394339
+## italy    0.20321234  0.0296684559 0.0002994225 -1.503761e-04 0.0009550049
+## nethland 0.07862686  0.1185534103 0.0004741621 -4.167198e-04 0.0025940000
+## denmark  0.08921949  0.0357811049 0.0002580830 -1.633167e-04 0.0015946257
+## belgium  0.18234893  0.0406592228 0.0002430000 -1.638546e-04 0.0008544332
+## spain    0.15684423  0.0166711391 0.0001385408 -8.530734e-05 0.0005433748
+## ireland  0.20451372 -0.0635826273 0.0005530175 -2.113689e-04 0.0016560481
+## nireland 0.14117359  0.1715056590 0.0016206049 -1.130507e-03 0.0066716297
+## usa      0.21260852  0.0097460305 0.0003352506 -2.565373e-04 0.0010396340
+## canada   0.15592998  0.0559244096 0.0002674737 -1.924936e-04 0.0010345513
+## japan    0.29279253 -0.1210110214 0.0010138128 -9.983440e-04 0.0020297107
+## mexico   0.27017766  0.0899476460 0.0003898565 -2.364167e-04 0.0010783334
+## s africa 0.22436811  0.1495906062 0.0002662679 -2.111175e-04 0.0007991767
+## hungary  0.11562915  0.1698171076 0.0003129404 -2.141807e-04 0.0015091523
+## norway   0.11717420 -0.0022129617 0.0002263148 -1.070791e-04 0.0010993010
+## sweden   0.14566226 -0.0139555980 0.0003337621 -2.806301e-04 0.0011881523
+## iceland  0.10093202 -0.0039303487 0.0003330384 -2.163154e-04 0.0018302047
+## argentin 0.12691382 -0.0226665411 0.0003765071 -1.909892e-04 0.0017249274
+## finland  0.22153359  0.0911586195 0.0011790783 -1.065998e-03 0.0032807259
+## skorea   0.26277918  0.1425267795 0.0004037433 -2.710684e-04 0.0011330304
+## poland   0.11064977 -0.0597440130 0.0005223964 -4.938223e-04 0.0015451010
+## switz    0.22223141  0.0093824791 0.0004566021 -3.589338e-04 0.0013705545
+## brazil   0.13247467  0.1370104166 0.0002408544 -1.562138e-04 0.0010596832
+## nigeria  0.11195614  0.1413833557 0.0002809950 -1.339513e-04 0.0013614816
+## chile    0.11531262  0.0395808318 0.0002566581 -1.571078e-04 0.0012826150
+## byelorus 0.11559917  0.1265705841 0.0002316383 -1.473846e-04 0.0011406506
+## india    0.15666943  0.0614854223 0.0002108708 -9.139084e-05 0.0007803188
+## czech    0.09205198  0.0373221695 0.0001602023 -1.109053e-04 0.0009425369
+## egermany 0.12373178  0.2026104203 0.0003151898 -2.791858e-04 0.0011981493
+## slovenia 0.11637801  0.0818733474 0.0003582661 -1.800883e-04 0.0017417019
+## bulgaria 0.18526507  0.1151116394 0.0005613585 -4.807255e-04 0.0017873385
+## romania  0.16122303  0.0311905394 0.0005047971 -3.320222e-04 0.0019349102
+## china    0.16410105  0.1558057384 0.0002975283 -1.823033e-04 0.0011034250
+## portugal 0.10308383  0.0423772969 0.0003103805 -1.961384e-04 0.0016971350
+## austria  0.08144816  0.0812577522 0.0002187153 -7.889336e-05 0.0013385159
+## turkey   0.09635417  0.1202190099 0.0004596091 -2.861366e-04 0.0026423311
+## lithuan  0.04971958  0.0906342006 0.0001545078 -1.259299e-04 0.0013986628
+## latvia   0.13141244  0.1555683548 0.0003631150 -2.769157e-04 0.0015455950
+## estonia  0.13213639  0.0910846395 0.0003962934 -3.409209e-04 0.0015314712
+## russia   0.11256496  0.0784023947 0.0001841914 -1.407663e-04 0.0008853345
 </code></pre>
 
-<pre><code class="r">## Multivariate meta-analysis on the indirect and direct effects
-indirect2 &lt;- meta(indirect1[, c(&quot;ind_eff&quot;, &quot;dir_eff&quot;)],
-                  indirect1[, c(&quot;ind_var&quot;, &quot;ind_dir_cov&quot;, &quot;dir_var&quot;)])
+<pre><code class="r">## Multivariate meta-analysis on the indirect and direct effects 
+indirect2 &lt;- meta(indirect1[, c(&quot;ind_eff&quot;, &quot;dir_eff&quot;)], 
+                  indirect1[, c(&quot;ind_var&quot;, &quot;ind_dir_cov&quot;, &quot;dir_var&quot;)]) 
 
-summary(indirect2)  
+summary(indirect2)   
 </code></pre>
 
 <pre><code>## 
@@ -128,38 +133,41 @@ summary(indirect2)
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
 ##               Estimate   Std.Error      lbound      ubound z value
-## Intercept1  1.4809e-01  8.0687e-03  1.3227e-01  1.6390e-01 18.3536
-## Intercept2  6.8791e-02  1.0638e-02  4.7940e-02  8.9642e-02  6.4663
-## Tau2_1_1    2.3566e-03  6.0242e-04  1.1758e-03  3.5373e-03  3.9119
-## Tau2_2_1   -7.9491e-05  5.7032e-04 -1.1973e-03  1.0383e-03 -0.1394
-## Tau2_2_2    3.3153e-03  1.0385e-03  1.2799e-03  5.3507e-03  3.1925
+## Intercept1  1.4809e-01  8.0686e-03  1.3228e-01  1.6390e-01 18.3538
+## Intercept2  6.8795e-02  1.0638e-02  4.7944e-02  8.9646e-02  6.4667
+## Tau2_1_1    2.3571e-03  6.0243e-04  1.1764e-03  3.5379e-03  3.9127
+## Tau2_2_1   -8.0175e-05  5.7034e-04 -1.1980e-03  1.0377e-03 -0.1406
+## Tau2_2_2    3.3174e-03  1.0386e-03  1.2818e-03  5.3529e-03  3.1942
 ##             Pr(&gt;|z|)    
 ## Intercept1 &lt; 2.2e-16 ***
-## Intercept2 1.004e-10 ***
-## Tau2_1_1   9.159e-05 ***
-## Tau2_2_1     0.88915    
-## Tau2_2_2     0.00141 ** 
+## Intercept2 1.002e-10 ***
+## Tau2_1_1   9.129e-05 ***
+## Tau2_2_1    0.888208    
+## Tau2_2_2    0.001402 ** 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Q statistic on the homogeneity of effect sizes: 561.3146
+## Q statistic on the homogeneity of effect sizes: 561.9791
 ## Degrees of freedom of the Q statistic: 82
 ## P value of the Q statistic: 0
 ## 
 ## Heterogeneity indices (based on the estimated Tau2):
 ##                              Estimate
-## Intercept1: I2 (Q statistic)   0.8836
-## Intercept2: I2 (Q statistic)   0.7195
+## Intercept1: I2 (Q statistic)   0.8838
+## Intercept2: I2 (Q statistic)   0.7198
 ## 
 ## Number of studies (or clusters): 42
 ## Number of observed statistics: 84
 ## Number of estimated parameters: 5
 ## Degrees of freedom: 79
-## -2 log likelihood: -232.163 
+## -2 log likelihood: -232.1644 
 ## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
 ## Other values may indicate problems.)
 </code></pre>
 
+<pre><code class="r">## } 
+</code></pre>
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

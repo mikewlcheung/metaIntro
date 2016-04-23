@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Convert 'lavaan' models to RAM models</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/languages/r.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head><body>
+
+<table width="100%" summary="page for lavaan2RAM {metaSEM}"><tr><td>lavaan2RAM {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2> 
+Convert <code>lavaan</code> models to RAM models 
+</h2>
+
+<h3>Description</h3>
+
+ 
+<p>It converts models specified in <code>lavaan</code> model syntax to RAM models. 
+</p>
+
+
+<h3>Usage</h3>
+
+<pre> 
+lavaan2RAM(model, obs.variables = NULL, A.notation = "ON", 
+           S.notation = "WITH", auto.var = TRUE, std.lv = TRUE, ...) 
+</pre>
+
+
+<h3>Arguments</h3>
+
+ 
+<table summary="R argblock">
+<tr valign="top"><td><code>model</code></td>
+<td>
+<p>A model using the lavaan model syntax. 
+</p>
+</td></tr> 
+<tr valign="top"><td><code>obs.variables</code></td>
+<td>
+<p>A character vector of the observed variables. The 
+observed variables in the RAM specification will follow the order 
+specified in <code>obs.variables</code>. It is important to check whether the 
+order of the observed variables matches the order in the dataset.  
+</p>
+</td></tr> 
+<tr valign="top"><td><code>A.notation</code></td>
+<td>
+<p>A character to be used in the A matrix if the labels 
+are not included in the lavaan model. For example, the label will be &quot;yONx&quot; for 
+regressing &quot;y&quot; on &quot;x&quot;. 
+</p>
+</td></tr> 
+<tr valign="top"><td><code>S.notation</code></td>
+<td>
+<p>A character to be used in the S matrix if the labels 
+are not included in the lavaan model. For example, the label will be &quot;yWITHx&quot; for 
+the covariance between &quot;y&quot; with &quot;x&quot; and &quot;yWITHy&quot; for the (error) variance 
+of &quot;y&quot;.  
+</p>
+</td></tr> 
+<tr valign="top"><td><code>auto.var</code></td>
+<td>
+<p>Logical. If <code>TRUE</code>, the residual variances and the 
+variances of exogenous latent variables are included in the model and 
+set free. See <code><a href="../../lavaan/html/lavaanify.html">lavaanify</a></code>. 
+</p>
+</td></tr> 
+<tr valign="top"><td><code>std.lv</code></td>
+<td>
+<p>Logical. If <code>TRUE</code>, the metric of each latent 
+variable is determined by fixing their variances to 1.0. If FALSE, the 
+metric of each latent variable is determined by fixing the factor 
+loading of the first indicator to 1.0. See <code><a href="../../lavaan/html/lavaanify.html">lavaanify</a></code>. 
+</p>
+</td></tr> 
+<tr valign="top"><td><code>...</code></td>
+<td>
+<p>Futher arguments to be passed to <code><a href="../../lavaan/html/lavaanify.html">lavaanify</a></code></p>
+</td></tr></table>
+<p>. 
+Please note that <code>fixed.x</code> is set at <code>FALSE</code>. Thus it cannot be passed to .... 
+</p>
+
+
+<h3>Details</h3>
+
+ 
+<p>It uses the <code><a href="../../lavaan/html/lavaanify.html">lavaanify</a></code> to do the conversion. 
+</p>
+
+
+<h3>Value</h3>
+
+ 
+<p>A list of RAM specification with <code>A</code>, <code>S</code>, and <code>F</code> matrices. 
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt; 
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="../../semPlot/html/ramModel.html">ramModel</a></code>, 
+<code><a href="Becker92.html">Becker92</a></code>, <code><a href="Becker09.html">Becker09</a></code>, 
+<code><a href="Digman97.html">Digman97</a></code>, <code><a href="Hunter83.html">Hunter83</a></code> 
+</p>
+
+
+<h3>Examples</h3>
+
+<pre><code class="r">## Regression model on correlation matrix 
+model1 &lt;- &quot;y~x1+x2+x3 
+           ## Fix the independent variables at 1 
+           x1~~1*x1 
+           x2~~1*x2 
+           x3~~1*x3 
+           ## Declare the correlations among the independent variables 
+           x1~~x2 
+           x1~~x3 
+           x2~~x3&quot; 
+
+## Compare the arrangements of variables with and without 
+## specifying the obs.variables arguments.  
+lavaan2RAM(model1, obs.variables=c(&quot;y&quot;, &quot;x1&quot;, &quot;x2&quot;, &quot;x3&quot;)) 
+</code></pre>
+
+<pre><code>## $A
+##    y   x1        x2        x3       
+## y  &quot;0&quot; &quot;0*yONx1&quot; &quot;0*yONx2&quot; &quot;0*yONx3&quot;
+## x1 &quot;0&quot; &quot;0&quot;       &quot;0&quot;       &quot;0&quot;      
+## x2 &quot;0&quot; &quot;0&quot;       &quot;0&quot;       &quot;0&quot;      
+## x3 &quot;0&quot; &quot;0&quot;       &quot;0&quot;       &quot;0&quot;      
+## 
+## $S
+##    y          x1           x2           x3          
+## y  &quot;0*yWITHy&quot; &quot;0&quot;          &quot;0&quot;          &quot;0&quot;         
+## x1 &quot;0&quot;        &quot;1&quot;          &quot;0*x1WITHx2&quot; &quot;0*x1WITHx3&quot;
+## x2 &quot;0&quot;        &quot;0*x1WITHx2&quot; &quot;1&quot;          &quot;0*x2WITHx3&quot;
+## x3 &quot;0&quot;        &quot;0*x1WITHx3&quot; &quot;0*x2WITHx3&quot; &quot;1&quot;         
+## 
+## $F
+##    y x1 x2 x3
+## y  1  0  0  0
+## x1 0  1  0  0
+## x2 0  0  1  0
+## x3 0  0  0  1
+</code></pre>
+
+<pre><code class="r">## Two-factor CFA model 
+model2 &lt;- &quot;f1=~x1+x2+x3 
+           f2=~x4+x5+x6 
+           ## Declare the correlation between f1 and f2 
+           ## and label it with cor_f1f2 
+           f1~~cor_f1f2*f2&quot; 
+
+lavaan2RAM(model2) 
+</code></pre>
+
+<pre><code>## $A
+##    x1  x2  x3  x4  x5  x6  f1         f2        
+## x1 &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0*x1ONf1&quot; &quot;0&quot;       
+## x2 &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0*x2ONf1&quot; &quot;0&quot;       
+## x3 &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0*x3ONf1&quot; &quot;0&quot;       
+## x4 &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;        &quot;0*x4ONf2&quot;
+## x5 &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;        &quot;0*x5ONf2&quot;
+## x6 &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;        &quot;0*x6ONf2&quot;
+## f1 &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;        &quot;0&quot;       
+## f2 &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;        &quot;0&quot;       
+## 
+## $S
+##    x1           x2           x3           x4           x5          
+## x1 &quot;0*x1WITHx1&quot; &quot;0&quot;          &quot;0&quot;          &quot;0&quot;          &quot;0&quot;         
+## x2 &quot;0&quot;          &quot;0*x2WITHx2&quot; &quot;0&quot;          &quot;0&quot;          &quot;0&quot;         
+## x3 &quot;0&quot;          &quot;0&quot;          &quot;0*x3WITHx3&quot; &quot;0&quot;          &quot;0&quot;         
+## x4 &quot;0&quot;          &quot;0&quot;          &quot;0&quot;          &quot;0*x4WITHx4&quot; &quot;0&quot;         
+## x5 &quot;0&quot;          &quot;0&quot;          &quot;0&quot;          &quot;0&quot;          &quot;0*x5WITHx5&quot;
+## x6 &quot;0&quot;          &quot;0&quot;          &quot;0&quot;          &quot;0&quot;          &quot;0&quot;         
+## f1 &quot;0&quot;          &quot;0&quot;          &quot;0&quot;          &quot;0&quot;          &quot;0&quot;         
+## f2 &quot;0&quot;          &quot;0&quot;          &quot;0&quot;          &quot;0&quot;          &quot;0&quot;         
+##    x6           f1           f2          
+## x1 &quot;0&quot;          &quot;0&quot;          &quot;0&quot;         
+## x2 &quot;0&quot;          &quot;0&quot;          &quot;0&quot;         
+## x3 &quot;0&quot;          &quot;0&quot;          &quot;0&quot;         
+## x4 &quot;0&quot;          &quot;0&quot;          &quot;0&quot;         
+## x5 &quot;0&quot;          &quot;0&quot;          &quot;0&quot;         
+## x6 &quot;0*x6WITHx6&quot; &quot;0&quot;          &quot;0&quot;         
+## f1 &quot;0&quot;          &quot;1&quot;          &quot;0*cor_f1f2&quot;
+## f2 &quot;0&quot;          &quot;0*cor_f1f2&quot; &quot;1&quot;         
+## 
+## $F
+##    x1 x2 x3 x4 x5 x6 f1 f2
+## x1  1  0  0  0  0  0  0  0
+## x2  0  1  0  0  0  0  0  0
+## x3  0  0  1  0  0  0  0  0
+## x4  0  0  0  1  0  0  0  0
+## x5  0  0  0  0  1  0  0  0
+## x6  0  0  0  0  0  1  0  0
+</code></pre>
+
+
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
+</body></html>

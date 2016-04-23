@@ -14,7 +14,8 @@
 
 <h3>Description</h3>
 
-<p>Eight studies from Mak et al. (2009) were reported by Cheung et al. (2012).
+ 
+<p>Eight studies from Mak et al. (2009) were reported by Cheung et al. (2012). 
 </p>
 
 
@@ -25,56 +26,59 @@
 
 <h3>Format</h3>
 
-<p>A data frame with 8 observations on the following 10 variables.
+ 
+<p>A data frame with 8 observations on the following 10 variables. 
 </p>
-
+ 
 <dl>
 <dt><code>Study</code></dt><dd><p>a character vector of study</p>
-</dd>
+</dd> 
 <dt><code>type</code></dt><dd><p>a character vector</p>
-</dd>
+</dd> 
 <dt><code>AF.BP</code></dt><dd><p>a numeric vector</p>
-</dd>
+</dd> 
 <dt><code>Tot.BP</code></dt><dd><p>a numeric vector</p>
-</dd>
+</dd> 
 <dt><code>AF.non.BP</code></dt><dd><p>a numeric vector</p>
-</dd>
+</dd> 
 <dt><code>Tot.non.BP</code></dt><dd><p>a numeric vector</p>
-</dd>
+</dd> 
 <dt><code>yi</code></dt><dd><p>a numeric vector</p>
-</dd>
+</dd> 
 <dt><code>vi</code></dt><dd><p>a numeric vector</p>
-</dd>
+</dd> 
 <dt><code>age.mean</code></dt><dd><p>a numeric vector</p>
-</dd>
+</dd> 
 <dt><code>study.duration</code></dt><dd><p>a numeric vector</p>
-</dd>
+</dd> 
 </dl>
-
+ 
 
 
 <h3>Source</h3>
 
-<p>Mak, A., Cheung, M. W.-L., Ho, R. C. M., Cheak, A. A. C., &amp; Lau,
-C. S. (2009). Bisphosphonate and atrial fibrillation: Bayesian
-meta-analyses of randomized controlled trials and observational
-studies. <em>BMC Musculoskeletal Disorders</em>,
-<b>10(113)</b>. doi:10.1186/1471-2474-10-113 Available at <a href="http://www.biomedcentral.com/1471-2474/10/113">http://www.biomedcentral.com/1471-2474/10/113</a>.
+ 
+<p>Mak, A., Cheung, M. W.-L., Ho, R. C. M., Cheak, A. A. C., &amp; Lau, 
+C. S. (2009). Bisphosphonate and atrial fibrillation: Bayesian 
+meta-analyses of randomized controlled trials and observational 
+studies. <em>BMC Musculoskeletal Disorders</em>, 
+<b>10(113)</b>. doi:10.1186/1471-2474-10-113 Available at <a href="http://www.biomedcentral.com/1471-2474/10/113">http://www.biomedcentral.com/1471-2474/10/113</a>. 
 </p>
 
 
 <h3>References</h3>
 
-<p>Cheung, M. W.-L., Ho, R. C. M., Lim, Y., &amp; Mak, A. (2012). Conducting a
-meta-analysis: Basics and good practices. <em>International Journal
-of Rheumatic Diseases</em>, <b>15(2)</b>, 129-135. doi: 10.1111/j.1756-185X.2012.01712.x
+ 
+<p>Cheung, M. W.-L., Ho, R. C. M., Lim, Y., &amp; Mak, A. (2012). Conducting a 
+meta-analysis: Basics and good practices. <em>International Journal 
+of Rheumatic Diseases</em>, <b>15(2)</b>, 129-135. doi: 10.1111/j.1756-185X.2012.01712.x 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">## Random-effects meta-analysis
-( meta1 &lt;- summary(meta(y=yi, v=vi, data=Mak09, I2=c(&quot;I2q&quot;, &quot;I2hm&quot;))) )
+<pre><code class="r">## Random-effects meta-analysis 
+( meta1 &lt;- summary(meta(y=yi, v=vi, data=Mak09, I2=c(&quot;I2q&quot;, &quot;I2hm&quot;))) ) 
 </code></pre>
 
 <pre><code>## 
@@ -110,18 +114,18 @@ of Rheumatic Diseases</em>, <b>15(2)</b>, 129-135. doi: 10.1111/j.1756-185X.2012
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Convert the estimates back into odds ratio 
-OR &lt;- with(coef(meta1), exp(c(Estimate[1], lbound[1], ubound[1])))
-names(OR) &lt;- c(&quot;Estimate in OR&quot;, &quot;lbound in OR&quot;, &quot;ubound in OR&quot;)
-OR
+<pre><code class="r">## Convert the estimates back into odds ratio  
+OR &lt;- with(coef(meta1), exp(c(Estimate[1], lbound[1], ubound[1]))) 
+names(OR) &lt;- c(&quot;Estimate in OR&quot;, &quot;lbound in OR&quot;, &quot;ubound in OR&quot;) 
+OR 
 </code></pre>
 
 <pre><code>## Estimate in OR   lbound in OR   ubound in OR 
 ##       1.198202       1.132125       1.268135
 </code></pre>
 
-<pre><code class="r">## Mixed-effects meta-analysis with mean age as a predictor
-summary( meta(y=yi, v=vi, x=age.mean, data=Mak09) )
+<pre><code class="r">## Mixed-effects meta-analysis with mean age as a predictor 
+summary( meta(y=yi, v=vi, x=age.mean, data=Mak09) ) 
 </code></pre>
 
 <pre><code>## 
@@ -131,9 +135,9 @@ summary( meta(y=yi, v=vi, x=age.mean, data=Mak09) )
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
 ##               Estimate   Std.Error      lbound      ubound z value
-## Intercept1  1.2778e-01  1.7073e+00 -3.2185e+00  3.4740e+00  0.0748
-## Slope1_1    7.0920e-04  2.2793e-02 -4.3965e-02  4.5383e-02  0.0311
-## Tau2_1_1    1.0000e-10  2.8254e-03 -5.5376e-03  5.5376e-03  0.0000
+## Intercept1  1.2778e-01  1.7073e+00 -3.2186e+00  3.4741e+00  0.0748
+## Slope1_1    7.0920e-04  2.2794e-02 -4.3966e-02  4.5384e-02  0.0311
+## Tau2_1_1    1.0000e-10  2.8254e-03 -5.5377e-03  5.5377e-03  0.0000
 ##            Pr(&gt;|z|)
 ## Intercept1   0.9403
 ## Slope1_1     0.9752
@@ -159,5 +163,5 @@ summary( meta(y=yi, v=vi, x=age.mean, data=Mak09) )
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

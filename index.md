@@ -226,7 +226,7 @@ Other values may indicate problems.)
 plot(mult1)
 ```
 
-![](index_files/figure-html/unnamed-chunk-5-1.png) 
+![](index_files/figure-html/unnamed-chunk-5-1.png)
 
 ```r
 ## Plot the effect sizes with the forest plots
@@ -246,7 +246,7 @@ forest( rma(yi=AL, vi=var_AL, data=Berkey98) )
 title("Forest plot of AL")
 ```
 
-![](index_files/figure-html/unnamed-chunk-5-2.png) 
+![](index_files/figure-html/unnamed-chunk-5-2.png)
 
 ### Fixed-effects model
 
@@ -394,7 +394,7 @@ sessionInfo()
 ```
 
 ```
-R version 3.2.2 (2015-08-14)
+R version 3.2.5 (2016-04-14)
 Platform: x86_64-pc-linux-gnu (64-bit)
 Running under: Ubuntu 14.04.3 LTS
 
@@ -411,11 +411,12 @@ attached base packages:
 [8] base     
 
 other attached packages:
-[1] metafor_1.9-7   Matrix_1.2-2    metaSEM_0.9.5-2 OpenMx_2.2.6-86
-[5] MASS_7.3-44     digest_0.6.8    knitr_1.11      rmarkdown_0.8  
+[1] metafor_1.9-8   metaSEM_0.9.8   OpenMx_2.5.2    Rcpp_0.12.4    
+[5] Matrix_1.2-5    MASS_7.3-45     digest_0.6.9    knitr_1.12.3   
+[9] rmarkdown_0.9.5
 
 loaded via a namespace (and not attached):
- [1] lattice_0.20-33 grid_3.2.2      formatR_1.2     magrittr_1.5   
- [5] evaluate_0.7.2  stringi_0.5-5   tools_3.2.2     stringr_1.0.0  
- [9] yaml_2.1.13     htmltools_0.2.6
+ [1] lattice_0.20-33 grid_3.2.5      formatR_1.3     magrittr_1.5   
+ [5] ellipse_0.3-8   evaluate_0.8.3  stringi_1.0-1   tools_3.2.5    
+ [9] stringr_1.0.0   yaml_2.1.13     htmltools_0.3.5
 ```

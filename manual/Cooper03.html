@@ -14,7 +14,8 @@
 
 <h3>Description</h3>
 
-<p>Fifty-six effect sizes from 11 districts from Cooper et al. (2003) were reported by Konstantopoulos (2011).
+ 
+<p>Fifty-six effect sizes from 11 districts from Cooper et al. (2003) were reported by Konstantopoulos (2011). 
 </p>
 
 
@@ -25,45 +26,49 @@
 
 <h3>Details</h3>
 
-<p>The variables are:
+ 
+<p>The variables are: 
 </p>
-
+ 
 <dl>
 <dt>District</dt><dd><p>District ID</p>
-</dd>
+</dd> 
 <dt>Study</dt><dd><p>Study ID</p>
-</dd>
+</dd> 
 <dt>y</dt><dd><p>Effect size</p>
-</dd>
+</dd> 
 <dt>v</dt><dd><p>Sampling variance</p>
-</dd>
+</dd> 
 <dt>Year</dt><dd><p>Year of publication</p>
-</dd>
+</dd> 
 </dl>
-
+ 
 
 
 <h3>Source</h3>
 
-<p>Cooper, H., Valentine, J. C., Charlton, K., &amp; Melson, A. (2003). The Effects of Modified School Calendars on Student Achievement and on School and Community Attitudes. <em>Review of Educational Research</em>, <b>73(1)</b>, 1-52. doi:10.3102/00346543073001001
+ 
+<p>Cooper, H., Valentine, J. C., Charlton, K., &amp; Melson, A. (2003). The Effects of Modified School Calendars on Student Achievement and on School and Community Attitudes. <em>Review of Educational Research</em>, <b>73(1)</b>, 1-52. doi:10.3102/00346543073001001 
 </p>
 
 
 <h3>References</h3>
 
-<p>Konstantopoulos, S. (2011). Fixed effects and variance components
-estimation in three-level meta-analysis. <em>Research Synthesis
-Methods</em>, <b>2</b>, 61-76. doi:10.1002/jrsm.35
+ 
+<p>Konstantopoulos, S. (2011). Fixed effects and variance components 
+estimation in three-level meta-analysis. <em>Research Synthesis 
+Methods</em>, <b>2</b>, 61-76. doi:10.1002/jrsm.35 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">data(Cooper03)
+<pre><code class="r">## \dontrun{ 
+data(Cooper03) 
 
-#### ML estimation method
-## No predictor
-summary( model1 &lt;- meta3(y=y, v=v, cluster=District, data=Cooper03) )
+#### ML estimation method 
+## No predictor 
+summary( model1 &lt;- meta3(y=y, v=v, cluster=District, data=Cooper03) ) 
 </code></pre>
 
 <pre><code>## 
@@ -97,9 +102,9 @@ summary( model1 &lt;- meta3(y=y, v=v, cluster=District, data=Cooper03) )
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Show all heterogeneity indices and their 95% confidence intervals
-summary( meta3(y=y, v=v, cluster=District, data=Cooper03,
-               intervals.type=&quot;LB&quot;, I2=c(&quot;I2q&quot;, &quot;I2hm&quot;, &quot;I2am&quot;, &quot;ICC&quot;)) )
+<pre><code class="r">## Show all heterogeneity indices and their 95% confidence intervals 
+summary( meta3(y=y, v=v, cluster=District, data=Cooper03, 
+               intervals.type=&quot;LB&quot;, I2=c(&quot;I2q&quot;, &quot;I2hm&quot;, &quot;I2am&quot;, &quot;ICC&quot;)) ) 
 </code></pre>
 
 <pre><code>## 
@@ -112,7 +117,7 @@ summary( meta3(y=y, v=v, cluster=District, data=Cooper03,
 ##           Estimate Std.Error   lbound   ubound z value Pr(&gt;|z|)
 ## Intercept 0.184455        NA 0.012023 0.358179      NA       NA
 ## Tau2_2    0.032865        NA 0.016331 0.060489      NA       NA
-## Tau2_3    0.057738        NA 0.019809 0.119931      NA       NA
+## Tau2_3    0.057738        NA 0.019809 0.118621      NA       NA
 ## 
 ## Q statistic on the homogeneity of effect sizes: 578.864
 ## Degrees of freedom of the Q statistic: 55
@@ -120,13 +125,13 @@ summary( meta3(y=y, v=v, cluster=District, data=Cooper03,
 ## 
 ## Heterogeneity indices (I2) and their 95% likelihood-based CIs:
 ##                                    lbound Estimate ubound
-## I2_2 (Typical v: Q statistic)     0.12755  0.34396 0.5930
-## I2_2 (Typical v: harmonic mean)   0.12771  0.34474 0.5323
-## I2_2 (Typical v: arithmetic mean) 0.11360  0.28177 0.4315
+## I2_2 (Typical v: Q statistic)     0.12755  0.34396 0.6565
+## I2_2 (Typical v: harmonic mean)   0.12769  0.34474 0.6582
+## I2_2 (Typical v: arithmetic mean) 0.11360  0.28177 0.5231
 ## ICC_2 (tau^2/(tau^2+tau^3))       0.13123  0.36273 0.7005
 ## I2_3 (Typical v: Q statistic)     0.34963  0.60429 0.8451
-## I2_3 (Typical v: harmonic mean)   0.42852  0.60565 0.8461
-## I2_3 (Typical v: arithmetic mean) 0.23255  0.49502 0.7621
+## I2_3 (Typical v: harmonic mean)   0.31560  0.60565 0.8461
+## I2_3 (Typical v: arithmetic mean) 0.23209  0.49502 0.7621
 ## ICC_3 (tau^3/(tau^2+tau^3))       0.29948  0.63727 0.8688
 ## 
 ## Number of studies (or clusters): 11
@@ -138,9 +143,9 @@ summary( meta3(y=y, v=v, cluster=District, data=Cooper03,
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Year as a predictor
-summary( meta3(y=y, v=v, cluster=District, x=scale(Year, scale=FALSE),
-               data=Cooper03, model.name=&quot;Year as a predictor&quot;) )
+<pre><code class="r">## Year as a predictor 
+summary( meta3(y=y, v=v, cluster=District, x=scale(Year, scale=FALSE), 
+               data=Cooper03, model.name=&quot;Year as a predictor&quot;) ) 
 </code></pre>
 
 <pre><code>## 
@@ -177,11 +182,11 @@ summary( meta3(y=y, v=v, cluster=District, x=scale(Year, scale=FALSE),
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Equality of level-2 and level-3 heterogeneity
-summary( model2 &lt;- meta3(y=y, v=v, cluster=District, data=Cooper03,
-                         RE2.constraints=&quot;0.2*EqTau2&quot;,
-                         RE3.constraints=&quot;0.2*EqTau2&quot;,
-                         model.name=&quot;Equal Tau2&quot;) )
+<pre><code class="r">## Equality of level-2 and level-3 heterogeneity 
+summary( model2 &lt;- meta3(y=y, v=v, cluster=District, data=Cooper03, 
+                         RE2.constraints=&quot;0.2*EqTau2&quot;, 
+                         RE3.constraints=&quot;0.2*EqTau2&quot;, 
+                         model.name=&quot;Equal Tau2&quot;) ) 
 </code></pre>
 
 <pre><code>## 
@@ -215,8 +220,8 @@ summary( model2 &lt;- meta3(y=y, v=v, cluster=District, data=Cooper03,
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Compare model2 vs. model1
-anova(model1, model2)
+<pre><code class="r">## Compare model2 vs. model1 
+anova(model1, model2) 
 </code></pre>
 
 <pre><code>##                    base comparison ep minus2LL df       AIC    diffLL
@@ -227,9 +232,9 @@ anova(model1, model2)
 ## 2      1 0.4071539
 </code></pre>
 
-<pre><code class="r">#### REML estimation method
-## No predictor
-summary( reml3(y=y, v=v, cluster=District, data=Cooper03) )
+<pre><code class="r">#### REML estimation method 
+## No predictor 
+summary( reml3(y=y, v=v, cluster=District, data=Cooper03) ) 
 </code></pre>
 
 <pre><code>## 
@@ -253,9 +258,9 @@ summary( reml3(y=y, v=v, cluster=District, data=Cooper03) )
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Level-2 and level-3 variances are constrained equally 
-summary( reml3(y=y, v=v, cluster=District, data=Cooper03,
-               RE.equal=TRUE, model.name=&quot;Equal Tau2&quot;) )
+<pre><code class="r">## Level-2 and level-3 variances are constrained equally  
+summary( reml3(y=y, v=v, cluster=District, data=Cooper03, 
+               RE.equal=TRUE, model.name=&quot;Equal Tau2&quot;) ) 
 </code></pre>
 
 <pre><code>## 
@@ -279,9 +284,9 @@ summary( reml3(y=y, v=v, cluster=District, data=Cooper03,
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Year as a predictor
-summary( reml3(y=y, v=v, cluster=District, x=scale(Year, scale=FALSE),
-               data=Cooper03, intervals.type=&quot;LB&quot;) )
+<pre><code class="r">## Year as a predictor 
+summary( reml3(y=y, v=v, cluster=District, x=scale(Year, scale=FALSE), 
+               data=Cooper03, intervals.type=&quot;LB&quot;) ) 
 </code></pre>
 
 <pre><code>## 
@@ -304,13 +309,13 @@ summary( reml3(y=y, v=v, cluster=District, x=scale(Year, scale=FALSE),
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Handling missing covariates with FIML
-## Create 20/56 MCAR data in Year
-set.seed(10000)
-Year_MCAR &lt;- Cooper03$Year
-Year_MCAR[sample(56, 20)] &lt;- NA
-summary( meta3X(y=y, v=v, cluster=District, x2=scale(Year_MCAR, scale=FALSE),
-                data=Cooper03, model.name=&quot;NA in Year_MCAR&quot;) )
+<pre><code class="r">## Handling missing covariates with FIML 
+## Create 20/56 MCAR data in Year 
+set.seed(10000) 
+Year_MCAR &lt;- Cooper03$Year 
+Year_MCAR[sample(56, 20)] &lt;- NA 
+summary( meta3X(y=y, v=v, cluster=District, x2=scale(Year_MCAR, scale=FALSE), 
+                data=Cooper03, model.name=&quot;NA in Year_MCAR&quot;) ) 
 </code></pre>
 
 <pre><code>## 
@@ -321,10 +326,10 @@ summary( meta3X(y=y, v=v, cluster=District, x2=scale(Year_MCAR, scale=FALSE),
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
 ##             Estimate  Std.Error     lbound     ubound z value Pr(&gt;|z|)   
-## Intercept  0.1794793  0.0802303  0.0222308  0.3367278  2.2371 0.025283 * 
-## SlopeX2_1  0.0051003  0.0085320 -0.0116222  0.0218228  0.5978 0.549983   
-## Tau2_2     0.0329375  0.0111611  0.0110621  0.0548129  2.9511 0.003166 **
-## Tau2_3     0.0564662  0.0300320 -0.0023955  0.1153278  1.8802 0.060081 . 
+## Intercept  0.1794793  0.0802297  0.0222319  0.3367267  2.2371 0.025282 * 
+## SlopeX2_1  0.0051003  0.0085321 -0.0116222  0.0218229  0.5978 0.549984   
+## Tau2_2     0.0329375  0.0111614  0.0110617  0.0548134  2.9510 0.003167 **
+## Tau2_3     0.0564662  0.0300326 -0.0023966  0.1153289  1.8802 0.060086 . 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -343,6 +348,9 @@ summary( meta3X(y=y, v=v, cluster=District, x2=scale(Year_MCAR, scale=FALSE),
 ## Other values may indicate problems.)
 </code></pre>
 
+<pre><code class="r">## } 
+</code></pre>
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

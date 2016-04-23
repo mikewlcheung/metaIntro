@@ -10,12 +10,13 @@
 
 <table width="100%" summary="page for HedgesOlkin85 {metaSEM}"><tr><td>HedgesOlkin85 {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Effects of Open Education Reported by Hedges and Olkin (1985)
+<h2>Effects of Open Education Reported by Hedges and Olkin (1985) 
 </h2>
 
 <h3>Description</h3>
 
-<p>Effects of open education on attitude toward school and on reading achievement reported by Hedges and Olkin (1985).
+ 
+<p>Effects of open education on attitude toward school and on reading achievement reported by Hedges and Olkin (1985). 
 </p>
 
 
@@ -26,47 +27,50 @@
 
 <h3>Details</h3>
 
-<p>The variables are:
+ 
+<p>The variables are: 
 </p>
-
+ 
 <dl>
 <dt>study</dt><dd><p>Study number</p>
-</dd>
+</dd> 
 <dt>d_att</dt><dd><p>Standardized mean difference on <em>attitude</em></p>
-</dd>
+</dd> 
 <dt>d_ach</dt><dd><p>Standardized mean difference on <em>achievement</em></p>
-</dd>
+</dd> 
 <dt>var_att</dt><dd><p>Sampling variance of the effect size of <em>attitude</em></p>
-</dd>
+</dd> 
 <dt>cov_att_ach</dt><dd><p>Sampling covariance between the effect sizes</p>
-</dd>
+</dd> 
 <dt>var_ach</dt><dd><p>Sampling variance of the effect size of <em>achievement</em></p>
-</dd>
+</dd> 
 </dl>
-
+ 
 
 
 <h3>Source</h3>
 
-<p>Hedges, L. V., &amp; Olkin, I. (1985). <em>Statistical methods for meta-analysis.</em> Orlando, FL: Academic Press. 
+ 
+<p>Hedges, L. V., &amp; Olkin, I. (1985). <em>Statistical methods for meta-analysis.</em> Orlando, FL: Academic Press.  
 </p>
 
 
 <h3>References</h3>
 
-<p>Cheung, M. W.-L. (2010). Fixed-effects meta-analyses as multiple-group structural equation models. <em>Structural Equation Modeling</em>, <b>17</b>, 481-509.
+ 
+<p>Cheung, M. W.-L. (2010). Fixed-effects meta-analyses as multiple-group structural equation models. <em>Structural Equation Modeling</em>, <b>17</b>, 481-509. 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">data(HedgesOlkin85)
+<pre><code class="r">data(HedgesOlkin85) 
 
-## Fixed-effects meta-analysis
-summary( meta(y=cbind(d_att, d_ach),
-              v=cbind(var_att, cov_att_ach, var_ach),
-              data=HedgesOlkin85,
-              RE.constraints=matrix(0, nrow=2, ncol=2)) )
+## Fixed-effects meta-analysis 
+summary( meta(y=cbind(d_att, d_ach), 
+              v=cbind(var_att, cov_att_ach, var_ach), 
+              data=HedgesOlkin85, 
+              RE.constraints=matrix(0, nrow=2, ncol=2)) ) 
 </code></pre>
 
 <pre><code>## 
@@ -102,5 +106,5 @@ summary( meta(y=cbind(d_att, d_ach),
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

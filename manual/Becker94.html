@@ -10,14 +10,15 @@
 
 <table width="100%" summary="page for Becker94 {metaSEM}"><tr><td>Becker94 {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Five Studies of Ten Correlation Matrices reported by Becker and
-Schram (1994)
+<h2>Five Studies of Ten Correlation Matrices reported by Becker and 
+Schram (1994) 
 </h2>
 
 <h3>Description</h3>
 
-<p>This data set includes five studies of ten correlation matrices
-reported by Becker and Schram (1994). 
+ 
+<p>This data set includes five studies of ten correlation matrices 
+reported by Becker and Schram (1994).  
 </p>
 
 
@@ -28,35 +29,38 @@ reported by Becker and Schram (1994).
 
 <h3>Details</h3>
 
-<p>A list of data with the following structure:
+ 
+<p>A list of data with the following structure: 
 </p>
-
+ 
 <dl>
-<dt>data</dt><dd><p>A list of 10 correlation matrices. The
+<dt>data</dt><dd><p>A list of 10 correlation matrices. The 
 variables are <em>SAT (Math)</em>, <em>Spatial</em> and <em>SAT (Verbal)</em></p>
-</dd>
+</dd> 
 <dt>n</dt><dd><p>A vector of sample sizes</p>
-</dd>
+</dd> 
 <dt>gender</dt><dd><p><em>Females</em> or <em>Males</em> samples</p>
-</dd>
+</dd> 
 </dl>
-
+ 
 
 
 <h3>Source</h3>
 
-<p>Becker, B. J., &amp; Schram, C. M. (1994). Examining explanatory models through research synthesis. In H. Cooper &amp; L. V. Hedges (Eds.), <em>The handbook of research synthesis</em> (pp. 357-381). New York: Russell Sage Foundation.
+ 
+<p>Becker, B. J., &amp; Schram, C. M. (1994). Examining explanatory models through research synthesis. In H. Cooper &amp; L. V. Hedges (Eds.), <em>The handbook of research synthesis</em> (pp. 357-381). New York: Russell Sage Foundation. 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">data(Becker94)
+<pre><code class="r">## \dontrun{ 
+data(Becker94) 
 
-#### Fixed-effects model
-## First stage analysis
-fixed1 &lt;- tssem1(Becker94$data, Becker94$n, method=&quot;FEM&quot;)
-summary(fixed1)
+#### Fixed-effects model 
+## First stage analysis 
+fixed1 &lt;- tssem1(Becker94$data, Becker94$n, method=&quot;FEM&quot;) 
+summary(fixed1) 
 </code></pre>
 
 <pre><code>## 
@@ -67,58 +71,60 @@ summary(fixed1)
 ## 
 ## Coefficients:
 ##        Estimate Std.Error z value  Pr(&gt;|z|)    
-## S[1,2] 0.379639  0.037484 10.1281 &lt; 2.2e-16 ***
-## S[1,3] 0.332256  0.040384  8.2274  2.22e-16 ***
-## S[2,3] 0.175640  0.042743  4.1092  3.97e-05 ***
+## S[1,2] 0.379961  0.037124 10.2350 &lt; 2.2e-16 ***
+## S[1,3] 0.334562  0.039947  8.3751 &lt; 2.2e-16 ***
+## S[2,3] 0.176461  0.042334  4.1683 3.069e-05 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Goodness-of-fit indices:
 ##                                      Value
 ## Sample size                       538.0000
-## Chi-square of target model         62.4983
+## Chi-square of target model         63.6553
 ## DF of target model                 27.0000
 ## p value of target model             0.0001
-## Chi-square of independence model  202.6121
+## Chi-square of independence model  207.7894
 ## DF of independence model           30.0000
-## RMSEA                               0.1565
-## SRMR                                0.1587
-## TLI                                 0.7715
-## CFI                                 0.7943
-## AIC                                 8.4983
-## BIC                              -107.2738
+## RMSEA                               0.1590
+## RMSEA lower 95% CI                  0.1096
+## RMSEA upper 95% CI                  0.2117
+## SRMR                                0.1586
+## TLI                                 0.7709
+## CFI                                 0.7938
+## AIC                                 9.6553
+## BIC                              -106.1169
 ## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Prepare a regression model using create.mxMatrix()
-A1 &lt;- create.mxMatrix(c(0,0,0,&quot;0.2*Spatial2Aptitude&quot;,
-                        0,0,&quot;0.2*Verbal2Aptitude&quot;,0,0), type=&quot;Full&quot;,
-                      ncol=3, nrow=3, name=&quot;A1&quot;)
-S1 &lt;-
-create.mxMatrix(c(&quot;0.2*ErrorVarAptitude&quot;,0,0,1,&quot;0.2*CorBetweenSpatialVerbal&quot;,1),
-                type=&quot;Symm&quot;, name=&quot;S1&quot;)
+<pre><code class="r">## Prepare a regression model using create.mxMatrix() 
+A1 &lt;- create.mxMatrix(c(0,0,0,&quot;0.2*Spatial2Aptitude&quot;, 
+                        0,0,&quot;0.2*Verbal2Aptitude&quot;,0,0), type=&quot;Full&quot;, 
+                      ncol=3, nrow=3, name=&quot;A1&quot;) 
+S1 &lt;- 
+create.mxMatrix(c(&quot;0.2*ErrorVarAptitude&quot;,0,0,1,&quot;0.2*CorBetweenSpatialVerbal&quot;,1), 
+                type=&quot;Symm&quot;, name=&quot;S1&quot;) 
 
-## An alternative method to create a regression model using mxMatrix()
-# A1 &lt;- mxMatrix(&quot;Full&quot;, ncol=3, nrow=3, value=0, free=c(FALSE,FALSE,FALSE,TRUE,FALSE,
-#                                                        FALSE,TRUE,FALSE,FALSE),
-#                label=c(NA,NA,NA,&quot;Spatial2Aptitude&quot;,NA,NA,&quot;Verbal2Aptitude&quot;,NA,NA),
-#                name=&quot;A1&quot;)
-# S1 &lt;- mxMatrix(&quot;Symm&quot;, ncol=3, nrow=3, value=c(0.5,0,0,1,0.2,1),
-#                free=c(TRUE,FALSE,FALSE,FALSE,TRUE,FALSE),
-#                label=c(&quot;ErrorVarAptitude&quot;,NA,NA,NA,&quot;CorBetweenSpatialVerbal&quot;,NA),
-#                        name=&quot;S1&quot;)
+## An alternative method to create a regression model using mxMatrix() 
+# A1 &lt;- mxMatrix(&quot;Full&quot;, ncol=3, nrow=3, value=0, free=c(FALSE,FALSE,FALSE,TRUE,FALSE, 
+#                                                        FALSE,TRUE,FALSE,FALSE), 
+#                label=c(NA,NA,NA,&quot;Spatial2Aptitude&quot;,NA,NA,&quot;Verbal2Aptitude&quot;,NA,NA), 
+#                name=&quot;A1&quot;) 
+# S1 &lt;- mxMatrix(&quot;Symm&quot;, ncol=3, nrow=3, value=c(0.5,0,0,1,0.2,1), 
+#                free=c(TRUE,FALSE,FALSE,FALSE,TRUE,FALSE), 
+#                label=c(&quot;ErrorVarAptitude&quot;,NA,NA,NA,&quot;CorBetweenSpatialVerbal&quot;,NA), 
+#                        name=&quot;S1&quot;) 
 
-## Second stage analysis
-fixed2 &lt;- tssem2(fixed1, Amatrix=A1, Smatrix=S1, intervals.type=&quot;LB&quot;)
-summary(fixed2)
+## Second stage analysis 
+fixed2 &lt;- tssem2(fixed1, Amatrix=A1, Smatrix=S1, intervals.type=&quot;LB&quot;) 
+summary(fixed2) 
 </code></pre>
 
 <pre><code>## 
 ## Call:
-## wls(Cov = pooledS, asyCov = tssem1.obj$acovS, n = sum(tssem1.obj$n), 
-##     Amatrix = Amatrix, Smatrix = Smatrix, Fmatrix = Fmatrix, 
-##     diag.constraints = diag.constraints, cor.analysis = cor.analysis, 
+## wls(Cov = coef.tssem1FEM(tssem1.obj), asyCov = vcov.tssem1FEM(tssem1.obj), 
+##     n = sum(tssem1.obj$n), Amatrix = Amatrix, Smatrix = Smatrix, 
+##     Fmatrix = Fmatrix, diag.constraints = diag.constraints, cor.analysis = tssem1.obj$cor.analysis, 
 ##     intervals.type = intervals.type, mx.algebras = mx.algebras, 
 ##     model.name = model.name, suppressWarnings = suppressWarnings, 
 ##     silent = silent, run = run)
@@ -126,9 +132,9 @@ summary(fixed2)
 ## 95% confidence intervals: Likelihood-based statistic
 ## Coefficients:
 ##                         Estimate Std.Error   lbound   ubound z value
-## Spatial2Aptitude        0.331509        NA 0.257761 0.405315      NA
-## Verbal2Aptitude         0.274030        NA 0.196616 0.351498      NA
-## CorBetweenSpatialVerbal 0.175640        NA 0.091863 0.259417      NA
+## Spatial2Aptitude        0.331238        NA 0.258215 0.404341      NA
+## Verbal2Aptitude         0.276111        NA 0.199380 0.352781      NA
+## CorBetweenSpatialVerbal 0.176461        NA 0.093486 0.259436      NA
 ##                         Pr(&gt;|z|)
 ## Spatial2Aptitude              NA
 ## Verbal2Aptitude               NA
@@ -142,9 +148,11 @@ summary(fixed2)
 ## p value of target model                      0.00
 ## Number of constraints imposed on &quot;Smatrix&quot;   0.00
 ## DF manually adjusted                         0.00
-## Chi-square of independence model           156.22
+## Chi-square of independence model           160.47
 ## DF of independence model                     3.00
 ## RMSEA                                        0.00
+## RMSEA lower 95% CI                           0.00
+## RMSEA upper 95% CI                           0.00
 ## SRMR                                         0.00
 ## TLI                                          -Inf
 ## CFI                                          1.00
@@ -154,10 +162,10 @@ summary(fixed2)
 ## Other values indicate problems.)
 </code></pre>
 
-<pre><code class="r">#### Fixed-effects model: with gender as cluster
-## First stage analysis
-cluster1 &lt;- tssem1(Becker94$data, Becker94$n, method=&quot;FEM&quot;, cluster=Becker94$gender)
-summary(cluster1)
+<pre><code class="r">#### Fixed-effects model: with gender as cluster 
+## First stage analysis 
+cluster1 &lt;- tssem1(Becker94$data, Becker94$n, method=&quot;FEM&quot;, cluster=Becker94$gender) 
+summary(cluster1) 
 </code></pre>
 
 <pre><code>## $Females
@@ -168,26 +176,28 @@ summary(cluster1)
 ## 
 ## Coefficients:
 ##        Estimate Std.Error z value  Pr(&gt;|z|)    
-## S[1,2] 0.456134  0.052537  8.6822 &lt; 2.2e-16 ***
-## S[1,3] 0.338985  0.062744  5.4027 6.565e-08 ***
-## S[2,3] 0.170467  0.065469  2.6038   0.00922 ** 
+## S[1,2] 0.455896  0.051992  8.7685 &lt; 2.2e-16 ***
+## S[1,3] 0.341583  0.061943  5.5144 3.499e-08 ***
+## S[2,3] 0.171931  0.064731  2.6561  0.007905 ** 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Goodness-of-fit indices:
 ##                                     Value
 ## Sample size                      235.0000
-## Chi-square of target model        42.4076
+## Chi-square of target model        43.1898
 ## DF of target model                12.0000
 ## p value of target model            0.0000
-## Chi-square of independence model 120.4236
+## Chi-square of independence model 123.4399
 ## DF of independence model          15.0000
-## RMSEA                              0.2327
-## SRMR                               0.2146
-## TLI                                0.6395
-## CFI                                0.7116
-## AIC                               18.4076
-## BIC                              -23.1074
+## RMSEA                              0.2357
+## RMSEA lower 95% CI                 0.1637
+## RMSEA upper 95% CI                 0.3161
+## SRMR                               0.2141
+## TLI                                0.6405
+## CFI                                0.7124
+## AIC                               19.1898
+## BIC                              -22.3252
 ## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
 ## Other values may indicate problems.)
 ## 
@@ -199,41 +209,43 @@ summary(cluster1)
 ## 
 ## Coefficients:
 ##        Estimate Std.Error z value  Pr(&gt;|z|)    
-## S[1,2] 0.317561  0.052147  6.0897 1.131e-09 ***
-## S[1,3] 0.326223  0.052724  6.1874 6.116e-10 ***
-## S[2,3] 0.179204  0.056411  3.1767  0.001489 ** 
+## S[1,2] 0.318051  0.051698  6.1521 7.646e-10 ***
+## S[1,3] 0.328286  0.052226  6.2859 3.261e-10 ***
+## S[2,3] 0.179549  0.055944  3.2094   0.00133 ** 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Goodness-of-fit indices:
 ##                                     Value
 ## Sample size                      303.0000
-## Chi-square of target model        16.1330
+## Chi-square of target model        16.4819
 ## DF of target model                12.0000
-## p value of target model            0.1852
-## Chi-square of independence model  82.1885
+## p value of target model            0.1701
+## Chi-square of independence model  84.3496
 ## DF of independence model          15.0000
-## RMSEA                              0.0755
-## SRMR                               0.1022
-## TLI                                0.9231
-## CFI                                0.9385
-## AIC                               -7.8670
-## BIC                              -52.4318
+## RMSEA                              0.0786
+## RMSEA lower 95% CI                 0.0000
+## RMSEA upper 95% CI                 0.1643
+## SRMR                               0.1025
+## TLI                                0.9192
+## CFI                                0.9354
+## AIC                               -7.5181
+## BIC                              -52.0829
 ## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Second stage analysis  
-cluster2 &lt;- tssem2(cluster1, Amatrix=A1, Smatrix=S1, intervals.type=&quot;LB&quot;)
-summary(cluster2)
+<pre><code class="r">## Second stage analysis   
+cluster2 &lt;- tssem2(cluster1, Amatrix=A1, Smatrix=S1, intervals.type=&quot;LB&quot;) 
+summary(cluster2) 
 </code></pre>
 
 <pre><code>## $Females
 ## 
 ## Call:
-## wls(Cov = pooledS, asyCov = tssem1.obj$acovS, n = sum(tssem1.obj$n), 
-##     Amatrix = Amatrix, Smatrix = Smatrix, Fmatrix = Fmatrix, 
-##     diag.constraints = diag.constraints, cor.analysis = cor.analysis, 
+## wls(Cov = coef.tssem1FEM(tssem1.obj), asyCov = vcov.tssem1FEM(tssem1.obj), 
+##     n = sum(tssem1.obj$n), Amatrix = Amatrix, Smatrix = Smatrix, 
+##     Fmatrix = Fmatrix, diag.constraints = diag.constraints, cor.analysis = tssem1.obj$cor.analysis, 
 ##     intervals.type = intervals.type, mx.algebras = mx.algebras, 
 ##     model.name = model.name, suppressWarnings = suppressWarnings, 
 ##     silent = silent, run = run)
@@ -241,9 +253,9 @@ summary(cluster2)
 ## 95% confidence intervals: Likelihood-based statistic
 ## Coefficients:
 ##                         Estimate Std.Error   lbound   ubound z value
-## Spatial2Aptitude        0.410270        NA 0.305208 0.514614      NA
-## Verbal2Aptitude         0.269047        NA 0.152607 0.385748      NA
-## CorBetweenSpatialVerbal 0.170467        NA 0.042142 0.298785      NA
+## Spatial2Aptitude        0.409265        NA 0.305291 0.512538      NA
+## Verbal2Aptitude         0.271217        NA 0.156124 0.386564      NA
+## CorBetweenSpatialVerbal 0.171931        NA 0.045036 0.298803      NA
 ##                         Pr(&gt;|z|)
 ## Spatial2Aptitude              NA
 ## Verbal2Aptitude               NA
@@ -257,9 +269,11 @@ summary(cluster2)
 ## p value of target model                      0.00
 ## Number of constraints imposed on &quot;Smatrix&quot;   0.00
 ## DF manually adjusted                         0.00
-## Chi-square of independence model           102.96
+## Chi-square of independence model           105.57
 ## DF of independence model                     3.00
 ## RMSEA                                        0.00
+## RMSEA lower 95% CI                           0.00
+## RMSEA upper 95% CI                           0.00
 ## SRMR                                         0.00
 ## TLI                                          -Inf
 ## CFI                                          1.00
@@ -271,9 +285,9 @@ summary(cluster2)
 ## $Males
 ## 
 ## Call:
-## wls(Cov = pooledS, asyCov = tssem1.obj$acovS, n = sum(tssem1.obj$n), 
-##     Amatrix = Amatrix, Smatrix = Smatrix, Fmatrix = Fmatrix, 
-##     diag.constraints = diag.constraints, cor.analysis = cor.analysis, 
+## wls(Cov = coef.tssem1FEM(tssem1.obj), asyCov = vcov.tssem1FEM(tssem1.obj), 
+##     n = sum(tssem1.obj$n), Amatrix = Amatrix, Smatrix = Smatrix, 
+##     Fmatrix = Fmatrix, diag.constraints = diag.constraints, cor.analysis = tssem1.obj$cor.analysis, 
 ##     intervals.type = intervals.type, mx.algebras = mx.algebras, 
 ##     model.name = model.name, suppressWarnings = suppressWarnings, 
 ##     silent = silent, run = run)
@@ -281,9 +295,9 @@ summary(cluster2)
 ## 95% confidence intervals: Likelihood-based statistic
 ## Coefficients:
 ##                         Estimate Std.Error   lbound   ubound z value
-## Spatial2Aptitude        0.267698        NA 0.165952 0.369420      NA
-## Verbal2Aptitude         0.278251        NA 0.175105 0.381420      NA
-## CorBetweenSpatialVerbal 0.179204        NA 0.068639 0.289769      NA
+## Spatial2Aptitude        0.267739        NA 0.166906 0.368546      NA
+## Verbal2Aptitude         0.280213        NA 0.178021 0.382429      NA
+## CorBetweenSpatialVerbal 0.179549        NA 0.069891 0.289199      NA
 ##                         Pr(&gt;|z|)
 ## Spatial2Aptitude              NA
 ## Verbal2Aptitude               NA
@@ -297,9 +311,11 @@ summary(cluster2)
 ## p value of target model                      0.000
 ## Number of constraints imposed on &quot;Smatrix&quot;   0.000
 ## DF manually adjusted                         0.000
-## Chi-square of independence model            66.793
+## Chi-square of independence model            68.564
 ## DF of independence model                     3.000
 ## RMSEA                                        0.000
+## RMSEA lower 95% CI                           0.000
+## RMSEA upper 95% CI                           0.000
 ## SRMR                                         0.000
 ## TLI                                           -Inf
 ## CFI                                          1.000
@@ -309,13 +325,13 @@ summary(cluster2)
 ## Other values indicate problems.)
 </code></pre>
 
-<pre><code class="r">#### Conventional fixed-effects GLS approach
-## First stage analysis
-## No random effects
-## Replicate Becker&#39;s (1992) analysis using 4 studies only
-gls1 &lt;- tssem1(Becker92$data[1:4], Becker92$n[1:4], method=&quot;REM&quot;, RE.type=&quot;Zero&quot;,
-               model.name=&quot;Fixed effects GLS Stage 1&quot;)
-summary(gls1)
+<pre><code class="r">#### Conventional fixed-effects GLS approach 
+## First stage analysis 
+## No random effects 
+## Replicate Becker&#39;s (1992) analysis using 4 studies only 
+gls1 &lt;- tssem1(Becker92$data[1:4], Becker92$n[1:4], method=&quot;REM&quot;, RE.type=&quot;Zero&quot;, 
+               model.name=&quot;Fixed effects GLS Stage 1&quot;) 
+summary(gls1) 
 </code></pre>
 
 <pre><code>## 
@@ -327,15 +343,15 @@ summary(gls1)
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
 ##            Estimate Std.Error   lbound   ubound z value  Pr(&gt;|z|)    
-## Intercept1 0.410544  0.046911 0.318600 0.502488  8.7516 &lt; 2.2e-16 ***
-## Intercept2 0.470996  0.044028 0.384703 0.557288 10.6977 &lt; 2.2e-16 ***
-## Intercept3 0.252572  0.052958 0.148775 0.356368  4.7693 1.849e-06 ***
+## Intercept1 0.410464  0.046612 0.319106 0.501822   8.806 &lt; 2.2e-16 ***
+## Intercept2 0.471172  0.043735 0.385453 0.556890  10.773 &lt; 2.2e-16 ***
+## Intercept3 0.252607  0.052616 0.149482 0.355732   4.801 1.579e-06 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Q statistic on the homogeneity of effect sizes: 9.216192
+## Q statistic on the homogeneity of effect sizes: 9.331465
 ## Degrees of freedom of the Q statistic: 9
-## P value of the Q statistic: 0.417562
+## P value of the Q statistic: 0.4072567
 ## 
 ## Heterogeneity indices (based on the estimated Tau2):
 ##                              Estimate
@@ -347,15 +363,15 @@ summary(gls1)
 ## Number of observed statistics: 12
 ## Number of estimated parameters: 3
 ## Degrees of freedom: 9
-## -2 log likelihood: -25.98565 
+## -2 log likelihood: -26.0304 
 ## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Fixed-effects GLS model: Second stage analysis
-gls2 &lt;- tssem2(gls1, Amatrix=A1, Smatrix=S1, intervals.type=&quot;LB&quot;,
-               model.name=&quot;Fixed effects GLS Stage 2&quot;)
-summary(gls2)
+<pre><code class="r">## Fixed-effects GLS model: Second stage analysis 
+gls2 &lt;- tssem2(gls1, Amatrix=A1, Smatrix=S1, intervals.type=&quot;LB&quot;, 
+               model.name=&quot;Fixed effects GLS Stage 2&quot;) 
+summary(gls2) 
 </code></pre>
 
 <pre><code>## 
@@ -369,9 +385,9 @@ summary(gls2)
 ## 95% confidence intervals: Likelihood-based statistic
 ## Coefficients:
 ##                         Estimate Std.Error  lbound  ubound z value
-## Spatial2Aptitude         0.31145        NA 0.21885 0.40366      NA
-## Verbal2Aptitude          0.39233        NA 0.30259 0.48178      NA
-## CorBetweenSpatialVerbal  0.25257        NA 0.14877 0.35639      NA
+## Spatial2Aptitude         0.31131        NA 0.21931 0.40291      NA
+## Verbal2Aptitude          0.39253        NA 0.30338 0.48139      NA
+## CorBetweenSpatialVerbal  0.25261        NA 0.14947 0.35576      NA
 ##                         Pr(&gt;|z|)
 ## Spatial2Aptitude              NA
 ## Verbal2Aptitude               NA
@@ -385,9 +401,11 @@ summary(gls2)
 ## p value of target model                      0.00
 ## Number of constraints imposed on &quot;Smatrix&quot;   0.00
 ## DF manually adjusted                         0.00
-## Chi-square of independence model           170.65
+## Chi-square of independence model           172.96
 ## DF of independence model                     3.00
 ## RMSEA                                        0.00
+## RMSEA lower 95% CI                           0.00
+## RMSEA upper 95% CI                           0.00
 ## SRMR                                         0.00
 ## TLI                                          -Inf
 ## CFI                                          1.00
@@ -397,6 +415,9 @@ summary(gls2)
 ## Other values indicate problems.)
 </code></pre>
 
+<pre><code class="r">## } 
+</code></pre>
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

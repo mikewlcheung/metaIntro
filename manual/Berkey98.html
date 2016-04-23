@@ -14,8 +14,9 @@
 
 <h3>Description</h3>
 
-<p>The data set includes five published trials, reported by Berkey et al. (1998), comparing surgical and non-surgical treatments
-for medium-severity periodontal disease, one year after treatment. 
+ 
+<p>The data set includes five published trials, reported by Berkey et al. (1998), comparing surgical and non-surgical treatments 
+for medium-severity periodontal disease, one year after treatment.  
 </p>
 
 
@@ -26,44 +27,46 @@ for medium-severity periodontal disease, one year after treatment.
 
 <h3>Details</h3>
 
-<p>The variables are:
+ 
+<p>The variables are: 
 </p>
-
+ 
 <dl>
 <dt>trial</dt><dd><p>Trial number</p>
-</dd>
+</dd> 
 <dt>pub_year</dt><dd><p>Publication year</p>
-</dd>
+</dd> 
 <dt>no_of_patients</dt><dd><p>Number of patients</p>
-</dd>
+</dd> 
 <dt>PD</dt><dd><p>Patient improvements (mm) in <em>probing depth</em></p>
-</dd>
+</dd> 
 <dt>AL</dt><dd><p>Patient improvements (mm) in <em>attachment level</em></p>
-</dd>
+</dd> 
 <dt>var_PD</dt><dd><p>Sampling variance of PD</p>
-</dd>
+</dd> 
 <dt>cov_PD_AL</dt><dd><p>Sampling covariance between PD and AD</p>
-</dd>
+</dd> 
 <dt>var_AL</dt><dd><p>Sampling variance of AL</p>
-</dd>
+</dd> 
 </dl>
-
+ 
 
 
 <h3>Source</h3>
 
-<p>Berkey, C. S., Hoaglin, D. C., Antczak-Bouckoms, A., Mosteller, F, &amp; Colditz, G. A. (1998). Meta-analysis of multiple outcomes by regression with random effects. <em>Statistics in Medicine</em>, <b>17</b>, 2537-2550.
+ 
+<p>Berkey, C. S., Hoaglin, D. C., Antczak-Bouckoms, A., Mosteller, F, &amp; Colditz, G. A. (1998). Meta-analysis of multiple outcomes by regression with random effects. <em>Statistics in Medicine</em>, <b>17</b>, 2537-2550. 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">data(Berkey98)
+<pre><code class="r">data(Berkey98) 
 
-#### ML estimation method
-## Multivariate meta-analysis
-summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
-              data=Berkey98, I2=c(&quot;I2q&quot;, &quot;I2hm&quot;, &quot;I2am&quot;)) )
+#### ML estimation method 
+## Multivariate meta-analysis 
+summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL), 
+              data=Berkey98, I2=c(&quot;I2q&quot;, &quot;I2hm&quot;, &quot;I2am&quot;)) ) 
 </code></pre>
 
 <pre><code>## 
@@ -110,10 +113,10 @@ summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Multivariate meta-analysis with &quot;publication year-1979&quot; as the predictor
-summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
-              x=scale(pub_year, center=1979), data=Berkey98,
-              RE.lbound=NA) )
+<pre><code class="r">## Multivariate meta-analysis with &quot;publication year-1979&quot; as the predictor 
+summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL), 
+              x=scale(pub_year, center=1979), data=Berkey98, 
+              RE.lbound=NA) ) 
 </code></pre>
 
 <pre><code>## 
@@ -161,11 +164,11 @@ summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Multivariate meta-analysis with equality constraint on the regression coefficients
-summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
-              x=scale(pub_year, center=1979), data=Berkey98,
-              coef.constraints=matrix(c(&quot;0.3*Eq_slope&quot;, &quot;0.3*Eq_slope&quot;),
-              nrow=2)) )
+<pre><code class="r">## Multivariate meta-analysis with equality constraint on the regression coefficients 
+summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL), 
+              x=scale(pub_year, center=1979), data=Berkey98, 
+              coef.constraints=matrix(c(&quot;0.3*Eq_slope&quot;, &quot;0.3*Eq_slope&quot;), 
+              nrow=2)) ) 
 </code></pre>
 
 <pre><code>## 
@@ -212,11 +215,11 @@ summary( meta(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">#### REML estimation method
-## Multivariate meta-analysis
-summary( reml(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
-              data=Berkey98,
-              model.name=&quot;Multivariate meta analysis with REML&quot;) )
+<pre><code class="r">#### REML estimation method 
+## Multivariate meta-analysis 
+summary( reml(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL), 
+              data=Berkey98, 
+              model.name=&quot;Multivariate meta analysis with REML&quot;) ) 
 </code></pre>
 
 <pre><code>## 
@@ -240,9 +243,9 @@ summary( reml(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Multivariate meta-analysis with &quot;publication year-1979&quot; as the predictor
-summary( reml(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
-              x=scale(pub_year, center=1979), data=Berkey98) )
+<pre><code class="r">## Multivariate meta-analysis with &quot;publication year-1979&quot; as the predictor 
+summary( reml(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL), 
+              x=scale(pub_year, center=1979), data=Berkey98) ) 
 </code></pre>
 
 <pre><code>## 
@@ -267,5 +270,5 @@ summary( reml(y=cbind(PD, AL), v=cbind(var_PD, cov_PD_AL, var_AL),
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

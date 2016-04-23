@@ -14,8 +14,9 @@
 
 <h3>Description</h3>
 
-<p>Twenty stimulated studies on standardized mean difference and one
-continuous study characteristic reported by Hox (2002).
+ 
+<p>Twenty stimulated studies on standardized mean difference and one 
+continuous study characteristic reported by Hox (2002). 
 </p>
 
 
@@ -26,41 +27,45 @@ continuous study characteristic reported by Hox (2002).
 
 <h3>Details</h3>
 
-<p>The variables are:
+ 
+<p>The variables are: 
 </p>
-
+ 
 <dl>
 <dt>study</dt><dd><p>Study number</p>
-</dd>
+</dd> 
 <dt>yi</dt><dd><p>Effect size (standardized mean difference)</p>
-</dd>
+</dd> 
 <dt>vi</dt><dd><p>Sampling variance of the effect size</p>
-</dd>
+</dd> 
 <dt>weeks</dt><dd><p>Duration of the experimental intervention in terms of weeks</p>
-</dd>
+</dd> 
 </dl>
-
+ 
 
 
 <h3>Source</h3>
 
-<p>Hox, J. J. (2002). <em>Multilevel analysis: Techniques and applications.</em> Mahwah, N.J.: Lawrence Erlbaum Associates.
+ 
+<p>Hox, J. J. (2002). <em>Multilevel analysis: Techniques and applications.</em> Mahwah, N.J.: Lawrence Erlbaum Associates. 
 </p>
 
 
 <h3>References</h3>
 
-<p>Cheung, M. W.-L. (2008). A model for integrating fixed-, random-, and mixed-effects meta-analyses into structural equation modeling. <em>Psychological Methods</em>, <b>13</b>, 182-202. 
+ 
+<p>Cheung, M. W.-L. (2008). A model for integrating fixed-, random-, and mixed-effects meta-analyses into structural equation modeling. <em>Psychological Methods</em>, <b>13</b>, 182-202.  
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">data(Hox02)
+<pre><code class="r">## \dontrun{ 
+data(Hox02) 
 
-#### ML estimation method
-## Random-effects meta-analysis
-summary( meta(y=yi, v=vi, data=Hox02, I2=c(&quot;I2q&quot;, &quot;I2hm&quot;), intervals.type=&quot;LB&quot;) ) 
+#### ML estimation method 
+## Random-effects meta-analysis 
+summary( meta(y=yi, v=vi, data=Hox02, I2=c(&quot;I2q&quot;, &quot;I2hm&quot;), intervals.type=&quot;LB&quot;) )  
 </code></pre>
 
 <pre><code>## 
@@ -92,9 +97,9 @@ summary( meta(y=yi, v=vi, data=Hox02, I2=c(&quot;I2q&quot;, &quot;I2hm&quot;), i
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Fixed-effects meta-analysis
-summary( meta(y=yi, v=vi, data=Hox02, RE.constraints=0,
-              model.name=&quot;Fixed effects model&quot;) )
+<pre><code class="r">## Fixed-effects meta-analysis 
+summary( meta(y=yi, v=vi, data=Hox02, RE.constraints=0, 
+              model.name=&quot;Fixed effects model&quot;) ) 
 </code></pre>
 
 <pre><code>## 
@@ -125,10 +130,10 @@ summary( meta(y=yi, v=vi, data=Hox02, RE.constraints=0,
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Mixed-effects meta-analysis with &quot;weeks&quot; as a predictor
-## Request likelihood-based CI
-summary( meta(y=yi, v=vi, x=weeks, data=Hox02, intervals.type=&quot;LB&quot;,
-              model.name=&quot;Mixed effects meta analysis with LB CI&quot;) )
+<pre><code class="r">## Mixed-effects meta-analysis with &quot;weeks&quot; as a predictor 
+## Request likelihood-based CI 
+summary( meta(y=yi, v=vi, x=weeks, data=Hox02, intervals.type=&quot;LB&quot;, 
+              model.name=&quot;Mixed effects meta analysis with LB CI&quot;) ) 
 </code></pre>
 
 <pre><code>## 
@@ -162,9 +167,9 @@ summary( meta(y=yi, v=vi, x=weeks, data=Hox02, intervals.type=&quot;LB&quot;,
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">#### REML estimation method
-## Random-effects meta-analysis with REML
-summary( VarComp &lt;- reml(y=yi, v=vi, data=Hox02) )
+<pre><code class="r">#### REML estimation method 
+## Random-effects meta-analysis with REML 
+summary( VarComp &lt;- reml(y=yi, v=vi, data=Hox02) ) 
 </code></pre>
 
 <pre><code>## 
@@ -187,11 +192,11 @@ summary( VarComp &lt;- reml(y=yi, v=vi, data=Hox02) )
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Extract the variance component
-VarComp_REML &lt;- matrix( coef(VarComp), ncol=1, nrow=1 )
+<pre><code class="r">## Extract the variance component 
+VarComp_REML &lt;- matrix( coef(VarComp), ncol=1, nrow=1 ) 
 
-## Meta-analysis by treating the variance component as fixed
-summary( meta(y=yi, v=vi, data=Hox02, RE.constraints=VarComp_REML) )
+## Meta-analysis by treating the variance component as fixed 
+summary( meta(y=yi, v=vi, data=Hox02, RE.constraints=VarComp_REML) ) 
 </code></pre>
 
 <pre><code>## 
@@ -222,10 +227,10 @@ summary( meta(y=yi, v=vi, data=Hox02, RE.constraints=VarComp_REML) )
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Mixed-effects meta-analysis with &quot;weeks&quot; as a predictor
-## Request likelihood-based CI
-summary( reml(y=yi, v=vi, x=weeks, intervals.type=&quot;LB&quot;,
-              data=Hox02, model.name=&quot;REML with LB CI&quot;) )
+<pre><code class="r">## Mixed-effects meta-analysis with &quot;weeks&quot; as a predictor 
+## Request likelihood-based CI 
+summary( reml(y=yi, v=vi, x=weeks, intervals.type=&quot;LB&quot;, 
+              data=Hox02, model.name=&quot;REML with LB CI&quot;) ) 
 </code></pre>
 
 <pre><code>## 
@@ -247,6 +252,9 @@ summary( reml(y=yi, v=vi, x=weeks, intervals.type=&quot;LB&quot;,
 ## Other values may indicate problems.)
 </code></pre>
 
+<pre><code class="r">## } 
+</code></pre>
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

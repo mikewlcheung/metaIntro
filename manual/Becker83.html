@@ -10,13 +10,14 @@
 
 <table width="100%" summary="page for Becker83 {metaSEM}"><tr><td>Becker83 {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Studies on Sex Differences in Conformity Reported by Becker (1983)
+<h2>Studies on Sex Differences in Conformity Reported by Becker (1983) 
 </h2>
 
 <h3>Description</h3>
 
-<p>The data set includes studies on sex differences in conformity using the fictitious norm group
-paradigm reported by Becker (1983).
+ 
+<p>The data set includes studies on sex differences in conformity using the fictitious norm group 
+paradigm reported by Becker (1983). 
 </p>
 
 
@@ -27,46 +28,49 @@ paradigm reported by Becker (1983).
 
 <h3>Details</h3>
 
-<p>The variables are:
+ 
+<p>The variables are: 
 </p>
-
+ 
 <dl>
 <dt>study</dt><dd><p>study number</p>
-</dd>
+</dd> 
 <dt>di</dt><dd><p>Standardized mean difference</p>
-</dd>
+</dd> 
 <dt>vi</dt><dd><p>Sampling variance of the effect size</p>
-</dd>
+</dd> 
 <dt>percentage</dt><dd><p>Percentage of male authors</p>
-</dd>
+</dd> 
 <dt>items</dt><dd><p>Number of items</p>
-</dd>
+</dd> 
 </dl>
-
+ 
 
 
 <h3>Source</h3>
 
-<p>Becker, B. J. (1983, April). Influence again: A comparison of methods
-for meta-analysis. <em>Paper presented at the annual meeting of the
-American Educational Research Association, Montreal.</em>
+ 
+<p>Becker, B. J. (1983, April). Influence again: A comparison of methods 
+for meta-analysis. <em>Paper presented at the annual meeting of the 
+American Educational Research Association, Montreal.</em> 
 </p>
-<p>Hedges, L. V., &amp; Olkin, I. (1985). <em>Statistical methods for meta-analysis.</em> Orlando, FL: Academic Press. 
+<p>Hedges, L. V., &amp; Olkin, I. (1985). <em>Statistical methods for meta-analysis.</em> Orlando, FL: Academic Press.  
 </p>
 
 
 <h3>References</h3>
 
-<p>Cheung, M. W.-L. (2010). Fixed-effects meta-analyses as multiple-group structural equation models. <em>Structural Equation Modeling</em>, <b>17</b>, 481-509.
+ 
+<p>Cheung, M. W.-L. (2010). Fixed-effects meta-analyses as multiple-group structural equation models. <em>Structural Equation Modeling</em>, <b>17</b>, 481-509. 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">data(Becker83)
+<pre><code class="r">data(Becker83) 
 
-## Random-effects meta-analysis
-summary( meta(y=di, v=vi, data=Becker83) )
+## Random-effects meta-analysis 
+summary( meta(y=di, v=vi, data=Becker83) ) 
 </code></pre>
 
 <pre><code>## 
@@ -96,8 +100,8 @@ summary( meta(y=di, v=vi, data=Becker83) )
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Mixed-effects meta-analysis with log(items) as the predictor
-summary( meta(y=di, v=vi, x=log(items), data=Becker83) )
+<pre><code class="r">## Mixed-effects meta-analysis with log(items) as the predictor 
+summary( meta(y=di, v=vi, x=log(items), data=Becker83) ) 
 </code></pre>
 
 <pre><code>## 
@@ -137,5 +141,5 @@ summary( meta(y=di, v=vi, x=log(items), data=Becker83) )
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

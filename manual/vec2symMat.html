@@ -10,47 +10,48 @@
 
 <table width="100%" summary="page for vec2symMat {metaSEM}"><tr><td>vec2symMat {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Convert a Vector into a Symmetric Matrix
+<h2>Convert a Vector into a Symmetric Matrix 
 </h2>
 
 <h3>Description</h3>
 
-<p>It converts a vector into a symmetric matrix. 
+<p>It converts a vector into a symmetric matrix.  
 </p>
 
 
 <h3>Usage</h3>
 
-<pre>
-vec2symMat(x, diag = TRUE, byrow = FALSE)
+<pre> 
+vec2symMat(x, diag = TRUE, byrow = FALSE) 
 </pre>
 
 
 <h3>Arguments</h3>
 
+ 
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>A vector of numerics or characters
+<p>A vector of numerics or characters 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>diag</code></td>
 <td>
-<p>Logical. If it is <code>TRUE</code> (the default), the diagonals
-of the created matrix are replaced by elements of <code>x</code>;
+<p>Logical. If it is <code>TRUE</code> (the default), the diagonals 
+of the created matrix are replaced by elements of <code>x</code>; 
 otherwise, the diagonals of the created matrix are replaced by &quot;1&quot;.</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>byrow</code></td>
 <td>
-<p>Logical. If it is <code>FALSE</code> (the default), the created matrix is filled by columns; otherwise, the matrix is filled by rows.
+<p>Logical. If it is <code>FALSE</code> (the default), the created matrix is filled by columns; otherwise, the matrix is filled by rows. 
 </p>
-</td></tr>
+</td></tr> 
 </table>
 
 
 <h3>Value</h3>
 
-<p>A symmetric square matrix based on column major
+<p>A symmetric square matrix based on column major 
 
 
 
@@ -61,20 +62,20 @@ otherwise, the diagonals of the created matrix are replaced by &quot;1&quot;.</p
 
 <h3>Author(s)</h3>
 
-<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt; 
 </p>
 
 
 <h3>See Also</h3>
 
- <p><code><a href="matrix2bdiag.html">matrix2bdiag</a></code>
+ <p><code><a href="matrix2bdiag.html">matrix2bdiag</a></code> 
 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">vec2symMat(1:6)
+<pre><code class="r">vec2symMat(1:6) 
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3]
@@ -83,12 +84,12 @@ otherwise, the diagonals of the created matrix are replaced by &quot;1&quot;.</p
 ## [3,]    3    5    6
 </code></pre>
 
-<pre><code class="r">#      [,1] [,2] [,3]
-# [1,]    1    2    3
-# [2,]    2    4    5
-# [3,]    3    5    6
+<pre><code class="r">#      [,1] [,2] [,3] 
+# [1,]    1    2    3 
+# [2,]    2    4    5 
+# [3,]    3    5    6 
 
-vec2symMat(1:6, diag=FALSE)
+vec2symMat(1:6, diag=FALSE) 
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3] [,4]
@@ -98,13 +99,13 @@ vec2symMat(1:6, diag=FALSE)
 ## [4,]    3    5    6    1
 </code></pre>
 
-<pre><code class="r">#      [,1] [,2] [,3] [,4]
-# [1,]    1    1    2    3
-# [2,]    1    1    4    5
-# [3,]    2    4    1    6
-# [4,]    3    5    6    1
+<pre><code class="r">#      [,1] [,2] [,3] [,4] 
+# [1,]    1    1    2    3 
+# [2,]    1    1    4    5 
+# [3,]    2    4    1    6 
+# [4,]    3    5    6    1 
 
-vec2symMat(letters[1:6])
+vec2symMat(letters[1:6]) 
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3]
@@ -113,12 +114,12 @@ vec2symMat(letters[1:6])
 ## [3,] &quot;c&quot;  &quot;e&quot;  &quot;f&quot;
 </code></pre>
 
-<pre><code class="r">#      [,1] [,2] [,3]
-# [1,] &quot;a&quot;  &quot;b&quot;  &quot;c&quot; 
-# [2,] &quot;b&quot;  &quot;d&quot;  &quot;e&quot; 
-# [3,] &quot;c&quot;  &quot;e&quot;  &quot;f&quot; 
+<pre><code class="r">#      [,1] [,2] [,3] 
+# [1,] &quot;a&quot;  &quot;b&quot;  &quot;c&quot;  
+# [2,] &quot;b&quot;  &quot;d&quot;  &quot;e&quot;  
+# [3,] &quot;c&quot;  &quot;e&quot;  &quot;f&quot;  
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

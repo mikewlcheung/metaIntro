@@ -10,63 +10,64 @@
 
 <table width="100%" summary="page for list2matrix {metaSEM}"><tr><td>list2matrix {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Convert a List of Symmetric Matrices into a Stacked Matrix
+<h2>Convert a List of Symmetric Matrices into a Stacked Matrix 
 </h2>
 
 <h3>Description</h3>
 
-<p>It converts a list of symmetric matrices into
-a stacked matrix. Dimensions of the symmetric matrices have to be the
-same. It tries to preserve the dimension names if possible. Dimension names will
-be created if there is no dimension names in the first symmetric matrix. 
+<p>It converts a list of symmetric matrices into 
+a stacked matrix. Dimensions of the symmetric matrices have to be the 
+same. It tries to preserve the dimension names if possible. Dimension names will 
+be created if there is no dimension names in the first symmetric matrix.  
 </p>
 
 
 <h3>Usage</h3>
 
-<pre>
-list2matrix(x, diag = FALSE)
+<pre> 
+list2matrix(x, diag = FALSE) 
 </pre>
 
 
 <h3>Arguments</h3>
 
+ 
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>A list of <i>k</i> <i>p</i> x <i>p</i> symmetric matrices.
+<p>A list of <i>k</i> <i>p</i> x <i>p</i> symmetric matrices. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>diag</code></td>
 <td>
-<p>Logical. If it is <code>TRUE</code>, <code><a href="../../OpenMx/html/vech.html">vech</a></code>
-is used to vectorize the (covariance) matrices. If it is <code>FALSE</code>, <code><a href="../../OpenMx/html/vechs.html">vechs</a></code>
-is used to vectorize the (correlation) matrices.
+<p>Logical. If it is <code>TRUE</code>, <code><a href="../../OpenMx/html/vech.html">vech</a></code> 
+is used to vectorize the (covariance) matrices. If it is <code>FALSE</code>, <code><a href="../../OpenMx/html/vechs.html">vechs</a></code> 
+is used to vectorize the (correlation) matrices. 
 </p>
-</td></tr>
+</td></tr> 
 </table>
 
 
 <h3>Value</h3>
 
-<p>A <i>k</i> x <i>p*</i> stacked matrix where <i>p*
-	= p(p-1)/2</i> for <code>diag</code>=<code>FALSE</code> or <i>p* = p(p+1)/2</i> for <code>diag</code>=<code>TRUE</code>.
+<p>A <i>k</i> x <i>p*</i> stacked matrix where <i>p* 
+	= p(p-1)/2</i> for <code>diag</code>=<code>FALSE</code> or <i>p* = p(p+1)/2</i> for <code>diag</code>=<code>TRUE</code>. 
 </p>
 
 
 <h3>Author(s)</h3>
 
-<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt; 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">C1 &lt;- matrix(c(1,0.5,0.4,0.5,1,0.2,0.4,0.2,1), ncol=3)  
-C2 &lt;- matrix(c(1,0.4,NA,0.4,1,NA,NA,NA,NA), ncol=3)  
+<pre><code class="r">C1 &lt;- matrix(c(1,0.5,0.4,0.5,1,0.2,0.4,0.2,1), ncol=3)   
+C2 &lt;- matrix(c(1,0.4,NA,0.4,1,NA,NA,NA,NA), ncol=3)   
 
-## A list without dimension names 
-list2matrix(list(C1, C2))
+## A list without dimension names  
+list2matrix(list(C1, C2)) 
 </code></pre>
 
 <pre><code>##      x2_x1 x3_x1 x3_x2
@@ -74,15 +75,15 @@ list2matrix(list(C1, C2))
 ## [2,]   0.4    NA    NA
 </code></pre>
 
-<pre><code class="r">#      x2_x1 x3_x1 x3_x2
-# [1,]   0.5   0.4   0.2
-# [2,]   0.4    NA    NA
+<pre><code class="r">#      x2_x1 x3_x1 x3_x2 
+# [1,]   0.5   0.4   0.2 
+# [2,]   0.4    NA    NA 
 
-dimnames(C1) &lt;- list( c(&quot;x&quot;,&quot;y&quot;,&quot;z&quot;), c(&quot;x&quot;,&quot;y&quot;,&quot;z&quot;) )
-dimnames(C2) &lt;- list( c(&quot;x&quot;,&quot;y&quot;,&quot;z&quot;), c(&quot;x&quot;,&quot;y&quot;,&quot;z&quot;) )
+dimnames(C1) &lt;- list( c(&quot;x&quot;,&quot;y&quot;,&quot;z&quot;), c(&quot;x&quot;,&quot;y&quot;,&quot;z&quot;) ) 
+dimnames(C2) &lt;- list( c(&quot;x&quot;,&quot;y&quot;,&quot;z&quot;), c(&quot;x&quot;,&quot;y&quot;,&quot;z&quot;) ) 
 
-## A list with dimension names
-list2matrix(list(C1, C2))
+## A list with dimension names 
+list2matrix(list(C1, C2)) 
 </code></pre>
 
 <pre><code>##      y_x z_x z_y
@@ -90,11 +91,11 @@ list2matrix(list(C1, C2))
 ## [2,] 0.4  NA  NA
 </code></pre>
 
-<pre><code class="r">#      y_x z_x z_y
-# [1,] 0.5 0.4 0.2
-# [2,] 0.4  NA  NA
+<pre><code class="r">#      y_x z_x z_y 
+# [1,] 0.5 0.4 0.2 
+# [2,] 0.4  NA  NA 
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

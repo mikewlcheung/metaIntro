@@ -10,84 +10,85 @@
 
 <table width="100%" summary="page for as.mxMatrix {metaSEM}"><tr><td>as.mxMatrix {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Convert a Matrix into MxMatrix-class
+<h2>Convert a Matrix into MxMatrix-class 
 </h2>
 
 <h3>Description</h3>
 
-<p>It converts a matrix into <code>MxMatrix-class</code> via <code>mxMatrix</code>.
+<p>It converts a matrix into <code>MxMatrix-class</code> via <code>mxMatrix</code>. 
 </p>
 
 
 <h3>Usage</h3>
 
-<pre>
-as.mxMatrix(x, name, ...)
+<pre> 
+as.mxMatrix(x, name, ...) 
 </pre>
 
 
 <h3>Arguments</h3>
 
+ 
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>A character or numeric matrix. If <code>x</code> is not a matrix,
-<code>as.matrix(x)</code> is applied first. 
+<p>A character or numeric matrix. If <code>x</code> is not a matrix, 
+<code>as.matrix(x)</code> is applied first.  
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>name</code></td>
 <td>
-<p>An optional character string as the name of the
-MxMatrix object created by mxModel function. If <code>name</code> is missing,
+<p>An optional character string as the name of the 
+MxMatrix object created by mxModel function. If <code>name</code> is missing, 
 the name of <code>x</code> will be used.</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>Further arguments to be passed to
-<code><a href="../../OpenMx/html/mxMatrix.html">mxMatrix</a></code>. It should be noted that <code>type</code>,
-<code>nrow</code>, <code>ncol</code>, <code>values</code>, <code>free</code>, <code>name</code>
-and <code>labels</code> will be created automatically. Thus, these
-arguments excepts labels should be avoided in ... 
+<p>Further arguments to be passed to 
+<code><a href="../../OpenMx/html/mxMatrix.html">mxMatrix</a></code>. It should be noted that <code>type</code>, 
+<code>nrow</code>, <code>ncol</code>, <code>values</code>, <code>free</code>, <code>name</code> 
+and <code>labels</code> will be created automatically. Thus, these 
+arguments excepts labels should be avoided in ...  
 </p>
-</td></tr>
+</td></tr> 
 </table>
 
 
 <h3>Details</h3>
 
-<p>If there are non-numeric values in <code>x</code>, they are treated
-as the labels of the free parameters. If an &quot;*&quot; is
-present, the numeric value on the left hand side will be treated as
-the starting value for a free parameter or a fixed value for a fixed parameter. If it is a matrix of numeric values, there is
-no free parameters in the output matrix. 
+<p>If there are non-numeric values in <code>x</code>, they are treated 
+as the labels of the free parameters. If an &quot;*&quot; is 
+present, the numeric value on the left hand side will be treated as 
+the starting value for a free parameter or a fixed value for a fixed parameter. If it is a matrix of numeric values, there is 
+no free parameters in the output matrix.  
 </p>
 
 
 <h3>Value</h3>
 
-<p>A <code><a href="../../OpenMx/html/MxMatrix-class.html">MxMatrix-class</a></code> object with the same
-dimensions as <code>x</code>
+<p>A <code><a href="../../OpenMx/html/MxMatrix-class.html">MxMatrix-class</a></code> object with the same 
+dimensions as <code>x</code> 
 </p>
 
 
 <h3>Author(s)</h3>
 
-<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt; 
 </p>
 
 
 <h3>See Also</h3>
 
- <p><code><a href="../../OpenMx/html/mxMatrix.html">mxMatrix</a></code>,
-<code><a href="create.mxMatrix.html">create.mxMatrix</a></code>,
-<code><a href="create.Fmatrix.html">create.Fmatrix</a></code>
+ <p><code><a href="../../OpenMx/html/mxMatrix.html">mxMatrix</a></code>, 
+<code><a href="create.mxMatrix.html">create.mxMatrix</a></code>, 
+<code><a href="create.Fmatrix.html">create.Fmatrix</a></code> 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">## a and b are free parameters with starting values and labels
-(a1 &lt;- matrix(c(1:4, &quot;5*a&quot;, 6, &quot;7*b&quot;, 8, 9), ncol=3, nrow=3))
+<pre><code class="r">## a and b are free parameters with starting values and labels 
+(a1 &lt;- matrix(c(1:4, &quot;5*a&quot;, 6, &quot;7*b&quot;, 8, 9), ncol=3, nrow=3)) 
 </code></pre>
 
 <pre><code>##      [,1] [,2]  [,3] 
@@ -96,15 +97,15 @@ dimensions as <code>x</code>
 ## [3,] &quot;3&quot;  &quot;6&quot;   &quot;9&quot;
 </code></pre>
 
-<pre><code class="r">#      [,1] [,2]  [,3] 
-# [1,] &quot;1&quot;  &quot;4&quot;   &quot;7*b&quot;
-# [2,] &quot;2&quot;  &quot;5*a&quot; &quot;8&quot;  
-# [3,] &quot;3&quot;  &quot;6&quot;   &quot;9&quot;  
+<pre><code class="r">#      [,1] [,2]  [,3]  
+# [1,] &quot;1&quot;  &quot;4&quot;   &quot;7*b&quot; 
+# [2,] &quot;2&quot;  &quot;5*a&quot; &quot;8&quot;   
+# [3,] &quot;3&quot;  &quot;6&quot;   &quot;9&quot;   
 
-a1 &lt;- as.mxMatrix(a1)
+a1 &lt;- as.mxMatrix(a1) 
 
-## a and b are fixed parameters without any labels, name=&quot;new2&quot;
-(a2 &lt;- matrix(1:9, ncol=3, nrow=3))
+## a and b are fixed parameters without any labels, name=&quot;new2&quot; 
+(a2 &lt;- matrix(1:9, ncol=3, nrow=3)) 
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3]
@@ -113,15 +114,15 @@ a1 &lt;- as.mxMatrix(a1)
 ## [3,]    3    6    9
 </code></pre>
 
-<pre><code class="r">#      [,1] [,2] [,3]
-# [1,]    1    4    7
-# [2,]    2    5    8
-# [3,]    3    6    9
+<pre><code class="r">#      [,1] [,2] [,3] 
+# [1,]    1    4    7 
+# [2,]    2    5    8 
+# [3,]    3    6    9 
 
-new2 &lt;- as.mxMatrix(a2, name=&quot;new2&quot;)
+new2 &lt;- as.mxMatrix(a2, name=&quot;new2&quot;) 
 
-## Free parameters without starting values
-(a3 &lt;- matrix(c(1:4, &quot;*a&quot;, 6, &quot;*b&quot;, 8, 9), ncol=3, nrow=3))
+## Free parameters without starting values 
+(a3 &lt;- matrix(c(1:4, &quot;*a&quot;, 6, &quot;*b&quot;, 8, 9), ncol=3, nrow=3)) 
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3]
@@ -130,15 +131,15 @@ new2 &lt;- as.mxMatrix(a2, name=&quot;new2&quot;)
 ## [3,] &quot;3&quot;  &quot;6&quot;  &quot;9&quot;
 </code></pre>
 
-<pre><code class="r">#      [,1] [,2] [,3]
-# [1,] &quot;1&quot;  &quot;4&quot;  &quot;*b&quot;
-# [2,] &quot;2&quot;  &quot;*a&quot; &quot;8&quot; 
-# [3,] &quot;3&quot;  &quot;6&quot;  &quot;9&quot; 
+<pre><code class="r">#      [,1] [,2] [,3] 
+# [1,] &quot;1&quot;  &quot;4&quot;  &quot;*b&quot; 
+# [2,] &quot;2&quot;  &quot;*a&quot; &quot;8&quot;  
+# [3,] &quot;3&quot;  &quot;6&quot;  &quot;9&quot;  
 
-a3 &lt;- as.mxMatrix(a3, lbound=0)
+a3 &lt;- as.mxMatrix(a3, lbound=0) 
 
-## A free parameter without label
-(a4 &lt;- matrix(c(1:4, &quot;5*&quot;, 6, &quot;7*b&quot;, 8, 9), ncol=3, nrow=3))
+## A free parameter without label 
+(a4 &lt;- matrix(c(1:4, &quot;5*&quot;, 6, &quot;7*b&quot;, 8, 9), ncol=3, nrow=3)) 
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3] 
@@ -147,16 +148,16 @@ a3 &lt;- as.mxMatrix(a3, lbound=0)
 ## [3,] &quot;3&quot;  &quot;6&quot;  &quot;9&quot;
 </code></pre>
 
-<pre><code class="r">#      [,1] [,2] [,3] 
-# [1,] &quot;1&quot;  &quot;4&quot;  &quot;7*b&quot;
-# [2,] &quot;2&quot;  &quot;5*&quot; &quot;8&quot;  
-# [3,] &quot;3&quot;  &quot;6&quot;  &quot;9&quot;  
+<pre><code class="r">#      [,1] [,2] [,3]  
+# [1,] &quot;1&quot;  &quot;4&quot;  &quot;7*b&quot; 
+# [2,] &quot;2&quot;  &quot;5*&quot; &quot;8&quot;   
+# [3,] &quot;3&quot;  &quot;6&quot;  &quot;9&quot;   
 
-a4 &lt;- as.mxMatrix(a4)
+a4 &lt;- as.mxMatrix(a4) 
 
-## Convert a scalar into mxMatrix object
-## &quot;name&quot; is required as &quot;3*a&quot; is not a valid name.
-(a5 &lt;- as.mxMatrix(&quot;3*a&quot;, name=&quot;a5&quot;))
+## Convert a scalar into mxMatrix object 
+## &quot;name&quot; is required as &quot;3*a&quot; is not a valid name. 
+(a5 &lt;- as.mxMatrix(&quot;3*a&quot;, name=&quot;a5&quot;)) 
 </code></pre>
 
 <pre><code>## FullMatrix &#39;a5&#39; 
@@ -179,5 +180,5 @@ a4 &lt;- as.mxMatrix(a4)
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

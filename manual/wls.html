@@ -10,261 +10,263 @@
 
 <table width="100%" summary="page for wls {metaSEM}"><tr><td>wls {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Conduct a Correlation/Covariance Structure Analysis with WLS
+<h2>Conduct a Correlation/Covariance Structure Analysis with WLS 
 </h2>
 
 <h3>Description</h3>
 
-<p>It fits a correlation or covariance structure with
-weighted least squares (WLS) estimation method where the inverse of the asymptotic covariance matrix is
-used as the weight matrix. <code>tssem2</code> conducts the second stage
-analysis of the two-stage strutural equation modeling (TSSEM). <code>tssem2</code> is a wrapper of <code>wls</code>.
+<p>It fits a correlation or covariance structure with 
+weighted least squares (WLS) estimation method where the inverse of the asymptotic covariance matrix is 
+used as the weight matrix. <code>tssem2</code> conducts the second stage 
+analysis of the two-stage strutural equation modeling (TSSEM). <code>tssem2</code> is a wrapper of <code>wls</code>. 
 </p>
 
 
 <h3>Usage</h3>
 
-<pre>
-wls(Cov, asyCov, n, Amatrix=NULL, Smatrix=NULL, Fmatrix=NULL,
-    diag.constraints=FALSE, cor.analysis=TRUE, intervals.type=c("z","LB"),
-    mx.algebras=NULL, model.name=NULL, suppressWarnings=TRUE,
-    silent=TRUE, run=TRUE, ...)
-tssem2(tssem1.obj, Amatrix=NULL, Smatrix=NULL, Fmatrix=NULL,
-    diag.constraints=FALSE, intervals.type=c("z", "LB"), mx.algebras=NULL,
-    model.name=NULL, suppressWarnings=TRUE, silent=TRUE, run=TRUE, ...) 
+<pre> 
+wls(Cov, asyCov, n, Amatrix=NULL, Smatrix=NULL, Fmatrix=NULL, 
+    diag.constraints=FALSE, cor.analysis=TRUE, intervals.type=c("z","LB"), 
+    mx.algebras=NULL, model.name=NULL, suppressWarnings=TRUE, 
+    silent=TRUE, run=TRUE, ...) 
+tssem2(tssem1.obj, Amatrix=NULL, Smatrix=NULL, Fmatrix=NULL, 
+    diag.constraints=FALSE, intervals.type=c("z", "LB"), mx.algebras=NULL, 
+    model.name=NULL, suppressWarnings=TRUE, silent=TRUE, run=TRUE, ...)  
 </pre>
 
 
 <h3>Arguments</h3>
 
+ 
 <table summary="R argblock">
 <tr valign="top"><td><code>tssem1.obj</code></td>
 <td>
-<p>An object of either class
-<code>tssem1FEM</code>, class <code>tssem1FEM.cluster</code> or class
+<p>An object of either class 
+<code>tssem1FEM</code>, class <code>tssem1FEM.cluster</code> or class 
 <code>tssem1REM</code> returned from <code>tssem1()</code></p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>Cov</code></td>
 <td>
-<p>A <i>p</i> x <i>p</i> sample correlation/covariance matrix
-where <i>p</i> is the number of variables.
+<p>A <i>p</i> x <i>p</i> sample correlation/covariance matrix 
+where <i>p</i> is the number of variables. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>asyCov</code></td>
 <td>
-<p>A <i>p*</i> x <i>p*</i> asymptotic sampling covariance
-matrix of either <code><a href="../../OpenMx/html/vechs.html">vechs</a></code> <code>(Cov)</code> or
-<code><a href="../../OpenMx/html/vech.html">vech</a></code> <code>(Cov)</code> where <i>p*
-	  = p(p-1)/2</i> for correlation matrix and <i>p* = p(p+1)/2</i> for covariance matrix.
+<p>A <i>p*</i> x <i>p*</i> asymptotic sampling covariance 
+matrix of either <code><a href="../../OpenMx/html/vechs.html">vechs</a></code> <code>(Cov)</code> or 
+<code><a href="../../OpenMx/html/vech.html">vech</a></code> <code>(Cov)</code> where <i>p* 
+	  = p(p-1)/2</i> for correlation matrix and <i>p* = p(p+1)/2</i> for covariance matrix. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>n</code></td>
 <td>
-<p>Sample size.
+<p>Sample size. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>Amatrix</code></td>
 <td>
-<p>An asymmetric matrix in the RAM approach with
-<code><a href="../../OpenMx/html/MxMatrix-class.html">MxMatrix-class</a></code>. If it is <code>NULL</code>, a matrix
-of zero will be created. If it is a matrix, it will be converted into <code><a href="../../OpenMx/html/MxMatrix-class.html">MxMatrix-class</a></code> by the <code>as.mxMatrix</code> function.
+<p>An asymmetric matrix in the RAM approach with 
+<code><a href="../../OpenMx/html/MxMatrix-class.html">MxMatrix-class</a></code>. If it is <code>NULL</code>, a matrix 
+of zero will be created. If it is a matrix, it will be converted into <code><a href="../../OpenMx/html/MxMatrix-class.html">MxMatrix-class</a></code> by the <code>as.mxMatrix</code> function. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>Smatrix</code></td>
 <td>
-<p>A symmetric matrix in the RAM approach with <code><a href="../../OpenMx/html/MxMatrix-class.html">MxMatrix-class</a></code>. If it is a matrix, it will be converted into <code><a href="../../OpenMx/html/MxMatrix-class.html">MxMatrix-class</a></code> by the <code>as.mxMatrix</code> function.
+<p>A symmetric matrix in the RAM approach with <code><a href="../../OpenMx/html/MxMatrix-class.html">MxMatrix-class</a></code>. If it is a matrix, it will be converted into <code><a href="../../OpenMx/html/MxMatrix-class.html">MxMatrix-class</a></code> by the <code>as.mxMatrix</code> function. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>Fmatrix</code></td>
 <td>
-<p>A filter matrix in the RAM approach with
-<code><a href="../../OpenMx/html/MxMatrix-class.html">MxMatrix-class</a></code>. If it is <code>NULL</code> (the default), an
-identity matrix with the same dimensions of <code>Cov</code> will be
-created. If it is a matrix, it will be converted into <code><a href="../../OpenMx/html/MxMatrix-class.html">MxMatrix-class</a></code> by the <code>as.mxMatrix</code> function. It is not required when there is no latent variable.
+<p>A filter matrix in the RAM approach with 
+<code><a href="../../OpenMx/html/MxMatrix-class.html">MxMatrix-class</a></code>. If it is <code>NULL</code> (the default), an 
+identity matrix with the same dimensions of <code>Cov</code> will be 
+created. If it is a matrix, it will be converted into <code><a href="../../OpenMx/html/MxMatrix-class.html">MxMatrix-class</a></code> by the <code>as.mxMatrix</code> function. It is not required when there is no latent variable. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>diag.constraints</code></td>
 <td>
-<p>Logical. This argument is ignored when
-<code>cor.analysis=FALSE</code>. If
-<code>diag.constraints=TRUE</code>, the diagonals of the model implied matrix will be constrained at 1 by nonlinear constraints. The drawback is that standard
-error will not be generated. Parametric bootstrap is used to
-estimate the standard error by drawing samples from <i>N(vech(Cov), asyCov)</i> for covariance analysis and <i>N(vechs(Cov), asyCov)</i> for
-correlation analysis while asyCov is treated as fixed. This process
-is computational intensive. A better approach is to request likelihood-based
-confidence intervals (CIs) by specifying <code>intervals.type="LB"</code>. 
-If <code>diag.constraints=FALSE</code> and <code>cor.analysis=TRUE</code>, the diagonals are automatically constrained as ones by
-treating the error variances as computed values rather than as
-parameters. Since the error variances are not parameters, they are not reported. 
+<p>Logical. This argument is ignored when 
+<code>cor.analysis=FALSE</code>. If 
+<code>diag.constraints=TRUE</code>, the diagonals of the model implied matrix will be constrained at 1 by nonlinear constraints. The drawback is that standard 
+error will not be generated. Parametric bootstrap is used to 
+estimate the standard error by drawing samples from <i>N(vech(Cov), asyCov)</i> for covariance analysis and <i>N(vechs(Cov), asyCov)</i> for 
+correlation analysis while asyCov is treated as fixed. This process 
+is computational intensive. A better approach is to request likelihood-based 
+confidence intervals (CIs) by specifying <code>intervals.type="LB"</code>.  
+If <code>diag.constraints=FALSE</code> and <code>cor.analysis=TRUE</code>, the diagonals are automatically constrained as ones by 
+treating the error variances as computed values rather than as 
+parameters. Since the error variances are not parameters, they are not reported.  
 </p>
-</td></tr>  
+</td></tr>   
 <tr valign="top"><td><code>cor.analysis</code></td>
 <td>
-<p>Logical. Analysis of correlation or covariance structure. If <code>cor.analysis=TRUE</code>, <code><a href="../../OpenMx/html/vechs.html">vechs</a></code> is used to vectorize <code>S</code>; otherwise, <code><a href="../../OpenMx/html/vech.html">vech</a></code> is used to vectorize <code>S</code>.
+<p>Logical. Analysis of correlation or covariance structure. If <code>cor.analysis=TRUE</code>, <code><a href="../../OpenMx/html/vechs.html">vechs</a></code> is used to vectorize <code>S</code>; otherwise, <code><a href="../../OpenMx/html/vech.html">vech</a></code> is used to vectorize <code>S</code>. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>intervals.type</code></td>
 <td>
-<p>Either <code>z</code> (default if missing) or
-<code>LB</code>. If it is <code>z</code>, it calculates the 95% Wald CIs based on the z statistic. If it is <code>LB</code>, it
-calculates the 95% likelihood-based CIs on the
-parameter estimates. Please note that the z values and their
-associated p values are based on the z statistic. They are not
-related to the likelihood-based CIs.
+<p>Either <code>z</code> (default if missing) or 
+<code>LB</code>. If it is <code>z</code>, it calculates the 95% Wald CIs based on the z statistic. If it is <code>LB</code>, it 
+calculates the 95% likelihood-based CIs on the 
+parameter estimates. Please note that the z values and their 
+associated p values are based on the z statistic. They are not 
+related to the likelihood-based CIs. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>mx.algebras</code></td>
 <td>
-<p>A list of <code><a href="../../OpenMx/html/mxMatrix.html">mxMatrix</a></code> or  <code><a href="../../OpenMx/html/mxAlgebra.html">mxAlgebra</a></code> objects on the <code>Amatrix</code>,
-<code>Smatrix</code> and <code>Fmatrx</code>. It can be used to define new functions
-of parameters and their LBCIs. For example, if the regression
-coefficients to calculate an indirect effect are stored in A[1,2] and
-A[1,3], we may define
-<code>list(ind=mxAlgebra(Amatrix[1,2]*Amatrix[1,3], name="ind"))</code>
-See the examples in <code><a href="Becker92.html">Becker92</a></code> and
-<code><a href="Hunter83.html">Hunter83</a></code>. It should be noted that Fmatrix,
-Amatrix, Smatrix, Iden (a <i>p</i> x <i>p</i> identity matrix), sampleS (sample correlation
-or covariance matrix), impliedS1, impliedS (model implied
-correlation or covariance matrix), vecS, invAcov, obj, One, select
-and constraint and Ematrix (computed error variances when
-<code>diag.constraints=FALSE</code>) have been defined internally. You
-should not create new matrices using these names.
+<p>A list of <code><a href="../../OpenMx/html/mxMatrix.html">mxMatrix</a></code> or  <code><a href="../../OpenMx/html/mxAlgebra.html">mxAlgebra</a></code> objects on the <code>Amatrix</code>, 
+<code>Smatrix</code> and <code>Fmatrx</code>. It can be used to define new functions 
+of parameters and their LBCIs. For example, if the regression 
+coefficients to calculate an indirect effect are stored in A[1,2] and 
+A[1,3], we may define 
+<code>list(ind=mxAlgebra(Amatrix[1,2]*Amatrix[1,3], name="ind"))</code> 
+See the examples in <code><a href="Becker92.html">Becker92</a></code> and 
+<code><a href="Hunter83.html">Hunter83</a></code>. It should be noted that Fmatrix, 
+Amatrix, Smatrix, Iden (a <i>p</i> x <i>p</i> identity matrix), sampleS (sample correlation 
+or covariance matrix), impliedS1, impliedS (model implied 
+correlation or covariance matrix), vecS, invAcov, obj, One, select 
+and constraint and Ematrix (computed error variances when 
+<code>diag.constraints=FALSE</code>) have been defined internally. You 
+should not create new matrices using these names. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>model.name</code></td>
 <td>
-<p>A string for the model name in
-<code><a href="../../OpenMx/html/mxModel.html">mxModel</a></code>. If it is missing, the default is
-&quot;TSSEM2 (or WLS) Analysis of Correlation Structure&quot; for <code>cor.analysis=TRUE</code> and
-&quot;TSSEM2 (or WLS) Analysis of Covariance Structure&quot; for <code>cor.analysis=FALSE</code>.
+<p>A string for the model name in 
+<code><a href="../../OpenMx/html/mxModel.html">mxModel</a></code>. If it is missing, the default is 
+&quot;TSSEM2 (or WLS) Analysis of Correlation Structure&quot; for <code>cor.analysis=TRUE</code> and 
+&quot;TSSEM2 (or WLS) Analysis of Covariance Structure&quot; for <code>cor.analysis=FALSE</code>. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>suppressWarnings</code></td>
 <td>
-<p>Logical. If <code>TRUE</code>, warnings are
+<p>Logical. If <code>TRUE</code>, warnings are 
 suppressed. Argument to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code>.</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>silent</code></td>
 <td>
 <p>Logical. Argument to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code></p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>run</code></td>
 <td>
 <p>Logical. If <code>FALSE</code>, only return the mx model without running the analysis.</p>
-</td></tr>  
+</td></tr>   
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>Futher arguments to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code>.
+<p>Futher arguments to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code>. 
 </p>
-</td></tr>
+</td></tr> 
 </table>
 
 
 <h3>Value</h3>
 
-<p>An object of class <code>wls</code> with a list of
+<p>An object of class <code>wls</code> with a list of 
 </p>
 <table summary="R valueblock">
 <tr valign="top"><td><code>call</code></td>
 <td>
 <p>The matched call</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>Cov</code></td>
 <td>
 <p>Input data of either a covariance or correlation matrix</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>asyCov</code></td>
 <td>
 <p>Asymptotic covariance matrix of the input data</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>noObservedStat</code></td>
 <td>
 <p>Number of observed statistics</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>n</code></td>
 <td>
 <p>Sample size</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>cor.analysis</code></td>
 <td>
 <p>logical</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>noConstraints</code></td>
 <td>
 <p>Number of constraints imposed on S</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>indepModelChisq</code></td>
 <td>
-<p>Chi-square statistic of the independent model
+<p>Chi-square statistic of the independent model 
 returned by <code>.indepwlsChisq</code> </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>indepModelDf</code></td>
 <td>
-<p>Degrees of freedom of the independent model returned
+<p>Degrees of freedom of the independent model returned 
 by <code>.indepwlsChisq</code></p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>mx.fit</code></td>
 <td>
-<p>A fitted object returned from
+<p>A fitted object returned from 
 <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code></p>
-</td></tr>
+</td></tr> 
 </table>
 
 
 <h3>Note</h3>
 
-<p>If the input is a list of <code>tssem1.obj</code>, it returns a list of
-results for each cluster.
+<p>If the input is a list of <code>tssem1.obj</code>, it returns a list of 
+results for each cluster. 
 </p>
 
 
 <h3>Author(s)</h3>
 
-<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt; 
 </p>
 
 
 <h3>References</h3>
 
-<p>Bentler, P.M., &amp; Savalei, V. (2010). Analysis of correlation structures: current status and open problems. In Kolenikov, S., Thombs, L., &amp; Steinley, D. (Eds.). <em>Recent Methodological Developments in Social Science Statistics</em> (pp. 1-36). Hoboken, NJ: Wiley. 
+ 
+<p>Bentler, P.M., &amp; Savalei, V. (2010). Analysis of correlation structures: current status and open problems. In Kolenikov, S., Thombs, L., &amp; Steinley, D. (Eds.). <em>Recent Methodological Developments in Social Science Statistics</em> (pp. 1-36). Hoboken, NJ: Wiley.  
 </p>
-<p>Cheung, M. W.-L. (2010). Fixed-effects meta-analyses as multiple-group structural equation models. <em>Structural Equation Modeling</em>, <b>17</b>, 481-509.
+<p>Cheung, M. W.-L. (2010). Fixed-effects meta-analyses as multiple-group structural equation models. <em>Structural Equation Modeling</em>, <b>17</b>, 481-509. 
 </p>
-<p>Cheung, M. W.-L. (2014). Fixed- and random-effects meta-analytic structural equation modeling: Examples and analyses in R. <em>Behavior Research Methods</em>, <b>46</b>, 29-40.
+<p>Cheung, M. W.-L. (2014). Fixed- and random-effects meta-analytic structural equation modeling: Examples and analyses in R. <em>Behavior Research Methods</em>, <b>46</b>, 29-40. 
 </p>
-<p>Cheung, M. W.-L., &amp; Chan, W. (2005). Meta-analytic structural equation modeling: A two-stage approach. <em>Psychological Methods</em>, <b>10</b>, 40-64.
+<p>Cheung, M. W.-L., &amp; Chan, W. (2005). Meta-analytic structural equation modeling: A two-stage approach. <em>Psychological Methods</em>, <b>10</b>, 40-64. 
 </p>
-<p>Cheung, M. W.-L., &amp; Chan, W. (2009). A two-stage approach to synthesizing covariance matrices in meta-analytic structural equation modeling. <em>Structural Equation Modeling</em>, <b>16</b>, 28-53.
+<p>Cheung, M. W.-L., &amp; Chan, W. (2009). A two-stage approach to synthesizing covariance matrices in meta-analytic structural equation modeling. <em>Structural Equation Modeling</em>, <b>16</b>, 28-53. 
 </p>
-<p>Joreskog, K. G., Sorbom, D., Du Toit, S., &amp; Du Toit,
-M. (1999). <em>LISREL 8: New Statistical Features.</em> Chicago: Scientific Software International.
+<p>Joreskog, K. G., Sorbom, D., Du Toit, S., &amp; Du Toit, 
+M. (1999). <em>LISREL 8: New Statistical Features.</em> Chicago: Scientific Software International. 
 </p>
-<p>McArdle, J. J., &amp; MacDonald, R. P. (1984). Some algebraic properties of the Reticular Action Model for moment structures. <em>British Journal of Mathematical and Statistical Psychology</em>, <b>37</b>, 234-251. 
+<p>McArdle, J. J., &amp; MacDonald, R. P. (1984). Some algebraic properties of the Reticular Action Model for moment structures. <em>British Journal of Mathematical and Statistical Psychology</em>, <b>37</b>, 234-251.  
 </p>
 
 
 <h3>See Also</h3>
 
- <p><code><a href="tssem1.html">tssem1</a></code>,
-<code><a href="Becker92.html">Becker92</a></code>, <code><a href="Digman97.html">Digman97</a></code>,
-<code><a href="Hunter83.html">Hunter83</a></code>, <code><a href="issp89.html">issp89</a></code>, <code><a href="issp05.html">issp05</a></code>
+ <p><code><a href="tssem1.html">tssem1</a></code>, 
+<code><a href="Becker92.html">Becker92</a></code>, <code><a href="Digman97.html">Digman97</a></code>, 
+<code><a href="Hunter83.html">Hunter83</a></code>, <code><a href="issp89.html">issp89</a></code>, <code><a href="issp05.html">issp05</a></code> 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">#### Analysis of correlation structure
-R1 &lt;- matrix(c(1.00, 0.22, 0.24, 0.18,
-               0.22, 1.00, 0.30, 0.22,
-               0.24, 0.30, 1.00, 0.24,
-               0.18, 0.22, 0.24, 1.00), ncol=4, nrow=4)
-n &lt;- 1000
-acovR1 &lt;- asyCov(R1, n)
+<pre><code class="r">#### Analysis of correlation structure 
+R1 &lt;- matrix(c(1.00, 0.22, 0.24, 0.18, 
+               0.22, 1.00, 0.30, 0.22, 
+               0.24, 0.30, 1.00, 0.24, 
+               0.18, 0.22, 0.24, 1.00), ncol=4, nrow=4) 
+n &lt;- 1000 
+acovR1 &lt;- asyCov(R1, n) 
 
-## One-factor CFA model
-(A1 &lt;- cbind(matrix(0, nrow=5, ncol=4),
-             matrix(c(&quot;0.2*a1&quot;,&quot;0.2*a2&quot;,&quot;0.2*a3&quot;,&quot;0.2*a4&quot;,0),
-             ncol=1)))
+## One-factor CFA model 
+(A1 &lt;- cbind(matrix(0, nrow=5, ncol=4), 
+             matrix(c(&quot;0.2*a1&quot;,&quot;0.2*a2&quot;,&quot;0.2*a3&quot;,&quot;0.2*a4&quot;,0), 
+             ncol=1))) 
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]    
@@ -275,7 +277,7 @@ acovR1 &lt;- asyCov(R1, n)
 ## [5,] &quot;0&quot;  &quot;0&quot;  &quot;0&quot;  &quot;0&quot;  &quot;0&quot;
 </code></pre>
 
-<pre><code class="r">(S1 &lt;- Diag(c(&quot;0.2*e1&quot;,&quot;0.2*e2&quot;,&quot;0.2*e3&quot;,&quot;0.2*e4&quot;,1)))
+<pre><code class="r">(S1 &lt;- Diag(c(&quot;0.2*e1&quot;,&quot;0.2*e2&quot;,&quot;0.2*e3&quot;,&quot;0.2*e4&quot;,1))) 
 </code></pre>
 
 <pre><code>##      [,1]     [,2]     [,3]     [,4]     [,5]
@@ -286,8 +288,8 @@ acovR1 &lt;- asyCov(R1, n)
 ## [5,] &quot;0&quot;      &quot;0&quot;      &quot;0&quot;      &quot;0&quot;      &quot;1&quot;
 </code></pre>
 
-<pre><code class="r">## The first 4 variables are observed while the last one is latent.
-(F1 &lt;- create.Fmatrix(c(1,1,1,1,0), name=&quot;F1&quot;))
+<pre><code class="r">## The first 4 variables are observed while the last one is latent. 
+(F1 &lt;- create.Fmatrix(c(1,1,1,1,0), name=&quot;F1&quot;)) 
 </code></pre>
 
 <pre><code>## FullMatrix &#39;F1&#39; 
@@ -308,9 +310,9 @@ acovR1 &lt;- asyCov(R1, n)
 ## $ubound: No upper bounds assigned.
 </code></pre>
 
-<pre><code class="r">wls.fit1 &lt;- wls(Cov=R1, asyCov=acovR1, n=n, Fmatrix=F1, Smatrix=S1, Amatrix=A1,
-                 cor.analysis=TRUE, intervals=&quot;LB&quot;)
-summary(wls.fit1)
+<pre><code class="r">wls.fit1 &lt;- wls(Cov=R1, asyCov=acovR1, n=n, Fmatrix=F1, Smatrix=S1, Amatrix=A1, 
+                 cor.analysis=TRUE, intervals=&quot;LB&quot;) 
+summary(wls.fit1) 
 </code></pre>
 
 <pre><code>## 
@@ -321,10 +323,10 @@ summary(wls.fit1)
 ## 95% confidence intervals: Likelihood-based statistic
 ## Coefficients:
 ##    Estimate Std.Error  lbound  ubound z value Pr(&gt;|z|)
-## a1  0.42159        NA 0.34439 0.50013      NA       NA
-## a2  0.52376        NA 0.44601 0.60479      NA       NA
-## a3  0.57092        NA 0.49209 0.65451      NA       NA
-## a4  0.42159        NA 0.34439 0.50013      NA       NA
+## a1  0.42159        NA 0.34443 0.50009      NA       NA
+## a2  0.52376        NA 0.44607 0.60471      NA       NA
+## a3  0.57092        NA 0.49213 0.65447      NA       NA
+## a4  0.42159        NA 0.34443 0.50009      NA       NA
 ## 
 ## Goodness-of-fit indices:
 ##                                                Value
@@ -334,9 +336,11 @@ summary(wls.fit1)
 ## p value of target model                       0.9933
 ## Number of constraints imposed on &quot;Smatrix&quot;    0.0000
 ## DF manually adjusted                          0.0000
-## Chi-square of independence model            207.8655
+## Chi-square of independence model            208.0633
 ## DF of independence model                      6.0000
 ## RMSEA                                         0.0000
+## RMSEA lower 95% CI                            0.0000
+## RMSEA upper 95% CI                            0.0000
 ## SRMR                                          0.0012
 ## TLI                                           1.0295
 ## CFI                                           1.0000
@@ -346,21 +350,21 @@ summary(wls.fit1)
 ## Other values indicate problems.)
 </code></pre>
 
-<pre><code class="r">#### Multiple regression analysis
-## Variables in R2: y, x1, x2
-R2 &lt;- matrix(c(1.00, 0.22, 0.24, 
-               0.22, 1.00, 0.30, 
-               0.24, 0.30, 1.00, 
-               0.18, 0.22, 0.24), ncol=3, nrow=3)
-acovR2 &lt;- asyCov(R2, n)
+<pre><code class="r">#### Multiple regression analysis 
+## Variables in R2: y, x1, x2 
+R2 &lt;- matrix(c(1.00, 0.22, 0.24,  
+               0.22, 1.00, 0.30,  
+               0.24, 0.30, 1.00,  
+               0.18, 0.22, 0.24), ncol=3, nrow=3) 
+acovR2 &lt;- asyCov(R2, n) 
 
-## A2: Regression coefficents
-#    y x1 x2
-# y  F T  T 
-# x1 F F  F 
-# x2 F F  F 
-(A2 &lt;- mxMatrix(&quot;Full&quot;, ncol=3, nrow=3, byrow=TRUE,
-               free=c(FALSE, rep(TRUE, 2), rep(FALSE, 6)), name=&quot;A2&quot;))
+## A2: Regression coefficents 
+#    y x1 x2 
+# y  F T  T  
+# x1 F F  F  
+# x2 F F  F  
+(A2 &lt;- mxMatrix(&quot;Full&quot;, ncol=3, nrow=3, byrow=TRUE, 
+               free=c(FALSE, rep(TRUE, 2), rep(FALSE, 6)), name=&quot;A2&quot;)) 
 </code></pre>
 
 <pre><code>## FullMatrix &#39;A2&#39; 
@@ -384,13 +388,13 @@ acovR2 &lt;- asyCov(R2, n)
 ## $ubound: No upper bounds assigned.
 </code></pre>
 
-<pre><code class="r">## S2: Covariance matrix of free parameters
-#    y x1 x2
-# y  T F  F 
-# x1 F F  F 
-# x2 F T  F
-(S2 &lt;- mxMatrix(&quot;Symm&quot;, ncol=3, nrow=3, values=c(0.2,0,0,1,0.2,1),
-               free=c(TRUE,FALSE,FALSE,FALSE,TRUE,FALSE), name=&quot;S2&quot;))
+<pre><code class="r">## S2: Covariance matrix of free parameters 
+#    y x1 x2 
+# y  T F  F  
+# x1 F F  F  
+# x2 F T  F 
+(S2 &lt;- mxMatrix(&quot;Symm&quot;, ncol=3, nrow=3, values=c(0.2,0,0,1,0.2,1), 
+               free=c(TRUE,FALSE,FALSE,FALSE,TRUE,FALSE), name=&quot;S2&quot;)) 
 </code></pre>
 
 <pre><code>## SymmMatrix &#39;S2&#39; 
@@ -414,10 +418,10 @@ acovR2 &lt;- asyCov(R2, n)
 ## $ubound: No upper bounds assigned.
 </code></pre>
 
-<pre><code class="r">## F may be ignored as there is no latent variable.
-wls.fit2 &lt;- wls(Cov=R2, asyCov=acovR2, n=n, Amatrix=A2, Smatrix=S2,
-                cor.analysis=TRUE, intervals=&quot;LB&quot;)
-summary(wls.fit2)
+<pre><code class="r">## F may be ignored as there is no latent variable. 
+wls.fit2 &lt;- wls(Cov=R2, asyCov=acovR2, n=n, Amatrix=A2, Smatrix=S2, 
+                cor.analysis=TRUE, intervals=&quot;LB&quot;) 
+summary(wls.fit2) 
 </code></pre>
 
 <pre><code>## 
@@ -428,39 +432,41 @@ summary(wls.fit2)
 ## 95% confidence intervals: Likelihood-based statistic
 ## Coefficients:
 ##              Estimate Std.Error  lbound  ubound z value Pr(&gt;|z|)
-## Amatrix[1,2]  0.16264        NA 0.10106 0.22430      NA       NA
-## Amatrix[1,3]  0.19121        NA 0.12993 0.25259      NA       NA
+## Amatrix[1,2]  0.16264        NA 0.10109 0.22427      NA       NA
+## Amatrix[1,3]  0.19121        NA 0.12996 0.25256      NA       NA
 ## 
 ## Goodness-of-fit indices:
-##                                             Value
-## Sample size                                1000.0
-## Chi-square of target model                    0.0
-## DF of target model                            0.0
-## p value of target model                       0.0
-## Number of constraints imposed on &quot;Smatrix&quot;    0.0
-## DF manually adjusted                          0.0
-## Chi-square of independence model            162.1
-## DF of independence model                      3.0
-## RMSEA                                         0.0
-## SRMR                                          0.0
-## TLI                                          -Inf
-## CFI                                           1.0
-## AIC                                           0.0
-## BIC                                           0.0
+##                                              Value
+## Sample size                                1000.00
+## Chi-square of target model                    0.00
+## DF of target model                            0.00
+## p value of target model                       0.00
+## Number of constraints imposed on &quot;Smatrix&quot;    0.00
+## DF manually adjusted                          0.00
+## Chi-square of independence model            162.27
+## DF of independence model                      3.00
+## RMSEA                                         0.00
+## RMSEA lower 95% CI                            0.00
+## RMSEA upper 95% CI                            0.00
+## SRMR                                          0.00
+## TLI                                           -Inf
+## CFI                                           1.00
+## AIC                                           0.00
+## BIC                                           0.00
 ## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
 ## Other values indicate problems.)
 </code></pre>
 
-<pre><code class="r">#### Analysis of covariance structure
-R3 &lt;- matrix(c(1.50, 0.22, 0.24, 0.18,
-               0.22, 1.60, 0.30, 0.22,
-               0.24, 0.30, 1.80, 0.24,
-               0.18, 0.22, 0.24, 1.30), ncol=4, nrow=4)
-n &lt;- 1000
-acovS3 &lt;- asyCov(R3, n, cor.analysis=FALSE)
+<pre><code class="r">#### Analysis of covariance structure 
+R3 &lt;- matrix(c(1.50, 0.22, 0.24, 0.18, 
+               0.22, 1.60, 0.30, 0.22, 
+               0.24, 0.30, 1.80, 0.24, 
+               0.18, 0.22, 0.24, 1.30), ncol=4, nrow=4) 
+n &lt;- 1000 
+acovS3 &lt;- asyCov(R3, n, cor.analysis=FALSE) 
 
-(A3 &lt;- cbind(matrix(0, nrow=5, ncol=4),
-             matrix(c(&quot;0.2*a1&quot;,&quot;0.2*a2&quot;,&quot;0.2*a3&quot;,&quot;0.2*a4&quot;,0),ncol=1)))
+(A3 &lt;- cbind(matrix(0, nrow=5, ncol=4), 
+             matrix(c(&quot;0.2*a1&quot;,&quot;0.2*a2&quot;,&quot;0.2*a3&quot;,&quot;0.2*a4&quot;,0),ncol=1))) 
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]    
@@ -471,7 +477,7 @@ acovS3 &lt;- asyCov(R3, n, cor.analysis=FALSE)
 ## [5,] &quot;0&quot;  &quot;0&quot;  &quot;0&quot;  &quot;0&quot;  &quot;0&quot;
 </code></pre>
 
-<pre><code class="r">(S3 &lt;- Diag(c(&quot;0.2*e1&quot;,&quot;0.2*e2&quot;,&quot;0.2*e3&quot;,&quot;0.2*e4&quot;,1)))
+<pre><code class="r">(S3 &lt;- Diag(c(&quot;0.2*e1&quot;,&quot;0.2*e2&quot;,&quot;0.2*e3&quot;,&quot;0.2*e4&quot;,1))) 
 </code></pre>
 
 <pre><code>##      [,1]     [,2]     [,3]     [,4]     [,5]
@@ -482,8 +488,8 @@ acovS3 &lt;- asyCov(R3, n, cor.analysis=FALSE)
 ## [5,] &quot;0&quot;      &quot;0&quot;      &quot;0&quot;      &quot;0&quot;      &quot;1&quot;
 </code></pre>
 
-<pre><code class="r">F3 &lt;- c(TRUE,TRUE,TRUE,TRUE,FALSE)
-(F3 &lt;- create.Fmatrix(F3, name=&quot;F3&quot;, as.mxMatrix=FALSE))
+<pre><code class="r">F3 &lt;- c(TRUE,TRUE,TRUE,TRUE,FALSE) 
+(F3 &lt;- create.Fmatrix(F3, name=&quot;F3&quot;, as.mxMatrix=FALSE)) 
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
@@ -493,9 +499,9 @@ acovS3 &lt;- asyCov(R3, n, cor.analysis=FALSE)
 ## [4,]    0    0    0    1    0
 </code></pre>
 
-<pre><code class="r">wls.fit3 &lt;- wls(Cov=R3, asyCov=acovS3, n=n, Amatrix=A3, Smatrix=S3,
-                Fmatrix=F3, cor.analysis=FALSE)
-summary(wls.fit3)
+<pre><code class="r">wls.fit3 &lt;- wls(Cov=R3, asyCov=acovS3, n=n, Amatrix=A3, Smatrix=S3, 
+                Fmatrix=F3, cor.analysis=FALSE) 
+summary(wls.fit3) 
 </code></pre>
 
 <pre><code>## 
@@ -506,14 +512,14 @@ summary(wls.fit3)
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
 ##    Estimate Std.Error   lbound   ubound z value  Pr(&gt;|z|)    
-## a1 0.422193  0.063787 0.297173 0.547212  6.6188 3.620e-11 ***
-## a2 0.523188  0.069694 0.386591 0.659786  7.5069 6.062e-14 ***
-## a3 0.570613  0.074822 0.423963 0.717262  7.6262 2.420e-14 ***
-## a4 0.421946  0.060419 0.303527 0.540365  6.9837 2.876e-12 ***
-## e1 1.321745  0.073422 1.177840 1.465650 18.0020 &lt; 2.2e-16 ***
-## e2 1.326269  0.085074 1.159526 1.493011 15.5895 &lt; 2.2e-16 ***
-## e3 1.474396  0.097521 1.283257 1.665534 15.1187 &lt; 2.2e-16 ***
-## e4 1.121955  0.065236 0.994095 1.249814 17.1985 &lt; 2.2e-16 ***
+## a1 0.422193  0.063691 0.297360 0.547026  6.6287 3.386e-11 ***
+## a2 0.523188  0.069589 0.386797 0.659580  7.5183 5.551e-14 ***
+## a3 0.570613  0.074710 0.424184 0.717041  7.6377 2.220e-14 ***
+## a4 0.421946  0.060329 0.303704 0.540189  6.9941 2.670e-12 ***
+## e1 1.321745  0.073312 1.178056 1.465433 18.0291 &lt; 2.2e-16 ***
+## e2 1.326269  0.084947 1.159776 1.492762 15.6129 &lt; 2.2e-16 ***
+## e3 1.474396  0.097375 1.283545 1.665247 15.1415 &lt; 2.2e-16 ***
+## e4 1.121955  0.065138 0.994286 1.249623 17.2243 &lt; 2.2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -525,11 +531,13 @@ summary(wls.fit3)
 ## p value of target model                       0.9975
 ## Number of constraints imposed on &quot;Smatrix&quot;    0.0000
 ## DF manually adjusted                          0.0000
-## Chi-square of independence model             78.2704
+## Chi-square of independence model             78.5035
 ## DF of independence model                      6.0000
 ## RMSEA                                         0.0000
+## RMSEA lower 95% CI                            0.0000
+## RMSEA upper 95% CI                            0.0000
 ## SRMR                                          0.0006
-## TLI                                           1.0828
+## TLI                                           1.0825
 ## CFI                                           1.0000
 ## AIC                                          -3.9950
 ## BIC                                         -13.8105
@@ -538,5 +546,5 @@ summary(wls.fit3)
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

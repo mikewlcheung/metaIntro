@@ -10,113 +10,115 @@
 
 <table width="100%" summary="page for indirectEffect {metaSEM}"><tr><td>indirectEffect {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Estimate the asymptotic covariance matrix of standardized or unstandardized indirect and direct effects
+<h2>Estimate the asymptotic covariance matrix of standardized or unstandardized indirect and direct effects 
 </h2>
 
 <h3>Description</h3>
 
-<p>It estimates the standardized or unstandardized indirect and direct effects
-and their asymptotic sampling covariance matrix.
+<p>It estimates the standardized or unstandardized indirect and direct effects 
+and their asymptotic sampling covariance matrix. 
 </p>
 
 
 <h3>Usage</h3>
 
-<pre>
-indirectEffect(x, n, standardized = TRUE, direct.effect = TRUE, run = TRUE)
+<pre> 
+indirectEffect(x, n, standardized = TRUE, direct.effect = TRUE, run = TRUE) 
 </pre>
 
 
 <h3>Arguments</h3>
 
+ 
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>A 3x3 correlation/covariance matrix or a list of
-correlation/covariance matrices. Variables are
-arranged as dependent variable (y), mediator (m) and independent
-variable (x)
+<p>A 3x3 correlation/covariance matrix or a list of 
+correlation/covariance matrices. Variables are 
+arranged as dependent variable (y), mediator (m) and independent 
+variable (x) 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>n</code></td>
 <td>
-<p>Sample size or a vector of sample sizes
+<p>Sample size or a vector of sample sizes 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>standardized</code></td>
 <td>
-<p>Logical. Whether the indirect effect is
-standardized.
+<p>Logical. Whether the indirect effect is 
+standardized. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>direct.effect</code></td>
 <td>
-<p>Logical. Whether the direct effect is
-estimated. If it is <code>FALSE</code>, the direct effect is fixed at zero.
+<p>Logical. Whether the direct effect is 
+estimated. If it is <code>FALSE</code>, the direct effect is fixed at zero. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>run</code></td>
 <td>
 <p>Logical. If <code>FALSE</code>, only return the mx model without running the analysis.</p>
-</td></tr>
+</td></tr> 
 </table>
 
 
 <h3>Details</h3>
 
-<p>Cheung (2009) estimated the standardized indirect effect and
-its standard error with non-linear constraints. Since <code>OpenMx</code> does not generate standard errors when there
-are non-linear constraints, Kwan and Chan's (2011) approach is used in
-this function. Delta method is used to calculate the asymptotic covariance matrix.
+<p>Cheung (2009) estimated the standardized indirect effect and 
+its standard error with non-linear constraints. Since <code>OpenMx</code> does not generate standard errors when there 
+are non-linear constraints, Kwan and Chan's (2011) approach is used in 
+this function. Delta method is used to calculate the asymptotic covariance matrix. 
 </p>
 
 
 <h3>Value</h3>
 
-<p>A vector (or a matrix if the input is a list of matrices) of
-(standardized) indirect effect, standardized direct effect and their
-asymptotic sampling covariance matrices
+<p>A vector (or a matrix if the input is a list of matrices) of 
+(standardized) indirect effect, standardized direct effect and their 
+asymptotic sampling covariance matrices 
 </p>
 
 
 <h3>Author(s)</h3>
 
-<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt; 
 </p>
 
 
 <h3>References</h3>
 
-<p>Cheung, M. W.-L. (2009). Comparison of methods for constructing confidence intervals of standardized indirect effects. <em>Behavior
-Research Methods</em>, <em>41</em>, 425-438.
+ 
+<p>Cheung, M. W.-L. (2009). Comparison of methods for constructing confidence intervals of standardized indirect effects. <em>Behavior 
+Research Methods</em>, <em>41</em>, 425-438. 
 </p>
-<p>Kwan, J., &amp; Chan, W. (2011). Comparing standardized coefficients in
-structural equation modeling: a model reparameterization
-approach. <em>Behavior Research Methods</em>, <em>43</em>, 730-745.
+<p>Kwan, J., &amp; Chan, W. (2011). Comparing standardized coefficients in 
+structural equation modeling: a model reparameterization 
+approach. <em>Behavior Research Methods</em>, <em>43</em>, 730-745. 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">## A correlation matrix as input
-x &lt;- matrix(c(1, 0.4, 0.2, 0.4, 1, 0.3, 0.2, 0.3, 1), ncol=3)
-dimnames(x) &lt;- list( c(&quot;y&quot;, &quot;m&quot;, &quot;x&quot;), c(&quot;y&quot;, &quot;m&quot;, &quot;x&quot;) )
-indirectEffect(x, n=300)
+<pre><code class="r">## A correlation matrix as input 
+x &lt;- matrix(c(1, 0.4, 0.2, 0.4, 1, 0.3, 0.2, 0.3, 1), ncol=3) 
+dimnames(x) &lt;- list( c(&quot;y&quot;, &quot;m&quot;, &quot;x&quot;), c(&quot;y&quot;, &quot;m&quot;, &quot;x&quot;) ) 
+indirectEffect(x, n=300) 
 </code></pre>
 
 <pre><code>##       ind_eff       dir_eff       ind_var   ind_dir_cov       dir_var 
-##  0.1132090110  0.0887913828  0.0006706257 -0.0002732880  0.0031621020
+##  0.1132090113  0.0887913810  0.0006683909 -0.0002723668  0.0031515273
 </code></pre>
 
-<pre><code class="r">## A list of correlation matrices
-indirectEffect( list(x, x), n=c(300,500), standardized=FALSE )
+<pre><code class="r">## A list of correlation matrices 
+indirectEffect( list(x, x), n=c(300,500), standardized=FALSE ) 
 </code></pre>
 
 <pre><code>##        ind_eff    dir_eff      ind_var   ind_dir_cov     dir_var
-## [1,] 0.1120879 0.08791208 0.0007003848 -0.0002755262 0.003061374
-## [2,] 0.1120879 0.08791209 0.0004196680 -0.0001650904 0.001834361
+## [1,] 0.1120879 0.08791209 0.0006980454 -0.0002745994 0.003051158
+## [2,] 0.1120879 0.08791209 0.0004188324 -0.0001647783 0.001830736
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

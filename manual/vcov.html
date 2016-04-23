@@ -10,105 +10,106 @@
 
 <table width="100%" summary="page for vcov {metaSEM}"><tr><td>vcov {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Extract Covariance Matrix Parameter Estimates from Various Objects
+<h2>Extract Covariance Matrix Parameter Estimates from Various Objects 
 </h2>
 
 <h3>Description</h3>
 
-<p>It extracts the variance-covariance matrix of the
-parameter estimates from either <code>tssem1FEM</code>,
-<code>tssem1FEM.cluster</code>, <code>tssem1REM</code>, <code>wls</code>,
-<code>wls.cluster</code>, <code>meta</code>, <code>meta3X</code>, <code>reml</code> or <code>MxRAMModel</code> objects.
+<p>It extracts the variance-covariance matrix of the 
+parameter estimates from either <code>tssem1FEM</code>, 
+<code>tssem1FEM.cluster</code>, <code>tssem1REM</code>, <code>wls</code>, 
+<code>wls.cluster</code>, <code>meta</code>, <code>meta3X</code>, <code>reml</code> or <code>MxRAMModel</code> objects. 
 </p>
 
 
 <h3>Usage</h3>
 
-<pre>
+<pre> 
 ## S3 method for class 'tssem1FEM'
-vcov(object, ...)
+vcov(object, ...) 
 ## S3 method for class 'tssem1FEM.cluster'
-vcov(object, ...)
+vcov(object, ...) 
 ## S3 method for class 'tssem1REM'
-vcov(object, select = c("all", "fixed", "random"), ...)
+vcov(object, select = c("all", "fixed", "random"), ...) 
 ## S3 method for class 'wls'
-vcov(object, R=50, ...)
+vcov(object, R=50, ...) 
 ## S3 method for class 'wls.cluster'
-vcov(object, R=50, ...)
+vcov(object, R=50, ...) 
 ## S3 method for class 'meta'
-vcov(object, select = c("all", "fixed", "random"), ...)
+vcov(object, select = c("all", "fixed", "random"), ...) 
 ## S3 method for class 'meta3X'
-vcov(object, select = c("all", "fixed", "random", "allX"), ...)
+vcov(object, select = c("all", "fixed", "random", "allX"), ...) 
 ## S3 method for class 'reml'
-vcov(object, ...)
+vcov(object, ...) 
 ## S3 method for class 'MxRAMModel'
-vcov(object, ...)
+vcov(object, ...) 
 </pre>
 
 
 <h3>Arguments</h3>
 
+ 
 <table summary="R argblock">
 <tr valign="top"><td><code>object</code></td>
 <td>
-<p>An object returned from either class
-<code>tssem1FEM</code>, class <code>tssem1FEM.cluster</code>, class <code>tssem1REM</code>,
-class <code>wls</code>, class <code>wls.cluster</code>, class <code>meta</code>, class
-<code>reml</code> or class <code>MxRAMModel</code>
+<p>An object returned from either class 
+<code>tssem1FEM</code>, class <code>tssem1FEM.cluster</code>, class <code>tssem1REM</code>, 
+class <code>wls</code>, class <code>wls.cluster</code>, class <code>meta</code>, class 
+<code>reml</code> or class <code>MxRAMModel</code> 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>select</code></td>
 <td>
-<p>Select <code>all</code> for both fixed- and random-effects parameters, <code>fixed</code> for the
-fixed-effects parameters or <code>random</code> for the random-effects
-parameters. For <code>meta3X</code> objects, <code>allX</code> is used to extract
-all parameters including the predictors and auxiliary variables.  
+<p>Select <code>all</code> for both fixed- and random-effects parameters, <code>fixed</code> for the 
+fixed-effects parameters or <code>random</code> for the random-effects 
+parameters. For <code>meta3X</code> objects, <code>allX</code> is used to extract 
+all parameters including the predictors and auxiliary variables.   
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>R</code></td>
 <td>
-<p>Positive integer. The number of parameter bootstrap
-replicates when <code>diag.constraints=TRUE</code>.
+<p>Positive integer. The number of parameter bootstrap 
+replicates when <code>diag.constraints=TRUE</code>. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>Further arguments; currently none is used</p>
-</td></tr>
+</td></tr> 
 </table>
 
 
 <h3>Value</h3>
 
-<p>A variance-covariance matrix of the parameter estimates.
+<p>A variance-covariance matrix of the parameter estimates. 
 </p>
 
 
 <h3>Note</h3>
 
-<p><code>vcov</code> returns <code>NA</code> when <code>diag.constraints=TRUE</code>
-argument is used in <code>wls</code> objects.
+<p><code>vcov</code> returns <code>NA</code> when <code>diag.constraints=TRUE</code> 
+argument is used in <code>wls</code> objects. 
 </p>
 
 
 <h3>Author(s)</h3>
 
-<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt; 
 </p>
 
 
 <h3>See Also</h3>
 
- <p><code><a href="tssem1.html">tssem1</a></code>, <code><a href="wls.html">wls</a></code>,
-<code><a href="meta.html">meta</a></code>, <code><a href="reml.html">reml</a></code>
+ <p><code><a href="tssem1.html">tssem1</a></code>, <code><a href="wls.html">wls</a></code>, 
+<code><a href="meta.html">meta</a></code>, <code><a href="reml.html">reml</a></code> 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">## Random-effects meta-analysis
-model1 &lt;- meta(y=yi, v=vi, data=Hox02)
-vcov(model1)
+<pre><code class="r">## Random-effects meta-analysis 
+model1 &lt;- meta(y=yi, v=vi, data=Hox02) 
+vcov(model1) 
 </code></pre>
 
 <pre><code>##              Intercept1     Tau2_1_1
@@ -116,16 +117,16 @@ vcov(model1)
 ## Tau2_1_1   0.0004852277 0.0054075504
 </code></pre>
 
-<pre><code class="r">## Fixed-effects only
-vcov(model1, select=&quot;fixed&quot;)
+<pre><code class="r">## Fixed-effects only 
+vcov(model1, select=&quot;fixed&quot;) 
 </code></pre>
 
 <pre><code>##            Intercept1
 ## Intercept1 0.01104609
 </code></pre>
 
-<pre><code class="r">## Random-effects only
-vcov(model1, select=&quot;random&quot;)
+<pre><code class="r">## Random-effects only 
+vcov(model1, select=&quot;random&quot;) 
 </code></pre>
 
 <pre><code>##            Tau2_1_1
@@ -133,5 +134,5 @@ vcov(model1, select=&quot;random&quot;)
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

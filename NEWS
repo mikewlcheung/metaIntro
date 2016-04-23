@@ -1,13 +1,19 @@
-Release 0.9.5-2 (September 17, 2015)
+Release 0.9.8 (April 16, 2016)
+* Released to CRAN
+* Returned NA rather than error in calculating 95% CI of RMSEA when there are errors in summary.wls(). 
+* Fixed a minor bug in meta() that does not give a starting value on the last preditcor with intercept.constraints=0
+* Added lavaan2RAM to convert lavaan models to RAM models
+* Added RMSEA 95% CI for wls and tssem1FEM classes
+
+Release 0.9.6 (October 31, 2015)
 ====================================
+* Released to CRAN
+* Added several packages in NAMESPACE to satisfy R developmental version's (3.3.0) requirements
+* Added ellipse package in imports
+* Fixed a bug reported by S.-F. Cheung in rerun() for tssem1FEM objects
+* Added acov argument in asyCov() and tssem1()
 * Modified wls(diag.constraints=FALSE) so that "mediators" are properly handled 
-
-Release 0.9.5-1 (August 20, 2015)
-====================================
 * Added datasets Norton13 and Roorda11
-
-Release 0.9.5-0 (August 1, 2015)
-====================================
 * Changed default model.name in tssem1REM(), tssem1FEM() and wls() to avoid potential error code with OpenMx 2.2.6
 * Added RE.constraints argument and "User" option in RE.type argument in tssem1() and tssem1REM()
 

@@ -322,7 +322,7 @@ Coefficients:
           Estimate Std.Error   lbound   ubound z value Pr(>|z|)
 Intercept 0.184455        NA 0.012023 0.358179      NA       NA
 Tau2_2    0.032865        NA 0.016331 0.060489      NA       NA
-Tau2_3    0.057738        NA 0.019809 0.119931      NA       NA
+Tau2_3    0.057738        NA 0.019809 0.118621      NA       NA
 
 Q statistic on the homogeneity of effect sizes: 578.864
 Degrees of freedom of the Q statistic: 55
@@ -330,7 +330,7 @@ P value of the Q statistic: 0
 
 Heterogeneity indices (I2) and their 95% likelihood-based CIs:
                                lbound Estimate ubound
-I2_2 (Typical v: Q statistic) 0.12755  0.34396 0.5930
+I2_2 (Typical v: Q statistic) 0.12755  0.34396 0.6565
 ICC_2 (tau^2/(tau^2+tau^3))   0.13123  0.36273 0.7005
 I2_3 (Typical v: Q statistic) 0.34963  0.60429 0.8451
 ICC_3 (tau^3/(tau^2+tau^3))   0.29948  0.63727 0.8688
@@ -361,8 +361,8 @@ Coefficients:
             Estimate Std.Error     lbound     ubound z value Pr(>|z|)
 Intercept  0.1780268        NA  0.0056465  0.3512068      NA       NA
 Slope_1    0.0050737        NA -0.0128322  0.0237972      NA       NA
-Tau2_2     0.0329390        NA  0.0163748  0.0329390      NA       NA
-Tau2_3     0.0564628        NA  0.0192352  0.0809114      NA       NA
+Tau2_2     0.0329390        NA  0.0163748  0.0592996      NA       NA
+Tau2_3     0.0564628        NA  0.0192352  0.0999774      NA       NA
 
 Q statistic on the homogeneity of effect sizes: 578.864
 Degrees of freedom of the Q statistic: 55
@@ -645,62 +645,6 @@ OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
 Other values may indicate problems.)
 ```
 
-* Alternative model: `Grants` and `Fellowship` as indicator variables
-    + If we want to estimate the effects for both `Grants` and `Fellowship`, we may create two indicator variables to represent them. Since we cannot estimate the intercept and these coefficients at the same time, we need to fix the intercept at 0 by specifying the `intercept.constraints=0` argument in `meta3()`. We are now able to include both `Grants` and `Fellowship` in the analysis. The estimated effects (and their 95% CIs) for `Grants` and `Fellowship` were -0.0066 (-0.0793, 0.0661) and -0.2022 (-0.2805, -0.1239), respectively.
-
-
-```r
-## Alternative model: Grants and Fellowship as indicators  
-## Indicator variables
-Grants <- ifelse(Bornmann07$Type=="Grants", yes=1, no=0)
-Fellowship <- ifelse(Bornmann07$Type=="Fellowship", yes=1, no=0)
-  
-summary(Model1b <- meta3(logOR, v, x=cbind(Grants, Fellowship), 
-                         cluster=Cluster, data=Bornmann07,
-                         intercept.constraints=0, model.name="Model 1"))
-```
-
-```
-
-Call:
-meta3(y = logOR, v = v, cluster = Cluster, x = cbind(Grants, 
-    Fellowship), data = Bornmann07, intercept.constraints = 0, 
-    model.name = "Model 1")
-
-95% confidence intervals: z statistic approximation
-Coefficients:
-           Estimate   Std.Error      lbound      ubound z value  Pr(>|z|)
-Slope_1  0.10000000          NA          NA          NA      NA        NA
-Slope_2 -0.20209280  0.03928546 -0.27909089 -0.12509471 -5.1442 2.686e-07
-Tau2_2   0.00357518  0.00222185 -0.00077957  0.00792993  1.6091    0.1076
-Tau2_3   0.00271391  0.00176781 -0.00075093  0.00617875  1.5352    0.1247
-           
-Slope_1    
-Slope_2 ***
-Tau2_2     
-Tau2_3     
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Q statistic on the homogeneity of effect sizes: 221.2809
-Degrees of freedom of the Q statistic: 65
-P value of the Q statistic: 0
-
-Explained variances (R2):
-                         Level 2 Level 3
-Tau2 (no predictor)    0.0037965  0.0141
-Tau2 (with predictors) 0.0035752  0.0027
-R2                     0.0582930  0.8080
-
-Number of studies (or clusters): 21
-Number of observed statistics: 66
-Number of estimated parameters: 4
-Degrees of freedom: 62
--2 log likelihood: 17.65814 
-OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
-Other values may indicate problems.)
-```
-
 ## Model 2: `Year` and `Year^2` as covariates
 * When there are several covariates, we may combine them with the `cbind()` command. For example, `cbind(Year, Year^2)` includes both `Year` and its squared as covariates. In the output, `Slope_1` and `Slope_2` refer to the regression coefficients for `Year` and `Year^2`, respectively. To increase the numerical stability, the covariates are usually centered before creating the quadratic terms. Since Marsh et al. (2009) standardized `Year` in their analysis, I follow this practice here.
 - The estimated regression coefficients (and their 95% CIs) for =Year= and =Year^2= were -0.0010 (-0.0473, 0.0454) and -0.0118 (-0.0247, 0.0012), respectively. The $R^2_{(2)}$ and $R^2_{(3)}$ were 0.2430 and 0.0000, respectively.
@@ -721,8 +665,8 @@ meta3(y = logOR, v = v, cluster = Cluster, x = cbind(scale(Year),
 95% confidence intervals: z statistic approximation
 Coefficients:
              Estimate   Std.Error      lbound      ubound z value Pr(>|z|)
-Intercept -0.08627312  0.04125581 -0.16713301 -0.00541322 -2.0912  0.03651
-Slope_1   -0.00095287  0.02365224 -0.04731040  0.04540466 -0.0403  0.96786
+Intercept -0.08627312  0.04125581 -0.16713302 -0.00541321 -2.0912  0.03651
+Slope_1   -0.00095287  0.02365224 -0.04731040  0.04540467 -0.0403  0.96786
 Slope_2   -0.01176840  0.00659995 -0.02470407  0.00116727 -1.7831  0.07457
 Tau2_2     0.00287389  0.00206817 -0.00117965  0.00692744  1.3896  0.16466
 Tau2_3     0.01479446  0.00926095 -0.00335666  0.03294558  1.5975  0.11015
@@ -791,20 +735,13 @@ meta3(y = logOR, v = v, cluster = Cluster, x = cbind(DisciplinePhy,
 
 95% confidence intervals: z statistic approximation
 Coefficients:
-             Estimate   Std.Error      lbound      ubound z value Pr(>|z|)
-Intercept -0.01474783  0.06389944 -0.13998843  0.11049277 -0.2308  0.81747
-Slope_1   -0.00913064  0.09949199 -0.20413137  0.18587008 -0.0918  0.92688
-Slope_2   -0.12617957  0.07866272 -0.28035567  0.02799652 -1.6041  0.10870
-Slope_3   -0.23695698  0.12123091 -0.47456520  0.00065125 -1.9546  0.05063
-Tau2_2     0.00390942  0.00283948 -0.00165587  0.00947471  1.3768  0.16857
-Tau2_3     0.00710338  0.00643210 -0.00550331  0.01971006  1.1044  0.26944
-           
-Intercept  
-Slope_1    
-Slope_2    
-Slope_3   .
-Tau2_2     
-Tau2_3     
+            Estimate  Std.Error     lbound     ubound z value Pr(>|z|)  
+Intercept -0.0147478  0.0638995 -0.1399885  0.1104928 -0.2308  0.81747  
+Slope_1   -0.0091306  0.0994920 -0.2041314  0.1858701 -0.0918  0.92688  
+Slope_2   -0.1261796  0.0786628 -0.2803557  0.0279966 -1.6041  0.10870  
+Slope_3   -0.2369570  0.1212309 -0.4745652  0.0006513 -1.9546  0.05063 .
+Tau2_2     0.0039094  0.0028395 -0.0016559  0.0094747  1.3768  0.16857  
+Tau2_3     0.0071034  0.0064321 -0.0055033  0.0197101  1.1044  0.26944  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -871,8 +808,8 @@ meta3(y = logOR, v = v, cluster = Cluster, x = cbind(CountryAus,
 Coefficients:
             Estimate  Std.Error     lbound     ubound z value Pr(>|z|)   
 Intercept  0.0025681  0.0597768 -0.1145923  0.1197285  0.0430 0.965732   
-Slope_1   -0.0240109  0.1104328 -0.2404552  0.1924333 -0.2174 0.827877   
-Slope_2   -0.1340800  0.1190668 -0.3674465  0.0992866 -1.1261 0.260127   
+Slope_1   -0.0240109  0.1104328 -0.2404552  0.1924333 -0.2174 0.827876   
+Slope_2   -0.1340800  0.1190667 -0.3674465  0.0992866 -1.1261 0.260127   
 Slope_3   -0.2210801  0.0739174 -0.3659556 -0.0762046 -2.9909 0.002782 **
 Slope_4    0.0537251  0.0994803 -0.1412527  0.2487030  0.5401 0.589157   
 Tau2_2     0.0033376  0.0023492 -0.0012667  0.0079420  1.4208 0.155383   
@@ -921,9 +858,13 @@ Other values may indicate problems.)
 
 ```r
 ## Model 5: Type and Discipline as covariates
-summary( Model5 <- meta3(logOR, v, x=cbind(Type2, DisciplinePhy, DisciplineLife, 
-                         DisciplineSoc), cluster=Cluster, data=Bornmann07,
-                         model.name="Model 5") )
+Model5 <- meta3(logOR, v, x=cbind(Type2, DisciplinePhy, DisciplineLife, 
+                DisciplineSoc), cluster=Cluster, data=Bornmann07,
+                model.name="Model 5")
+
+## Rerun it to remove the error code
+Model5 <- rerun(Model5)
+summary(Model5)
 ```
 
 ```
@@ -935,20 +876,20 @@ meta3(y = logOR, v = v, cluster = Cluster, x = cbind(Type2, DisciplinePhy,
 95% confidence intervals: z statistic approximation
 Coefficients:
              Estimate   Std.Error      lbound      ubound z value
-Intercept  6.7038e-02  1.8540e-02  3.0701e-02  1.0338e-01  3.6159
-Slope_1   -1.9001e-01  4.0224e-02 -2.6885e-01 -1.1117e-01 -4.7238
-Slope_2    1.9606e-02  6.5932e-02 -1.0962e-01  1.4883e-01  0.2974
-Slope_3   -1.2783e-01  3.5903e-02 -1.9820e-01 -5.7459e-02 -3.5604
-Slope_4   -2.3960e-01  9.4044e-02 -4.2392e-01 -5.5278e-02 -2.5478
-Tau2_2     2.3014e-03  1.4234e-03 -4.8830e-04  5.0912e-03  1.6169
-Tau2_3     4.4260e-10          NA          NA          NA      NA
+Intercept  6.7036e-02  1.8553e-02  3.0672e-02  1.0340e-01  3.6132
+Slope_1   -1.9004e-01  4.0234e-02 -2.6890e-01 -1.1118e-01 -4.7233
+Slope_2    1.9511e-02  6.5942e-02 -1.0973e-01  1.4875e-01  0.2959
+Slope_3   -1.2779e-01  3.5914e-02 -1.9818e-01 -5.7400e-02 -3.5582
+Slope_4   -2.3950e-01  9.4054e-02 -4.2384e-01 -5.5154e-02 -2.5464
+Tau2_2     2.3062e-03  1.4270e-03 -4.9059e-04  5.1030e-03  1.6162
+Tau2_3     1.0000e-10          NA          NA          NA      NA
            Pr(>|z|)    
-Intercept 0.0002993 ***
-Slope_1   2.314e-06 ***
-Slope_2   0.7661890    
-Slope_3   0.0003704 ***
-Slope_4   0.0108417 *  
-Tau2_2    0.1058995    
+Intercept 0.0003025 ***
+Slope_1    2.32e-06 ***
+Slope_2   0.7673209    
+Slope_3   0.0003734 ***
+Slope_4   0.0108849 *  
+Tau2_2    0.1060586    
 Tau2_3           NA    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -960,15 +901,15 @@ P value of the Q statistic: 0
 Explained variances (R2):
                          Level 2 Level 3
 Tau2 (no predictor)    0.0037965  0.0141
-Tau2 (with predictors) 0.0023014  0.0000
-R2                     0.3937965  1.0000
+Tau2 (with predictors) 0.0023062  0.0000
+R2                     0.3925434  1.0000
 
 Number of studies (or clusters): 21
 Number of observed statistics: 66
 Number of estimated parameters: 7
 Degrees of freedom: 59
--2 log likelihood: 4.667287 
-OpenMx status1: 6 ("0" or "1": The optimization is considered fine.
+-2 log likelihood: 4.66727 
+OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
 Other values may indicate problems.)
 ```
 
@@ -981,12 +922,12 @@ anova(Model5, Model1)
 ```
 
 ```
-     base            comparison ep  minus2LL df       AIC  diffLL diffdf
-1 Model 5                  <NA>  7  4.667287 59 -113.3327      NA     NA
-2 Model 5 Meta analysis with ML  4 17.625692 62 -106.3743 12.9584      3
+     base            comparison ep minus2LL df       AIC   diffLL diffdf
+1 Model 5                  <NA>  7  4.66727 59 -113.3327       NA     NA
+2 Model 5 Meta analysis with ML  4 17.62569 62 -106.3743 12.95842      3
             p
 1          NA
-2 0.004727426
+2 0.004727388
 ```
 
 ## Model 6: `Type` and `Country` as covariates  
@@ -994,36 +935,38 @@ anova(Model5, Model1)
 
 ```r
 ## Model 6: Type and Country as covariates
-summary( Model6 <- meta3(logOR, v, x=cbind(Type2, CountryAus, CountryCan, 
-                         CountryEur, CountryUK), cluster=Cluster, data=Bornmann07,
-                         model.name="Model 6") ) 
+Model6 <- meta3(logOR, v, x=cbind(Type2, CountryAus, CountryCan, 
+                CountryEur, CountryUK), cluster=Cluster, data=Bornmann07,
+                model.name="Model 6") 
+
+## Rerun it to remove the error code
+Model6 <- rerun(Model6)
+summary(Model5)
 ```
 
 ```
 
 Call:
-meta3(y = logOR, v = v, cluster = Cluster, x = cbind(Type2, CountryAus, 
-    CountryCan, CountryEur, CountryUK), data = Bornmann07, model.name = "Model 6")
+meta3(y = logOR, v = v, cluster = Cluster, x = cbind(Type2, DisciplinePhy, 
+    DisciplineLife, DisciplineSoc), data = Bornmann07, model.name = "Model 5")
 
 95% confidence intervals: z statistic approximation
 Coefficients:
              Estimate   Std.Error      lbound      ubound z value
-Intercept  6.7552e-02  1.8939e-02  3.0432e-02  1.0467e-01  3.5668
-Slope_1   -1.5186e-01  4.1108e-02 -2.3243e-01 -7.1294e-02 -3.6943
-Slope_2   -6.9789e-02  8.5162e-02 -2.3670e-01  9.7125e-02 -0.8195
-Slope_3   -1.4259e-01  7.5195e-02 -2.8997e-01  4.7897e-03 -1.8963
-Slope_4   -1.6100e-01  4.0194e-02 -2.3978e-01 -8.2217e-02 -4.0055
-Slope_5    9.0116e-03  7.0072e-02 -1.2833e-01  1.4635e-01  0.1286
-Tau2_2     2.2944e-03  1.4382e-03 -5.2446e-04  5.1132e-03  1.5953
+Intercept  6.7036e-02  1.8553e-02  3.0672e-02  1.0340e-01  3.6132
+Slope_1   -1.9004e-01  4.0234e-02 -2.6890e-01 -1.1118e-01 -4.7233
+Slope_2    1.9511e-02  6.5942e-02 -1.0973e-01  1.4875e-01  0.2959
+Slope_3   -1.2779e-01  3.5914e-02 -1.9818e-01 -5.7400e-02 -3.5582
+Slope_4   -2.3950e-01  9.4054e-02 -4.2384e-01 -5.5154e-02 -2.5464
+Tau2_2     2.3062e-03  1.4270e-03 -4.9059e-04  5.1030e-03  1.6162
 Tau2_3     1.0000e-10          NA          NA          NA      NA
            Pr(>|z|)    
-Intercept 0.0003614 ***
-Slope_1   0.0002205 ***
-Slope_2   0.4125070    
-Slope_3   0.0579248 .  
-Slope_4   6.189e-05 ***
-Slope_5   0.8976712    
-Tau2_2    0.1106439    
+Intercept 0.0003025 ***
+Slope_1    2.32e-06 ***
+Slope_2   0.7673209    
+Slope_3   0.0003734 ***
+Slope_4   0.0108849 *  
+Tau2_2    0.1060586    
 Tau2_3           NA    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -1035,15 +978,15 @@ P value of the Q statistic: 0
 Explained variances (R2):
                          Level 2 Level 3
 Tau2 (no predictor)    0.0037965  0.0141
-Tau2 (with predictors) 0.0022944  0.0000
-R2                     0.3956540  1.0000
+Tau2 (with predictors) 0.0023062  0.0000
+R2                     0.3925434  1.0000
 
 Number of studies (or clusters): 21
 Number of observed statistics: 66
-Number of estimated parameters: 8
-Degrees of freedom: 58
--2 log likelihood: 5.076652 
-OpenMx status1: 6 ("0" or "1": The optimization is considered fine.
+Number of estimated parameters: 7
+Degrees of freedom: 59
+-2 log likelihood: 4.66727 
+OpenMx status1: 0 ("0" or "1": The optimization is considered fine.
 Other values may indicate problems.)
 ```
 
@@ -1056,12 +999,12 @@ anova(Model6, Model1)
 ```
 
 ```
-     base            comparison ep  minus2LL df       AIC   diffLL diffdf
-1 Model 6                  <NA>  8  5.076652 58 -110.9233       NA     NA
-2 Model 6 Meta analysis with ML  4 17.625692 62 -106.3743 12.54904      4
+     base            comparison ep  minus2LL df       AIC  diffLL diffdf
+1 Model 6                  <NA>  8  5.076592 58 -110.9234      NA     NA
+2 Model 6 Meta analysis with ML  4 17.625692 62 -106.3743 12.5491      4
            p
 1         NA
-2 0.01370298
+2 0.01370262
 ```
 
 ## Model 7: `Discipline` and `Country` as covariates
@@ -1086,13 +1029,13 @@ meta3(y = logOR, v = v, cluster = Cluster, x = cbind(DisciplinePhy,
 Coefficients:
             Estimate  Std.Error     lbound     ubound z value Pr(>|z|)  
 Intercept  0.0029305  0.0576743 -0.1101091  0.1159700  0.0508  0.95948  
-Slope_1    0.1742169  0.1702555 -0.1594778  0.5079116  1.0233  0.30618  
-Slope_2    0.0826806  0.1599803 -0.2308751  0.3962363  0.5168  0.60528  
-Slope_3   -0.0462265  0.1715774 -0.3825120  0.2900591 -0.2694  0.78761  
-Slope_4   -0.0486321  0.1306919 -0.3047835  0.2075192 -0.3721  0.70981  
-Slope_5   -0.2169132  0.1915704 -0.5923844  0.1585579 -1.1323  0.25751  
-Slope_6   -0.3036578  0.1670722 -0.6311132  0.0237977 -1.8175  0.06914 .
-Slope_7   -0.0605272  0.1809420 -0.4151671  0.2941127 -0.3345  0.73799  
+Slope_1    0.1742169  0.1702561 -0.1594788  0.5079127  1.0233  0.30618  
+Slope_2    0.0826806  0.1599809 -0.2308762  0.3962373  0.5168  0.60529  
+Slope_3   -0.0462265  0.1715779 -0.3825130  0.2900601 -0.2694  0.78761  
+Slope_4   -0.0486321  0.1306921 -0.3047839  0.2075196 -0.3721  0.70981  
+Slope_5   -0.2169132  0.1915709 -0.5923854  0.1585589 -1.1323  0.25751  
+Slope_6   -0.3036578  0.1670728 -0.6311144  0.0237989 -1.8175  0.06914 .
+Slope_7   -0.0605272  0.1809426 -0.4151681  0.2941137 -0.3345  0.73799  
 Tau2_2     0.0032661  0.0022784 -0.0011994  0.0077317  1.4335  0.15171  
 Tau2_3     0.0040618  0.0038459 -0.0034759  0.0115996  1.0562  0.29090  
 ---
@@ -1147,7 +1090,7 @@ Slope_3    1.2689e-01  1.4774e-01 -1.6268e-01  4.1646e-01  0.8589
 Slope_4   -8.3549e-03  1.5796e-01 -3.1795e-01  3.0124e-01 -0.0529
 Slope_5   -1.1530e-01  1.1147e-01 -3.3377e-01  1.0317e-01 -1.0344
 Slope_6   -2.6412e-01  1.6402e-01 -5.8559e-01  5.7344e-02 -1.6103
-Slope_7   -2.9029e-01  1.4859e-01 -5.8152e-01  9.5240e-04 -1.9536
+Slope_7   -2.9029e-01  1.4859e-01 -5.8152e-01  9.5232e-04 -1.9536
 Slope_8   -1.5975e-01  1.6285e-01 -4.7893e-01  1.5943e-01 -0.9810
 Tau2_2     2.1010e-03  1.2925e-03 -4.3226e-04  4.6342e-03  1.6255
 Tau2_3     1.0000e-10          NA          NA          NA      NA
@@ -1217,8 +1160,8 @@ meta3(y = logOR, v = v, cluster = Cluster, x = Type_MCAR, data = my.df)
 95% confidence intervals: z statistic approximation
 Coefficients:
              Estimate   Std.Error      lbound      ubound z value
-Intercept -0.00484542  0.03934429 -0.08195880  0.07226796 -0.1232
-Slope_1   -0.21090081  0.05346221 -0.31568482 -0.10611681 -3.9449
+Intercept -0.00484542  0.03934429 -0.08195880  0.07226797 -0.1232
+Slope_1   -0.21090081  0.05346221 -0.31568482 -0.10611680 -3.9449
 Tau2_2     0.00446788  0.00549282 -0.00629784  0.01523361  0.8134
 Tau2_3     0.00092884  0.00336491 -0.00566625  0.00752394  0.2760
            Pr(>|z|)    
@@ -1261,8 +1204,8 @@ meta3X(y = logOR, v = v, cluster = Cluster, x2 = Type_MCAR, data = my.df)
 95% confidence intervals: z statistic approximation
 Coefficients:
             Estimate  Std.Error     lbound     ubound z value Pr(>|z|)   
-Intercept -0.0106318  0.0397685 -0.0885766  0.0673131 -0.2673 0.789206   
-SlopeX2_1 -0.1753249  0.0582619 -0.2895161 -0.0611336 -3.0093 0.002619 **
+Intercept -0.0106318  0.0397685 -0.0885766  0.0673131 -0.2673 0.789207   
+SlopeX2_1 -0.1753249  0.0582619 -0.2895162 -0.0611336 -3.0093 0.002619 **
 Tau2_2     0.0030338  0.0026839 -0.0022266  0.0082941  1.1304 0.258324   
 Tau2_3     0.0036839  0.0042817 -0.0047082  0.0120759  0.8604 0.389586   
 ---
@@ -1305,7 +1248,7 @@ meta3(y = logOR, v = v, cluster = Cluster, x = Type_MAR, data = Bornmann07)
 95% confidence intervals: z statistic approximation
 Coefficients:
              Estimate   Std.Error      lbound      ubound z value Pr(>|z|)
-Intercept -0.01587052  0.03952547 -0.09333901  0.06159796 -0.4015 0.688032
+Intercept -0.01587052  0.03952547 -0.09333902  0.06159797 -0.4015 0.688032
 Slope_1   -0.17573648  0.06328327 -0.29976941 -0.05170354 -2.7770 0.005487
 Tau2_2     0.00259266  0.00171596 -0.00077056  0.00595588  1.5109 0.130811
 Tau2_3     0.00278384  0.00267150 -0.00245221  0.00801989  1.0421 0.297388
@@ -1351,10 +1294,10 @@ meta3X(y = logOR, v = v, cluster = Cluster, x2 = Type_MAR, av2 = Year,
 95% confidence intervals: z statistic approximation
 Coefficients:
             Estimate  Std.Error     lbound     ubound z value Pr(>|z|)   
-Intercept -0.0264058  0.0571965 -0.1385089  0.0856974 -0.4617 0.644320   
-SlopeX2_1 -0.2003999  0.0691031 -0.3358395 -0.0649603 -2.9000 0.003731 **
-Tau2_2     0.0029970  0.0022371 -0.0013877  0.0073816  1.3397 0.180358   
-Tau2_3     0.0030212  0.0032462 -0.0033412  0.0093836  0.9307 0.352010   
+Intercept -0.0264058  0.0572080 -0.1385314  0.0857198 -0.4616 0.644386   
+SlopeX2_1 -0.2003999  0.0691114 -0.3358557 -0.0649440 -2.8997 0.003736 **
+Tau2_2     0.0029970  0.0022371 -0.0013877  0.0073817  1.3396 0.180360   
+Tau2_3     0.0030212  0.0032464 -0.0033416  0.0093840  0.9306 0.352041   
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -1540,7 +1483,7 @@ Summary of Random effects model
  
 free parameters:
     name matrix row col   Estimate  Std.Error A
-1  beta0  Beta0   1   1 0.18445538 0.08054109  
+1  beta0  Beta0   1   1 0.18445538 0.08054110  
 2 tau2_2   Tau2   1   1 0.03286479 0.01113968  
 3 tau2_3   Tau3   1   1 0.05773836 0.03074229  
 
@@ -1553,14 +1496,11 @@ Information Criteria:
       |  df Penalty  |  Parameters Penalty  |  Sample-Size Adjusted
 AIC:      -89.21013               22.78987                       NA
 BIC:     -110.29858               23.98356                 14.95056
-Some of your fit indices are missing.
-  To get them, fit saturated and independence models, and include them with
-  summary(yourModel, refModels=...) 
-  See help(mxRefModels) for an easy way of doing this in many cases. 
-timestamp: 2015-09-19 18:42:02 
-Wall clock time (HH:MM:SS.hh): 00:00:00.08 
+To get additional fit indices, see help(mxRefModels)
+timestamp: 2016-04-23 23:30:43 
+Wall clock time (HH:MM:SS.hh): 00:00:00.06 
 optimizer:  SLSQP 
-OpenMx version number: 2.2.6.86 
+OpenMx version number: 2.5.2 
 Need help?  See help(mxSummary) 
 ```
 
@@ -1603,10 +1543,10 @@ Summary of Mixed effects model
  
 free parameters:
     name matrix row col   Estimate   Std.Error A
-1  beta0  Beta0   1   1 0.17802679 0.080521937  
+1  beta0  Beta0   1   1 0.17802679 0.080521925  
 2  beta1  Beta1   1   1 0.00507372 0.008526627  
 3 tau2_2   Tau2   1   1 0.03293902 0.011162044  
-4 tau2_3   Tau3   1   1 0.05646285 0.030032973  
+4 tau2_3   Tau3   1   1 0.05646285 0.030032971  
 
 observed statistics:  56 
 estimated parameters:  4 
@@ -1617,14 +1557,11 @@ Information Criteria:
       |  df Penalty  |  Parameters Penalty  |  Sample-Size Adjusted
 AIC:      -87.56371               24.43629                       NA
 BIC:     -108.25427               26.02787                 13.98387
-Some of your fit indices are missing.
-  To get them, fit saturated and independence models, and include them with
-  summary(yourModel, refModels=...) 
-  See help(mxRefModels) for an easy way of doing this in many cases. 
-timestamp: 2015-09-19 18:42:03 
+To get additional fit indices, see help(mxRefModels)
+timestamp: 2016-04-23 23:30:43 
 Wall clock time (HH:MM:SS.hh): 00:00:00.11 
 optimizer:  SLSQP 
-OpenMx version number: 2.2.6.86 
+OpenMx version number: 2.5.2 
 Need help?  See help(mxSummary) 
 ```
 

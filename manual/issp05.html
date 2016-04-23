@@ -10,20 +10,20 @@
 
 <table width="100%" summary="page for issp05 {metaSEM}"><tr><td>issp05 {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Data Set from ISSP (2005) 
+<h2>Data Set from ISSP (2005)  
 </h2>
 
 <h3>Description</h3>
 
-<p>Thirty-two covariance matrices on work-related attitudes
-were extracted from the International Social Survey Programme 2005:
-Work Orientation III (ISSP, 2005). Seven variables were selected for
-demonstration purposes. They were grouped into three constructs:
-<em>Importance of Job Prospects</em> measured by job security (JP1),
-high income (JP2), and opportunity for advancement (JP3); <em>Importance
-of Job Autonomy</em> measured by work independently (JA1) and decide time
-of work (JA2); and <em>Importance of Contributions to Society</em> measured by help other
-people (CS1) and a job useful to society (CS2).
+<p>Thirty-two covariance matrices on work-related attitudes 
+were extracted from the International Social Survey Programme 2005: 
+Work Orientation III (ISSP, 2005). Seven variables were selected for 
+demonstration purposes. They were grouped into three constructs: 
+<em>Importance of Job Prospects</em> measured by job security (JP1), 
+high income (JP2), and opportunity for advancement (JP3); <em>Importance 
+of Job Autonomy</em> measured by work independently (JA1) and decide time 
+of work (JA2); and <em>Importance of Contributions to Society</em> measured by help other 
+people (CS1) and a job useful to society (CS2). 
 </p>
 
 
@@ -34,21 +34,22 @@ people (CS1) and a job useful to society (CS2).
 
 <h3>Details</h3>
 
-<p>A list of data with the following structure:
+ 
+<p>A list of data with the following structure: 
 </p>
-
+ 
 <dl>
 <dt>data</dt><dd><p>A list of 32 covariance matrices </p>
-</dd>
+</dd> 
 <dt>n</dt><dd><p>A vector of sample sizes</p>
-</dd>
+</dd> 
 </dl>
-
+ 
 
 
 <h3>Author(s)</h3>
 
-<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt; 
 </p>
 
 
@@ -59,17 +60,18 @@ people (CS1) and a job useful to society (CS2).
 
 <h3>See Also</h3>
 
- <p><code><a href="issp89.html">issp89</a></code>
+ <p><code><a href="issp89.html">issp89</a></code> 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">data(issp05)
+<pre><code class="r">## \dontrun{ 
+data(issp05) 
 
-#### Fixed-effects TSSEM
-fixed1 &lt;- tssem1(issp05$data, issp05$n, method=&quot;FEM&quot;)
-summary(fixed1)
+#### Fixed-effects TSSEM 
+fixed1 &lt;- tssem1(issp05$data, issp05$n, method=&quot;FEM&quot;) 
+summary(fixed1) 
 </code></pre>
 
 <pre><code>## 
@@ -80,93 +82,95 @@ summary(fixed1)
 ## 
 ## Coefficients:
 ##         Estimate Std.Error z value  Pr(&gt;|z|)    
-## S[1,2] 0.3458534 0.0043972  78.653 &lt; 2.2e-16 ***
-## S[1,3] 0.2957095 0.0045561  64.904 &lt; 2.2e-16 ***
-## S[1,4] 0.1451601 0.0048892  29.690 &lt; 2.2e-16 ***
-## S[1,5] 0.0902532 0.0049425  18.261 &lt; 2.2e-16 ***
-## S[1,6] 0.2058959 0.0047692  43.172 &lt; 2.2e-16 ***
-## S[1,7] 0.2178547 0.0047436  45.926 &lt; 2.2e-16 ***
-## S[2,3] 0.4039976 0.0041675  96.939 &lt; 2.2e-16 ***
-## S[2,4] 0.1941407 0.0047956  40.483 &lt; 2.2e-16 ***
-## S[2,5] 0.1905024 0.0047941  39.737 &lt; 2.2e-16 ***
-## S[2,6] 0.1348607 0.0048961  27.544 &lt; 2.2e-16 ***
-## S[2,7] 0.1432349 0.0048851  29.321 &lt; 2.2e-16 ***
-## S[3,4] 0.2780695 0.0046175  60.221 &lt; 2.2e-16 ***
-## S[3,5] 0.1882147 0.0048153  39.087 &lt; 2.2e-16 ***
-## S[3,6] 0.2530853 0.0046819  54.056 &lt; 2.2e-16 ***
-## S[3,7] 0.2500478 0.0046872  53.347 &lt; 2.2e-16 ***
-## S[4,5] 0.3628185 0.0043406  83.586 &lt; 2.2e-16 ***
-## S[4,6] 0.3779793 0.0042869  88.171 &lt; 2.2e-16 ***
-## S[4,7] 0.3178023 0.0044903  70.775 &lt; 2.2e-16 ***
-## S[5,6] 0.2647940 0.0046379  57.094 &lt; 2.2e-16 ***
-## S[5,7] 0.2541328 0.0046685  54.436 &lt; 2.2e-16 ***
-## S[6,7] 0.6623115 0.0028146 235.312 &lt; 2.2e-16 ***
+## S[1,2] 0.3458536 0.0043955  78.683 &lt; 2.2e-16 ***
+## S[1,3] 0.2957012 0.0045543  64.927 &lt; 2.2e-16 ***
+## S[1,4] 0.1451564 0.0048873  29.700 &lt; 2.2e-16 ***
+## S[1,5] 0.0902511 0.0049407  18.267 &lt; 2.2e-16 ***
+## S[1,6] 0.2058902 0.0047674  43.187 &lt; 2.2e-16 ***
+## S[1,7] 0.2178484 0.0047418  45.942 &lt; 2.2e-16 ***
+## S[2,3] 0.4039957 0.0041659  96.976 &lt; 2.2e-16 ***
+## S[2,4] 0.1941360 0.0047938  40.497 &lt; 2.2e-16 ***
+## S[2,5] 0.1905006 0.0047923  39.751 &lt; 2.2e-16 ***
+## S[2,6] 0.1348540 0.0048943  27.553 &lt; 2.2e-16 ***
+## S[2,7] 0.1432304 0.0048833  29.331 &lt; 2.2e-16 ***
+## S[3,4] 0.2780719 0.0046158  60.243 &lt; 2.2e-16 ***
+## S[3,5] 0.1882161 0.0048136  39.101 &lt; 2.2e-16 ***
+## S[3,6] 0.2530847 0.0046802  54.076 &lt; 2.2e-16 ***
+## S[3,7] 0.2500475 0.0046855  53.367 &lt; 2.2e-16 ***
+## S[4,5] 0.3628171 0.0043392  83.614 &lt; 2.2e-16 ***
+## S[4,6] 0.3779783 0.0042854  88.201 &lt; 2.2e-16 ***
+## S[4,7] 0.3177996 0.0044889  70.797 &lt; 2.2e-16 ***
+## S[5,6] 0.2647916 0.0046363  57.112 &lt; 2.2e-16 ***
+## S[5,7] 0.2541295 0.0046669  54.453 &lt; 2.2e-16 ***
+## S[6,7] 0.6623172 0.0028137 235.393 &lt; 2.2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
 ## Goodness-of-fit indices:
 ##                                       Value
 ## Sample size                      40596.0000
-## Chi-square of target model        5305.5769
+## Chi-square of target model        5309.8751
 ## DF of target model                 651.0000
 ## p value of target model              0.0000
-## Chi-square of independence model 61872.2338
+## Chi-square of independence model 61921.2659
 ## DF of independence model           672.0000
 ## RMSEA                                0.0751
+## RMSEA lower 95% CI                   0.0733
+## RMSEA upper 95% CI                   0.0770
 ## SRMR                                 0.0902
 ## TLI                                  0.9215
 ## CFI                                  0.9239
-## AIC                               4003.5769
-## BIC                              -1602.4607
+## AIC                               4007.8751
+## BIC                              -1598.1624
 ## OpenMx status1: 6 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Prepare a model implied matrix
-## Factor correlation matrix
-Phi &lt;- create.mxMatrix( c(&quot;0.3*corf2f1&quot;,&quot;0.3*corf3f1&quot;,&quot;0.3*corf3f2&quot;),
-                        type=&quot;Stand&quot;, as.mxMatrix=FALSE )
+<pre><code class="r">## Prepare a model implied matrix 
+## Factor correlation matrix 
+Phi &lt;- create.mxMatrix( c(&quot;0.3*corf2f1&quot;,&quot;0.3*corf3f1&quot;,&quot;0.3*corf3f2&quot;), 
+                        type=&quot;Stand&quot;, as.mxMatrix=FALSE ) 
 
-## Error variances
-Psi &lt;- create.mxMatrix( paste(&quot;0.2*e&quot;, 1:7, sep=&quot;&quot;), type=&quot;Diag&quot;,
-                        as.mxMatrix=FALSE )
+## Error variances 
+Psi &lt;- create.mxMatrix( paste(&quot;0.2*e&quot;, 1:7, sep=&quot;&quot;), type=&quot;Diag&quot;, 
+                        as.mxMatrix=FALSE ) 
 
-## Create Smatrix
-S1 &lt;- bdiagMat(list(Psi, Phi))
-## dimnames(S1)[[1]] &lt;- dimnames(S1)[[2]] &lt;- c(paste(&quot;x&quot;,1:7,sep=&quot;&quot;),
-##                                             paste(&quot;f&quot;,1:3,sep=&quot;&quot;))
-## S1
-S1 &lt;- as.mxMatrix(S1)
+## Create Smatrix 
+S1 &lt;- bdiagMat(list(Psi, Phi)) 
+## dimnames(S1)[[1]] &lt;- dimnames(S1)[[2]] &lt;- c(paste(&quot;x&quot;,1:7,sep=&quot;&quot;), 
+##                                             paste(&quot;f&quot;,1:3,sep=&quot;&quot;)) 
+## S1 
+S1 &lt;- as.mxMatrix(S1) 
 
-## Factor loadings
-Lambda &lt;- create.mxMatrix( c(&quot;.3*f1x1&quot;,&quot;.3*f1x2&quot;,&quot;.3*f1x3&quot;,rep(0,7),
-                             &quot;.3*f2x4&quot;,&quot;.3*f2x5&quot;,rep(0,7),&quot;.3*f3x6&quot;,&quot;.3*f3x7&quot;),
-                           type=&quot;Full&quot;, ncol=3, nrow=7, as.mxMatrix=FALSE )
-Zero1 &lt;- matrix(0, nrow=7, ncol=7)
-Zero2 &lt;- matrix(0, nrow=3, ncol=10)
+## Factor loadings 
+Lambda &lt;- create.mxMatrix( c(&quot;.3*f1x1&quot;,&quot;.3*f1x2&quot;,&quot;.3*f1x3&quot;,rep(0,7), 
+                             &quot;.3*f2x4&quot;,&quot;.3*f2x5&quot;,rep(0,7),&quot;.3*f3x6&quot;,&quot;.3*f3x7&quot;), 
+                           type=&quot;Full&quot;, ncol=3, nrow=7, as.mxMatrix=FALSE ) 
+Zero1 &lt;- matrix(0, nrow=7, ncol=7) 
+Zero2 &lt;- matrix(0, nrow=3, ncol=10) 
 
-## Create Amatrix
-A1 &lt;- rbind( cbind(Zero1, Lambda),
-             Zero2 )
-## dimnames(A1)[[1]] &lt;- dimnames(A1)[[2]] &lt;- c(paste(&quot;x&quot;,1:7,sep=&quot;&quot;),
-##                                             paste(&quot;f&quot;,1:3,sep=&quot;&quot;))
-## A1
-A1 &lt;- as.mxMatrix(A1)
+## Create Amatrix 
+A1 &lt;- rbind( cbind(Zero1, Lambda), 
+             Zero2 ) 
+## dimnames(A1)[[1]] &lt;- dimnames(A1)[[2]] &lt;- c(paste(&quot;x&quot;,1:7,sep=&quot;&quot;), 
+##                                             paste(&quot;f&quot;,1:3,sep=&quot;&quot;)) 
+## A1 
+A1 &lt;- as.mxMatrix(A1) 
 
-## Create Fmatrix
-F1 &lt;- create.Fmatrix(c(rep(1,7), rep(0,3)))
+## Create Fmatrix 
+F1 &lt;- create.Fmatrix(c(rep(1,7), rep(0,3))) 
 
-#### Fixed-effects model: Stage 2 analysis
-fixed2 &lt;- tssem2(fixed1, Amatrix=A1, Smatrix=S1, Fmatrix=F1,
-                 intervals.type=&quot;LB&quot;)
-summary(fixed2)
+#### Fixed-effects model: Stage 2 analysis 
+fixed2 &lt;- tssem2(fixed1, Amatrix=A1, Smatrix=S1, Fmatrix=F1, 
+                 intervals.type=&quot;LB&quot;) 
+summary(fixed2) 
 </code></pre>
 
 <pre><code>## 
 ## Call:
-## wls(Cov = pooledS, asyCov = tssem1.obj$acovS, n = sum(tssem1.obj$n), 
-##     Amatrix = Amatrix, Smatrix = Smatrix, Fmatrix = Fmatrix, 
-##     diag.constraints = diag.constraints, cor.analysis = cor.analysis, 
+## wls(Cov = coef.tssem1FEM(tssem1.obj), asyCov = vcov.tssem1FEM(tssem1.obj), 
+##     n = sum(tssem1.obj$n), Amatrix = Amatrix, Smatrix = Smatrix, 
+##     Fmatrix = Fmatrix, diag.constraints = diag.constraints, cor.analysis = tssem1.obj$cor.analysis, 
 ##     intervals.type = intervals.type, mx.algebras = mx.algebras, 
 ##     model.name = model.name, suppressWarnings = suppressWarnings, 
 ##     silent = silent, run = run)
@@ -174,37 +178,42 @@ summary(fixed2)
 ## 95% confidence intervals: Likelihood-based statistic
 ## Coefficients:
 ##         Estimate Std.Error  lbound  ubound z value Pr(&gt;|z|)
-## f1x1     0.51978        NA 0.50958 0.52998      NA       NA
-## f1x2     0.64076        NA 0.63083 0.65073      NA       NA
-## f1x3     0.66364        NA 0.65391 0.67340      NA       NA
-## f2x4     0.69218        NA 0.68120 0.70326      NA       NA
-## f2x5     0.53312        NA 0.52284 0.54342      NA       NA
-## f3x6     0.84929        NA 0.84149 0.85713      NA       NA
+## f1x1     0.51977        NA 0.50958 0.52997      NA       NA
+## f1x2     0.64077        NA 0.63084 0.65073      NA       NA
+## f1x3     0.66364        NA 0.65391 0.67339      NA       NA
+## f2x4     0.69218        NA 0.68122 0.70326      NA       NA
+## f2x5     0.53312        NA 0.52284 0.54341      NA       NA
+## f3x6     0.84930        NA 0.84150 0.85714      NA       NA
 ## f3x7     0.77874        NA 0.77097 0.78652      NA       NA
-## corf2f1  0.52611        NA 0.51175 0.54054      NA       NA
-## corf3f1  0.42026        NA 0.40782 0.43268      NA       NA
-## corf3f2  0.63541        NA 0.62324 0.64764      NA       NA
+## corf2f1  0.52611        NA 0.51176 0.54053      NA       NA
+## corf3f1  0.42025        NA 0.40781 0.43266      NA       NA
+## corf3f2  0.63540        NA 0.62323 0.64762      NA       NA
 ## 
 ## Goodness-of-fit indices:
 ##                                                 Value
 ## Sample size                                40596.0000
-## Chi-square of target model                  1707.9305
+## Chi-square of target model                  1709.3864
 ## DF of target model                            11.0000
 ## p value of target model                        0.0000
 ## Number of constraints imposed on &quot;Smatrix&quot;     0.0000
 ## DF manually adjusted                           0.0000
-## Chi-square of independence model           75251.3615
+## Chi-square of independence model           75296.1517
 ## DF of independence model                      21.0000
-## RMSEA                                          0.0616
+## RMSEA                                          0.0617
+## RMSEA lower 95% CI                             0.0592
+## RMSEA upper 95% CI                             0.0642
 ## SRMR                                           0.0375
 ## TLI                                            0.9569
 ## CFI                                            0.9774
-## AIC                                         1685.9305
-## BIC                                         1591.2048
+## AIC                                         1687.3864
+## BIC                                         1592.6607
 ## OpenMx status1: 0 (&quot;0&quot; or &quot;1&quot;: The optimization is considered fine.
 ## Other values indicate problems.)
 </code></pre>
 
+<pre><code class="r">## } 
+</code></pre>
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

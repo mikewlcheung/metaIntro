@@ -14,7 +14,8 @@
 
 <h3>Description</h3>
 
-<p>A dataset from Bornmann et al. (2007) for three-level meta-analysis.
+ 
+<p>A dataset from Bornmann et al. (2007) for three-level meta-analysis. 
 </p>
 
 
@@ -25,55 +26,59 @@
 
 <h3>Details</h3>
 
-<p>The variables are:
+ 
+<p>The variables are: 
 </p>
-
+ 
 <dl>
 <dt>ID</dt><dd><p>ID of the study</p>
-</dd>
+</dd> 
 <dt>Study</dt><dd><p>Study name</p>
-</dd>
+</dd> 
 <dt>Cluster</dt><dd><p>Cluster for effect sizes</p>
-</dd>
+</dd> 
 <dt>logOR</dt><dd><p>Effect size: log odds ratio</p>
-</dd>
+</dd> 
 <dt>v</dt><dd><p>Sampling variance of logOR</p>
-</dd>
+</dd> 
 <dt>Year</dt><dd><p>Year of publication</p>
-</dd>
+</dd> 
 <dt>Type</dt><dd><p>Type of proposal: either <b>Grant</b> or <b>Fellowship</b></p>
-</dd>
-<dt>Discipline</dt><dd><p>Discipline of proposal: either <b>Physical sciences</b>, <b>Life sciences/biology</b>,
+</dd> 
+<dt>Discipline</dt><dd><p>Discipline of proposal: either <b>Physical sciences</b>, <b>Life sciences/biology</b>, 
 <b>Social sciences/humanities</b> or <b>Multidisciplinary</b>)</p>
-</dd>
-<dt>Country</dt><dd><p>Country of proposal: either <b>United States</b>,
+</dd> 
+<dt>Country</dt><dd><p>Country of proposal: either <b>United States</b>, 
 <b>Canada</b>, <b>Australia</b>, <b>United Kingdom</b> or <b>Europe</b></p>
-</dd>
+</dd> 
 </dl>
-
+ 
 
 
 <h3>Source</h3>
 
-<p>Bornmann, L., Mutz, R., &amp; Daniel, H.-D. (2007). Gender differences in grant peer review: A meta-analysis. <em>Journal of Informetrics</em>, <b>1(3)</b>, 226-238. doi:10.1016/j.joi.2007.03.001
+ 
+<p>Bornmann, L., Mutz, R., &amp; Daniel, H.-D. (2007). Gender differences in grant peer review: A meta-analysis. <em>Journal of Informetrics</em>, <b>1(3)</b>, 226-238. doi:10.1016/j.joi.2007.03.001 
 </p>
 
 
 <h3>References</h3>
 
-<p>Cheung, M. W.-L. (2014). Modeling dependent effect sizes with three-level meta-analyses: A structural equation modeling approach. <em>Psychological Methods</em>, <b>19</b>, 211-229.
+ 
+<p>Cheung, M. W.-L. (2014). Modeling dependent effect sizes with three-level meta-analyses: A structural equation modeling approach. <em>Psychological Methods</em>, <b>19</b>, 211-229. 
 </p>
-<p>Marsh, H. W., Bornmann, L., Mutz, R., Daniel, H.-D., &amp; O'Mara, A. (2009). Gender Effects in the Peer Reviews of Grant Proposals: A Comprehensive Meta-Analysis Comparing Traditional and Multilevel Approaches. <em>Review of Educational Research</em>, <b>79(3)</b>, 1290-1326. doi:10.3102/0034654309334143
+<p>Marsh, H. W., Bornmann, L., Mutz, R., Daniel, H.-D., &amp; O'Mara, A. (2009). Gender Effects in the Peer Reviews of Grant Proposals: A Comprehensive Meta-Analysis Comparing Traditional and Multilevel Approaches. <em>Review of Educational Research</em>, <b>79(3)</b>, 1290-1326. doi:10.3102/0034654309334143 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">data(Bornmann07)
+<pre><code class="r">## \dontrun{ 
+data(Bornmann07) 
 
-#### ML estimation method
-## No predictor
-summary( meta3(y=logOR, v=v, cluster=Cluster, data=Bornmann07) )
+#### ML estimation method 
+## No predictor 
+summary( meta3(y=logOR, v=v, cluster=Cluster, data=Bornmann07) ) 
 </code></pre>
 
 <pre><code>## 
@@ -107,11 +112,11 @@ summary( meta3(y=logOR, v=v, cluster=Cluster, data=Bornmann07) )
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Type as a predictor
-## Grant: 0
-## Fellowship: 1
-summary( meta3(y=logOR, v=v, x=(as.numeric(Type)-1),
-               cluster=Cluster, data=Bornmann07) )
+<pre><code class="r">## Type as a predictor 
+## Grant: 0 
+## Fellowship: 1 
+summary( meta3(y=logOR, v=v, x=(as.numeric(Type)-1), 
+               cluster=Cluster, data=Bornmann07) ) 
 </code></pre>
 
 <pre><code>## 
@@ -153,9 +158,9 @@ summary( meta3(y=logOR, v=v, x=(as.numeric(Type)-1),
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Centered Year as a predictor
-summary( meta3(y=logOR, v=v, x=scale(Year, scale=FALSE),
-               cluster=Cluster, data=Bornmann07) )
+<pre><code class="r">## Centered Year as a predictor 
+summary( meta3(y=logOR, v=v, x=scale(Year, scale=FALSE), 
+               cluster=Cluster, data=Bornmann07) ) 
 </code></pre>
 
 <pre><code>## 
@@ -192,9 +197,9 @@ summary( meta3(y=logOR, v=v, x=scale(Year, scale=FALSE),
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">#### REML estimation method
-## No predictor
-summary( reml3(y=logOR, v=v, cluster=Cluster, data=Bornmann07) )
+<pre><code class="r">#### REML estimation method 
+## No predictor 
+summary( reml3(y=logOR, v=v, cluster=Cluster, data=Bornmann07) ) 
 </code></pre>
 
 <pre><code>## 
@@ -216,11 +221,11 @@ summary( reml3(y=logOR, v=v, cluster=Cluster, data=Bornmann07) )
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Type as a predictor
-## Grants: 0
-## Fellowship: 1
-summary( reml3(y=logOR, v=v, x=(as.numeric(Type)-1),
-               cluster=Cluster, data=Bornmann07) )
+<pre><code class="r">## Type as a predictor 
+## Grants: 0 
+## Fellowship: 1 
+summary( reml3(y=logOR, v=v, x=(as.numeric(Type)-1), 
+               cluster=Cluster, data=Bornmann07) ) 
 </code></pre>
 
 <pre><code>## 
@@ -243,9 +248,9 @@ summary( reml3(y=logOR, v=v, x=(as.numeric(Type)-1),
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Centered Year as a predictor
-summary( reml3(y=logOR, v=v, x=scale(Year, scale=FALSE),
-               cluster=Cluster, data=Bornmann07) )
+<pre><code class="r">## Centered Year as a predictor 
+summary( reml3(y=logOR, v=v, x=scale(Year, scale=FALSE), 
+               cluster=Cluster, data=Bornmann07) ) 
 </code></pre>
 
 <pre><code>## 
@@ -268,19 +273,19 @@ summary( reml3(y=logOR, v=v, x=scale(Year, scale=FALSE),
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Handling missing covariates with FIML
-## MCAR
-## Set seed for replication
-set.seed(1000000)
+<pre><code class="r">## Handling missing covariates with FIML 
+## MCAR 
+## Set seed for replication 
+set.seed(1000000) 
 
-## Copy Bornmann07 to my.df
-my.df &lt;- Bornmann07
-## &quot;Fellowship&quot;: 1; &quot;Grant&quot;: 0
-my.df$Type_MCAR &lt;- ifelse(Bornmann07$Type==&quot;Fellowship&quot;, yes=1, no=0)
+## Copy Bornmann07 to my.df 
+my.df &lt;- Bornmann07 
+## &quot;Fellowship&quot;: 1; &quot;Grant&quot;: 0 
+my.df$Type_MCAR &lt;- ifelse(Bornmann07$Type==&quot;Fellowship&quot;, yes=1, no=0) 
 
-## Create 17 out of 66 missingness with MCAR
-my.df$Type_MCAR[sample(1:66, 17)] &lt;- NA
-summary(meta3X(y=logOR, v=v, cluster=Cluster, x2=Type_MCAR, data=my.df))
+## Create 17 out of 66 missingness with MCAR 
+my.df$Type_MCAR[sample(1:66, 17)] &lt;- NA 
+summary(meta3X(y=logOR, v=v, cluster=Cluster, x2=Type_MCAR, data=my.df)) 
 </code></pre>
 
 <pre><code>## 
@@ -290,8 +295,8 @@ summary(meta3X(y=logOR, v=v, cluster=Cluster, x2=Type_MCAR, data=my.df))
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
 ##             Estimate  Std.Error     lbound     ubound z value Pr(&gt;|z|)   
-## Intercept -0.0106318  0.0397685 -0.0885766  0.0673131 -0.2673 0.789206   
-## SlopeX2_1 -0.1753249  0.0582619 -0.2895161 -0.0611336 -3.0093 0.002619 **
+## Intercept -0.0106318  0.0397685 -0.0885766  0.0673131 -0.2673 0.789207   
+## SlopeX2_1 -0.1753249  0.0582619 -0.2895162 -0.0611336 -3.0093 0.002619 **
 ## Tau2_2     0.0030338  0.0026839 -0.0022266  0.0082941  1.1304 0.258324   
 ## Tau2_3     0.0036839  0.0042817 -0.0047082  0.0120759  0.8604 0.389586   
 ## ---
@@ -312,15 +317,15 @@ summary(meta3X(y=logOR, v=v, cluster=Cluster, x2=Type_MCAR, data=my.df))
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## MAR
-Type_MAR &lt;- ifelse(Bornmann07$Type==&quot;Fellowship&quot;, yes=1, no=0)
+<pre><code class="r">## MAR 
+Type_MAR &lt;- ifelse(Bornmann07$Type==&quot;Fellowship&quot;, yes=1, no=0) 
 
-## Create 27 out of 66 missingness with MAR for cases Year&lt;1996
-index_MAR &lt;- ifelse(Bornmann07$Year&lt;1996, yes=TRUE, no=FALSE)
-Type_MAR[index_MAR] &lt;- NA
+## Create 27 out of 66 missingness with MAR for cases Year&lt;1996 
+index_MAR &lt;- ifelse(Bornmann07$Year&lt;1996, yes=TRUE, no=FALSE) 
+Type_MAR[index_MAR] &lt;- NA 
 
-## Include auxiliary variable
-summary(meta3X(y=logOR, v=v, cluster=Cluster, x2=Type_MAR, av2=Year, data=my.df))
+## Include auxiliary variable 
+summary(meta3X(y=logOR, v=v, cluster=Cluster, x2=Type_MAR, av2=Year, data=my.df)) 
 </code></pre>
 
 <pre><code>## 
@@ -331,10 +336,10 @@ summary(meta3X(y=logOR, v=v, cluster=Cluster, x2=Type_MAR, av2=Year, data=my.df)
 ## 95% confidence intervals: z statistic approximation
 ## Coefficients:
 ##             Estimate  Std.Error     lbound     ubound z value Pr(&gt;|z|)   
-## Intercept -0.0264058  0.0571965 -0.1385089  0.0856974 -0.4617 0.644320   
-## SlopeX2_1 -0.2003999  0.0691031 -0.3358395 -0.0649603 -2.9000 0.003731 **
-## Tau2_2     0.0029970  0.0022371 -0.0013877  0.0073816  1.3397 0.180358   
-## Tau2_3     0.0030212  0.0032462 -0.0033412  0.0093836  0.9307 0.352010   
+## Intercept -0.0264058  0.0572080 -0.1385314  0.0857198 -0.4616 0.644386   
+## SlopeX2_1 -0.2003999  0.0691114 -0.3358557 -0.0649440 -2.8997 0.003736 **
+## Tau2_2     0.0029970  0.0022371 -0.0013877  0.0073817  1.3396 0.180360   
+## Tau2_3     0.0030212  0.0032464 -0.0033416  0.0093840  0.9306 0.352041   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -353,6 +358,9 @@ summary(meta3X(y=logOR, v=v, cluster=Cluster, x2=Type_MAR, av2=Year, data=my.df)
 ## Other values may indicate problems.)
 </code></pre>
 
+<pre><code class="r">## } 
+</code></pre>
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

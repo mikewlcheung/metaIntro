@@ -10,76 +10,78 @@
 
 <table width="100%" summary="page for readData {metaSEM}"><tr><td>readData {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Read External Correlation/Covariance Matrices
+<h2>Read External Correlation/Covariance Matrices 
 </h2>
 
 <h3>Description</h3>
 
-<p>It reads full/lower triangle/stacked vectors of correlation/covariance data into a list of correlation/covariance matrices.
+<p>It reads full/lower triangle/stacked vectors of correlation/covariance data into a list of correlation/covariance matrices. 
 </p>
 
 
 <h3>Usage</h3>
 
-<pre>
-readFullMat(file, ...)
-readStackVec(file, ...)
-readLowTriMat(file, no.var, ...)
+<pre> 
+readFullMat(file, ...) 
+readStackVec(file, ...) 
+readLowTriMat(file, no.var, ...) 
 </pre>
 
 
 <h3>Arguments</h3>
 
+ 
 <table summary="R argblock">
 <tr valign="top"><td><code>file</code></td>
 <td>
-<p>File name of the data.
+<p>File name of the data. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>no.var</code></td>
 <td>
-<p>Number of variables in the data.
+<p>Number of variables in the data. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>Further arguments to be passed to <code><a href="../../base/html/scan.html">scan</a></code> for <code>readLowTriMat</code> and to <code><a href="../../utils/html/read.table.html">read.table</a></code> for <code>readFullMat</code> and <code>readStackVec</code>.
+<p>Further arguments to be passed to <code><a href="../../base/html/scan.html">scan</a></code> for <code>readLowTriMat</code> and to <code><a href="../../utils/html/read.table.html">read.table</a></code> for <code>readFullMat</code> and <code>readStackVec</code>. 
 </p>
-</td></tr>
+</td></tr> 
 </table>
 
 
 <h3>Value</h3>
 
-<p>A list of correlation/covariance matrices.
+<p>A list of correlation/covariance matrices. 
 </p>
 
 
 <h3>Author(s)</h3>
 
-<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt; 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">## Write two full correlation matrices into a file named &quot;fullmat.dat&quot;.
-## x2 is missing in the second matrix.
-## The content of &quot;fullmat.dat&quot; is
-# 1.0 0.3 0.4
-# 0.3 1.0 0.5
-# 0.4 0.5 1.0
-# 1.0 NA 0.4
-# NA NA NA
-# 0.4 NA 1.0
-cat(&quot;1.0 0.3 0.4\n0.3 1.0 0.5\n0.4 0.5 1.0
-1.0 NA 0.4\nNA NA NA\n0.4 NA 1.0&quot;,
-file=&quot;fullmat.dat&quot;, sep=&quot;&quot;)
+<pre><code class="r">## \dontrun{ 
+## Write two full correlation matrices into a file named &quot;fullmat.dat&quot;. 
+## x2 is missing in the second matrix. 
+## The content of &quot;fullmat.dat&quot; is 
+# 1.0 0.3 0.4 
+# 0.3 1.0 0.5 
+# 0.4 0.5 1.0 
+# 1.0 NA 0.4 
+# NA NA NA 
+# 0.4 NA 1.0 
+cat(&quot;1.0 0.3 0.4\n0.3 1.0 0.5\n0.4 0.5 1.0 
+1.0 NA 0.4\nNA NA NA\n0.4 NA 1.0&quot;, 
+file=&quot;fullmat.dat&quot;, sep=&quot;&quot;) 
 
-## Read the correlation matrices
-my.full &lt;- readFullMat(&quot;fullmat.dat&quot;)
+## Read the correlation matrices 
+my.full &lt;- readFullMat(&quot;fullmat.dat&quot;) 
 
-my.full
+my.full 
 </code></pre>
 
 <pre><code>## $`1`
@@ -95,34 +97,34 @@ my.full
 ## x3 0.4 NA 1.0
 </code></pre>
 
-<pre><code class="r"># $`1`
-#     x1  x2  x3
-# x1 1.0 0.3 0.4
-# x2 0.3 1.0 0.5
-# x3 0.4 0.5 1.0
-#
-# $`2`
-#     x1 x2  x3
-# x1 1.0 NA 0.4
-# x2  NA NA  NA
-# x3 0.4 NA 1.0
+<pre><code class="r"># $`1` 
+#     x1  x2  x3 
+# x1 1.0 0.3 0.4 
+# x2 0.3 1.0 0.5 
+# x3 0.4 0.5 1.0 
+# 
+# $`2` 
+#     x1 x2  x3 
+# x1 1.0 NA 0.4 
+# x2  NA NA  NA 
+# x3 0.4 NA 1.0 
 
-## Write two lower triangle correlation matrices into a file named &quot;lowertriangle.dat&quot;.
-## x2 is missing in the second matrix.
-## The content of &quot;lowertriangle.dat&quot; is
+## Write two lower triangle correlation matrices into a file named &quot;lowertriangle.dat&quot;. 
+## x2 is missing in the second matrix. 
+## The content of &quot;lowertriangle.dat&quot; is 
+# 1.0  
+# 0.3 1.0  
+# 0.4 0.5 1.0 
 # 1.0 
-# 0.3 1.0 
-# 0.4 0.5 1.0
-# 1.0
-# NA NA 
-# 0.4 NA 1.0
-cat(&quot;1.0\n0.3 1.0\n0.4 0.5 1.0\n1.0\nNA NA\n0.4 NA 1.0&quot;,
-    file=&quot;lowertriangle.dat&quot;, sep=&quot;&quot;)
+# NA NA  
+# 0.4 NA 1.0 
+cat(&quot;1.0\n0.3 1.0\n0.4 0.5 1.0\n1.0\nNA NA\n0.4 NA 1.0&quot;, 
+    file=&quot;lowertriangle.dat&quot;, sep=&quot;&quot;) 
 
-## Read the lower triangle correlation matrices
-my.lowertri &lt;- readLowTriMat(file = &quot;lowertriangle.dat&quot;, no.var = 3)
+## Read the lower triangle correlation matrices 
+my.lowertri &lt;- readLowTriMat(file = &quot;lowertriangle.dat&quot;, no.var = 3) 
 
-my.lowertri
+my.lowertri 
 </code></pre>
 
 <pre><code>## $`1`
@@ -138,30 +140,30 @@ my.lowertri
 ## x3 0.4 NA 1.0
 </code></pre>
 
-<pre><code class="r"># $`1`
-#     x1  x2  x3
-# x1 1.0 0.3 0.4
-# x2 0.3 1.0 0.5
-# x3 0.4 0.5 1.0
-#
-# $`2`
-#     x1 x2  x3
-# x1 1.0 NA 0.4
-# x2  NA NA  NA
-# x3 0.4 NA 1.0
+<pre><code class="r"># $`1` 
+#     x1  x2  x3 
+# x1 1.0 0.3 0.4 
+# x2 0.3 1.0 0.5 
+# x3 0.4 0.5 1.0 
+# 
+# $`2` 
+#     x1 x2  x3 
+# x1 1.0 NA 0.4 
+# x2  NA NA  NA 
+# x3 0.4 NA 1.0 
 
-## Write two vectors of correlation coefficients based on
-##  column major into a file named &quot;stackvec.dat&quot;.
-## x2 is missing in the second matrix.
-## The content of &quot;stackvec.dat&quot; is
-# 1.0 0.3 0.4 1.0 0.5 1.0
-# 1.0 NA 0.4 NA NA 1.0
-cat(&quot;1.0 0.3 0.4 1.0 0.5 1.0\n1.0 NA 0.4 NA NA 1.0\n&quot;,
-    file=&quot;stackvec.dat&quot;, sep=&quot;&quot;)
+## Write two vectors of correlation coefficients based on 
+##  column major into a file named &quot;stackvec.dat&quot;. 
+## x2 is missing in the second matrix. 
+## The content of &quot;stackvec.dat&quot; is 
+# 1.0 0.3 0.4 1.0 0.5 1.0 
+# 1.0 NA 0.4 NA NA 1.0 
+cat(&quot;1.0 0.3 0.4 1.0 0.5 1.0\n1.0 NA 0.4 NA NA 1.0\n&quot;, 
+    file=&quot;stackvec.dat&quot;, sep=&quot;&quot;) 
 
-my.vec &lt;- readStackVec(&quot;stackvec.dat&quot;)
+my.vec &lt;- readStackVec(&quot;stackvec.dat&quot;) 
 
-my.vec
+my.vec 
 </code></pre>
 
 <pre><code>## $`1`
@@ -177,19 +179,20 @@ my.vec
 ## x3 0.4 NA 1.0
 </code></pre>
 
-<pre><code class="r"># $`1`
-#     x1  x2  x3
-# x1 1.0 0.3 0.4
-# x2 0.3 1.0 0.5
-# x3 0.4 0.5 1.0
-#
-# $`2`
-#    x1 x2  x3
-# x1 1.0 NA 0.4
-# x2  NA NA  NA
-# x3 0.4 NA 1.0
+<pre><code class="r"># $`1` 
+#     x1  x2  x3 
+# x1 1.0 0.3 0.4 
+# x2 0.3 1.0 0.5 
+# x3 0.4 0.5 1.0 
+# 
+# $`2` 
+#    x1 x2  x3 
+# x1 1.0 NA 0.4 
+# x2  NA NA  NA 
+# x3 0.4 NA 1.0 
+## } 
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

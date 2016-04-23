@@ -197,20 +197,6 @@ Type2 <- ifelse(Bornmann07$Type=="Fellowship", yes=1, no=0)
 summary( Model1 <- meta3(logOR, v, x=Type2, cluster=Cluster, data=Bornmann07)) 
 ```
 
-* Alternative model: `Grants` and `Fellowship` as indicator variables
-    + If we want to estimate the effects for both `Grants` and `Fellowship`, we may create two indicator variables to represent them. Since we cannot estimate the intercept and these coefficients at the same time, we need to fix the intercept at 0 by specifying the `intercept.constraints=0` argument in `meta3()`. We are now able to include both `Grants` and `Fellowship` in the analysis. The estimated effects (and their 95% CIs) for `Grants` and `Fellowship` were -0.0066 (-0.0793, 0.0661) and -0.2022 (-0.2805, -0.1239), respectively.
-
-```{r}
-## Alternative model: Grants and Fellowship as indicators  
-## Indicator variables
-Grants <- ifelse(Bornmann07$Type=="Grants", yes=1, no=0)
-Fellowship <- ifelse(Bornmann07$Type=="Fellowship", yes=1, no=0)
-  
-summary(Model1b <- meta3(logOR, v, x=cbind(Grants, Fellowship), 
-                         cluster=Cluster, data=Bornmann07,
-                         intercept.constraints=0, model.name="Model 1"))
-```
-
 ## Model 2: `Year` and `Year^2` as covariates
 * When there are several covariates, we may combine them with the `cbind()` command. For example, `cbind(Year, Year^2)` includes both `Year` and its squared as covariates. In the output, `Slope_1` and `Slope_2` refer to the regression coefficients for `Year` and `Year^2`, respectively. To increase the numerical stability, the covariates are usually centered before creating the quadratic terms. Since Marsh et al. (2009) standardized `Year` in their analysis, I follow this practice here.
 - The estimated regression coefficients (and their 95% CIs) for =Year= and =Year^2= were -0.0010 (-0.0473, 0.0454) and -0.0118 (-0.0247, 0.0012), respectively. The $R^2_{(2)}$ and $R^2_{(3)}$ were 0.2430 and 0.0000, respectively.
@@ -274,11 +260,15 @@ summary( Model4 <- meta3(logOR, v, x=cbind(CountryAus, CountryCan, CountryEur,
 
 ## Model 5: `Type` and `Discipline` as covariates
 * The $R^2_{(2)}$ and $R^2_{(3)}$ were 0.3925 and 1.0000, respectively. The $\hat{\tau}^2_{(3)}$ was near 0 after controlling for the covariates.
-```{r}
+```{r, message=FALSE}
 ## Model 5: Type and Discipline as covariates
-summary( Model5 <- meta3(logOR, v, x=cbind(Type2, DisciplinePhy, DisciplineLife, 
-                         DisciplineSoc), cluster=Cluster, data=Bornmann07,
-                         model.name="Model 5") )
+Model5 <- meta3(logOR, v, x=cbind(Type2, DisciplinePhy, DisciplineLife, 
+                DisciplineSoc), cluster=Cluster, data=Bornmann07,
+                model.name="Model 5")
+
+## Rerun it to remove the error code
+Model5 <- rerun(Model5)
+summary(Model5)
 ```
 
 * Testing whether `Discipline` is significant after controlling for `Type`
@@ -290,11 +280,15 @@ anova(Model5, Model1)
 
 ## Model 6: `Type` and `Country` as covariates  
 * The $R^2_{(2)}$ and $R^2_{(3)}$ were 0.3948 and 1.0000, respectively. The $\hat{\tau}^2_{(3)}$ was near 0 after controlling for the covariates.
-```{r}  
+```{r, message=FALSE}  
 ## Model 6: Type and Country as covariates
-summary( Model6 <- meta3(logOR, v, x=cbind(Type2, CountryAus, CountryCan, 
-                         CountryEur, CountryUK), cluster=Cluster, data=Bornmann07,
-                         model.name="Model 6") ) 
+Model6 <- meta3(logOR, v, x=cbind(Type2, CountryAus, CountryCan, 
+                CountryEur, CountryUK), cluster=Cluster, data=Bornmann07,
+                model.name="Model 6") 
+
+## Rerun it to remove the error code
+Model6 <- rerun(Model6)
+summary(Model5)
 ```
 
 * Testing whether `Country` is significant after controlling for `Type`

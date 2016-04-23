@@ -10,64 +10,65 @@
 
 <table width="100%" summary="page for create.Fmatrix {metaSEM}"><tr><td>create.Fmatrix {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Create an F matrix to select observed variables
+<h2>Create an F matrix to select observed variables 
 </h2>
 
 <h3>Description</h3>
 
-<p>It creates an F matrix to select observed variables for wls
-function.
+<p>It creates an F matrix to select observed variables for wls 
+function. 
 </p>
 
 
 <h3>Usage</h3>
 
-<pre>
-create.Fmatrix(x, name, as.mxMatrix=TRUE, ...)
+<pre> 
+create.Fmatrix(x, name, as.mxMatrix=TRUE, ...) 
 </pre>
 
 
 <h3>Arguments</h3>
 
+ 
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>A vector of logical type 
+<p>A vector of logical type  
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>name</code></td>
 <td>
-<p>Name of the matrix. If it is missing, &quot;Fmatrix&quot; will be used.
+<p>Name of the matrix. If it is missing, &quot;Fmatrix&quot; will be used. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>as.mxMatrix</code></td>
 <td>
-<p>Logical. If it is <code>TRUE</code>, the output is a matrix of
+<p>Logical. If it is <code>TRUE</code>, the output is a matrix of 
 <code>MxMatrix-class</code>. If it is <code>FALSE</code>, it is a numeric matrix.</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>Not used.</p>
-</td></tr>
+</td></tr> 
 </table>
 
 
 <h3>Author(s)</h3>
 
-<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt; 
 </p>
 
 
 <h3>See Also</h3>
 
- <p><code><a href="as.mxMatrix.html">as.mxMatrix</a></code>, <code><a href="create.mxMatrix.html">create.mxMatrix</a></code>, <code><a href="wls.html">wls</a></code>
+ <p><code><a href="as.mxMatrix.html">as.mxMatrix</a></code>, <code><a href="create.mxMatrix.html">create.mxMatrix</a></code>, <code><a href="wls.html">wls</a></code> 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">## Select the first 3 variables while the other 2 variables are latent.
-create.Fmatrix(c(1,1,1,0,0))
+<pre><code class="r">## Select the first 3 variables while the other 2 variables are latent. 
+create.Fmatrix(c(1,1,1,0,0)) 
 </code></pre>
 
 <pre><code>## FullMatrix &#39;Fmatrix&#39; 
@@ -87,23 +88,23 @@ create.Fmatrix(c(1,1,1,0,0))
 ## $ubound: No upper bounds assigned.
 </code></pre>
 
-<pre><code class="r"># FullMatrix &#39;Fmatrix&#39; 
-#
-# @labels: No labels assigned.
-#
-# @values
-#      [,1] [,2] [,3] [,4] [,5]
-# [1,]    1    0    0    0    0
-# [2,]    0    1    0    0    0
-# [3,]    0    0    1    0    0
-#
-# @free: No free parameters.
-#
-# @lbound: No lower bounds assigned.
-#
-# @ubound: No upper bounds assigned.
+<pre><code class="r"># FullMatrix &#39;Fmatrix&#39;  
+# 
+# @labels: No labels assigned. 
+# 
+# @values 
+#      [,1] [,2] [,3] [,4] [,5] 
+# [1,]    1    0    0    0    0 
+# [2,]    0    1    0    0    0 
+# [3,]    0    0    1    0    0 
+# 
+# @free: No free parameters. 
+# 
+# @lbound: No lower bounds assigned. 
+# 
+# @ubound: No upper bounds assigned. 
 
-create.Fmatrix(c(1,1,1,0,0), as.mxMatrix=FALSE)
+create.Fmatrix(c(1,1,1,0,0), as.mxMatrix=FALSE) 
 </code></pre>
 
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
@@ -112,12 +113,12 @@ create.Fmatrix(c(1,1,1,0,0), as.mxMatrix=FALSE)
 ## [3,]    0    0    1    0    0
 </code></pre>
 
-<pre><code class="r">#      [,1] [,2] [,3] [,4] [,5]
-# [1,]    1    0    0    0    0
-# [2,]    0    1    0    0    0
-# [3,]    0    0    1    0    0
+<pre><code class="r">#      [,1] [,2] [,3] [,4] [,5] 
+# [1,]    1    0    0    0    0 
+# [2,]    0    1    0    0    0 
+# [3,]    0    0    1    0    0 
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

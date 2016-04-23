@@ -5,213 +5,217 @@
 
 <table width="100%" summary="page for reml {metaSEM}"><tr><td>reml {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Estimate Variance Components with Restricted (Residual) Maximum
-Likelihood Estimation
+<h2>Estimate Variance Components with Restricted (Residual) Maximum 
+Likelihood Estimation 
 </h2>
 
 <h3>Description</h3>
 
-<p>It estimates the variance components of random-effects in univariate and
-multivariate meta-analysis with restricted (residual) maximum likelihood
-(REML) estimation method.
+ 
+<p>It estimates the variance components of random-effects in univariate and 
+multivariate meta-analysis with restricted (residual) maximum likelihood 
+(REML) estimation method. 
 </p>
 
 
 <h3>Usage</h3>
 
-<pre>
-reml(y, v, x, data, RE.constraints = NULL, RE.startvalues = 0.1,
-     RE.lbound = 1e-10, intervals.type = c("z", "LB"),
-     model.name="Variance component with REML",
-     suppressWarnings = TRUE, silent = TRUE, run = TRUE, ...)
+<pre> 
+reml(y, v, x, data, RE.constraints = NULL, RE.startvalues = 0.1, 
+     RE.lbound = 1e-10, intervals.type = c("z", "LB"), 
+     model.name="Variance component with REML", 
+     suppressWarnings = TRUE, silent = TRUE, run = TRUE, ...) 
 </pre>
 
 
 <h3>Arguments</h3>
 
+ 
 <table summary="R argblock">
 <tr valign="top"><td><code>y</code></td>
 <td>
-<p>A vector of effect size for univariate meta-analysis or a <i>k</i> x
-<i>p</i> matrix of effect sizes for multivariate meta-analysis
-where <i>k</i> is the number of studies and <i>p</i> is the
-number of effect sizes. 
+<p>A vector of effect size for univariate meta-analysis or a <i>k</i> x 
+<i>p</i> matrix of effect sizes for multivariate meta-analysis 
+where <i>k</i> is the number of studies and <i>p</i> is the 
+number of effect sizes.  
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>v</code></td>
 <td>
-<p>A vector of the sampling variance of the effect size for univarite
-meta-analysis or a <i>k</i> x <i>p*</i> matrix of the sampling
-covariance matrix of the effect sizes for multivariate meta-analysis
-where <i>p* = p(p+1)/2</i>. It is arranged by column
-major as used by <code><a href="../../OpenMx/html/vech.html">vech</a></code>.
+<p>A vector of the sampling variance of the effect size for univarite 
+meta-analysis or a <i>k</i> x <i>p*</i> matrix of the sampling 
+covariance matrix of the effect sizes for multivariate meta-analysis 
+where <i>p* = p(p+1)/2</i>. It is arranged by column 
+major as used by <code><a href="../../OpenMx/html/vech.html">vech</a></code>. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>A predictor or a <i>k</i> x <i>m</i> matrix of predictors
-where <i>m</i> is the number of predictors.
+<p>A predictor or a <i>k</i> x <i>m</i> matrix of predictors 
+where <i>m</i> is the number of predictors. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>data</code></td>
 <td>
-<p>An optional data frame containing the variables in the model.
+<p>An optional data frame containing the variables in the model. 
 </p>
-</td></tr>   
+</td></tr>    
 <tr valign="top"><td><code>RE.constraints</code></td>
 <td>
-<p>A <i>p</i> x <i>p</i> matrix
-specifying the variance componets of the random effects. If the input
-is not a matrix, it is converted into a matrix by
-<code>as.matrix()</code>. The default is that all
-covariance/variance components are free. The format of this matrix
-follows <code><a href="as.mxMatrix.html">as.mxMatrix</a></code>. Elements of the variance
-components can be constrained equally by using the same labels. If a zero matrix is
-specified, it becomes a fixed-effects meta-analysis.
+<p>A <i>p</i> x <i>p</i> matrix 
+specifying the variance componets of the random effects. If the input 
+is not a matrix, it is converted into a matrix by 
+<code>as.matrix()</code>. The default is that all 
+covariance/variance components are free. The format of this matrix 
+follows <code><a href="as.mxMatrix.html">as.mxMatrix</a></code>. Elements of the variance 
+components can be constrained equally by using the same labels. If a zero matrix is 
+specified, it becomes a fixed-effects meta-analysis. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>RE.startvalues</code></td>
 <td>
-<p>A vector of <i>p</i> starting values on the
-diagonals of the variance component of the random effects. If only one
-scalar is given, it will be repeated across the diagonals. Starting values for the
-off-diagonals of the variance component are all 0. A <i>p</i> x
-<i>p</i> symmetric matrix of starting values is also accepted. 
+<p>A vector of <i>p</i> starting values on the 
+diagonals of the variance component of the random effects. If only one 
+scalar is given, it will be repeated across the diagonals. Starting values for the 
+off-diagonals of the variance component are all 0. A <i>p</i> x 
+<i>p</i> symmetric matrix of starting values is also accepted.  
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>RE.lbound</code></td>
 <td>
-<p>A vector of <i>p</i> lower bounds on the
-diagonals of the variance component of the random effects. If only one
-scalar is given, it will be repeated across the diagonals. Lower
-bounds for the off-diagonals of the variance component are set at <code>NA</code>. A <i>p</i> x
-<i>p</i> symmetric matrix of the lower bounds is also accepted.
+<p>A vector of <i>p</i> lower bounds on the 
+diagonals of the variance component of the random effects. If only one 
+scalar is given, it will be repeated across the diagonals. Lower 
+bounds for the off-diagonals of the variance component are set at <code>NA</code>. A <i>p</i> x 
+<i>p</i> symmetric matrix of the lower bounds is also accepted. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>intervals.type</code></td>
 <td>
-<p>Either <code>z</code> (default if missing) or
-<code>LB</code>. If it is <code>z</code>, it calculates the 95% Wald confidence
-intervals (CIs) based on the z statistic. If it is <code>LB</code>, it
-calculates the 95% likelihood-based CIs on the
-parameter estimates. Note that the z values and their
-associated p values are based on the z statistic. They are not
-related to the likelihood-based CIs.
+<p>Either <code>z</code> (default if missing) or 
+<code>LB</code>. If it is <code>z</code>, it calculates the 95% Wald confidence 
+intervals (CIs) based on the z statistic. If it is <code>LB</code>, it 
+calculates the 95% likelihood-based CIs on the 
+parameter estimates. Note that the z values and their 
+associated p values are based on the z statistic. They are not 
+related to the likelihood-based CIs. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>model.name</code></td>
 <td>
-<p>A string for the model name in <code><a href="../../OpenMx/html/mxModel.html">mxModel</a></code>. 
+<p>A string for the model name in <code><a href="../../OpenMx/html/mxModel.html">mxModel</a></code>.  
 </p>
-</td></tr>  
+</td></tr>   
 <tr valign="top"><td><code>suppressWarnings</code></td>
 <td>
-<p>Logical. If <code>TRUE</code>, warnings are
-suppressed. Argument to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code>.
+<p>Logical. If <code>TRUE</code>, warnings are 
+suppressed. Argument to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code>. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>silent</code></td>
 <td>
 <p>Logical. Argument to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code></p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>run</code></td>
 <td>
 <p>Logical. If <code>FALSE</code>, only return the mx model without running the analysis.</p>
-</td></tr>  
+</td></tr>   
 <tr valign="top"><td><code>...</code></td>
 <td>
-<p>Futher arguments to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code>
+<p>Futher arguments to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code> 
 </p>
-</td></tr>
+</td></tr> 
 </table>
 
 
 <h3>Details</h3>
 
-<p>Restricted (residual) maximum likelihood obtains the parameter estimates on the transformed data that do not include the fixed-effects parameters. A transformation matrix <i>M=I-X(X'X)^{-1}X'</i> is created based on the design matrix <i>X</i> which is just a column vector when there is no predictor in <code>x</code>. The last <i>N</i> redundant rows of <i>M</i> is removed where <i>N</i> is the rank of <i>X</i>. After pre-multiplying by <i>M</i> on <code>y</code>, the parameters of fixed-effects are removed from the model. Thus, only the parameters of random-effects are estimated.
+ 
+<p>Restricted (residual) maximum likelihood obtains the parameter estimates on the transformed data that do not include the fixed-effects parameters. A transformation matrix <i>M=I-X(X'X)^{-1}X'</i> is created based on the design matrix <i>X</i> which is just a column vector when there is no predictor in <code>x</code>. The last <i>N</i> redundant rows of <i>M</i> is removed where <i>N</i> is the rank of <i>X</i>. After pre-multiplying by <i>M</i> on <code>y</code>, the parameters of fixed-effects are removed from the model. Thus, only the parameters of random-effects are estimated. 
 </p>
-<p>An alternative but equivalent approach is to minimize the
+<p>An alternative but equivalent approach is to minimize the 
 -2*log-likelihood function: </p>
-<p style="text-align: center;"><i>
+<p style="text-align: center;"><i> 
 	log(det|V+T^2|)+log(det|X'(V+T^2)^{-1}X|)+(y-X&alpha;)'(V+T^2)^{-1}(y-X*&alpha;)</i></p>
-
-<p>where <i>V</i> is the known conditional sampling covariance matrix
-of <i>y</i>, <i>T^2</i> is the variance component of the random
-effects, and <i>\hat{&alpha;}=(t(X)(V+T^2)^{-1}X)^{-1}t(X)(V+T^2)^{-1}y</i>. <code>reml()</code>
-minimizes the above likelihood function to obtain the parameter estimates.
+ 
+<p>where <i>V</i> is the known conditional sampling covariance matrix 
+of <i>y</i>, <i>T^2</i> is the variance component of the random 
+effects, and <i>\hat{&alpha;}=(t(X)(V+T^2)^{-1}X)^{-1}t(X)(V+T^2)^{-1}y</i>. <code>reml()</code> 
+minimizes the above likelihood function to obtain the parameter estimates. 
 </p>
 
 
 <h3>Value</h3>
 
-<p>An object of class <code>reml</code> with a list of
+<p>An object of class <code>reml</code> with a list of 
 </p>
 <table summary="R valueblock">
 <tr valign="top"><td><code>call</code></td>
 <td>
 <p>Object returned by <code><a href="../../base/html/match.call.html">match.call</a></code></p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>data</code></td>
 <td>
 <p>A data matrix of y, v and x  </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>no.y</code></td>
 <td>
 <p>No. of effect sizes</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>no.x</code></td>
 <td>
 <p>No. of predictors</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>miss.vec</code></td>
 <td>
 <p>A vector indicating missing data. Studies will be removed before the analysis if they are <code>TRUE</code></p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>mx.fit</code></td>
 <td>
 <p>A fitted object returned from	<code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code></p>
-</td></tr>
+</td></tr> 
 </table>
 
 
 <h3>Note</h3>
 
- <p><code>reml</code> is more computional intensive than <code>meta</code>. Moreover, <code>reml</code> is more
-likely to encounter errors during optimization. Since
-a likelihood function is directly employed to obtain the parameter
-estimates, there is no number of studies and number of observed statistics
-returned by <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code>. Ad-hoc steps are used
-to modify <code>mx.fit@runstate$objectives[[1]]@numObs</code> and <code>mx.fit@runstate$objectives[[1]]@numStats</code>.
+ <p><code>reml</code> is more computional intensive than <code>meta</code>. Moreover, <code>reml</code> is more 
+likely to encounter errors during optimization. Since 
+a likelihood function is directly employed to obtain the parameter 
+estimates, there is no number of studies and number of observed statistics 
+returned by <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code>. Ad-hoc steps are used 
+to modify <code>mx.fit@runstate$objectives[[1]]@numObs</code> and <code>mx.fit@runstate$objectives[[1]]@numStats</code>. 
 </p>
 
 
 <h3>Author(s)</h3>
 
-<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt; 
 
 </p>
 
 
 <h3>References</h3>
 
-<p>Cheung, M. W.-L. (2013). Implementing restricted maximum likelihood
-estimation in structural equation models. <em>Structural Equation
-Modeling</em>, <b>20(1)</b>, 157-167.
+ 
+<p>Cheung, M. W.-L. (2013). Implementing restricted maximum likelihood 
+estimation in structural equation models. <em>Structural Equation 
+Modeling</em>, <b>20(1)</b>, 157-167. 
 </p>
-<p>Mehta, P. D., &amp; Neale, M. C. (2005). People Are Variables Too: Multilevel Structural Equations Modeling. <em>Psychological
-Methods</em>, <b>10(3)</b>, 259-284.
+<p>Mehta, P. D., &amp; Neale, M. C. (2005). People Are Variables Too: Multilevel Structural Equations Modeling. <em>Psychological 
+Methods</em>, <b>10(3)</b>, 259-284. 
 </p>
-<p>Searle, S. R., Casella, G., &amp; McCulloch, C. E. (1992). <em>Variance components</em>. New York: Wiley.
+<p>Searle, S. R., Casella, G., &amp; McCulloch, C. E. (1992). <em>Variance components</em>. New York: Wiley. 
 </p>
-<p>Viechtbauer, W. (2005). Bias and efficiency of meta-analytic variance estimators in the random-effects model. <em>Journal of Educational and Behavioral Statistics</em>, <b>30(3)</b>, 261-293.  
+<p>Viechtbauer, W. (2005). Bias and efficiency of meta-analytic variance estimators in the random-effects model. <em>Journal of Educational and Behavioral Statistics</em>, <b>30(3)</b>, 261-293.   
 </p>
 
 
 <h3>See Also</h3>
 
- <p><code><a href="meta.html">meta</a></code>, <code><a href="reml3.html">reml3</a></code>, <code><a href="Hox02.html">Hox02</a></code>, <code><a href="Berkey98.html">Berkey98</a></code>
+ <p><code><a href="meta.html">meta</a></code>, <code><a href="reml3.html">reml3</a></code>, <code><a href="Hox02.html">Hox02</a></code>, <code><a href="Berkey98.html">Berkey98</a></code> 
 
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

@@ -10,161 +10,174 @@
 
 <table width="100%" summary="page for asyCov {metaSEM}"><tr><td>asyCov {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Compute Asymptotic Covariance Matrix of a Correlation/Covariance Matrix
+<h2>Compute Asymptotic Covariance Matrix of a Correlation/Covariance Matrix 
 </h2>
 
 <h3>Description</h3>
 
-<p>It computes the asymptotic sampling covariance matrix of a
-correlation/covariance matrix under the assumption of multivariate normality. 
+<p>It computes the asymptotic sampling covariance matrix of a 
+correlation/covariance matrix under the assumption of multivariate normality.  
 </p>
 
 
 <h3>Usage</h3>
 
-<pre>
-asyCov(x, n, cor.analysis = TRUE, dropNA = FALSE, as.matrix = TRUE,
-       suppressWarnings = TRUE,  silent = TRUE, run = TRUE, ...)
+<pre> 
+asyCov(x, n, cor.analysis = TRUE, dropNA = FALSE, as.matrix = TRUE, 
+       acov=c("individual", "unweighted", "weighted"), 
+       suppressWarnings = TRUE,  silent = TRUE, run = TRUE, ...) 
 </pre>
 
 
 <h3>Arguments</h3>
 
+ 
 <table summary="R argblock">
 <tr valign="top"><td><code>x</code></td>
 <td>
-<p>A correlation/covariance matrix or a list of
-correlation/covariance matrices. <code>NA</code> on the variables or other
-values defined in <code>na.strings</code> will be removed before the
-analysis. Note that it only checks the diagonal elements of
-the matrices. If there are missing values, make sure that the
-diagonals are coded with <code>NA</code> or values defined in <code>na.strings</code>.
+<p>A correlation/covariance matrix or a list of 
+correlation/covariance matrices. <code>NA</code> on the variables or other 
+values defined in <code>na.strings</code> will be removed before the 
+analysis. Note that it only checks the diagonal elements of 
+the matrices. If there are missing values, make sure that the 
+diagonals are coded with <code>NA</code> or values defined in <code>na.strings</code>. 
 </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>n</code></td>
 <td>
 <p>Sample size or a vector of sample sizes</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>cor.analysis</code></td>
 <td>
-<p>Logical. The output is either a correlation or
+<p>Logical. The output is either a correlation or 
 covariance matrix.</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>dropNA</code></td>
 <td>
-<p>Logical. If it is <code>TRUE</code>, the resultant dimensions
-will be reduced by dropping the missing variables. If it is
-<code>FALSE</code>, the resultant dimensions are the same as the input by
+<p>Logical. If it is <code>TRUE</code>, the resultant dimensions 
+will be reduced by dropping the missing variables. If it is 
+<code>FALSE</code>, the resultant dimensions are the same as the input by 
 keeping the missing variables. </p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>as.matrix</code></td>
 <td>
-<p>Logical. If it is <code>TRUE</code> and <code>x</code> is a list of correlation/covariance
-matrices with the same dimensions, the asymptotic covariance
-matrices will be column vectorized and stacked together. If it is
-<code>FALSE</code>, the output will be a list of asymptotic covariance
-matrices. Note that if it is <code>TRUE</code>, <code>dropNA</code> will be
-<code>FALSE</code> automatically. This option is useful when passing the
+<p>Logical. If it is <code>TRUE</code> and <code>x</code> is a list of correlation/covariance 
+matrices with the same dimensions, the asymptotic covariance 
+matrices will be column vectorized and stacked together. If it is 
+<code>FALSE</code>, the output will be a list of asymptotic covariance 
+matrices. Note that if it is <code>TRUE</code>, <code>dropNA</code> will be 
+<code>FALSE</code> automatically. This option is useful when passing the 
 asymptotic covariance matrices to <code><a href="meta.html">meta</a></code> </p>
-</td></tr>  
+</td></tr> 
+<tr valign="top"><td><code>acov</code></td>
+<td>
+<p>If it is <code>individual</code> (the default), the sampling variance covariance 
+matrices are calculated based on individual correlation/covariance 
+matrix. If it is either <code>unweighted</code> or <code>weighted</code>, the average 
+correlation/covariance matrix is calculated based on the unweighted 
+or weighted mean with the sample sizes. The average 
+correlation/covariance matrix is used to calculate the sampling 
+variance covariance matrices.</p>
+</td></tr> 
 <tr valign="top"><td><code>suppressWarnings</code></td>
 <td>
-<p>Logical. If <code>TRUE</code>, warnings are
+<p>Logical. If <code>TRUE</code>, warnings are 
 suppressed. Argument to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code>.</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>silent</code></td>
 <td>
-<p>Logical. Argument to be passed to
+<p>Logical. Argument to be passed to 
 <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code></p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>run</code></td>
 <td>
-<p>Logical. If <code>FALSE</code>, only return the mx model without
+<p>Logical. If <code>FALSE</code>, only return the mx model without 
 running the analysis.</p>
-</td></tr>
+</td></tr> 
 <tr valign="top"><td><code>...</code></td>
 <td>
 <p>Futher arguments to be passed to <code><a href="../../OpenMx/html/mxRun.html">mxRun</a></code></p>
-</td></tr>
+</td></tr> 
 </table>
 
 
 <h3>Value</h3>
 
-<p>An asymptotic covariance matrix of the vectorized
-correlation/covariance matrix or a list of these matrices. If
-<code>as.matrix</code>=<code>TRUE</code> and <code>x</code> is a list of matrices, the output
+<p>An asymptotic covariance matrix of the vectorized 
+correlation/covariance matrix or a list of these matrices. If 
+<code>as.matrix</code>=<code>TRUE</code> and <code>x</code> is a list of matrices, the output 
 is a stacked matrix. </p>
 
 
 <h3>Author(s)</h3>
 
-<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt;
+<p>Mike W.-L. Cheung &lt;mikewlcheung@nus.edu.sg&gt; 
 </p>
 
 
 <h3>References</h3>
 
-<p>Cheung, M. W.-L., &amp; Chan, W. (2004). Testing dependent correlation coefficients via structural equation modeling. <em>Organizational Research Methods</em>, <b>7</b>, 206-223. 
+ 
+<p>Cheung, M. W.-L., &amp; Chan, W. (2004). Testing dependent correlation coefficients via structural equation modeling. <em>Organizational Research Methods</em>, <b>7</b>, 206-223.  
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">C1 &lt;- matrix(c(1,0.5,0.4,0.5,1,0.2,0.4,0.2,1), ncol=3)  
-asyCov(C1, n=100)
+<pre><code class="r">C1 &lt;- matrix(c(1,0.5,0.4,0.5,1,0.2,0.4,0.2,1), ncol=3)   
+asyCov(C1, n=100) 
 </code></pre>
 
 <pre><code>##              x2x1         x3x1        x3x2
-## x2x1 0.0056818141 0.0006363402 0.002590891
-## x3x1 0.0006363402 0.0071272722 0.003818168
-## x3x2 0.0025908914 0.0038181681 0.009309082
+## x2x1 0.0056249804 0.0006300063 0.002564982
+## x3x1 0.0006300063 0.0070559842 0.003779984
+## x3x2 0.0025649815 0.0037799843 0.009215957
 </code></pre>
 
-<pre><code class="r">## Data with missing values
-C2 &lt;- matrix(c(1,0.4,NA,0.4,1,NA,NA,NA,NA), ncol=3)  
-C3 &lt;- matrix(c(1,0.2,0.2,1), ncol=2)
+<pre><code class="r">## Data with missing values 
+C2 &lt;- matrix(c(1,0.4,NA,0.4,1,NA,NA,NA,NA), ncol=3)   
+C3 &lt;- matrix(c(1,0.2,0.2,1), ncol=2) 
 
-## Output is a list of asymptotic covariance matrices
-asyCov(list(C1,C2,C3), n=c(100,50,50), dropNA=TRUE, as.matrix=FALSE)
+## Output is a list of asymptotic covariance matrices 
+asyCov(list(C1,C2,C3), n=c(100,50,50), dropNA=TRUE, as.matrix=FALSE) 
 </code></pre>
 
 <pre><code>## [[1]]
 ##              x2x1         x3x1        x3x2
-## x2x1 0.0056818356 0.0006364134 0.002590956
-## x3x1 0.0006364134 0.0071272783 0.003818208
-## x3x2 0.0025909564 0.0038182080 0.009309108
+## x2x1 0.0056249905 0.0006299849 0.002564984
+## x3x1 0.0006299849 0.0070559993 0.003780003
+## x3x2 0.0025649842 0.0037800031 0.009216000
 ## 
 ## [[2]]
 ##            x2x1
-## x2x1 0.01439999
+## x2x1 0.01411198
 ## 
 ## [[3]]
 ##            x2x1
-## x2x1 0.01880819
+## x2x1 0.01843186
 </code></pre>
 
-<pre><code class="r">## Output is a stacked matrix of asymptotic covariance matrices
-asyCov(list(C1,C2), n=c(100,50), as.matrix=TRUE)
+<pre><code class="r">## Output is a stacked matrix of asymptotic covariance matrices 
+asyCov(list(C1,C2), n=c(100,50), as.matrix=TRUE) 
 </code></pre>
 
 <pre><code>##      cov(x2x1_x2x1) cov(x3x1_x2x1) cov(x3x2_x2x1) cov(x3x1_x3x1)
-## [1,]    0.005681829     0.00063639    0.002590938    0.007127269
-## [2,]    0.014399962             NA             NA             NA
+## [1,]    0.005625016   0.0006300281    0.002565039    0.007056028
+## [2,]    0.014112048             NA             NA             NA
 ##      cov(x3x2_x3x1) cov(x3x2_x3x2)
-## [1,]    0.003818191    0.009309112
+## [1,]    0.003780042    0.009216016
 ## [2,]             NA             NA
 </code></pre>
 
-<pre><code class="r">## Output is a stacked matrix of asymptotic covariance matrices
-asyCov(list(C3,C3), n=c(100,50), as.matrix=TRUE)
+<pre><code class="r">## Output is a stacked matrix of asymptotic covariance matrices 
+asyCov(list(C3,C3), n=c(100,50), as.matrix=TRUE) 
 </code></pre>
 
 <pre><code>##      cov(x2x1_x2x1)
-## [1,]    0.009309077
-## [2,]    0.018808114
+## [1,]    0.009216001
+## [2,]    0.018432019
 </code></pre>
 
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>

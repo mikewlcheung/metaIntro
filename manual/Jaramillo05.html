@@ -10,13 +10,13 @@
 
 <table width="100%" summary="page for Jaramillo05 {metaSEM}"><tr><td>Jaramillo05 {metaSEM}</td><td style="text-align: right;">R Documentation</td></tr></table>
 
-<h2>Dataset from Jaramillo, Mulki &amp; Marshall (2005)
+<h2>Dataset from Jaramillo, Mulki &amp; Marshall (2005) 
 </h2>
 
 <h3>Description</h3>
 
-<p>A dataset of the relationship between organizational
-commitment (OC) and salesperson job performance (JP) from Jaramillo, Mulki &amp; Marshall (2005).
+<p>A dataset of the relationship between organizational 
+commitment (OC) and salesperson job performance (JP) from Jaramillo, Mulki &amp; Marshall (2005). 
 </p>
 
 
@@ -27,46 +27,48 @@ commitment (OC) and salesperson job performance (JP) from Jaramillo, Mulki &amp;
 
 <h3>Format</h3>
 
-<p>A data frame with 61 observations on the following 10 variables.
+ 
+<p>A data frame with 61 observations on the following 10 variables. 
 </p>
-
+ 
 <dl>
 <dt><code>Author</code></dt><dd><p>a character vector of study</p>
-</dd>
+</dd> 
 <dt><code>Sample_size</code></dt><dd><p>sample size of the study</p>
-</dd>
+</dd> 
 <dt><code>Sales</code></dt><dd><p>sample type; either &quot;mixed&quot;, &quot;nonsales&quot; or &quot;sales&quot;</p>
-</dd>
+</dd> 
 <dt><code>Country</code></dt><dd><p>a character vector of country of study</p>
-</dd>
+</dd> 
 <dt><code>IDV</code></dt><dd><p>Hofstede's (1997) individualism index</p>
-</dd>
-<dt><code>OC_scale</code></dt><dd><p>scale of OC; either &quot;Porter or Mowday&quot;,
+</dd> 
+<dt><code>OC_scale</code></dt><dd><p>scale of OC; either &quot;Porter or Mowday&quot;, 
 &quot;Meyer&quot; or &quot;other&quot;</p>
-</dd>
+</dd> 
 <dt><code>OC_alpha</code></dt><dd><p>Coefficient alpha of organizational commitment</p>
-</dd>
+</dd> 
 <dt><code>JP_alpha</code></dt><dd><p>Coefficient alpha of job performance</p>
-</dd>
-<dt><code>r</code></dt><dd><p>correlation between organizational commitment and
+</dd> 
+<dt><code>r</code></dt><dd><p>correlation between organizational commitment and 
 job performance</p>
-</dd>
+</dd> 
 <dt><code>r_v</code></dt><dd><p>sampling variance of r</p>
-</dd>
+</dd> 
 </dl>
-
+ 
 
 
 <h3>Source</h3>
 
-<p>Jaramillo, F., Mulki, J. P., &amp; Marshall, G. W. (2005). A meta-analysis of the relationship between organizational commitment and salesperson job performance: 25 years of research. <em>Journal of Business Research</em>, <b>58(6)</b>, 705-714. doi:10.1016/j.jbusres.2003.10.004
+<p>Jaramillo, F., Mulki, J. P., &amp; Marshall, G. W. (2005). A meta-analysis of the relationship between organizational commitment and salesperson job performance: 25 years of research. <em>Journal of Business Research</em>, <b>58(6)</b>, 705-714. doi:10.1016/j.jbusres.2003.10.004 
 </p>
 
 
 <h3>Examples</h3>
 
-<pre><code class="r">## Research question 4.4.1
-summary(meta(r, r_v, data=Jaramillo05))
+<pre><code class="r">## \dontrun{ 
+## Research question 4.4.1 
+summary(meta(r, r_v, data=Jaramillo05)) 
 </code></pre>
 
 <pre><code>## 
@@ -98,15 +100,15 @@ summary(meta(r, r_v, data=Jaramillo05))
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Research question 4.4.2
-## Select cases with either &quot;sales&quot; or &quot;nonsales&quot;
-Sales.df &lt;- subset(Jaramillo05, Sales %in% c(&quot;sales&quot;, &quot;nonsales&quot;))
+<pre><code class="r">## Research question 4.4.2 
+## Select cases with either &quot;sales&quot; or &quot;nonsales&quot; 
+Sales.df &lt;- subset(Jaramillo05, Sales %in% c(&quot;sales&quot;, &quot;nonsales&quot;)) 
 
-## Create a predictor with 1 and 0 when they are &quot;sales&quot; or &quot;nonsales&quot;, respectively
-predictor &lt;- ifelse(Jaramillo05$Sales==&quot;sales&quot;, yes=1, no=0)
+## Create a predictor with 1 and 0 when they are &quot;sales&quot; or &quot;nonsales&quot;, respectively 
+predictor &lt;- ifelse(Jaramillo05$Sales==&quot;sales&quot;, yes=1, no=0) 
 
-## Mixed-effects meta-analysis
-summary( meta(y = r, v = r_v, x = predictor, data = Jaramillo05) )
+## Mixed-effects meta-analysis 
+summary( meta(y = r, v = r_v, x = predictor, data = Jaramillo05) ) 
 </code></pre>
 
 <pre><code>## 
@@ -141,8 +143,8 @@ summary( meta(y = r, v = r_v, x = predictor, data = Jaramillo05) )
 ## Other values may indicate problems.)
 </code></pre>
 
-<pre><code class="r">## Research question 4.4.3
-summary(meta(r, r_v, x=IDV, data=Jaramillo05))
+<pre><code class="r">## Research question 4.4.3 
+summary(meta(r, r_v, x=IDV, data=Jaramillo05)) 
 </code></pre>
 
 <pre><code>## 
@@ -181,6 +183,9 @@ summary(meta(r, r_v, x=IDV, data=Jaramillo05))
 ## Other values may indicate problems.)
 </code></pre>
 
+<pre><code class="r">## } 
+</code></pre>
 
-<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.5-2 <a href="00Index.html">Index</a>]</div>
+
+<hr /><div style="text-align: center;">[Package <em>metaSEM</em> version 0.9.8 <a href="00Index.html">Index</a>]</div>
 </body></html>
